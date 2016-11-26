@@ -10,6 +10,6 @@
         %GOPATH%/src/username/projectname2
         如何设置GOPATH的值，请根据自己的目录规划习惯了
     
-    1.4 将%GOPATH%/bin路径追加到%PATH%变量中
+    1.4 将%GOPATH%/bin路径追加到%PATH%环境变量中
 
 2 linux下Golang开发环境搭建
