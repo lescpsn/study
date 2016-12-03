@@ -1,0 +1,24 @@
+Windows下的emacs安装
+1 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+  如：我下载二进制bin版本，直接解压就可以使用
+  http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
+
+2 目录规划，根据个人习惯，做好目录组织结构。
+  如：我将E:/Local定位为类似Linux下的home家目录，后面准备用来存放.emacsd文件夹的位置
+
+3 将emacs-24.5-bin-i686-mingw32.zip解压到E:/Local/目录下， 并改名为emacs，
+  E:/Local/emacs
+
+4 启动emacs
+  双击E:/Local/emacs/bin/addpm.exe
+  双击E:/Local/emacs/bin/runemacs.exe
+  C-x C-f 选择打开文件，删除原有的目录提示到底后，输入~/，按tab，即可提示windows下的家目录。
+  输入.emacs，即打开原有的emasc的配置文件
+  (load-file "E:/Local/.emacs")
+
+5 C-x C-f 编辑E:/Local/.emacs文件
+  (setenv "HOME" "E:/local")
+  (setenv "PATH" "E:/local")
+  ;;set the default file path
+  (setq default-directory "~/")
+  (add-to-list 'load-path "~/emacs/site-lisp")

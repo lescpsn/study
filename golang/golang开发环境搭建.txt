@@ -1,5 +1,5 @@
                 Golang开发环境搭建
-1 windows下Golang开发环境搭建
+1 windows下的Golang开发环境搭建
     1.1 下载windows对应版本的Golang安装包（当前为version-1.7）
 
     1.2 采用默认安装方式，如有要求请指定Golang的安装路径，其它一路回车法
@@ -9,7 +9,7 @@
         %GOPATH%/src/username/projectname1
         %GOPATH%/src/username/projectname2
         如何设置GOPATH的值，请根据自己的目录规划习惯了
-    
+
     1.4 将%GOPATH%/bin路径追加到%PATH%环境变量中
 
-2 linux下Golang开发环境搭建
+2 linux下的Golang开发环境搭建
