@@ -33,4 +33,13 @@ Windows下的emacs安装
       配置%HOME%/.emacs.d文件夹，可以直接从github上下载开源配置好的。
       C:\Users\当前登陆的用户\AppData\Roaming\.emacs.d
       git clone XXXXX  %HOME%/.emacs.d
-    
+
+  5 prelude的emacs配置
+    5.1 从github上下载prelude的配置到家目录下，取名为.emacs.d
+          git clone https://github.com/bbatsov/prelude.git  ~/.emacs.d
+
+    5.2 修改core\prelude-packages.el
+        将https修改为http'("melpa" . "http://melpa.org/packages/") t)
+
+    5.3 将sample\prelude-modules.el文件复制到上一级目录中去，并修改自己需要加载的
+        模块
