@@ -12,4 +12,18 @@
 
     1.4 将%GOPATH%/bin路径追加到%PATH%环境变量中
 
-2 linux下的Golang开发环境搭建
+2 linux（ubuntu）下的Golang开发环境搭建
+  2.1 网络方式直接安装golang
+      apt-get install golang
+  2.2 配置GOPATH环境变量
+      bash shell:
+      vim ~/.bashrc
+      export GOPATH=~/projects/golang
+
+      fish shell:
+      vim ~/.config/fish/config.fish (若没有，直接创建该文件)
+      set -x GOPATH ~/Projects/lescpsn/golang
+  2.3 GOPATH下创建三个必须的目录
+      mkdir $GOPATH/src
+      mkdir $GOPATH/bin
+      mkdir $GOPATH/pkg
