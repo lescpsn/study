@@ -34,6 +34,8 @@
      1 go get -v -u -x github.com/golang/tools
        mkdir golang.org/x
        cp  github.com/golang/tools golang.org/x/tools
+
+   go install golang.org/x/tools/cmd/goimports
    godef: 代码跳转
    go get -v -u -x github.com/rogpeppe/godef
 
@@ -52,10 +54,11 @@
    dlv: 调试插件
    go get -u -v github.com/derekparker/delve/cmd/dlv
    git clone https://github.com/derekparker/delve
-   go intsall github.com/derekparker/delve/cmd/dlv
+   go install github.com/derekparker/delve/cmd/dlv
 
 
    go get -u -v -x github.com/tpng/gopkgs
    go get -u -v -x github.com/lukehoban/go-outline
 
+   go get -u -v -x github.com/alecthomas/gometalinter
    go get -u -v -x sourcegraph.com/sqs/goreturns
