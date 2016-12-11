@@ -1,0 +1,36 @@
+#+TITLE: node.js入门
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+* node.js概览
++ 编写高性能网络服务器的JavaScript工具包
+#+BEGIN_EXAMPLE
+用javascript开发服务端程序
+#+END_EXAMPLE
+
+
++ 单线程，异步，事件驱动
+#+BEGIN_EXAMPLE
+没一个请求开一个内存，耗内存，速度快
+#+END_EXAMPLE
+
+
++ 异步耗内存测试
+#+BEGIN_EXAMPLE
+百万链接（1M）未优化的情况下，消耗内存，约16G
+#+END_EXAMPLE
+
+
++ 优点
+#+BEGIN_EXAMPLE
+性能高（本身的机制）
+开发效率高(优化性能相对省事)
+应用范围广
+#+END_EXAMPLE
++ async
+#+BEGIN_EXAMPLE
+用同步的方法写异步程序，无须回掉，成为异步装饰器
+#+END_EXAMPLE
+
+* node.js安装
+
+

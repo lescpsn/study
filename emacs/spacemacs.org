@@ -1,6 +1,7 @@
 #+TITLE: spacemacs
-* Windows
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+* Windows
+
 ** 安装spacemacs
 #+BEGIN_EXAMPLE
 git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roaming\.emacs.d
