@@ -6,7 +6,6 @@
 安装KDiff3-64bit-Setup_0.9.98-2.exe，并将配置到环境变量中去
 #+END_EXAMPLE
 
-  
-
+我啊中华o
 
 * Linux
