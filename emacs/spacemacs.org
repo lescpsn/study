@@ -45,6 +45,7 @@ dotspacemacs-elpa-timeout 60
 
 #+END_EXAMPLE
 
+** 相关工具的安装
 
 + 安装 source code font 字体
 #+BEGIN_EXAMPLE
@@ -72,5 +73,11 @@ dotspacemacs-elpa-timeout 60
 2 一路回车法安装diff
 3 安装后的bin添加到PATH环境变量中去
 #+END_EXAMPLE
+
++ .spacemacs模板文件
+#+BEGIN_EXAMPLE
+参看.spacemacs
+#+END_EXAMPLE
+
 * Linux
 
