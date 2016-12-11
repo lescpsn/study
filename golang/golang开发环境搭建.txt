@@ -10,7 +10,7 @@
         %GOPATH%/src/username/projectname2
         如何设置GOPATH的值，请根据自己的目录规划习惯了
 
-    1.4 将%GOPATH%/bin路径追加到%PATH%环境变量中
+    1.4 将%GOPATH%/bin，%GOROOT%/bin路径追加到%PATH%环境变量中
 
 2 linux（ubuntu）下的Golang开发环境搭建
   2.1 网络方式直接安装golang
@@ -61,4 +61,4 @@
    go get -u -v -x github.com/lukehoban/go-outline
 
    go get -u -v -x github.com/alecthomas/gometalinter
-   go get -u -v -x sourcegraph.com/sqs/goreturns
+   go get -v -x sourcegraph.com/sqs/goreturns

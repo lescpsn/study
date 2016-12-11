@@ -1,0 +1,23 @@
+* Windows
+1 修改LPA的仓储源
+  .spacemacs文件中的defun dotspacemacs/user-init () 里修改或添加
+(setq configuration-layer--elpa-archives
+    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+      ("org-cn"   . "http://elpa.emacs-china.org/org/")
+      ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+ )
+
+
+
+2  插件仓储链接超时，修改超时时间60秒
+dotspacemacs-elpa-https t
+;; Maximum allowed time in seconds to contact an ELPA repository.
+dotspacemacs-elpa-timeout 60
+
+
+3 Error: (file-error "Searching for program" "no such file or directory" "diff")
+  需要安装diff工具（Linux系统因为自带diff，Windows自己安装一个）
+  下载https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
+   安装KDiff3-64bit-Setup_0.9.98-2.exe，并执行文件bin目录配置到环境变量%PATH%中去
+
+* Linux
