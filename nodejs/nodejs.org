@@ -32,5 +32,18 @@
 #+END_EXAMPLE
 
 * node.js安装
+#+BEGIN_EXAMPLE
+http://nodejs.cn/
+#+END_EXAMPLE
+
+
+
+* node.js系统学习
+#+BEGIN_EXAMPLE
+var http=require("http");
+favicon
+#+END_EXAMPLE
+
+
 
 
