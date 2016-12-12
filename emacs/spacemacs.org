@@ -9,7 +9,6 @@ git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roami
 C:\Users\carhj\AppData\Roaming为用户Windows下对应的HOME目录
 #+END_EXAMPLE
 
-
 ** 启动emacs
 #+BEGIN_EXAMPLE
 1 选择emacs模式
@@ -46,7 +45,9 @@ dotspacemacs-elpa-timeout 60
 
 #+END_EXAMPLE
 
+
 ** 相关工具的安装
+
 
 + 安装 source code font 字体
 #+BEGIN_EXAMPLE
@@ -78,6 +79,18 @@ dotspacemacs-elpa-timeout 60
 + .spacemacs模板文件
 #+BEGIN_EXAMPLE
 参看.spacemacs
+#+END_EXAMPLE
+
+
+
+
+
+** issue
+ + The directory ~/.emacs.d/server is unsafe
+
+#+BEGIN_EXAMPLE
+~/.emacs.d/server 目录属主修改为当前用户
+右键 --> 属性 --> 安全 --> 高级 -->修改所有者
 #+END_EXAMPLE
 
 * Linux

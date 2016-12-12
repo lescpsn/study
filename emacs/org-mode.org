@@ -3,10 +3,11 @@
 
 
 
+
+
 * org-mode文件结构
 #+BEGIN_SRC sh
 #+TITLE: 文档标题
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 #+END_SRC
 
 
@@ -14,7 +15,7 @@
 ** org-mode文件结构
 #+BEGIN_SRC sh
 #+TITLE: 文档标题
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
 #+END_SRC
 
 
