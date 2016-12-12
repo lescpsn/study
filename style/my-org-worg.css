@@ -160,10 +160,12 @@
       font-size: 18pt;
   }
 
-  table {
+  /*
+  table {             
     border: none;
   }
-
+ */
+  
   td {
     border: none;
   }
