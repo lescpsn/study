@@ -62,7 +62,7 @@ dotspacemacs-elpa-timeout 60
 
 + 安装 aspell
 #+BEGIN_EXAMPLE
-1 http://aspell.net/ 下载Aspell-0-50-3-3-Setup.exe，Aspell-en-0.50-2-3.exe两个软件
+1 http://aspell.net/win32/ 下载Aspell-0-50-3-3-Setup.exe，Aspell-en-0.50-2-3.exe两个软件
 2 先安装Aspell-0-50-3-3-Setup.exe，再安装Aspell-en-0.50-2-3.exe（属于字典库）
 3 安装后的bin添加到PATH环境变量中去
 #+END_EXAMPLE
@@ -81,4 +81,3 @@ dotspacemacs-elpa-timeout 60
 #+END_EXAMPLE
 
 * Linux
-
