@@ -7,7 +7,77 @@ http://www.cnblogs.com/shanyou/p/4085802.htmlx
 http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
 #+END_EXAMPLE
 
-* mqtt概览
+
+* 关键词解释
+
+
++ MQTT
+#+BEGIN_EXAMPLE
+Message Queuing Telemetry Transport，消息队列遥测传输,是IBM开发的一个即时通讯协议,
+
+被用来当做传感器和致动器（比如通过Twitter让房屋联网）的通信协议。
+#+END_EXAMPLE
+
++ Qos
+#+BEGIN_EXAMPLE
+QoS（Quality of Service）服务质量，是网络的一种安全机制， 是用来解决网络延迟和阻塞
+
+等问题的一种技术。 在正常情况下，如果网络只用于特定的无时间限制的应用系统，并不需要QoS，
+
+比如Web应用，或E-Mail设置等。但是对关键应用和多媒体应用就十分必要。当网络过载或拥塞时，
+
+xQoS 能确保重要业务量不受延迟或丢弃，同时保证网络的高效运行。
+
+#+END_EXAMPLE
+
++ Pub
+#+BEGIN_EXAMPLE
+发布消息相关
+#+END_EXAMPLE
+
++ Sub
+#+BEGIN_EXAMPLE
+订阅消息相关
+#+END_EXAMPLE
+
+
+* MQTT V3.1协议规范摘要
++ 摘要
+#+BEGIN_EXAMPLE
+MQTT是一个轻两量界级的基于代理的发布/订阅式消息传输协议，它的设计目标是开放，简单，轻量和
+
+易于实现，这些特征使它适用于各种受限制环境。比如：网络不可靠或低带宽环境中，硬件资源紧张的
+
+嵌入式设备中
+#+END_EXAMPLE
+
++ 特性
+#+BEGIN_EXAMPLE
+
+1 使用发布/订阅消息模式，提供一对多的消息发布
+
+2 消息传输对有效负载内容不可知
+
+3 使用TCP/IP提供基础网络链接
+
+#+END_EXAMPLE
+
++ Qos的三个级别
+#+BEGIN_EXAMPLE
+1 至多一次：消息可能丢失。比如环境传感器数据 1次/分，丢失一次也无所谓，下条很快又来了
+
+2 至少一次： 无论如何都要确保消息的到达，消息可能重复发生
+
+3 只有一次： 无论如何都要确保消息到达有且只能有一次。比如：计费系统，重复或者丢失都是错误的。
+#+END_EXAMPLE
+
+
++ 轻量传输
+#+BEGIN_EXAMPLE
+固定头部只有2个字节，开销很小，降低了网络流量
+
+#+END_EXAMPLE
+
 + 代理
 
 + 发布
@@ -15,133 +85,532 @@ http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
 + 订阅
 
 
-
-
 * mqtt协议详解
 ** 协议格式
 
 #+BEGIN_EXAMPLE
-固定头部 +  可变头部 + 消息体
+
+MQTT命令消息一般组成结构：
+
+固定头部 +  [可变头部] + [ 有效载荷]
+
+有效载荷：也称为消息体
+
+固定头部：一定有
+
+可变头部和消息体：只有某些特定的类型消息才有
+
 #+END_EXAMPLE
+
+
+** 固定头部
 [[file:./img/固定头部.png]]
 
-+ 固定头部的结构
-
-+ MessageType (占4个字节,0和15为保留数值)
 #+BEGIN_EXAMPLE
+
+Byte 1：
+       包含消息类型和标志字段 
+Byte 2：
+       包含剩余长度字段（至少1个字节，最多4个字节），以大端模式存储的（高字节->内存低地址）
+
+字节范围[ 2 - 5 字节]
+
+#+END_EXAMPLE
+
++ MessageType ( byte 1，bits 7-4 ）
+#+BEGIN_EXAMPLE
+占4 bit，0和15为保留数值
          0 =>                           // 保留字
-         1 => "MQTT_CONNECT"            // 请求连接
-         2 => "MQTT_CONNACK"            // 请求应答
-         3 => "MQTT_PUBLISH"            // 发布消息
-         4 => "MQTT_PUBACK"             // 发布应答
-         5 => "MQTT_PUBREC"             // 发布已接收，保证传递1
-         6 => "MQTT_PUBREL"             // 发布释放，保证传递2
-         7 => "MQTT_PUBCOMP"            // 发布完成，保证传递3
-         8 => "MQTT_SUBSCRIBE"          // 订阅请求
-         9 => "MQTT_SUBACK"             // 订阅应答
-        10 => "MQTT_UNSUBSCRIBE"        // 取消订阅
-        11 => "MQTT_UNSUBACK"           // 取消订阅应答
-        12 => "MQTT_PINGREQ"            // ping请求
-        13 => "MQTT_PINGRESP"           // ping响应
-        14 => "MQTT_DISCONNECT"         // 断开连接
+         1 => "CONNECT"            // 客户端请求连接服务器
+         2 => "CONNACK"            // 连接确认
+         3 => "PUBLISH"            // 发布消息
+         4 => "PUBACK"             // 发布确认
+         5 => "PUBREC"             // 发布接收（有保证的交付第1部分）
+         6 => "PUBREL"             // 发布释放（有保证的交付第2部分）
+         7 => "PUBCOMP"            // 发布完成（有保证的交付第3部分）
+         8 => "SUBSCRIBE"          // 客户端订阅请求
+         9 => "SUBACK"             // 订阅确认
+        10 => "UNSUBSCRIBE"        // 客户端取消订阅请求
+        11 => "UNSUBACK"           // 取消订阅确认
+        12 => "PINGREQ"            // PING请求
+        13 => "PINGRESP"           // PING响应
+        14 => "DISCONNECT"         // 客户端断开连接
         15 =>                           // 保留字
 #+END_EXAMPLE
 
-+ DUP flag (占4个字节,0和15为保留数值)
+
++ DUP flag ( byte 1，bits 3 ）
 #+BEGIN_EXAMPLE
-Bit Position 3
-#+END_EXAMPLE
+服务器试图重发PUBLISH、PUBREL，客户端试图重发SUBSRIBE、UNSUBSCRIBE消息时，
 
-+ Qos
+该标志位要被置位（即设为1）。这适用于消息的QoS标志值大于0的情况，此时消息确认是必需的。
 
-
-#+BEGIN_EXAMPLE
-Bit Position 2-1
-#+END_EXAMPLE
-
-#+BEGIN_EXAMPLE
-主要用于PUBLISH（发布态）消息的，保证消息传递的次数。
-00表示最多一次 即<=1
-01表示至少一次  即>=1
-10表示一次，即==1
-11保留后用
-#+END_EXAMPLE
-
-+ Retain
-#+BEGIN_EXAMPLE
-主要用于PUBLISH(发布态)的消息，表示服务器要保留这次推送的信息，如果有新的订阅者出现，
-就把这消息推送给它。如果不设那么推送至当前订阅的就释放了。
+当DUP位被置位时，可变头部将包含一个消息ID。
 #+END_EXAMPLE
 
 
-* 固定头部的第2个byte
++ Qos level ( byte 1，bits 2-1 ）
+[[file:./img/qos级别.png]]
 #+BEGIN_EXAMPLE
-是用来保存接下去的变长头部+消息体的总大小的。
+该标志位标明 PUBLISH 消息的交付质量级别。具体的QoS级别如下表所示。
+00  0  <=1  至多一次：消息可能丢失。比如环境传感器数据 1次/分，丢失一次也无所谓，下条很快又来了
 
-但是不是并不是直接保存的，同样也是可以扩展的，其机制是，前7位用于保存长度，后一部用做标识。
+01  1  >=1  至少一次： 无论如何都要确保消息的到达，消息可能重复发生
 
-我举个例了，即如果计算出后面的大小为0<length<=127的，正常保存
+10  2 =1   只有一次： 无论如何都要确保消息到达有且只能有一次。比如：计费系统，重复或者丢失都是错误的。 
 
-如果是127<length<16383的，则需要二个字节保存了，将第一个字节的最大的一位置1,表示未完。然后第二个字节继续存。
+11  3   保留
+#+END_EXAMPLE
 
-拿130来说，第一个字节存10000011,第二个字节存000000001，也就是0x83,0x01,把两个字节连起来看，第二个字节权重从2的8次开始。
++ Retain ( byte 1，bits 0 ）
+#+BEGIN_EXAMPLE
+该标志位只用于PUBLISH消息。当一个客户端发送一条PUBLISH消息给服务，假设该该消息所属的主题
 
-同起可以加第3个字节，最多可以加至第4个字节。故MQTT协议最多可以实现268 435 455 (0xFF, 0xFF, 0xFF, 0x7F)将近256M的数据。
+(topic)为topicA，如果该标志位被置为（1），服务器在将该消息发布给当前的所有topicA订阅者
 
-可谓能伸能缩。
+之后，还应该保持这条消息。
+
+当topicA出现了一个新的订阅者，则topicA的最后一条保持消息应当分发给该订阅者。如果不存在保持
+
+消息，则什么也不用做。
+
+一句话：当消息发布者发消息的间隔比较长，该位为1，可以让新的订阅者立马收到历史消息的最后一条。
+
+当服务器收到新消息时，在给客户端发送前，将该位清0（即不置位）
+
+如果是保持消息（1），应当服务器重启之后仍能保留。
+
+如果服务器收到消息体长度为0，则可以删除该保持消息。
+
+#+END_EXAMPLE
+
++ byte2 - byte5( 剩余长度 )
+#+BEGIN_EXAMPLE
+该字段表示当前消息的剩余内容的字节数，包括可变头部和有效载荷（消息体）的数据。
+
+该字段本身的字节数是根据可变头部和有效载荷的长度不同而变化的。
+
+每个字节编码7-0bit的值（127）和一个“延续位”
+
+#+END_EXAMPLE
+
+
+byte 2
+ | 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 |
+ |----+----+----+----+----+----+----+----|
+ |  1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |
+
+  2^7-1=0X
+
+byte 3
+| 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 |
+|----+----+----+----+----+----+----+----+
+|  1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |
+-----------------------------------------
+byte 4
+
+| 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 |
+|----+----+----+----+----+----+----+----+
+|  1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |
+-----------------------------------------
+
+byte 5
+| 31 | 30 | 29 | 28 | 27 | 26 | 25 | 24 |
+|----+----+----+----+----+----+----+----+
+|  1 |  1 |  1 |  1 |  1 |  1 |  1 |  1 |
+-----------------------------------------
+
+
+[[file:./img/剩余字段.png]]
+#+BEGIN_EXAMPLE
+好好理解下，如何计算字节数，编码方案
+
+该编码方案的算法如下所示，输入为一个十进制数（X），输出为编码后的结果。
+do
+  digit = X MOD 128
+  X = X DIV 128
+  // if there are more digits to encode, set the top bit of this digit
+  if ( X > 0 )
+    digit = digit OR 0x80
+  endif
+  'output' digit
+while ( X> 0 )
+
+
+相应地，剩余长度字段的解码算法如下所示：
+
+multiplier = 1
+value = 0
+do
+  digit = 'next digit from stream'
+  value += (digit AND 127) * multiplier
+  multiplier *= 128
+while ((digit AND 128) != 0)
+当该解码算法终止，value等于剩余长度的字节数。
+
+可认为剩余长度字段虽然是固定的，即肯定是有的，但该字段的长度却是变化的（1-4字节）。
 #+END_EXAMPLE
 
 
 
+** 可变头部
+#+BEGIN_EXAMPLE
+某些类型的MQTT命令消息还包含了一个可变的头部，它位于固定头部和消息体之间。
 
+可变的剩余字段（1-4字节）不是可变头部的一部分。剩余长度字段的值不包括可变字段的长度，
 
-
-
-* 可变头部
+可变字段的值只包括可变头部和消息体。
+#+END_EXAMPLE
 [[file:./img/可变头部.png]]
-
-
-+ Protocol Name( byte 1- byte 8 )
++ 协议名称（Protocol name）
 #+BEGIN_EXAMPLE
+协议名称字段只用于 MQTT CONNECT 消息的可变头部中。该字段以UTF编码方式显示协议名称：MQIsdp
+
 len = 1 - 2 字节
+
 content 3 - 8 字节
 #+END_EXAMPLE
 
-+ Protocol Version( byte 9)
+
++ 协议版本（Protocol version）
 #+BEGIN_EXAMPLE
+协议版本字段只用于 MQTT CONNECT 消息的可变头部中。
+
+该字段用8位无符号值来表示客户端所使用的协议修订级别。当前版本协议中该字段的值为3（0x03），如下表所示
 协议版本号，v3 也是固定的。
 二进制           十进制
 00 00 00 11  => 3
 #+END_EXAMPLE
+[[file:./img/协议版本.png]]
 
-+ Connect Flag
++ 连接标志 Connect Flag
 #+BEGIN_EXAMPLE
-连接标识，有点像固定头部的。8位分别代表不同的标志。第1个字节保留。
+该字段用于 CONNECT 消息的可变头部中，占1字节，包括Clean session、Will、Will QoS和Retain标志。
 #+END_EXAMPLE
 
-+ Connect Flag
-  | bit 1 | fdf | dddddddaaaa |
-  |-------+-----+-------------|
-  | bit 1 | fdf | dddddd      | 
+
++ Connect Flag之bit 0 
+#+BEGIN_EXAMPLE
+连接标志中的第0位在目前协议版本中没有使用到，保留为将来使用。
+#+END_EXAMPLE
+
++ Connect Flag之bit 1 （Clean session）
+[[file:./img/clean-session.png]]
 
 
-* MQTT之连接和心跳
-+ 详细
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  | Byte Position |   | Bit Position | dfd |   |   |   |    |    |   |      |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  | Byte Position |   | Bit Position | dfd |   |   |   |    |    |   |      |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  |               |   |              |     |   |   |   |    |    |   |      |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  | byet 1        |   |              |   7 | 6 | 5 | 4 |  3 |  2 | 1 | 1 0  |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  | /             |   |              |     |   |   |   |    |  < | > |      |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  | byet 1        |   |              |   7 | 6 | 5 | 4 | 35 | 20 | 1 | 1 0  |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  | byet 1        |   |              |   7 | 6 | 4 |   |  3 |  2 | 1 | 0    |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
-  |               |   |              |     |   |   |   |    |    |   | dddd |
-  |               |   |              |     |   |   |   |    |    |   |      |
-  |---------------+---+--------------+-----+---+---+---+----+----+---+------|
+#+BEGIN_EXAMPLE
+如果没有被置位（即值为0），则当客户端断线时，服务器必须保存该客户端的订阅消息，包括断线期间发布的该客户端
+
+订阅的主题中交付质量级别为QoS 1和QoS2的消息，QoS 0级别的消息由于只是尽可能的交付，所以它永远不会被存储保持
+
+这样当客户端重连时，这部分消息能确保被送达到客户端。
+
+同时，服务器还必须保持客户端在断线的那个时刻正在传输中的消息的状态，直到客户端重新连接。
+
+
+如果被置位（即值为1），则服务器必须丢弃任何之前保持的该客户端的信息。将该连接视为“不存在（Clean）”。
+
+
+同时，当客户端断线时，服务器必须丢弃其所有状态。
+
+#+END_EXAMPLE
+
+
++ Connect Flag之bit 2 （Will Flag）
+[[file:./img/will-flag.png]]
+
+#+BEGIN_EXAMPLE
+
+Will消息是指当服务器与客户端通信过程中出现故障或客户端在保活时间内没有与服务器保持正常交流时，服务器特意发给客户端的消息。
+
+当客户端通过发送 DISCONNECT 消息正常断开时，Will消息不会发送。
+
+如果Will-flag标志被置位，则Will QoS标志和Will Retain标志的设置将会发生作用，同时，在有效载荷里必须填写Will主题和Will消息内容字段
+
+#+END_EXAMPLE
+
+
+
++ Connect Flag之bit 3-4 （Will QoS）
+[[file:./img/will-qos.png]]
+#+BEGIN_EXAMPLE
+Will QoS标志用来设置当客户端异常离线时，服务器发送的Will消息的交付质量级别。Will消息的内容在客户端发送的 
+
+CONNECT 消息里的有效载荷里填写。
+
+如果Will-flag标志被置位，则Will QoS字段必须填写，否则该字段的值将被忽略。
+
+Will QoS字段的可选值有0（0x00），1（0x01）和2（0x02），格式如下表所示。
+#+END_EXAMPLE
+
++ Connect Flag之bit 3-4 （Will QoS）
+[[file:./img/retain-flags.png]]
+#+BEGIN_EXAMPLE
+
+Will Retain标志指明服务器是否需要保持客户端异常离线时发送给客户端的Will消息。
+
+如果Will标志被置位，则Will Retain标志必须填写，否则其将被忽略。该标志的格式如下表所示。
+#+END_EXAMPLE
+
++ Connect Flag之bit 5 （Will Retain）     
+#+BEGIN_EXAMPLE
+Will Retain标志指明服务器是否需要保持客户端异常离线时发送给客户端的Will消息。
+
+如果Will标志被置位，则Will Retain标志必须填写，否则其将被忽略。该标志的格式如下表所示。
+#+END_EXAMPLE
+
+
+
++ Connect Flag之bit 6-7 （User name and password )
+#+BEGIN_EXAMPLE
+
+客户端在连接服务器时可以指定用户名和密码，通过将用户名标志和密码标志（可选）置位表明在 CONNECT 消息的有效载荷里包含有用户名和密码。
+
+如果将用户名标志置位，则必须在有效载荷里填写用户名字段，否则用户名字段将被忽略。同样地，如果密码标志被置位，则必须在有效载荷里填写密码字段，
+
+否则密码字段将被忽略。只提供密码而不提供用户名是不合法的。
+
+#+END_EXAMPLE
+
+
+
++ 保活计时器（Keep Alive timer） 
+[[file:./img/keep-alive-timer.png]]
+#+BEGIN_EXAMPLE
+
+保活计时器用于MQTT CONNECT 消息的可变头部中。
+
+
+保活计时器定义了服务器收到客户端消息的最大时间间隔，它以秒为单位。它使得服务器不需要等待漫长的TCP/IP超时就可以检测与客户端的网络连接是否断开
+
+它使得服务器不需要等待漫长的TCP/IP超时就可以检测与客户端的网络连接是否断开。
+
+
+客户端有义务在每个保活时间间隔内至少发送一条消息给服务器。如果这期间没有业务相关的消息要发送，客户端则发送一个 PINGREQ 消息给服务器，
+
+相应地服务器返回一个 PINGRESQ 消息给客户端。
+
+如果服务器在1.5个保活时间（可宽容0.5个保活时间）内都没有收到客户端的消息，则服务器将其视为客户端发送了一个 DISCONNECT 消息，
+
+并断开与客户端的连接。这个动作不影响客户端的订阅。
+
+如果客户端在发送 PINGQ 后的一个保活时间内没有收到服务器发来的 PINGRESP 消息，则客户端可以关闭TCP/IP套接字连接
+
+保活计时器用2个字节来表示，时间单位为秒。实际设定的值由特定应用决定，不过通常它的值都设为数分钟，最大值接近18个小时。如果设为0，则表示客户端不断线。
+
+保活计时器的格式如下表所示。2个字节的顺序为先 MSB，再 LSB(大端模式)。
+#+END_EXAMPLE
+
+
++ 连接返回码（Connect return code）
+#+BEGIN_EXAMPLE
+
+连接返回码用于 CONNACK 消息的可变头部中。
+
+这个字段用一个无符号字节来表示返回码。这些值的含义如下表所示。值为0的返回码通常表示连接成功。
+#+END_EXAMPLE
+
+
++ 主题名（Topic name）
+#+BEGIN_EXAMPLE
+
+主题名用于 PUBLISH 消息的可变头部中。
+
+主题名决定消息要发送到哪个信息通道。订阅者使用主题名来决定他们要从哪些信息通道接收消息。
+
+主题名是一个UTF编码字符串。主题名支持的最大字符度为32767。
+
+#+END_EXAMPLE
+
+
+** 有效负载
+
+     以下类型的MQTT命令消息拥有一个有效载荷：
+
++ CONNECT
+#+BEGIN_EXAMPLE
+该有效载荷包含了一个或多个UTF-8编码字符串。它们包括标识客户端的唯一标识符、Will主题和消息、要使用的用户名和密码。
+
+其中只有第一项是必选的，其余的取决于可变消息头部中的标志置位情况。
+#+END_EXAMPLE
++ SUBSCRIBE
+#+BEGIN_EXAMPLE
+该有效载荷包含一系列要订阅的主题名，以及每个主题的QoS级别。这些字符串都是UTF编码的。
+#+END_EXAMPLE
++ SUBACK
+#+BEGIN_EXAMPLE
+该有效载荷包含一系列授权过的QoS级别。它们是服务器管理员允许授权给客户端订阅的各个主题的QoS级别。授权的QoS级别顺序与相应订阅的主题的顺序保持一致。
+#+END_EXAMPLE
++ PUBLISH
+#+BEGIN_EXAMPLE
+
+该有效载荷只包含应用特定的数据。协议不对数据的属性和内容作任何假设，协议把消息的这部分内容视为一个BLOB。
+
+如果你想要对有效载荷数据进行压缩，你必须自己在有效载荷里定义合适的标志来处理压缩事宜。你不能在固定状况或可变头部里定义与特定应用相关的标志。
+#+END_EXAMPLE
+
+
+
+** 消息标识符
+#+BEGIN_EXAMPLE
+消息表示符用于以下MQTT消息的可变头部中，PUBLISH，PUBACK，PUBREC，PUBREL，PUBCOMP，SUBSCRIBE，SUBACK，UNSUBSCRIBE，UNSUBACK。
+
+消息标识符字段只存在于固定头部中QoS标志值为1或2的消息中。
+
+在同一个方向上的在传消息ID必须是唯一的。它通常是逐个消息递增的，但不强制如此。
+
+客户端与它所连接的服务器一样，都需要维护自己的消息ID列表，二者的消息ID列表互不影响。
+
+客户端在发送一个消息ID为1的 PUBLISH 消息的同时也有可能收到来自服务器的消息ID为1的 PUBLISH 消息。
+
+表示消息ID的2个字节的顺序为先 MSB，再 LSB（大端模式）。
+
+不要使用值为0的消息ID。它是作为无效消息ID保留的。
+
+#+END_EXAMPLE
+
+
+
+**  MQTT和UTF-8（MQTT and UTF-8）
+
+
+#+BEGIN_EXAMPLE
+UTF-8是一种针对Unicode的可变长度字符编码，它优化了ASCII字符集的编码，以支持基于文本的通信。
+
+在MQTT中，字符串编码的头2个字节用来记录字符串的长度，如下表所示
+
+字符串长度表示所有字符经过UTF-8编码后的字节数，而不是字符串中字符的个数。例如，经过UTF-8编码后的字符串 OTWP 如下表所示。
+#+END_EXAMPLE
+
+** 未使用的位（Unused bits）
+#+BEGIN_EXAMPLE
+任何表明为未使用的位都应当置为0
+#+END_EXAMPLE
+
+
+* 命令消息
+**  CONNECT - 客户端请求连接服务器
+#+BEGIN_EXAMPLE
+当客户端与服务器的TCP/IP套接字连接建立起来以后，必须发送一个CONNECT消息流来建立一个协议级别的会话。
+固定头部的格式如下表所示。
+DUP、QoS以及RETAIN标志在 CONNECT 消息中没有被使用到。
+#+END_EXAMPLE
+
+** CONNACK - 连接确认
+#+BEGIN_EXAMPLE
+当客户端向服务器发起 CONNECT 请求，服务器会回复其 CONNACK 消息。
+#+END_EXAMPLE
+
++ 固定头部（Fixed header）格式
+#+BEGIN_EXAMPLE
+DUP、QoS以及RETAIN标志在 CONNACK 消息中没有被使用到。
+见下表
+#+END_EXAMPLE
+
++ 可变头部（Variable header）格式
+#+BEGIN_EXAMPLE
+见下表
+其中，连接返回码用1个无符合字节表示，具体含义如下表所示。
+#+END_EXAMPLE
+
++ 有效载荷（Payload）格式
+#+BEGIN_EXAMPLE
+该类型消息没有有效载荷。
+#+END_EXAMPLE
+
+
+** PUBLISH - 发布消息
+#+BEGIN_EXAMPLE
+当客户端想发布消息给感兴趣的订阅者时，客户端将发送一条 PUBLISH 消息给服务器。每个PUBISH消息都关联一个主题名。
+（也可称为话题或频道）。主题名是一个层次性的空间，它将订阅者感兴趣的信息资源进行分类。一个主题的消息将会发送给连接时订阅了该主题的客户端。
+
+发布者客户端发送某topic的 PUBLISH 消息给服务器，然后服务器再发 PUBLISH 消息给所有该topic的订阅者客户端。
+#+END_EXAMPLE
++ 固定头部（Fixed header）格式
+#+BEGIN_EXAMPLE
+DUP、QoS以及RETAIN标志在 CONNACK 消息中没有被使用到。
+见下表
+#+END_EXAMPLE
+
+
+** PUBACK - 发布确认
+
+** PUBREC - 发布接收（有保证的交付第1部分）
+
+** PUBREL - 发布释放（有保证的交付第2部分）
+
+** PUBCOMP - 发布完成（有保证的交付第3部分）
+
+** SUBSCRIBE - 客户端订阅主题
+
+** SUBACK - 订阅确认
+** UNSUBSCRIBE - 客户端取消订阅主题
+
+** UNSUBACK - 取消订阅确认
+
+** PINGREQ - PING请求
+
+**  PINGRESP - PING回复
+
+** DISCONNECT - 断开连接通知
+
+* 消息流
+
+** 交付质量级别和消息流（Quality of Service levels and flows）
+
+** 消息重传
+#+BEGIN_EXAMPLE
+尽管TCP通常可以保证数据包的送达，然而MQTT消息没有被收到的情况无疑是存在的。对于需要收到回应的MQTT消息（QoS>0，PUBLISH、PUBREL、SUBSCRIBE、UNSUBSCRIBE），如果在规定时间内消息响应没收到，发送方将重发该消息，且该消息的DUP标志将被置位。
+
+重发超时应当是可配置的。超时的设置最好可以保证消息的正常传输不会引发超时。例如，通过一条拥挤的网络发送一条大消息的时间通常要长于通过一条快速的网络发送一条小消息的时间。一直重复地重传一条超时的消息将使情况变得更糟糕。因此，随着重传次数增加而增大超时的策略通常会被采用。
+
+当一个客户端重新连接时，如果Clean session标志没有被置位，则客户端和服务器双方都应当重发断线前正在传输中的消息。
+
+不同于上述“重连”重传行为，客户端不需要重发消息。然而，Brokers需要重发所有未确认的消息。
+#+END_EXAMPLE
+
+** 消息排序
+#+BEGIN_EXAMPLE
+消息的顺序会被一系列因素所影响，包括客户端允许同时在传的 PUBLISH
+
+流的数量和客户端是单线程还是多线程的。为了讨论的简单，我们假设客户端在对网络中的数据包进行读写时是单线程的。
+
+对于一个提供有序消息保证的实现，它必须保证消息流的每个阶段的完成顺序都应该与它们的启动顺序保持一致。
+
+例如，对于一系列QoS级别2的消息流，它们发送 PUBREL 消息的顺序与它们发送 PUBISH 消息的顺序保持一致：
+#+END_EXAMPLE
+
+
+
+* mosquitto实战
++ mosquitto服务端安装     
+#+BEGIN_EXAMPLE
+sudo apt-get install mosquitto  
+#+END_EXAMPLE
+
++ mosquitto客户端安装
+#+BEGIN_EXAMPLE
+sudo apt install mosquitto-clients
+#+END_EXAMPLE
+
++ mosquitto sub订阅主题消息
+#+BEGIN_EXAMPLE
+mosquitto_sub -v -t music
+#+END_EXAMPLE
+
+
++ mosquitto pub发布主题消息
+#+BEGIN_EXAMPLE
+osquitto_pub -t music  -m "周杰伦"  
+#+END_EXAMPLE
+
++ mosquitto sub订阅主题消息得到的结果
+#+BEGIN_EXAMPLE
+⋊> ~ mosquitto_sub -v -t music 
+music 周杰伦
+#+END_EXAMPLE
+
+
+
+
+
