@@ -32,6 +32,8 @@
            # host    all             all             ::1/128                 md5
 
             host    all             all             0.0.0.0 0.0.0.0            md5
+            另外一种写法
+            host    all             all             0.0.0.0/0            md5
 
         f、重启 postgresql 服务
            /etc/init.d/postgresql  restart

@@ -1,0 +1,81 @@
+#+TITLE:  postgresql入门
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+* postgresql安装
++ 网络方式安装
+#+BEGIN_EXAMPLE
+> sudo apt-get install postgresql
+此过程，Linux系统中自动创建了一个postgres系统用户
+postgresql数据库中自动创建了一个最高权限的postgres数据库用户
+#+END_EXAMPLE
+
+
+
++ 修改数据库中的postgres用户密码
+#+BEGIN_EXAMPLE
+默认安装好的postgresql中，创建了一个数据库超级用户postgres，此用户为空密码，需修
+改下密码
+> sudo -i 
+> su - postgres
+> psql
+> ALTER USER postgres with PASSWORD '123456';
+> \q                                                   //退出psql客户端
+#+END_EXAMPLE
+
+
+* 初始化设置
++ 创建数据库和数据库用户
+#+BEGIN_EXAMPLE
+> su - postgres
+> psql
+> CREATE DATABASE iotadream;
+> CREATE USER hengjun WITH SUPERUSER PASSWORD '123456';//SUPERUSER：超级用户的意思，权限较高
+> \q                                                   //退出psql客户端
+#+END_EXAMPLE
+
+
+* 开启数据库远程访问
++ 编辑/etc/postgresql/9.5/main/postgresql.conf，允许任何主机来连接
+#+BEGIN_EXAMPLE
+vim /etc/postgresql/9.5/main/postgresql.conf
+listen_addresses = '*'
+#+END_EXAMPLE
+
+
++ 编辑/etc/postgresql/9.5/main/pg_hba.conf为来连接的用户和数据库分配权限
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+
+
+
+
+* 常用数据库操作
+
++ 连接命令
+#+BEGIN_EXAMPLE
+psql -U hengjun -h 127.0.0.1 iotadream
+#+END_EXAMPLE
+
++ 查看数据库
+#+BEGIN_EXAMPLE
+\l
+#+END_EXAMPLE
++ 查看数据库表
+#+BEGIN_EXAMPLE
+\dt
+#+END_EXAMPLE
+
++ 退出
+#+BEGIN_EXAMPLE
+\q
+#+END_EXAMPLE
+
+
+
+
+
+
+
+
