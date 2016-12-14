@@ -1,0 +1,33 @@
+#+TITLE: emacs-study历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+* tramp
++ tramp简介
+#+BEGIN_EXAMPLE
+tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器上的文件的了
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+1 安装 tramp 包
+2 安装plink.exe，将plink.exe放置到emacs的bin目录下
+  plink.exe从ssh的客户端工具putty中拷贝过来
+#+END_EXAMPLE
+
++ 配置
+#+BEGIN_EXAMPLE
+(require 'tramp)
+(setq tramp-default-method "plink")
+例如：spacemacs中
+     在dotspacemacs/user-config ()函数中加入上面代码
+#+END_EXAMPLE
+
++ 操作方式
+#+BEGIN_EXAMPLE
+/user@ip:
+#+END_EXAMPLE
+
++ issue
+#+BEGIN_EXAMPLE
+首次要在windows的cmd行下，运用plink访问一次目标主机，否则因为没有添加公钥会一直卡死
+#+END_EXAMPLE
