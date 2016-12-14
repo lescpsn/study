@@ -1,0 +1,7 @@
+** 更新用户的fish-shell的环境配置信息
+#+BEGIN_EXAMPLE
+将config.fish覆盖掉原有的~/.config/fish/config.fish
+cp config.fish  ~/.config/fish/config.fish
+#+END_EXAMPLE
+
+
