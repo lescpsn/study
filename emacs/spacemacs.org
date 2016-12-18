@@ -93,4 +93,12 @@ dotspacemacs-elpa-timeout 60
 右键 --> 属性 --> 安全 --> 高级 -->修改所有者
 #+END_EXAMPLE
 
++ javascript格式化代码
+#+BEGIN_EXAMPLE
+npm -g install js-beautify
+#+END_EXAMPLE
+
+
+** 常用插件问题
+
 * Linux
