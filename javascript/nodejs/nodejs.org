@@ -1,0 +1,19 @@
+#+TITLE:  NODE.JS入门
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../style/my-org-worg.css" />
+
+* node.js概览
+#+BEGIN_EXAMPLE
+javascript脚本性语言
+异步I/O
+事件驱动
+#+END_EXAMPLE
+
+* 向node.js提问
+** Question 1
++ Q：如果运行第一个node.js程序？
++ A:
+#+BEGIN_EXAMPLE
+1 官网https://nodejs.org/en/下载最新安装包
+2 安装node.js，选择好合适的安装目录，一路回车法
+#+END_EXAMPLE
+
