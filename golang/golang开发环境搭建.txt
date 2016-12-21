@@ -53,7 +53,10 @@
    go get -v -u -x github.com/golang/lint/golint
 
    dlv: 调试插件
-   go get -u -v github.com/derekparker/delve/cmd/dlv
+
+   go get -v -u github.com/peterh/liner
+   go get -u -v -x github.com/derekparker/delve/cmd/dlv
+
    git clone https://github.com/derekparker/delve
    go install github.com/derekparker/delve/cmd/dlv
 
@@ -63,3 +66,16 @@
 
    go get -u -v -x github.com/alecthomas/gometalinter
    go get -v -x sourcegraph.com/sqs/goreturns
+
+
+go get gopkg.in/yaml.v1 -->https://github.com/go-yaml/yaml
+go get gopkg.in/pg.v4"  -->go get -u -v -x github.com/go-pg/pg
+
+
+
+go get -u -v -x gopkg.in/robfig/cron.v2
+go get -u -v -x github.com/go-pg/robfig/cron.v2
+
+
+
+

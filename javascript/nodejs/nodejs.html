@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-18 周日 18:15 -->
+<!-- 2016-12-20 周二 16:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NODE.JS入门</title>
+<title>NODE.JS &amp; ES6</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -228,32 +228,47 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">NODE.JS入门</h1>
+<h1 class="title">NODE.JS &amp; ES6</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0a6f2f4">1. node.js概览</a></li>
-<li><a href="#org3701233">2. 向node.js发问</a>
+<li><a href="#orgf0e76b5">1. node.js概览</a></li>
+<li><a href="#org9a34185">2. 向node.js发问</a>
 <ul>
-<li><a href="#org0756155">2.1. Question 1</a></li>
-<li><a href="#org0046d2c">2.2. Question 2</a></li>
-<li><a href="#orga1ea143">2.3. Question 3</a></li>
-<li><a href="#org1090919">2.4. Question 4</a></li>
-<li><a href="#org04a210b">2.5. Question 5</a></li>
-<li><a href="#org4b69bb5">2.6. Question 6</a></li>
-<li><a href="#org58ca1de">2.7. Question 7</a></li>
-<li><a href="#org70f655b">2.8. Question 8</a></li>
-<li><a href="#orgfcb3dad">2.9. Question 9</a></li>
-<li><a href="#orgfc5bdc4">2.10. Question 10</a></li>
+<li><a href="#org34b7984">2.1. Question 1</a></li>
+<li><a href="#orgc072203">2.2. Question 2</a></li>
+<li><a href="#orgad9f464">2.3. Question 3</a></li>
+<li><a href="#orgd538c88">2.4. Question 4</a></li>
+<li><a href="#org0d9436e">2.5. Question 5</a></li>
+<li><a href="#org1b1125e">2.6. Question 6</a></li>
+<li><a href="#orgf266fec">2.7. Question 7</a></li>
+<li><a href="#orga1f4614">2.8. Question 8</a></li>
+<li><a href="#org830b279">2.9. Question 9</a></li>
+<li><a href="#org090e80d">2.10. Question 10</a></li>
+</ul>
+</li>
+<li><a href="#orge4e1871">3. es6</a>
+<ul>
+<li><a href="#org0c97541">3.1. let 和 const</a></li>
+<li><a href="#org8a29298">3.2. for of 直接遍历数组的值</a></li>
+<li><a href="#org3fea1f2">3.3. 函数定义</a></li>
+<li><a href="#org0f93b14">3.4. 类定义（class）</a></li>
+<li><a href="#orgb2163d1">3.5. 继承类定义（class，extends）</a></li>
+<li><a href="#orgded64f0">3.6. 公有导出</a></li>
+<li><a href="#org90553de">3.7. 箭头函数</a></li>
+<li><a href="#org36fa862">3.8. 字符串模板</a></li>
+<li><a href="#org3dce24c">3.9. 解构(函数多返回值)</a></li>
+<li><a href="#orgbeb97ae">3.10. 函数参数默认值</a></li>
+<li><a href="#org5eb15c5">3.11. 新增的集合相关类型</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0a6f2f4" class="outline-2">
-<h2 id="org0a6f2f4"><span class="section-number-2">1</span> node.js概览</h2>
+<div id="outline-container-orgf0e76b5" class="outline-2">
+<h2 id="orgf0e76b5"><span class="section-number-2">1</span> node.js概览</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="example">
 javascript脚本性语言
@@ -264,11 +279,11 @@ javascript脚本性语言
 </div>
 
 
-<div id="outline-container-org3701233" class="outline-2">
-<h2 id="org3701233"><span class="section-number-2">2</span> 向node.js发问</h2>
+<div id="outline-container-org9a34185" class="outline-2">
+<h2 id="org9a34185"><span class="section-number-2">2</span> 向node.js发问</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org0756155" class="outline-3">
-<h3 id="org0756155"><span class="section-number-3">2.1</span> Question 1</h3>
+</div><div id="outline-container-org34b7984" class="outline-3">
+<h3 id="org34b7984"><span class="section-number-3">2.1</span> Question 1</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Q：如何运行第一个node.js程序？</li>
@@ -303,8 +318,9 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 
 
-<div id="outline-container-org0046d2c" class="outline-3">
-<h3 id="org0046d2c"><span class="section-number-3">2.2</span> Question 2</h3>
+
+<div id="outline-container-orgc072203" class="outline-3">
+<h3 id="orgc072203"><span class="section-number-3">2.2</span> Question 2</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Q：如何定义变量呢？</li>
@@ -447,8 +463,9 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 
 
-<div id="outline-container-orga1ea143" class="outline-3">
-<h3 id="orga1ea143"><span class="section-number-3">2.3</span> Question 3</h3>
+
+<div id="outline-container-orgad9f464" class="outline-3">
+<h3 id="orgad9f464"><span class="section-number-3">2.3</span> Question 3</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Q：如何定义数组呢？</li>
@@ -476,7 +493,10 @@ c/P/l/s/j/nodejs/example:master*? λ
 10 数组与数组之间有没有什么操作方法，比如链接，拷贝？
 
 11 数组与数组如果能连接，链接完还是数组吗？
+
+12 数组是否可以切片呢？
 </pre>
+
 <pre class="example">
 var arr_a1 = ['a', 'b', 'c']; // 同一个类型
 var arr_a2 = ['d', 'e', 1, "124"]; // 不同类型混合
@@ -521,89 +541,544 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org1090919" class="outline-3">
-<h3 id="org1090919"><span class="section-number-3">2.4</span> Question 4</h3>
+
+<div id="outline-container-orgd538c88" class="outline-3">
+<h3 id="orgd538c88"><span class="section-number-3">2.4</span> Question 4</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q：如何定义字典呢？</li>
 <li>A:</li>
 </ul>
+<pre class="example">
+1 javascript的object就是一个字典
+
+2 mymap = {}
+
+3 如何获取某个键的值
+
+4 如何修改某个键的值
+
+5 如何追加一个新的键
+
+6 如何遍历
+</pre>
+
+<pre class="example">
+// 004.js
+
+mymap = {
+    "id": 10001,
+    "name": "abb"
+};
+
+var id_value = mymap['id'];
+var name_value = mymap['name'];
+console.log("---------------------------------");
+console.log(mymap);
+console.log(id_value);
+console.log(name_value);
+
+console.log("---------------------------------");
+mymap['id'] = '20001';
+console.log(mymap);
+console.log("---------------------------------");
+
+mymap['city'] = 'nanjing';
+console.log(mymap);
+console.log("---------------------------------");
+</pre>
+
+<pre class="example">
+c/P/l/s/j/nodejs/example:master*? λ node 004.js
+---------------------------------
+{ id: 10001, name: 'abb' }
+10001
+abb
+---------------------------------
+{ id: '20001', name: 'abb' }
+---------------------------------
+{ id: '20001', name: 'abb', city: 'nanjing' }
+---------------------------------
+c/P/l/s/j/nodejs/example:master*? λ
+</pre>
 </div>
 </div>
 
 
-
-<div id="outline-container-org04a210b" class="outline-3">
-<h3 id="org04a210b"><span class="section-number-3">2.5</span> Question 5</h3>
+<div id="outline-container-org0d9436e" class="outline-3">
+<h3 id="org0d9436e"><span class="section-number-3">2.5</span> Question 5</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q 5.1：如何定义函数呢？</li>
 <li>A:</li>
 </ul>
+<pre class="example">
+1 function 函数名(参数1, 参数2)
+function print_log(args1, args2) {
+}
+</pre>
+
+<ul class="org-ul">
+<li>Q 5.2：有匿名函数吗？</li>
+</ul>
+<pre class="example">
+有
+</pre>
+
+<ul class="org-ul">
+<li>Q 5.3：函数的参数可以再是函数吗？</li>
+</ul>
+<pre class="example">
+可以
+语言级别中已经实现了map,filter这种思想的函数了
+</pre>
+
+<pre class="example">
+// 005.js
+
+/******************************************************************************/
+function print_log(level, msg) {
+    if (level == "ERRO") {
+        console.log("\033[31m[" + level + "]\033[0m" + msg);
+    } else if (level == "INFO") {
+        console.log("\033[32m[" + level + "]\033[0m" + msg);
+    } else if (level == "WARN") {
+        console.log("\033[33m[" + level + "]\033[0m" + msg);
+    }
+}
+/******************************************************************************/
+function main() {
+    print_log("ERRO", 'This is ERRO test.');
+    print_log("INFO", 'This is INFO test.');
+    print_log("WARN", 'This is WARN test.');
+}
+/******************************************************************************/
+main();
+</pre>
+<pre class="example">
+c/P/l/s/j/nodejs/example:master*? λ node 005.js 
+[ERRO]This is ERRO test.
+[INFO]This is INFO test.
+[WARN]This is WARN test.
+c/P/l/s/j/nodejs/example:master*? λ
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org4b69bb5" class="outline-3">
-<h3 id="org4b69bb5"><span class="section-number-3">2.6</span> Question 6</h3>
+<div id="outline-container-org1b1125e" class="outline-3">
+<h3 id="org1b1125e"><span class="section-number-3">2.6</span> Question 6</h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q: 如何导入其它js文件中的函数呢？</li>
 <li>A:</li>
 </ul>
 </div>
 </div>
 
-
-
-
-
-
-<div id="outline-container-org58ca1de" class="outline-3">
-<h3 id="org58ca1de"><span class="section-number-3">2.7</span> Question 7</h3>
+<div id="outline-container-orgf266fec" class="outline-3">
+<h3 id="orgf266fec"><span class="section-number-3">2.7</span> Question 7</h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q 7.1: node.js面向对象的特性呢？</li>
 <li>A:</li>
 </ul>
+<pre class="example">
+可以定义一个结构体
+</pre>
+
+<ul class="org-ul">
+<li>Q 7.2: 那结构体可以定义成员方法吗？</li>
+<li>A:</li>
+</ul>
+<pre class="example">
+可以
+</pre>
+
+<ul class="org-ul">
+<li>Q 7.3: 那结构体可以继承吗？</li>
+</ul>
+<pre class="example">
+可以才用组合的方式
+</pre>
 </div>
 </div>
 
-
-<div id="outline-container-org70f655b" class="outline-3">
-<h3 id="org70f655b"><span class="section-number-3">2.8</span> Question 8</h3>
+<div id="outline-container-orga1f4614" class="outline-3">
+<h3 id="orga1f4614"><span class="section-number-3">2.8</span> Question 8</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q: node.js如何实现异步呢？</li>
 <li>A:</li>
 </ul>
+<pre class="example">
+1 采用回调函数
+</pre>
+
+<pre class="example">
+2 采用async可以做到用同步的写法实现异步的功能
+</pre>
 </div>
 </div>
-
-
-<div id="outline-container-orgfcb3dad" class="outline-3">
-<h3 id="orgfcb3dad"><span class="section-number-3">2.9</span> Question 9</h3>
+<div id="outline-container-org830b279" class="outline-3">
+<h3 id="org830b279"><span class="section-number-3">2.9</span> Question 9</h3>
 <div class="outline-text-3" id="text-2-9">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q: node.js事件驱动</li>
 <li>A:</li>
 </ul>
 </div>
 </div>
 
-
-<div id="outline-container-orgfc5bdc4" class="outline-3">
-<h3 id="orgfc5bdc4"><span class="section-number-3">2.10</span> Question 10</h3>
+<div id="outline-container-org090e80d" class="outline-3">
+<h3 id="org090e80d"><span class="section-number-3">2.10</span> Question 10</h3>
 <div class="outline-text-3" id="text-2-10">
 <ul class="org-ul">
-<li>Q:</li>
+<li>Q: node.js的web后端开发</li>
 <li>A:</li>
 </ul>
+<pre class="example">
+学习相关的三方库
+http
+file
+mysql,postgresql
+mongodb
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge4e1871" class="outline-2">
+<h2 id="orge4e1871"><span class="section-number-2">3</span> es6</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+ECMAScript语言规范第6版，规范编写JS代码的方式！
+</pre>
+</div>
+<div id="outline-container-org0c97541" class="outline-3">
+<h3 id="org0c97541"><span class="section-number-3">3.1</span> let 和 const</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>let</li>
+</ul>
+<pre class="example">
+let定义一个变量，并且定义的变量为块级作用域
+</pre>
+
+<ul class="org-ul">
+<li>const</li>
+</ul>
+<pre class="example">
+const定义一个常量
+</pre>
+
+<pre class="example">
+// es6_001.js
+
+const pi = 3.1415926;
+for (let i = 0; i &lt; 2; i++) {
+    console.log("this is for loop i: ", i);
+}
+
+console.log("pi: ", pi);
+
+// let声明的i，只是在for作用域中，这里没有定义的变量i报错
+console.log("this is not for loop i: ", i);
+</pre>
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_001.js 
+this is for loop i:  0
+this is for loop i:  1
+pi:  3.1415926
+c:\Projects\lescpsn\study\javascript\nodejs\es6\es6_001.js:9
+console.log("this is not for loop i: ", i); 
+                                        ^
+
+ReferenceError: i is not defined
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org8a29298" class="outline-3">
+<h3 id="org8a29298"><span class="section-number-3">3.2</span> for of 直接遍历数组的值</h3>
+<div class="outline-text-3" id="text-3-2">
+<pre class="example">
+let myArry = ['a', 'ab', "b", "bc"];
+
+for (let v of myArry) {
+    console.log(v);
+}
+</pre>
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_002.js 
+a
+ab
+b
+bc
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org3fea1f2" class="outline-3">
+<h3 id="org3fea1f2"><span class="section-number-3">3.3</span> 函数定义</h3>
+<div class="outline-text-3" id="text-3-3">
+<pre class="example">
+getName: function(name)  ==&gt;     getName(name)
+</pre>
+
+<pre class="example">
+// es6_003.js
+
+var human = {
+    getName(name) { // getName: function(name)
+        console.log("my name is: ", name);
+    }
+};
+human.getName('abb');
+</pre>
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_003.js 
+my name is:  abb
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org0f93b14" class="outline-3">
+<h3 id="org0f93b14"><span class="section-number-3">3.4</span> 类定义（class）</h3>
+<div class="outline-text-3" id="text-3-4">
+<pre class="example">
+// es6_004.js
+
+class Human {
+    constructor(name) {  // 相当于构造函数
+        this.name = name;
+    }
+    getName(){
+        console.log("my name is:",this.name);
+    }
+}
+var man = new Human('bccc');
+man.getName();
+</pre>
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe es6_004.js 
+my name is: bccc
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgb2163d1" class="outline-3">
+<h3 id="orgb2163d1"><span class="section-number-3">3.5</span> 继承类定义（class，extends）</h3>
+<div class="outline-text-3" id="text-3-5">
+<pre class="example">
+// es6_005.js
+
+class Human {
+    constructor(name) { // 相当于构造函数
+        this.name = name;
+    }
+    getName() {
+        console.log("my name is:", this.name);
+    }
+}
+
+class Man extends Human {
+    constructor(name, sex) { // 相当于构造函数
+        super(name); // 继承父类的构造函数
+        this.sex = sex;
+    }
+
+    info() {
+        console.log(this.name, "is", this.sex);
+    }
+}
+
+var boy = new Man("Jem", "boy");
+boy.getName();
+boy.info();
+</pre>
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe es6_005.js 
+my name is: Jem
+Jem is boy
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgded64f0" class="outline-3">
+<h3 id="orgded64f0"><span class="section-number-3">3.6</span> 公有导出</h3>
+</div>
+
+
+<div id="outline-container-org90553de" class="outline-3">
+<h3 id="org90553de"><span class="section-number-3">3.7</span> 箭头函数</h3>
+<div class="outline-text-3" id="text-3-7">
+<pre class="example">
+箭头操作符 =&gt; 简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值
+</pre>
+<pre class="example">
+let arr_a1 = ['a',"ab",1,1.45,['b','bc']];
+console.log(arr_a1);
+console.log("----------------------------------------");
+arr_a1.forEach((item,i) =&gt;console.log(item,i));
+console.log("----------------------------------------");
+</pre>
+
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_007.js 
+[ 'a', 'ab', 1, 1.45, [ 'b', 'bc' ] ]
+----------------------------------------
+a 0
+ab 1
+1 2
+1.45 3
+[ 'b', 'bc' ] 4
+----------------------------------------
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org36fa862" class="outline-3">
+<h3 id="org36fa862"><span class="section-number-3">3.8</span> 字符串模板</h3>
+<div class="outline-text-3" id="text-3-8">
+<pre class="example">
+// es6_008.js
+
+let num = Math.random();
+console.log(`random num is ${num}`);  //必须加有{}
+console.log(`random num is $num`);
+</pre>
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_008.js 
+random num is 0.8724538604517855
+random num is $num
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org3dce24c" class="outline-3">
+<h3 id="org3dce24c"><span class="section-number-3">3.9</span> 解构(函数多返回值)</h3>
+<div class="outline-text-3" id="text-3-9">
+<pre class="example">
+如果函数返回多个值，可以直接返回一个数组，数组中的值会自动被解析到对应接收该值的数组变量中。
+</pre>
+
+<pre class="example">
+// es6_009.js
+
+function getVal() {
+    return [1, 'a', "bc"];
+}
+
+[va1, va2, va3] = getVal();
+
+[vb1, vb2] = getVal(); // 接受数组的元素个数可以比返回数组的个数少
+
+//['',vc2,vc3] =getVal(); // 如何表示占位符呢？
+
+console.log(va1, va2, va3);
+console.log(vb1, vb2);
+//console.log(vc2, vc3);
+</pre>
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_009.js 
+1 'a' 'bc'
+1 'a'
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgbeb97ae" class="outline-3">
+<h3 id="orgbeb97ae"><span class="section-number-3">3.10</span> 函数参数默认值</h3>
+<div class="outline-text-3" id="text-3-10">
+<pre class="example">
+// es6_010.js
+
+function sayHi(name='HanMM') {
+    console.log(`Hi ${name}`);
+
+}
+sayHi();
+sayHi('Tom');
+</pre>
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_010.js 
+Hi HanMM
+Hi Tom
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5eb15c5" class="outline-3">
+<h3 id="org5eb15c5"><span class="section-number-3">3.11</span> 新增的集合相关类型</h3>
+<div class="outline-text-3" id="text-3-11">
+<ul class="org-ul">
+<li>map set</li>
+</ul>
+<pre class="example">
+// es6_011.js
+
+let s = new Set();
+s.add('zhangsan');
+s.add(11);
+s.add(3.14);
+
+console.log(s);
+console.log(s.size);
+console.log(s.has(11));
+console.log("-----------------------------------");
+let m = new Map();
+m.set('name','Tom');
+m.set('age',32);
+console.log(m);
+console.log(m.size);
+console.log(m.has('age'));
+</pre>
+
+<pre class="example">
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_011.js 
+Set { 'zhangsan', 11, 3.14 }
+3
+true
+------------------------
+Map { 'name' =&gt; 'Tom', 'age' =&gt; 32 }
+2
+true
+c/P/l/s/javascript/nodejs/es6:master*? λ
+</pre>
+
+<ul class="org-ul">
+<li>WeakSet WeakMap</li>
+</ul>
+<pre class="example">
+参数只接受对象 , 且不能遍历.
+</pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-18 周日 18:15</p>
+<p class="date">Created: 2016-12-20 周二 16:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

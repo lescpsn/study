@@ -73,9 +73,311 @@ psql -U hengjun -h 127.0.0.1 iotadream
 #+END_EXAMPLE
 
 
++ 表中插入数据
+#+BEGIN_EXAMPLE
+INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+INSERT INTO company (id, name, age) VALUES (9, 'abb9', 9)
+#+END_EXAMPLE
+
+
++ 清空表
+#+BEGIN_EXAMPLE
+delete from tablename
+delete from company;
+
+#+END_EXAMPLE
 
 
 
 
 
 
+
+
+
+
+* postgresql高可用性HA(High Available)
+** HA相关名词解释
++ HA
+#+BEGIN_EXAMPLE
+HA: High Available，高可用性
+#+END_EXAMPLE
++ VIP / FLOAT IP
+#+BEGIN_EXAMPLE
+VIP：Virtual IP Addres，虚拟ip，通常也俗称浮动IP
+#+END_EXAMPLE
+
++ Hot standby
+#+BEGIN_EXAMPLE
+Hot standby：双机热备 master挂了，slave顶上
+#+END_EXAMPLE
+
++ Cluster
+#+BEGIN_EXAMPLE
+Cluster: 集群 1台挂了，n-1台可以工作
+#+END_EXAMPLE
+
++ LB
+#+BEGIN_EXAMPLE
+LB：Load Balance, 负载均衡
+#+END_EXAMPLE
+
+** HA相关软件
++ Heartbeat/KeepAlived
+#+BEGIN_EXAMPLE
+管理vip/浮动ip，监控服务的
+#+END_EXAMPLE
+
++ pg-poolII
+#+BEGIN_EXAMPLE
+pg连接池管理
+流复制
+双机热备/负载均衡
+内置了看门狗(watchdog)实现了类似 Heartbeat/KeepAlived的功能
+#+END_EXAMPLE
+
++ pg原生流复制
+#+BEGIN_EXAMPLE
+master:可以读写 slave:只能读
+master:坏了呢？
+#+END_EXAMPLE
+file:./img/pg_base_rs.png
++ 双机一
+#+BEGIN_EXAMPLE
+pg_pool管理主从的切换
+这种做法有没有问题？
+#+END_EXAMPLE
+[[file:./img/sj.png]]
+
+
+
++ 双机二
+#+BEGIN_EXAMPLE
+合理的双机做法
+两台机器不够怎么办？想每台机器都可以读写呢？
+#+END_EXAMPLE
+
+[[file:./img/sj_ok1.png]]
+
+[[file:./img/sj_ok2.png]]
+
+[[file:./img/sj_ok3.png]]
+
+[[file:./img/sj_ok4.png]]
++ 集群
+#+BEGIN_EXAMPLE
+集群实现负载均衡，每台机器都可以读写
+负载均衡算法：
+1 轮询（一个挨着一个）
+2 随机
+3 压力（硬件配置不一样）
+#+END_EXAMPLE
+[[file:./img/lb.png]]
+** 组网结构
+#+BEGIN_EXAMPLE
+主机IP              主机名       部署应用
+192.168.161.128    IOTA-001    db-node1 & pg-pool1 
+192.168.161.129    IOTA-002    db-node1 & pg-pool2 
+192.168.161.130    IOTA-003    db-node3
+#+END_EXAMPLE
+
+
+** 主机名配置
++ 192.168.161.128主机
+#+BEGIN_EXAMPLE
+vim /etc/hostname    
+IOTA-001
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+vim /etc/hosts
+192.168.161.128 IOTA-001
+192.168.161.129 IOTA-002
+192.168.161.130 IOTA-003
+#+END_EXAMPLE
+
+
++ 192.168.161.129主机
+#+BEGIN_EXAMPLE
+vim /etc/hostname    
+IOTA-002
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+vim /etc/hosts
+192.168.161.128 IOTA-001
+192.168.161.129 IOTA-002
+192.168.161.130 IOTA-003
+#+END_EXAMPLE
+
+
++ 192.168.161.130主机
+#+BEGIN_EXAMPLE
+vim /etc/hostname    
+IOTA-003
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+vim /etc/hosts
+192.168.161.128 IOTA-001
+192.168.161.129 IOTA-002
+192.168.161.130 IOTA-003
+#+END_EXAMPLE
+
+
+** postgresql部署
+#+BEGIN_EXAMPLE
+每一个数据库主机节点(192.168.161.128,192.168.161.129,192.168.161.130)上都要部署
+#+END_EXAMPLE
++ 192.168.161.128
+#+BEGIN_EXAMPLE
+sudo apt-get install postgresql
+#+END_EXAMPLE
++ 192.168.161.129
+#+BEGIN_EXAMPLE
+sudo apt-get install postgresql
+#+END_EXAMPLE
++ 192.168.161.130
+#+BEGIN_EXAMPLE
+sudo apt-get install postgresql
+#+END_EXAMPLE
+
+
+** pg-poolII的部署
+#+BEGIN_EXAMPLE
+pg-poolII主备节点(192.168.161.128,192.168.161.129)上都要部署
+#+END_EXAMPLE
++ 192.168.161.128
+#+BEGIN_EXAMPLE
+// root用户脚本署部
+# ./pgpool2.sh 
+
+mkdir /var/run/pgpoo
+lapt-get install arping
+#+END_EXAMPLE
+#+BEGIN_EXAMPLE
+配置主机的pgpool
+vim /usr/local/pgpool2/etc/pgpool.conf
+use_watchdog = on         // 开启看门狗x
+wd_hostname = 'IOTA-001'  // pgpool2的备机是它自己的主机名
+delegate_IP = '192.168.161.138'  // vip 即 float ip
+heartbeat_destination0 = 'IOTA-002'  // 对方的主机名
+other_pgpool_hostname0 = 'IOTA-002'
+other_pgpool_port0 = 9999
+
+# 修改进程id文件的位置
+pid_file_name = '/run/pgpool.pid'
+# 日志目录
+logdir = '/var/log'
+
+#
+enable_pool_hba = on
+
+# 数据复制和负载均衡
+listen_addresses = '*'  // 任意客户端都可以连接
+replication_mode = on
+load_balance_mode = on
+
+修改网卡接口名(eth0,ens33)
+// 所有eth0网卡名的地方换成你机器的网卡名
+
+
+
+backend_hostname0 = 'IOTA-001' // 主节点
+
+backend_hostname1 = 'IOTA-002' // 其他备用节点
+backend_port1 = 5433
+backend_weight1 = 1
+backend_data_directory1 = '/var/lib/pgsql/data'
+backend_flag1 = 'ALLOW_TO_FAILOVER'
+
+
+
+./pg_md5 -p   //错误
+pcp.confiog ./pg_md5 原始密码
+poo_passwd 文件
+./pg_md5 -m -u hengjun 123456
+
+
+vim pool_passwd
+
+hengjun:e10adc3949ba59abbe56e057f20f883eDETAIL
+#+END_EXAMPLE
+
+
++ 192.168.161.129
+#+BEGIN_EXAMPLE
+// root用户脚本署部
+# ./pgpool2.sh root用户脚本署部
+
+mkdir /var/run/pgpool
+#+END_EXAMPLE
+
+
+
+#+BEGIN_EXAMPLE
+配置备机的pgpool
+vim /usr/local/pgpool2/etc/pgpool.conf
+use_watchdog = on         // 开启看门狗
+wd_hostname = 'IOTA-002'  // pgpool2的备机是它自己的主机名
+
+delegate_IP = '192.168.161.138'  // vip 即 float ip
+heartbeat_destination0 = 'IOTA-001'  // 对方的主机名
+other_pgpool_hostname0 = 'IOTA-001'  // 对方的主名机
+other_pgpool_port0 = 9999
+other_wd_port0 = 9000
+
+# 修改进程id文件的位置
+pid_file_name = '/run/pgpool.pid'
+# 日志目录
+logdir = '/var/log'
+
+# #
+enable_pool_hba = on
+
+# 数据复制和负载均衡
+listen_addresses = '*'  // 任意客户端都可以连接
+replication_mode = on
+load_balance_mode = on
+
+修改网卡接口名(eth0,ens33)
+// 所有eth0网卡名的地方换成你机器的网卡名
+
+
+./pg_md5 -p   //错误
+pcp.confiog ./pg_md5 原始密码
+poo_passwd 文件
+./pg_md5 -m -u hengjun 123456
+
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+vim pool_hba.conf
+###
+host    all         all         0.0.0.0/0             md5
+#+END_EXAMPLE
+
+
+
+
+
+
+
+
+** 常用命令
+#+BEGIN_EXAMPLE
+1 登陆pg-pool
+  psql -U dbuser -h float_ip dbname -p 9999
+  psql -U hengjun -h 192.168.161.138 iotadream -p 9999 
+
+2 查看节点状态
+show pool_nodes;
+
+//恢复down的节点
+./pcp_attach_node -d -h IOTA-001 -U hengjun -n 0
+./pcp_attach_node -d -h IOTA-001 -U hengjun -n 1
+./pcp_attach_node -d -h IOTA-001 -U hengjun -n 2  
+
+//最后-n 是node编号，show pool_nodes查看
+#+END_EXAMPLE

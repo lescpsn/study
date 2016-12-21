@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-13 周二 18:09 -->
+<!-- 2016-12-21 周三 18:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MQTT入门</title>
@@ -233,182 +233,181 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org119a382">1. + 参考文档</a></li>
-<li><a href="#org900542d">2. 关键词解释</a></li>
-<li><a href="#org13b58fc">3. MQTT V3.1协议规范摘要</a></li>
-<li><a href="#org7eea7d3">4. mqtt协议详解</a>
+<li><a href="#orgf372d67">1. MQTT协议概览</a>
 <ul>
-<li><a href="#org7b265b1">4.1. 协议格式</a></li>
-<li><a href="#org4a50fbe">4.2. 固定头部</a></li>
-<li><a href="#org64ee78b">4.3. 可变头部</a></li>
-<li><a href="#orgcd51799">4.4. 有效负载</a></li>
-<li><a href="#org18a27ff">4.5. 消息标识符</a></li>
-<li><a href="#orged5121b">4.6. MQTT和UTF-8（MQTT and UTF-8）</a></li>
-<li><a href="#org8ebb2a3">4.7. 未使用的位（Unused bits）</a></li>
+<li><a href="#orga119627">1.1. 关键词解释</a></li>
+<li><a href="#orgd9aae33">1.2. MQTT协议主要特性</a></li>
 </ul>
 </li>
-<li><a href="#org76da9c2">5. 命令消息</a>
+<li><a href="#org6b4c9b1">2. mqtt协议详解</a>
 <ul>
-<li><a href="#orgaa3b9b8">5.1. CONNECT - 客户端请求连接服务器</a></li>
-<li><a href="#orgae0e934">5.2. CONNACK - 连接确认</a></li>
-<li><a href="#org64d131c">5.3. PUBLISH - 发布消息</a></li>
-<li><a href="#org96d765d">5.4. PUBACK - 发布确认</a></li>
-<li><a href="#org26e8e82">5.5. PUBREC - 发布接收（有保证的交付第1部分）</a></li>
-<li><a href="#org566c4ae">5.6. PUBREL - 发布释放（有保证的交付第2部分）</a></li>
-<li><a href="#orgd42c7a2">5.7. PUBCOMP - 发布完成（有保证的交付第3部分）</a></li>
-<li><a href="#org455bf29">5.8. SUBSCRIBE - 客户端订阅主题</a></li>
-<li><a href="#org0a9442a">5.9. SUBACK - 订阅确认</a></li>
-<li><a href="#org9c7cba2">5.10. UNSUBSCRIBE - 客户端取消订阅主题</a></li>
-<li><a href="#orgf44b281">5.11. UNSUBACK - 取消订阅确认</a></li>
-<li><a href="#org0f0b3d7">5.12. PINGREQ - PING请求</a></li>
-<li><a href="#org0d08bcc">5.13. PINGRESP - PING回复</a></li>
-<li><a href="#org75a8103">5.14. DISCONNECT - 断开连接通知</a></li>
+<li><a href="#orgc67f710">2.1. Topic(主题)</a></li>
+<li><a href="#org3d7b445">2.2. 协议格式</a></li>
+<li><a href="#orgd69aa08">2.3. 固定头部</a></li>
+<li><a href="#orgb9761f6">2.4. 可变头部</a></li>
+<li><a href="#orgb861556">2.5. 有效负载</a></li>
 </ul>
 </li>
-<li><a href="#orgd7c8c2d">6. 消息流</a>
-<ul>
-<li><a href="#orgff346e1">6.1. 交付质量级别和消息流（Quality of Service levels and flows）</a></li>
-<li><a href="#org93c9244">6.2. 消息重传</a></li>
-<li><a href="#orgf58fc43">6.3. 消息排序</a></li>
-</ul>
-</li>
-<li><a href="#org3868de5">7. mosquitto实战</a></li>
+<li><a href="#orgc7c002c">3. emqttd集群</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org119a382" class="outline-2">
-<h2 id="org119a382"><span class="section-number-2">1</span> + 参考文档</h2>
+<div id="outline-container-orgf372d67" class="outline-2">
+<h2 id="orgf372d67"><span class="section-number-2">1</span> MQTT协议概览</h2>
 <div class="outline-text-2" id="text-1">
-<pre class="example">
-http://www.cnblogs.com/shanyou/p/4085802.htmlx
-http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
-</pre>
-</div>
-</div>
-
-
-<div id="outline-container-org900542d" class="outline-2">
-<h2 id="org900542d"><span class="section-number-2">2</span> 关键词解释</h2>
-<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orga119627" class="outline-3">
+<h3 id="orga119627"><span class="section-number-3">1.1</span> 关键词解释</h3>
+<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>MQTT</li>
 </ul>
 <pre class="example">
-Message Queuing Telemetry Transport，消息队列遥测传输,是IBM开发的一个即时通讯协议,
+MQTT遥测传输(MQ Telemetry Transport，MQTT)是一个轻量级的基于代理(服务器)的发布/订阅式消息传输协议，
 
-被用来当做传感器和致动器（比如通过Twitter让房屋联网）的通信协议。
+专门针对低带宽和不稳定网络环境的物联网应用设计。
+
+一个中心：代理服务器为中心
+
+两个基本点：发布消息和订阅消息（Pub/Sub）
 </pre>
 
 <ul class="org-ul">
-<li>Qos</li>
+<li>QoS</li>
 </ul>
 <pre class="example">
-QoS（Quality of Service）服务质量，是网络的一种安全机制， 是用来解决网络延迟和阻塞
+QoS（Quality of Service）消息的服务质量，是网络的一种安全机制， 是用来解决网络延迟和阻塞
 
-等问题的一种技术。 在正常情况下，如果网络只用于特定的无时间限制的应用系统，并不需要QoS，
+等问题的一种技术。 
 
-比如Web应用，或E-Mail设置等。但是对关键应用和多媒体应用就十分必要。当网络过载或拥塞时，
+QoS Level(服务质量级别)，三种模式
+0: 至多一次(&lt;=1)：消息可能丢失。比如环境传感器数据1次/分，丢失一次也无所谓，下条很快又来了
 
-xQoS 能确保重要业务量不受延迟或丢弃，同时保证网络的高效运行。
+1: 至少一次(&gt;=1)： 无论如何都要确保消息的到达，消息可能重复发送
+
+2: 只有一次(=1)： 无论如何都要确保消息到达有且只能有一次。比如：计费系统，重复或者丢失都是错误的。
 </pre>
 
 <ul class="org-ul">
 <li>Pub</li>
 </ul>
 <pre class="example">
-发布消息相关
+和发布消息相关
 </pre>
 
 <ul class="org-ul">
 <li>Sub</li>
 </ul>
 <pre class="example">
-订阅消息相关
+和订阅消息相关
+</pre>
+
+<ul class="org-ul">
+<li>Topic</li>
+</ul>
+<pre class="example">
+发布/订阅总有个主题，即主题名
+</pre>
+
+<ul class="org-ul">
+<li>Payload</li>
+</ul>
+<pre class="example">
+有效载荷,消息内容
 </pre>
 </div>
 </div>
 
 
-<div id="outline-container-org13b58fc" class="outline-2">
-<h2 id="org13b58fc"><span class="section-number-2">3</span> MQTT V3.1协议规范摘要</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgd9aae33" class="outline-3">
+<h3 id="orgd9aae33"><span class="section-number-3">1.2</span> MQTT协议主要特性</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>摘要</li>
+<li>使用发布消息/订阅消息模式，提供了一个发布者可以有多个订阅者的一对多的模式</li>
+
+<li>消息内容（payload）字符串采用utf-8编码</li>
+
+<li>使用TCP/IP提供基础网络链接</li>
+
+<li>传输开销小（数据包格式小），降低了网络流量</li>
+
+<li>Qos的支持，传输的可靠性可以保证</li>
 </ul>
-<pre class="example">
-MQTT是一个轻两量界级的基于代理的发布/订阅式消息传输协议，它的设计目标是开放，简单，轻量和
-
-易于实现，这些特征使它适用于各种受限制环境。比如：网络不可靠或低带宽环境中，硬件资源紧张的
-
-嵌入式设备中
-</pre>
-
-<ul class="org-ul">
-<li>特性</li>
-</ul>
-<pre class="example">
-1 使用发布/订阅消息模式，提供一对多的消息发布
-
-2 消息传输对有效负载内容不可知
-
-3 使用TCP/IP提供基础网络链接
-</pre>
-
-<ul class="org-ul">
-<li>Qos的三个级别</li>
-</ul>
-<pre class="example">
-1 至多一次：消息可能丢失。比如环境传感器数据 1次/分，丢失一次也无所谓，下条很快又来了
-
-2 至少一次： 无论如何都要确保消息的到达，消息可能重复发生
-
-3 只有一次： 无论如何都要确保消息到达有且只能有一次。比如：计费系统，重复或者丢失都是错误的。
-</pre>
-
-
-<ul class="org-ul">
-<li>轻量传输</li>
-</ul>
-<pre class="example">
-固定头部只有2个字节，开销很小，降低了网络流量
-</pre>
-
-<ul class="org-ul">
-<li>代理</li>
-
-<li>发布</li>
-
-<li>订阅</li>
-</ul>
+</div>
 </div>
 </div>
 
 
-<div id="outline-container-org7eea7d3" class="outline-2">
-<h2 id="org7eea7d3"><span class="section-number-2">4</span> mqtt协议详解</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org7b265b1" class="outline-3">
-<h3 id="org7b265b1"><span class="section-number-3">4.1</span> 协议格式</h3>
-<div class="outline-text-3" id="text-4-1">
+
+<div id="outline-container-org6b4c9b1" class="outline-2">
+<h2 id="org6b4c9b1"><span class="section-number-2">2</span> mqtt协议详解</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgc67f710" class="outline-3">
+<h3 id="orgc67f710"><span class="section-number-3">2.1</span> Topic(主题)</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>作用</li>
+</ul>
+<pre class="example">
+Topic(主题)就是Puber(发布者)和Suber(订阅者)之间的桥梁，Suber(订阅者)订阅了什么样的主题，
+
+一旦Puber(发布者)发布了该主题的相关消息，MQTT服务器就会向匹配到改主题的Suber(订阅者)推送消息。
+</pre>
+
+<ul class="org-ul">
+<li>路由规则</li>
+</ul>
+<pre class="example">
+1 精确主题 (puber,suber)
+  music/香港/男/周杰论
+
+2 一级正则匹配主题+(只能针对suber)
+  music/香港/男/+  ==&gt; music/香港/男/周杰伦 music/香港/男/刘德华 ...
+
+3 多级正则匹配主题#(只能针对suber)
+  music/香港/#     ==&gt; music/香港/男/周杰伦 music/香港/女 ...
+</pre>
+
+
+<p>
+实例演示
+</p>
+<pre class="example">
+# 启动192.168.161.128服务器的mqtt服务
+./bin/emqttd start
+
+#192.168.161.129客户端发起订阅了music/香港/男/+这个主题的消息
+mosquitto_sub -h 192.168.161.128 -t music/香港/男/+ -q 1 
+
+#192.168.161.129客户端发布了music/香港/男/周杰伦这个主题的消息
+mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦 -m "龙卷风" -q 1 
+
+// 上的订阅者订阅的主题和该发布者发布的主题就匹配
+mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦/a -m "龙卷风" -q 1
+</pre>
+</div>
+</div>
+<div id="outline-container-org3d7b445" class="outline-3">
+<h3 id="org3d7b445"><span class="section-number-3">2.2</span> 协议格式</h3>
+<div class="outline-text-3" id="text-2-2">
 <pre class="example">
 MQTT命令消息一般组成结构：
 
-固定头部 +  [可变头部] + [ 有效载荷]
-
-有效载荷：也称为消息体
+固定头部(fixed header) +  [可变头部](variable header) + [ 有效载荷](Payload)
 
 固定头部：一定有
 
-可变头部和消息体：只有某些特定的类型消息才有
+可变头部和有效载荷：可能没有，只有某些特定的类型消息才有
+
+有效载荷：也称为消息体
 </pre>
 </div>
 </div>
 
 
-<div id="outline-container-org4a50fbe" class="outline-3">
-<h3 id="org4a50fbe"><span class="section-number-3">4.2</span> 固定头部</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-orgd69aa08" class="outline-3">
+<h3 id="orgd69aa08"><span class="section-number-3">2.3</span> 固定头部</h3>
+<div class="outline-text-3" id="text-2-3">
 
 <div class="figure">
 <p><img src="./img/固定头部.png" alt="固定头部.png" />
@@ -428,15 +427,16 @@ Byte 2：
 <li>MessageType ( byte 1，bits 7-4 ）</li>
 </ul>
 <pre class="example">
+14种消息类型
 占4 bit，0和15为保留数值
-         0 =&gt;                           // 保留字
+         0 =&gt;                      // 保留字
          1 =&gt; "CONNECT"            // 客户端请求连接服务器
          2 =&gt; "CONNACK"            // 连接确认
          3 =&gt; "PUBLISH"            // 发布消息
          4 =&gt; "PUBACK"             // 发布确认
-         5 =&gt; "PUBREC"             // 发布接收（有保证的交付第1部分）
-         6 =&gt; "PUBREL"             // 发布释放（有保证的交付第2部分）
-         7 =&gt; "PUBCOMP"            // 发布完成（有保证的交付第3部分）
+         5 =&gt; "PUBREC"             // 发布接收 QoS2消息回执
+         6 =&gt; "PUBREL"             // 发布释放 QoS2消息释放
+         7 =&gt; "PUBCOMP"            // 发布完成 QoS2消息完成
          8 =&gt; "SUBSCRIBE"          // 客户端订阅请求
          9 =&gt; "SUBACK"             // 订阅确认
         10 =&gt; "UNSUBSCRIBE"        // 客户端取消订阅请求
@@ -444,742 +444,120 @@ Byte 2：
         12 =&gt; "PINGREQ"            // PING请求
         13 =&gt; "PINGRESP"           // PING响应
         14 =&gt; "DISCONNECT"         // 客户端断开连接
-        15 =&gt;                           // 保留字
-</pre>
-
-
-<ul class="org-ul">
-<li>DUP flag ( byte 1，bits 3 ）</li>
-</ul>
-<pre class="example">
-服务器试图重发PUBLISH、PUBREL，客户端试图重发SUBSRIBE、UNSUBSCRIBE消息时，
-
-该标志位要被置位（即设为1）。这适用于消息的QoS标志值大于0的情况，此时消息确认是必需的。
-
-当DUP位被置位时，可变头部将包含一个消息ID。
-</pre>
-
-
-<ul class="org-ul">
-<li>Qos level ( byte 1，bits 2-1 ）</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/qos级别.png" alt="qos级别.png" />
-</p>
-</div>
-<pre class="example">
-该标志位标明 PUBLISH 消息的交付质量级别。具体的QoS级别如下表所示。
-00  0  &lt;=1  至多一次：消息可能丢失。比如环境传感器数据 1次/分，丢失一次也无所谓，下条很快又来了
-
-01  1  &gt;=1  至少一次： 无论如何都要确保消息的到达，消息可能重复发生
-
-10  2 =1   只有一次： 无论如何都要确保消息到达有且只能有一次。比如：计费系统，重复或者丢失都是错误的。 
-
-11  3   保留
-</pre>
-
-<ul class="org-ul">
-<li>Retain ( byte 1，bits 0 ）</li>
-</ul>
-<pre class="example">
-该标志位只用于PUBLISH消息。当一个客户端发送一条PUBLISH消息给服务，假设该该消息所属的主题
-
-(topic)为topicA，如果该标志位被置为（1），服务器在将该消息发布给当前的所有topicA订阅者
-
-之后，还应该保持这条消息。
-
-当topicA出现了一个新的订阅者，则topicA的最后一条保持消息应当分发给该订阅者。如果不存在保持
-
-消息，则什么也不用做。
-
-一句话：当消息发布者发消息的间隔比较长，该位为1，可以让新的订阅者立马收到历史消息的最后一条。
-
-当服务器收到新消息时，在给客户端发送前，将该位清0（即不置位）
-
-如果是保持消息（1），应当服务器重启之后仍能保留。
-
-如果服务器收到消息体长度为0，则可以删除该保持消息。
-</pre>
-
-<ul class="org-ul">
-<li>byte2 - byte5( 剩余长度 )</li>
-</ul>
-<pre class="example">
-该字段表示当前消息的剩余内容的字节数，包括可变头部和有效载荷（消息体）的数据。
-
-该字段本身的字节数是根据可变头部和有效载荷的长度不同而变化的。
-
-每个字节编码7-0bit的值（127）和一个“延续位”
-</pre>
-
-
-<p>
-byte 2
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">31</th>
-<th scope="col" class="org-right">30</th>
-<th scope="col" class="org-right">29</th>
-<th scope="col" class="org-right">28</th>
-<th scope="col" class="org-right">27</th>
-<th scope="col" class="org-right">26</th>
-<th scope="col" class="org-right">25</th>
-<th scope="col" class="org-right">24</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-</tr>
-</tbody>
-</table>
-
-<p>
-2<sup>7</sup>-1=0X
-</p>
-
-<p>
-byte 3
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">31</th>
-<th scope="col" class="org-right">30</th>
-<th scope="col" class="org-right">29</th>
-<th scope="col" class="org-right">28</th>
-<th scope="col" class="org-right">27</th>
-<th scope="col" class="org-right">26</th>
-<th scope="col" class="org-right">25</th>
-<th scope="col" class="org-right">24</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-</tr>
-</tbody>
-</table>
-<hr  />
-<p>
-byte 4
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">31</th>
-<th scope="col" class="org-right">30</th>
-<th scope="col" class="org-right">29</th>
-<th scope="col" class="org-right">28</th>
-<th scope="col" class="org-right">27</th>
-<th scope="col" class="org-right">26</th>
-<th scope="col" class="org-right">25</th>
-<th scope="col" class="org-right">24</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-</tr>
-</tbody>
-</table>
-<hr  />
-
-<p>
-byte 5
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-right">31</th>
-<th scope="col" class="org-right">30</th>
-<th scope="col" class="org-right">29</th>
-<th scope="col" class="org-right">28</th>
-<th scope="col" class="org-right">27</th>
-<th scope="col" class="org-right">26</th>
-<th scope="col" class="org-right">25</th>
-<th scope="col" class="org-right">24</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-</tr>
-</tbody>
-</table>
-<hr  />
-
-
-
-<div class="figure">
-<p><img src="./img/剩余字段.png" alt="剩余字段.png" />
-</p>
-</div>
-<pre class="example">
-好好理解下，如何计算字节数，编码方案
-
-该编码方案的算法如下所示，输入为一个十进制数（X），输出为编码后的结果。
-do
-  digit = X MOD 128
-  X = X DIV 128
-  // if there are more digits to encode, set the top bit of this digit
-  if ( X &gt; 0 )
-    digit = digit OR 0x80
-  endif
-  'output' digit
-while ( X&gt; 0 )
-
-
-相应地，剩余长度字段的解码算法如下所示：
-
-multiplier = 1
-value = 0
-do
-  digit = 'next digit from stream'
-  value += (digit AND 127) * multiplier
-  multiplier *= 128
-while ((digit AND 128) != 0)
-当该解码算法终止，value等于剩余长度的字节数。
-
-可认为剩余长度字段虽然是固定的，即肯定是有的，但该字段的长度却是变化的（1-4字节）。
+        15 =&gt;                      // 保留字
 </pre>
 </div>
 </div>
 
 
-
-<div id="outline-container-org64ee78b" class="outline-3">
-<h3 id="org64ee78b"><span class="section-number-3">4.3</span> 可变头部</h3>
-<div class="outline-text-3" id="text-4-3">
-<pre class="example">
-某些类型的MQTT命令消息还包含了一个可变的头部，它位于固定头部和消息体之间。
-
-可变的剩余字段（1-4字节）不是可变头部的一部分。剩余长度字段的值不包括可变字段的长度，
-
-可变字段的值只包括可变头部和消息体。
-</pre>
-
-<div class="figure">
-<p><img src="./img/可变头部.png" alt="可变头部.png" />
-</p>
-</div>
-<ul class="org-ul">
-<li>协议名称（Protocol name）</li>
-</ul>
-<pre class="example">
-协议名称字段只用于 MQTT CONNECT 消息的可变头部中。该字段以UTF编码方式显示协议名称：MQIsdp
-
-len = 1 - 2 字节
-
-content 3 - 8 字节
-</pre>
-
-
-<ul class="org-ul">
-<li>协议版本（Protocol version）</li>
-</ul>
-<pre class="example">
-协议版本字段只用于 MQTT CONNECT 消息的可变头部中。
-
-该字段用8位无符号值来表示客户端所使用的协议修订级别。当前版本协议中该字段的值为3（0x03），如下表所示
-协议版本号，v3 也是固定的。
-二进制           十进制
-00 00 00 11  =&gt; 3
-</pre>
-
-<div class="figure">
-<p><img src="./img/协议版本.png" alt="协议版本.png" />
-</p>
+<div id="outline-container-orgb9761f6" class="outline-3">
+<h3 id="orgb9761f6"><span class="section-number-3">2.4</span> 可变头部</h3>
 </div>
 
-<ul class="org-ul">
-<li>连接标志 Connect Flag</li>
-</ul>
-<pre class="example">
-该字段用于 CONNECT 消息的可变头部中，占1字节，包括Clean session、Will、Will QoS和Retain标志。
-</pre>
-
-
-<ul class="org-ul">
-<li>Connect Flag之bit 0</li>
-</ul>
-<pre class="example">
-连接标志中的第0位在目前协议版本中没有使用到，保留为将来使用。
-</pre>
-
-<ul class="org-ul">
-<li>Connect Flag之bit 1 （Clean session）</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/clean-session.png" alt="clean-session.png" />
-</p>
-</div>
-
-
-<pre class="example">
-如果没有被置位（即值为0），则当客户端断线时，服务器必须保存该客户端的订阅消息，包括断线期间发布的该客户端
-
-订阅的主题中交付质量级别为QoS 1和QoS2的消息，QoS 0级别的消息由于只是尽可能的交付，所以它永远不会被存储保持
-
-这样当客户端重连时，这部分消息能确保被送达到客户端。
-
-同时，服务器还必须保持客户端在断线的那个时刻正在传输中的消息的状态，直到客户端重新连接。
-
-
-如果被置位（即值为1），则服务器必须丢弃任何之前保持的该客户端的信息。将该连接视为“不存在（Clean）”。
-
-
-同时，当客户端断线时，服务器必须丢弃其所有状态。
-</pre>
-
-
-<ul class="org-ul">
-<li>Connect Flag之bit 2 （Will Flag）</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/will-flag.png" alt="will-flag.png" />
-</p>
-</div>
-
-<pre class="example">
-Will消息是指当服务器与客户端通信过程中出现故障或客户端在保活时间内没有与服务器保持正常交流时，服务器特意发给客户端的消息。
-
-当客户端通过发送 DISCONNECT 消息正常断开时，Will消息不会发送。
-
-如果Will-flag标志被置位，则Will QoS标志和Will Retain标志的设置将会发生作用，同时，在有效载荷里必须填写Will主题和Will消息内容字段
-</pre>
-
-
-
-<ul class="org-ul">
-<li>Connect Flag之bit 3-4 （Will QoS）</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/will-qos.png" alt="will-qos.png" />
-</p>
-</div>
-<pre class="example">
-Will QoS标志用来设置当客户端异常离线时，服务器发送的Will消息的交付质量级别。Will消息的内容在客户端发送的 
-
-CONNECT 消息里的有效载荷里填写。
-
-如果Will-flag标志被置位，则Will QoS字段必须填写，否则该字段的值将被忽略。
-
-Will QoS字段的可选值有0（0x00），1（0x01）和2（0x02），格式如下表所示。
-</pre>
-
-<ul class="org-ul">
-<li>Connect Flag之bit 3-4 （Will QoS）</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/retain-flags.png" alt="retain-flags.png" />
-</p>
-</div>
-<pre class="example">
-Will Retain标志指明服务器是否需要保持客户端异常离线时发送给客户端的Will消息。
-
-如果Will标志被置位，则Will Retain标志必须填写，否则其将被忽略。该标志的格式如下表所示。
-</pre>
-
-<ul class="org-ul">
-<li>Connect Flag之bit 5 （Will Retain）</li>
-</ul>
-<pre class="example">
-Will Retain标志指明服务器是否需要保持客户端异常离线时发送给客户端的Will消息。
-
-如果Will标志被置位，则Will Retain标志必须填写，否则其将被忽略。该标志的格式如下表所示。
-</pre>
-
-
-
-<ul class="org-ul">
-<li>Connect Flag之bit 6-7 （User name and password )</li>
-</ul>
-<pre class="example">
-客户端在连接服务器时可以指定用户名和密码，通过将用户名标志和密码标志（可选）置位表明在 CONNECT 消息的有效载荷里包含有用户名和密码。
-
-如果将用户名标志置位，则必须在有效载荷里填写用户名字段，否则用户名字段将被忽略。同样地，如果密码标志被置位，则必须在有效载荷里填写密码字段，
-
-否则密码字段将被忽略。只提供密码而不提供用户名是不合法的。
-</pre>
-
-
-
-<ul class="org-ul">
-<li>保活计时器（Keep Alive timer）</li>
-</ul>
-
-<div class="figure">
-<p><img src="./img/keep-alive-timer.png" alt="keep-alive-timer.png" />
-</p>
-</div>
-<pre class="example">
-保活计时器用于MQTT CONNECT 消息的可变头部中。
-
-
-保活计时器定义了服务器收到客户端消息的最大时间间隔，它以秒为单位。它使得服务器不需要等待漫长的TCP/IP超时就可以检测与客户端的网络连接是否断开
-
-它使得服务器不需要等待漫长的TCP/IP超时就可以检测与客户端的网络连接是否断开。
-
-
-客户端有义务在每个保活时间间隔内至少发送一条消息给服务器。如果这期间没有业务相关的消息要发送，客户端则发送一个 PINGREQ 消息给服务器，
-
-相应地服务器返回一个 PINGRESQ 消息给客户端。
-
-如果服务器在1.5个保活时间（可宽容0.5个保活时间）内都没有收到客户端的消息，则服务器将其视为客户端发送了一个 DISCONNECT 消息，
-
-并断开与客户端的连接。这个动作不影响客户端的订阅。
-
-如果客户端在发送 PINGQ 后的一个保活时间内没有收到服务器发来的 PINGRESP 消息，则客户端可以关闭TCP/IP套接字连接
-
-保活计时器用2个字节来表示，时间单位为秒。实际设定的值由特定应用决定，不过通常它的值都设为数分钟，最大值接近18个小时。如果设为0，则表示客户端不断线。
-
-保活计时器的格式如下表所示。2个字节的顺序为先 MSB，再 LSB(大端模式)。
-</pre>
-
-
-<ul class="org-ul">
-<li>连接返回码（Connect return code）</li>
-</ul>
-<pre class="example">
-连接返回码用于 CONNACK 消息的可变头部中。
-
-这个字段用一个无符号字节来表示返回码。这些值的含义如下表所示。值为0的返回码通常表示连接成功。
-</pre>
-
-
-<ul class="org-ul">
-<li>主题名（Topic name）</li>
-</ul>
-<pre class="example">
-主题名用于 PUBLISH 消息的可变头部中。
-
-主题名决定消息要发送到哪个信息通道。订阅者使用主题名来决定他们要从哪些信息通道接收消息。
-
-主题名是一个UTF编码字符串。主题名支持的最大字符度为32767。
-</pre>
-</div>
-</div>
-
-
-<div id="outline-container-orgcd51799" class="outline-3">
-<h3 id="orgcd51799"><span class="section-number-3">4.4</span> 有效负载</h3>
-<div class="outline-text-3" id="text-4-4">
-<p>
-以下类型的MQTT命令消息拥有一个有效载荷：
-</p>
-
+<div id="outline-container-orgb861556" class="outline-3">
+<h3 id="orgb861556"><span class="section-number-3">2.5</span> 有效负载</h3>
+<div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li>CONNECT</li>
-</ul>
-<pre class="example">
-该有效载荷包含了一个或多个UTF-8编码字符串。它们包括标识客户端的唯一标识符、Will主题和消息、要使用的用户名和密码。
-
-其中只有第一项是必选的，其余的取决于可变消息头部中的标志置位情况。
-</pre>
-<ul class="org-ul">
 <li>SUBSCRIBE</li>
-</ul>
-<pre class="example">
-该有效载荷包含一系列要订阅的主题名，以及每个主题的QoS级别。这些字符串都是UTF编码的。
-</pre>
-<ul class="org-ul">
 <li>SUBACK</li>
-</ul>
-<pre class="example">
-该有效载荷包含一系列授权过的QoS级别。它们是服务器管理员允许授权给客户端订阅的各个主题的QoS级别。授权的QoS级别顺序与相应订阅的主题的顺序保持一致。
-</pre>
-<ul class="org-ul">
 <li>PUBLISH</li>
 </ul>
-<pre class="example">
-该有效载荷只包含应用特定的数据。协议不对数据的属性和内容作任何假设，协议把消息的这部分内容视为一个BLOB。
-
-如果你想要对有效载荷数据进行压缩，你必须自己在有效载荷里定义合适的标志来处理压缩事宜。你不能在固定状况或可变头部里定义与特定应用相关的标志。
-</pre>
-</div>
-</div>
-
-
-
-<div id="outline-container-org18a27ff" class="outline-3">
-<h3 id="org18a27ff"><span class="section-number-3">4.5</span> 消息标识符</h3>
-<div class="outline-text-3" id="text-4-5">
-<pre class="example">
-消息表示符用于以下MQTT消息的可变头部中，PUBLISH，PUBACK，PUBREC，PUBREL，PUBCOMP，SUBSCRIBE，SUBACK，UNSUBSCRIBE，UNSUBACK。
-
-消息标识符字段只存在于固定头部中QoS标志值为1或2的消息中。
-
-在同一个方向上的在传消息ID必须是唯一的。它通常是逐个消息递增的，但不强制如此。
-
-客户端与它所连接的服务器一样，都需要维护自己的消息ID列表，二者的消息ID列表互不影响。
-
-客户端在发送一个消息ID为1的 PUBLISH 消息的同时也有可能收到来自服务器的消息ID为1的 PUBLISH 消息。
-
-表示消息ID的2个字节的顺序为先 MSB，再 LSB（大端模式）。
-
-不要使用值为0的消息ID。它是作为无效消息ID保留的。
-</pre>
-</div>
-</div>
-
-
-
-<div id="outline-container-orged5121b" class="outline-3">
-<h3 id="orged5121b"><span class="section-number-3">4.6</span> MQTT和UTF-8（MQTT and UTF-8）</h3>
-<div class="outline-text-3" id="text-4-6">
-<pre class="example">
-UTF-8是一种针对Unicode的可变长度字符编码，它优化了ASCII字符集的编码，以支持基于文本的通信。
-
-在MQTT中，字符串编码的头2个字节用来记录字符串的长度，如下表所示
-
-字符串长度表示所有字符经过UTF-8编码后的字节数，而不是字符串中字符的个数。例如，经过UTF-8编码后的字符串 OTWP 如下表所示。
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org8ebb2a3" class="outline-3">
-<h3 id="org8ebb2a3"><span class="section-number-3">4.7</span> 未使用的位（Unused bits）</h3>
-<div class="outline-text-3" id="text-4-7">
-<pre class="example">
-任何表明为未使用的位都应当置为0
-</pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org76da9c2" class="outline-2">
-<h2 id="org76da9c2"><span class="section-number-2">5</span> 命令消息</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgaa3b9b8" class="outline-3">
-<h3 id="orgaa3b9b8"><span class="section-number-3">5.1</span> CONNECT - 客户端请求连接服务器</h3>
-</div>
-
-<div id="outline-container-orgae0e934" class="outline-3">
-<h3 id="orgae0e934"><span class="section-number-3">5.2</span> CONNACK - 连接确认</h3>
-</div>
-
-<div id="outline-container-org64d131c" class="outline-3">
-<h3 id="org64d131c"><span class="section-number-3">5.3</span> PUBLISH - 发布消息</h3>
-</div>
-
-<div id="outline-container-org96d765d" class="outline-3">
-<h3 id="org96d765d"><span class="section-number-3">5.4</span> PUBACK - 发布确认</h3>
-</div>
-
-<div id="outline-container-org26e8e82" class="outline-3">
-<h3 id="org26e8e82"><span class="section-number-3">5.5</span> PUBREC - 发布接收（有保证的交付第1部分）</h3>
-</div>
-
-<div id="outline-container-org566c4ae" class="outline-3">
-<h3 id="org566c4ae"><span class="section-number-3">5.6</span> PUBREL - 发布释放（有保证的交付第2部分）</h3>
-</div>
-
-<div id="outline-container-orgd42c7a2" class="outline-3">
-<h3 id="orgd42c7a2"><span class="section-number-3">5.7</span> PUBCOMP - 发布完成（有保证的交付第3部分）</h3>
-</div>
-
-<div id="outline-container-org455bf29" class="outline-3">
-<h3 id="org455bf29"><span class="section-number-3">5.8</span> SUBSCRIBE - 客户端订阅主题</h3>
-</div>
-
-<div id="outline-container-org0a9442a" class="outline-3">
-<h3 id="org0a9442a"><span class="section-number-3">5.9</span> SUBACK - 订阅确认</h3>
-</div>
-<div id="outline-container-org9c7cba2" class="outline-3">
-<h3 id="org9c7cba2"><span class="section-number-3">5.10</span> UNSUBSCRIBE - 客户端取消订阅主题</h3>
-</div>
-
-<div id="outline-container-orgf44b281" class="outline-3">
-<h3 id="orgf44b281"><span class="section-number-3">5.11</span> UNSUBACK - 取消订阅确认</h3>
-</div>
-
-<div id="outline-container-org0f0b3d7" class="outline-3">
-<h3 id="org0f0b3d7"><span class="section-number-3">5.12</span> PINGREQ - PING请求</h3>
-</div>
-
-<div id="outline-container-org0d08bcc" class="outline-3">
-<h3 id="org0d08bcc"><span class="section-number-3">5.13</span> PINGRESP - PING回复</h3>
-</div>
-
-<div id="outline-container-org75a8103" class="outline-3">
-<h3 id="org75a8103"><span class="section-number-3">5.14</span> DISCONNECT - 断开连接通知</h3>
-</div>
-</div>
-
-<div id="outline-container-orgd7c8c2d" class="outline-2">
-<h2 id="orgd7c8c2d"><span class="section-number-2">6</span> 消息流</h2>
-<div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgff346e1" class="outline-3">
-<h3 id="orgff346e1"><span class="section-number-3">6.1</span> 交付质量级别和消息流（Quality of Service levels and flows）</h3>
-</div>
-<div id="outline-container-org93c9244" class="outline-3">
-<h3 id="org93c9244"><span class="section-number-3">6.2</span> 消息重传</h3>
-</div>
-<div id="outline-container-orgf58fc43" class="outline-3">
-<h3 id="orgf58fc43"><span class="section-number-3">6.3</span> 消息排序</h3>
-</div>
-</div>
-
-
-
-<div id="outline-container-org3868de5" class="outline-2">
-<h2 id="org3868de5"><span class="section-number-2">7</span> mosquitto实战</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgc7c002c" class="outline-2">
+<h2 id="orgc7c002c"><span class="section-number-2">3</span> emqttd集群</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>mosquitto服务端安装</li>
+<li>集群环境搭建</li>
 </ul>
 <pre class="example">
-sudo apt-get install mosquitto
+1 下载emqttd-ubuntu16.04-v2.0.4.zip  
+
+2 解压emqttd-ubuntu16.04-v2.0.4.zip到目标目录中去
+
+3 vim etc/emq.conf
+  node.name = emqttd@hostname  //hostname当前主机的主机名或者IP
+  // hostname IOTA-001中有中杠-可能有问题,用IP
+
+4 各个节点的emqtt服务控制
+   # 启动emqttd
+   ./bin/emqttd start
+
+   # 停止emqttd
+   ./bin/emqttd stop
+
+   # 查看emqttd
+   ./bin/emqttd_ctl status
+
+   # 控制台调试模式启动（查看日志）
+   ./bin/emqttd console
+
+5 web管理控制平台
+    http://192.168.161.128:18083/
+    user: admin
+    password: public:
+
+6 各个节点加入集群，node1上执行
+  ./bin/emqttd_ctl cluster join emqttd@192.168.161.129
+  ./bin/emqttd_ctl cluster join emqttd@192.168.161.130
+  ...
 </pre>
 
-<ul class="org-ul">
-<li>mosquitto客户端安装</li>
-</ul>
 <pre class="example">
-sudo apt install mosquitto-clients
+订阅主题集群图
+
+
+topic1              topic1,topic3
+---------         ---------
+| Node1 | --------| Node2 |
+---------         ---------
+    |     \     /    |
+    |       \ /      |
+    |       / \      |
+    |     /     \    |
+---------         ---------
+| Node3 | --------| Node4 |
+---------         ---------
+topic2             topic3
+
+EMQ消息服务器同一集群的所有节点，都会复制一份订阅主题(Topic) -&gt; 节点(Node)映射的路由表
+topic1 -&gt; node1, node2
+topic2 -&gt; node3
+topic3 -&gt; node2, node4
+
+集群中无论在向哪台机器pub(发布)一个主题内容，只要该主题在其他集群中任何一台机器中被订阅了
+
+都是可以收到。
+
+http://192.168.161.128:18083/
+http://192.168.161.129:18083/
 </pre>
 
-<ul class="org-ul">
-<li>mosquitto sub订阅主题消息</li>
-</ul>
+
 <pre class="example">
-mosquitto_sub -v -t music
-</pre>
+集群实例
+
+t/x -&gt; node1  mosquitto_sub -h 192.168.161.128 -t t/x
+t/y -&gt; node2  mosquitto_sub -h 192.168.161.129 -t t/y
+
+node2 pub-&gt;t/x mosquitto_pub -h 192.168.161.129 -t t/x -m "mq129" 
+node1 pub-&gt;t/y mosquitto_pub -h 192.168.161.128 -t t/y -m "mq128" 
 
 
-<ul class="org-ul">
-<li>mosquitto pub发布主题消息</li>
-</ul>
-<pre class="example">
-osquitto_pub -t music  -m "周杰伦"
-</pre>
-
-<ul class="org-ul">
-<li>mosquitto sub订阅主题消息得到的结果</li>
-</ul>
-<pre class="example">
-⋊&gt; ~ mosquitto_sub -v -t music 
-music 周杰伦
+# '$local/t/x' ：local只接受本地的mq所pub的消息
+mosquitto_sub -h 192.168.161.128 -t '$local/t/x' 
+mosquitto_pub -h 192.168.161.129 -t 't/x' -m "mq129" // 收不到的
+mosquitto_pub -h 192.168.161.128 -t 't/x' -m "mq128" // 可以收不到的
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-13 周二 18:09</p>
+<p class="date">Created: 2016-12-21 周三 18:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
