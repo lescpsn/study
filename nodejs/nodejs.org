@@ -1,5 +1,5 @@
 #+TITLE:  NODE.JS & ES6
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../style/my-org-worg.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
 * node.js概览
 #+BEGIN_EXAMPLE
