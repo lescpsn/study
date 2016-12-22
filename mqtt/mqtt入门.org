@@ -2,7 +2,6 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
 * MQTT协议概览
-
 ** 关键词解释
 + MQTT
 #+BEGIN_EXAMPLE
@@ -46,22 +45,18 @@ QoS Level(服务质量级别)，三种模式
 
 + Payload
 #+BEGIN_EXAMPLE
-有效载荷,消息内容
+有效载荷,消息体
 #+END_EXAMPLE
-
 
 ** MQTT协议主要特性
 
 + 使用发布消息/订阅消息模式，提供了一个发布者可以有多个订阅者的一对多的模式
 
-+ 消息内容（payload）字符串采用utf-8编码
-
-+ 使用TCP/IP提供基础网络链接
++ 消息体（payload）字符串采用utf-8编码
 
 + 传输开销小（数据包格式小），降低了网络流量
 
 + Qos的支持，传输的可靠性可以保证
-
 
 
 * mqtt协议详解
@@ -88,14 +83,14 @@ Topic(主题)就是Puber(发布者)和Suber(订阅者)之间的桥梁，Suber(�
 
 实例演示
 #+BEGIN_EXAMPLE
-# 启动192.168.161.128服务器的mqtt服务
+# 启动192.168.161.128服务器的mqtt服务 注意如果集群都要起来
 ./bin/emqttd start
 
 #192.168.161.129客户端发起订阅了music/香港/男/+这个主题的消息
-mosquitto_sub -h 192.168.161.128 -t music/香港/男/+ -q 1 
+mosquitto_sub -h 192.168.161.128 -t 'music/香港/男/+' -q 1 
 
 #192.168.161.129客户端发布了music/香港/男/周杰伦这个主题的消息
-mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦 -m "龙卷风" -q 1 
+mosquitto_pub -h 192.168.161.128 -t 'music/香港/男/周杰伦' -m "龙卷风" -q 1  // 提及下q非端到端的
 
 // 上的订阅者订阅的主题和该发布者发布的主题就匹配
 mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦/a -m "龙卷风" -q 1 
@@ -115,7 +110,6 @@ MQTT命令消息一般组成结构：
 有效载荷：也称为消息体
 
 #+END_EXAMPLE
-
 
 ** 固定头部
 [[file:./img/固定头部.png]]
@@ -152,7 +146,6 @@ Byte 2：
         14 => "DISCONNECT"         // 客户端断开连接
         15 =>                      // 保留字
 #+END_EXAMPLE
-
 
 ** 可变头部
 
@@ -243,7 +236,6 @@ mosquitto_pub -h 192.168.161.128 -t 't/x' -m "mq128" // 可以收不到的
 
 http://192.168.161.128:18083/ 查看routes规则
 http://192.168.161.129:18083/
-
 #+END_EXAMPLE
 
 

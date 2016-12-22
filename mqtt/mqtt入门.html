@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-21 周三 18:21 -->
+<!-- 2016-12-22 周四 10:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MQTT入门</title>
@@ -233,31 +233,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf372d67">1. MQTT协议概览</a>
+<li><a href="#org4da80b4">1. MQTT协议概览</a>
 <ul>
-<li><a href="#orga119627">1.1. 关键词解释</a></li>
-<li><a href="#orgd9aae33">1.2. MQTT协议主要特性</a></li>
+<li><a href="#orge2e0e22">1.1. 关键词解释</a></li>
+<li><a href="#org7d2de90">1.2. MQTT协议主要特性</a></li>
 </ul>
 </li>
-<li><a href="#org6b4c9b1">2. mqtt协议详解</a>
+<li><a href="#org2411fd2">2. mqtt协议详解</a>
 <ul>
-<li><a href="#orgc67f710">2.1. Topic(主题)</a></li>
-<li><a href="#org3d7b445">2.2. 协议格式</a></li>
-<li><a href="#orgd69aa08">2.3. 固定头部</a></li>
-<li><a href="#orgb9761f6">2.4. 可变头部</a></li>
-<li><a href="#orgb861556">2.5. 有效负载</a></li>
+<li><a href="#org93e9efe">2.1. Topic(主题)</a></li>
+<li><a href="#orgb8ea93f">2.2. 协议格式</a></li>
+<li><a href="#org9e3d865">2.3. 固定头部</a></li>
+<li><a href="#org7f08c24">2.4. 可变头部</a></li>
+<li><a href="#orgd5decb9">2.5. 有效负载</a></li>
 </ul>
 </li>
-<li><a href="#orgc7c002c">3. emqttd集群</a></li>
+<li><a href="#orgd6f6afd">3. emqttd集群</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf372d67" class="outline-2">
-<h2 id="orgf372d67"><span class="section-number-2">1</span> MQTT协议概览</h2>
+<div id="outline-container-org4da80b4" class="outline-2">
+<h2 id="org4da80b4"><span class="section-number-2">1</span> MQTT协议概览</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orga119627" class="outline-3">
-<h3 id="orga119627"><span class="section-number-3">1.1</span> 关键词解释</h3>
+</div><div id="outline-container-orge2e0e22" class="outline-3">
+<h3 id="orge2e0e22"><span class="section-number-3">1.1</span> 关键词解释</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>MQTT</li>
@@ -313,21 +313,18 @@ QoS Level(服务质量级别)，三种模式
 <li>Payload</li>
 </ul>
 <pre class="example">
-有效载荷,消息内容
+有效载荷,消息体
 </pre>
 </div>
 </div>
 
-
-<div id="outline-container-orgd9aae33" class="outline-3">
-<h3 id="orgd9aae33"><span class="section-number-3">1.2</span> MQTT协议主要特性</h3>
+<div id="outline-container-org7d2de90" class="outline-3">
+<h3 id="org7d2de90"><span class="section-number-3">1.2</span> MQTT协议主要特性</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>使用发布消息/订阅消息模式，提供了一个发布者可以有多个订阅者的一对多的模式</li>
 
-<li>消息内容（payload）字符串采用utf-8编码</li>
-
-<li>使用TCP/IP提供基础网络链接</li>
+<li>消息体（payload）字符串采用utf-8编码</li>
 
 <li>传输开销小（数据包格式小），降低了网络流量</li>
 
@@ -338,12 +335,11 @@ QoS Level(服务质量级别)，三种模式
 </div>
 
 
-
-<div id="outline-container-org6b4c9b1" class="outline-2">
-<h2 id="org6b4c9b1"><span class="section-number-2">2</span> mqtt协议详解</h2>
+<div id="outline-container-org2411fd2" class="outline-2">
+<h2 id="org2411fd2"><span class="section-number-2">2</span> mqtt协议详解</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgc67f710" class="outline-3">
-<h3 id="orgc67f710"><span class="section-number-3">2.1</span> Topic(主题)</h3>
+</div><div id="outline-container-org93e9efe" class="outline-3">
+<h3 id="org93e9efe"><span class="section-number-3">2.1</span> Topic(主题)</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>作用</li>
@@ -373,22 +369,22 @@ Topic(主题)就是Puber(发布者)和Suber(订阅者)之间的桥梁，Suber(�
 实例演示
 </p>
 <pre class="example">
-# 启动192.168.161.128服务器的mqtt服务
+# 启动192.168.161.128服务器的mqtt服务 注意如果集群都要起来
 ./bin/emqttd start
 
 #192.168.161.129客户端发起订阅了music/香港/男/+这个主题的消息
-mosquitto_sub -h 192.168.161.128 -t music/香港/男/+ -q 1 
+mosquitto_sub -h 192.168.161.128 -t 'music/香港/男/+' -q 1 
 
 #192.168.161.129客户端发布了music/香港/男/周杰伦这个主题的消息
-mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦 -m "龙卷风" -q 1 
+mosquitto_pub -h 192.168.161.128 -t 'music/香港/男/周杰伦' -m "龙卷风" -q 1  // 提及下q非端到端的
 
 // 上的订阅者订阅的主题和该发布者发布的主题就匹配
 mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦/a -m "龙卷风" -q 1
 </pre>
 </div>
 </div>
-<div id="outline-container-org3d7b445" class="outline-3">
-<h3 id="org3d7b445"><span class="section-number-3">2.2</span> 协议格式</h3>
+<div id="outline-container-orgb8ea93f" class="outline-3">
+<h3 id="orgb8ea93f"><span class="section-number-3">2.2</span> 协议格式</h3>
 <div class="outline-text-3" id="text-2-2">
 <pre class="example">
 MQTT命令消息一般组成结构：
@@ -404,9 +400,8 @@ MQTT命令消息一般组成结构：
 </div>
 </div>
 
-
-<div id="outline-container-orgd69aa08" class="outline-3">
-<h3 id="orgd69aa08"><span class="section-number-3">2.3</span> 固定头部</h3>
+<div id="outline-container-org9e3d865" class="outline-3">
+<h3 id="org9e3d865"><span class="section-number-3">2.3</span> 固定头部</h3>
 <div class="outline-text-3" id="text-2-3">
 
 <div class="figure">
@@ -449,13 +444,12 @@ Byte 2：
 </div>
 </div>
 
-
-<div id="outline-container-orgb9761f6" class="outline-3">
-<h3 id="orgb9761f6"><span class="section-number-3">2.4</span> 可变头部</h3>
+<div id="outline-container-org7f08c24" class="outline-3">
+<h3 id="org7f08c24"><span class="section-number-3">2.4</span> 可变头部</h3>
 </div>
 
-<div id="outline-container-orgb861556" class="outline-3">
-<h3 id="orgb861556"><span class="section-number-3">2.5</span> 有效负载</h3>
+<div id="outline-container-orgd5decb9" class="outline-3">
+<h3 id="orgd5decb9"><span class="section-number-3">2.5</span> 有效负载</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li>CONNECT</li>
@@ -468,8 +462,8 @@ Byte 2：
 </div>
 
 
-<div id="outline-container-orgc7c002c" class="outline-2">
-<h2 id="orgc7c002c"><span class="section-number-2">3</span> emqttd集群</h2>
+<div id="outline-container-orgd6f6afd" class="outline-2">
+<h2 id="orgd6f6afd"><span class="section-number-2">3</span> emqttd集群</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>集群环境搭建</li>
@@ -532,9 +526,6 @@ topic3 -&gt; node2, node4
 集群中无论在向哪台机器pub(发布)一个主题内容，只要该主题在其他集群中任何一台机器中被订阅了
 
 都是可以收到。
-
-http://192.168.161.128:18083/
-http://192.168.161.129:18083/
 </pre>
 
 
@@ -547,17 +538,19 @@ t/y -&gt; node2  mosquitto_sub -h 192.168.161.129 -t t/y
 node2 pub-&gt;t/x mosquitto_pub -h 192.168.161.129 -t t/x -m "mq129" 
 node1 pub-&gt;t/y mosquitto_pub -h 192.168.161.128 -t t/y -m "mq128" 
 
-
 # '$local/t/x' ：local只接受本地的mq所pub的消息
 mosquitto_sub -h 192.168.161.128 -t '$local/t/x' 
 mosquitto_pub -h 192.168.161.129 -t 't/x' -m "mq129" // 收不到的
 mosquitto_pub -h 192.168.161.128 -t 't/x' -m "mq128" // 可以收不到的
+
+http://192.168.161.128:18083/ 查看routes规则
+http://192.168.161.129:18083/
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-21 周三 18:21</p>
+<p class="date">Created: 2016-12-22 周四 10:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
