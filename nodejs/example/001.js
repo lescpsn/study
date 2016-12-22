@@ -1,1 +1,1 @@
-console.log("node.js 入门");
+console.log("Welcome To IOTA!");
