@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-20 周二 18:11 -->
+<!-- 2016-12-22 周四 17:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>postgresql入门</title>
+<title>Postgresql入门</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -228,122 +228,124 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">postgresql入门</h1>
+<h1 class="title">Postgresql入门</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgaaa35b4">1. postgresql安装</a></li>
-<li><a href="#orgd887fdf">2. 初始化设置</a></li>
-<li><a href="#orgfa934e8">3. 开启数据库远程访问</a></li>
-<li><a href="#orge338999">4. 常用数据库操作</a></li>
-<li><a href="#org9a0e8f5">5. postgresql高可用性HA(High Available)</a>
+<li><a href="#orgc54da76">1. postgresql安装</a></li>
+<li><a href="#org6a5c65c">2. 初始化设置</a></li>
+<li><a href="#org58cce40">3. 常用数据库操作</a></li>
+<li><a href="#orga1c61cb">4. Postgresql特性</a>
 <ul>
-<li><a href="#org3dcc566">5.1. HA相关名词解释</a></li>
-<li><a href="#org5ab04ee">5.2. HA相关软件</a></li>
-<li><a href="#org68f651b">5.3. 组网结构</a></li>
-<li><a href="#orgb0889a7">5.4. 主机名配置</a></li>
-<li><a href="#orgc90c7ff">5.5. postgresql部署</a></li>
-<li><a href="#orgcd2876e">5.6. pg-poolII的部署</a></li>
-<li><a href="#org737741f">5.7. 常用命令</a></li>
+<li><a href="#orgdd4fabf">4.1. 数据库认证模式</a></li>
+<li><a href="#org4663eca">4.2. uuid</a></li>
+<li><a href="#org91f9c75">4.3. json/jsonb</a></li>
+<li><a href="#org020b10e">4.4. 数组</a></li>
+<li><a href="#org1061318">4.5. 几何类型</a></li>
+<li><a href="#orge98be10">4.6. fdw</a></li>
+</ul>
+</li>
+<li><a href="#orgd581bf9">5. postgresql高可用性HA(High Available)</a>
+<ul>
+<li><a href="#org7d81fd3">5.1. HA相关名词解释</a></li>
+<li><a href="#org7a9af36">5.2. HA相关软件</a></li>
+<li><a href="#org43115a6">5.3. 双机</a></li>
+<li><a href="#orga226a7b">5.4. 集群</a>
+<ul>
+<li><a href="#orgf9ff99c">5.4.1. 组网规划</a></li>
+<li><a href="#orge870c2b">5.4.2. 主机名配置</a></li>
+<li><a href="#orgbb21a6f">5.4.3. postgresql部署</a></li>
+<li><a href="#orge8cd8ae">5.4.4. pg-poolII的部署</a></li>
+<li><a href="#org4c46700">5.4.5. 验证结果</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgaaa35b4" class="outline-2">
-<h2 id="orgaaa35b4"><span class="section-number-2">1</span> postgresql安装</h2>
+<div id="outline-container-orgc54da76" class="outline-2">
+<h2 id="orgc54da76"><span class="section-number-2">1</span> postgresql安装</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>网络方式安装</li>
 </ul>
 <pre class="example">
 &gt; sudo apt-get install postgresql
+
 此过程，Linux系统中自动创建了一个postgres系统用户
+
 postgresql数据库中自动创建了一个最高权限的postgres数据库用户
 </pre>
 
-
-
 <ul class="org-ul">
-<li>修改数据库中的postgres用户密码</li>
+<li>修改系统用户postgres和数据库用户postgres的密码</li>
 </ul>
 <pre class="example">
-默认安装好的postgresql中，创建了一个数据库超级用户postgres，此用户为空密码，需修
-改下密码
+修改下postgres用户密码
 &gt; sudo -i 
-&gt; su - postgres
+
+# passwd postgres
+
+&gt; sudo -i 
+
+# su - postgres
+
 &gt; psql
+
 &gt; ALTER USER postgres with PASSWORD '123456';
-&gt; \q                                                   //退出psql客户端
+
+&gt; \q                                                     //退出psql客户端
 </pre>
 </div>
 </div>
 
 
-<div id="outline-container-orgd887fdf" class="outline-2">
-<h2 id="orgd887fdf"><span class="section-number-2">2</span> 初始化设置</h2>
+<div id="outline-container-org6a5c65c" class="outline-2">
+<h2 id="org6a5c65c"><span class="section-number-2">2</span> 初始化设置</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>创建数据库和数据库用户</li>
+<li>创建数据库访问用户和数据库</li>
 </ul>
 <pre class="example">
 &gt; su - postgres
 &gt; psql
+&gt; CREATE USER hengjun WITH SUPERUSER PASSWORD '123456';  
+//SUPERUSER：超级用户的意思，权限较高
 &gt; CREATE DATABASE iotadream;
-&gt; CREATE USER hengjun WITH SUPERUSER PASSWORD '123456';//SUPERUSER：超级用户的意思，权限较高
-&gt; \q                                                   //退出psql客户端
+&gt; \q                                                     //退出psql客户端
 </pre>
-</div>
-</div>
 
-
-<div id="outline-container-orgfa934e8" class="outline-2">
-<h2 id="orgfa934e8"><span class="section-number-2">3</span> 开启数据库远程访问</h2>
-<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>编辑/etc/postgresql/9.5/main/postgresql.conf，允许任何主机来连接</li>
+<li>开启数据库远程访问</li>
 </ul>
 <pre class="example">
+编辑/etc/postgresql/9.5/main/postgresql.conf，允许数据库服务器监听来自任何主机的连接请求
 vim /etc/postgresql/9.5/main/postgresql.conf
 listen_addresses = '*'
 </pre>
 
-
-<ul class="org-ul">
-<li>编辑/etc/postgresql/9.5/main/pg<sub>hba.conf为来连接的用户和数据库分配权限</sub></li>
-</ul>
 <pre class="example">
+编辑/etc/postgresql/9.5/main/pg _hba.conf，控制远程连接的客户端用户和数据库权限
+host    all             all             0.0.0.0/0                 md5
+host    replication     all             0.0.0.0/0                 md5
+注意：replication不包含在all当中，单独拿出来配置
 </pre>
 </div>
 </div>
 
 
-
-
-
-<div id="outline-container-orge338999" class="outline-2">
-<h2 id="orge338999"><span class="section-number-2">4</span> 常用数据库操作</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org58cce40" class="outline-2">
+<h2 id="org58cce40"><span class="section-number-2">3</span> 常用数据库操作</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>连接命令</li>
 </ul>
 <pre class="example">
-psql -U hengjun -h 127.0.0.1 iotadream
-</pre>
-
-<ul class="org-ul">
-<li>查看数据库</li>
-</ul>
-<pre class="example">
-\l
-</pre>
-<ul class="org-ul">
-<li>查看数据库表</li>
-</ul>
-<pre class="example">
-\dt
+psql -U hengjun -h 192.168.161.128 iotadream -p 5432
+// 必须指定数据库，而非use db;
 </pre>
 
 <ul class="org-ul">
@@ -353,6 +355,41 @@ psql -U hengjun -h 127.0.0.1 iotadream
 \q
 </pre>
 
+<ul class="org-ul">
+<li>查看数据库</li>
+</ul>
+<pre class="example">
+\l
+</pre>
+<ul class="org-ul">
+<li>查看数据库的表</li>
+</ul>
+<pre class="example">
+\dt
+</pre>
+
+<ul class="org-ul">
+<li>查看某张表的结构</li>
+</ul>
+<pre class="example">
+\d tablename;
+</pre>
+
+<ul class="org-ul">
+<li>创建数据库的表</li>
+</ul>
+<pre class="example">
+CREATE TABLE json_stdent(student json);
+
+INSERT INTO json_stdent(student) VALUES ('{ "id": 10001}');
+</pre>
+
+<ul class="org-ul">
+<li>删除数据库的表</li>
+</ul>
+<pre class="example">
+drop table tablename;
+</pre>
 
 <ul class="org-ul">
 <li>表中插入数据</li>
@@ -361,32 +398,117 @@ psql -U hengjun -h 127.0.0.1 iotadream
 INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
 INSERT INTO company (id, name, age) VALUES (9, 'abb9', 9)
 </pre>
-
-
 <ul class="org-ul">
-<li>清空表</li>
+<li>删除表记录</li>
 </ul>
 <pre class="example">
-delete from tablename
-delete from company;
+DELETE FROM tablename;  // 删除整张表的记录
+DELETE FROM company WHERE id=1; // 删除一条记录
+</pre>
+
+<ul class="org-ul">
+<li>修改表中数据</li>
+</ul>
+<pre class="example">
+UPDATE tablename SET name='abb1' WHERE id=1;
+</pre>
+
+<ul class="org-ul">
+<li>查询表中数据</li>
+</ul>
+<pre class="example">
+SELECT * FROM tablename;
 </pre>
 </div>
 </div>
 
 
+<div id="outline-container-orga1c61cb" class="outline-2">
+<h2 id="orga1c61cb"><span class="section-number-2">4</span> Postgresql特性</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgdd4fabf" class="outline-3">
+<h3 id="orgdd4fabf"><span class="section-number-3">4.1</span> 数据库认证模式</h3>
+<div class="outline-text-3" id="text-4-1">
+<pre class="example">
+# METHOD can be "trust", "reject", "md5", "password", "gss", "sspi",
+# "ident", "peer", "pam", "ldap", "radius" or "cert".  Note that
+# "password" sends passwords in clear text; "md5" is preferred since
+# it sends encrypted passwords.
+user -&gt; pg1
+user -&gt; pg2
+user -&gt; linux1
+user -&gt; unix1
+方便账号集中认证，管理
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4663eca" class="outline-3">
+<h3 id="org4663eca"><span class="section-number-3">4.2</span> uuid</h3>
+<div class="outline-text-3" id="text-4-2">
+<pre class="example">
+uuid是唯一，做主键是否优于自增的id呢？h
+可以数据的保证独立性，不仅表独立，库中也是独立
+</pre>
+</div>
+</div>
+<div id="outline-container-org91f9c75" class="outline-3">
+<h3 id="org91f9c75"><span class="section-number-3">4.3</span> json/jsonb</h3>
+<div class="outline-text-3" id="text-4-3">
+<pre class="example">
+json插入的速度快，jsonb需要转换
+实现了类似Mongodb文档型数据库的功能，速度测评比Mongodb还快4倍+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org020b10e" class="outline-3">
+<h3 id="org020b10e"><span class="section-number-3">4.4</span> 数组</h3>
+<div class="outline-text-3" id="text-4-4">
+<pre class="example">
+create table arry_table(id serial primary key, teacher varchar[]);
+insert into arry_table(teacher) values ('{"Mr Wang","Mrs Li"}');
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1061318" class="outline-3">
+<h3 id="org1061318"><span class="section-number-3">4.5</span> 几何类型</h3>
+<div class="outline-text-3" id="text-4-5">
+<pre class="example">
+地图坐标相关
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge98be10" class="outline-3">
+<h3 id="orge98be10"><span class="section-number-3">4.6</span> fdw</h3>
+<div class="outline-text-3" id="text-4-6">
+<pre class="example">
+foreign data wrapper 可以操作外部数据
+
+oracle_fdw
+
+mysql_fdw
+
+file_fdw(csv,txt文件)，做日志分析，统计，有点像spark的sql
+
+100, John Smith, Austin, TX, 78727
+200, Joe Johnson, Dallas, TX, 75201
+300, Bob Jones, Houston, TX, 77028
+400, Andy Davis, San Antonio, TX, 78227
+500, James Williams, Austin, TX, 78727
+</pre>
+</div>
+</div>
+</div>
 
 
-
-
-
-
-
-
-<div id="outline-container-org9a0e8f5" class="outline-2">
-<h2 id="org9a0e8f5"><span class="section-number-2">5</span> postgresql高可用性HA(High Available)</h2>
+<div id="outline-container-orgd581bf9" class="outline-2">
+<h2 id="orgd581bf9"><span class="section-number-2">5</span> postgresql高可用性HA(High Available)</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org3dcc566" class="outline-3">
-<h3 id="org3dcc566"><span class="section-number-3">5.1</span> HA相关名词解释</h3>
+</div><div id="outline-container-org7d81fd3" class="outline-3">
+<h3 id="org7d81fd3"><span class="section-number-3">5.1</span> HA相关名词解释</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>HA</li>
@@ -394,25 +516,22 @@ delete from company;
 <pre class="example">
 HA: High Available，高可用性
 </pre>
-<ul class="org-ul">
-<li>VIP / FLOAT IP</li>
-</ul>
-<pre class="example">
-VIP：Virtual IP Addres，虚拟ip，通常也俗称浮动IP
-</pre>
 
 <ul class="org-ul">
-<li>Hot standby</li>
+<li>Hot Standby</li>
 </ul>
 <pre class="example">
-Hot standby：双机热备 master挂了，slave顶上
+Hot Standby：双机热备。master挂了，slave顶上
+只有一台机器再工作
 </pre>
 
 <ul class="org-ul">
 <li>Cluster</li>
 </ul>
 <pre class="example">
-Cluster: 集群 1台挂了，n-1台可以工作
+Cluster: 集群。集群中1台机器挂了，n-1台仍然可以工作
+
+每台机器都工作，像nginx一样
 </pre>
 
 <ul class="org-ul">
@@ -421,63 +540,99 @@ Cluster: 集群 1台挂了，n-1台可以工作
 <pre class="example">
 LB：Load Balance, 负载均衡
 </pre>
-</div>
-</div>
 
-<div id="outline-container-org5ab04ee" class="outline-3">
-<h3 id="org5ab04ee"><span class="section-number-3">5.2</span> HA相关软件</h3>
+<ul class="org-ul">
+<li>VIP / Float IP</li>
+</ul>
+<pre class="example">
+VIP(Float IP)：Virtual IP Addres，虚拟ip，通常也俗称浮动IP
+</pre>
+</div>
+</div>
+<div id="outline-container-org7a9af36" class="outline-3">
+<h3 id="org7a9af36"><span class="section-number-3">5.2</span> HA相关软件</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>Heartbeat/KeepAlived</li>
 </ul>
 <pre class="example">
-管理vip/浮动ip，监控服务的
+管理vip/float_ip，监控服务的
 </pre>
 
 <ul class="org-ul">
-<li>pg-poolII</li>
+<li>pg-pool II</li>
 </ul>
 <pre class="example">
-pg连接池管理
-流复制
-双机热备/负载均衡
-内置了看门狗(watchdog)实现了类似 Heartbeat/KeepAlived的功能
-</pre>
+pg-pool一种中间件，对pg数据库服务器来，它相当于客户端，对于app来说它又相当于数据库服务器
 
+pg连接池管理
+
+流复制  （多台pg机器之间的数据同步一致功能）
+
+双机热备/集群负载均衡
+
+内置看门狗(watchdog), 已经实现了类似 Heartbeat/KeepAlived的功能
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org43115a6" class="outline-3">
+<h3 id="org43115a6"><span class="section-number-3">5.3</span> 双机</h3>
+<div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li>pg原生流复制</li>
 </ul>
-<pre class="example">
-master:可以读写 slave:只能读
-master:坏了呢？
-</pre>
 
 <div class="figure">
 <p><img src="./img/pg_base_rs.png" alt="pg_base_rs.png" />
 </p>
 </div>
+<pre class="example">
+master: 192.168.161.128  Read &amp; Write
+slave:  192.168.161.129  Read Only   
+master:坏了呢？
+</pre>
 <ul class="org-ul">
 <li>双机一</li>
 </ul>
-<pre class="example">
-pg_pool管理主从的切换
-这种做法有没有问题？
-</pre>
 
 <div class="figure">
 <p><img src="./img/sj.png" alt="sj.png" />
 </p>
 </div>
 
+<pre class="example">
+pg_pool连接接口,管理主从的切换
+master: 192.168.1.128  Read &amp; Write
+slave:  192.168.1.129  Read Only
+                                -----&gt;192.168.1.128:5432 (master)
+pg_pool 192.168.1.136:9999  ---|
+                                -----&gt;192.168.1.129:5432 (slave)
+master坏了了，pg_pool让slave升级成master(Read &amp; Write)
 
+这种做法有没有问题？
+</pre>
 
 <ul class="org-ul">
 <li>双机二</li>
 </ul>
 <pre class="example">
-合理的双机做法
-两台机器不够怎么办？想每台机器都可以读写呢？
+master: 192.168.1.128  Read &amp; Write
+slave:  192.168.1.129  Read Only
+
+                                      -----&gt;192.168.1.128:5432
+pg_pool master 192.168.1.136:9999  ---|
+                                      -----&gt;192.168.1.129:5432
+
+                                      -----&gt;192.168.1.128:5432
+pg_pool slave 192.168.1.137:9999  ---|
+                                      -----&gt;192.168.1.129:5432
+
+                                      -----&gt;192.168.1.136:9999
+vip(float_ip) 192.168.1.138:9999  ---|
+                                      -----&gt;192.168.1.137:9999
 </pre>
+
 
 
 <div class="figure">
@@ -502,9 +657,24 @@ pg_pool管理主从的切换
 <p><img src="./img/sj_ok4.png" alt="sj_ok4.png" />
 </p>
 </div>
-<ul class="org-ul">
-<li>集群</li>
-</ul>
+
+<pre class="example">
+看下watchdog的效果
+pg-pool master 启动pg-pool
+pg-pool slave  启动pg-pool
+</pre>
+
+<pre class="example">
+两台机器不够怎么办？+++++++++，并想让每台机器都可以读写呢？
+上集群
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orga226a7b" class="outline-3">
+<h3 id="orga226a7b"><span class="section-number-3">5.4</span> 集群</h3>
+<div class="outline-text-3" id="text-5-4">
 <pre class="example">
 集群实现负载均衡，每台机器都可以读写
 负载均衡算法：
@@ -518,11 +688,11 @@ pg_pool管理主从的切换
 </p>
 </div>
 </div>
-</div>
-<div id="outline-container-org68f651b" class="outline-3">
-<h3 id="org68f651b"><span class="section-number-3">5.3</span> 组网结构</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-orgf9ff99c" class="outline-4">
+<h4 id="orgf9ff99c"><span class="section-number-4">5.4.1</span> 组网规划</h4>
+<div class="outline-text-4" id="text-5-4-1">
 <pre class="example">
+vip：192.168.161.138 
 主机IP              主机名       部署应用
 192.168.161.128    IOTA-001    db-node1 &amp; pg-pool1 
 192.168.161.129    IOTA-002    db-node1 &amp; pg-pool2 
@@ -531,10 +701,9 @@ pg_pool管理主从的切换
 </div>
 </div>
 
-
-<div id="outline-container-orgb0889a7" class="outline-3">
-<h3 id="orgb0889a7"><span class="section-number-3">5.4</span> 主机名配置</h3>
-<div class="outline-text-3" id="text-5-4">
+<div id="outline-container-orge870c2b" class="outline-4">
+<h4 id="orge870c2b"><span class="section-number-4">5.4.2</span> 主机名配置</h4>
+<div class="outline-text-4" id="text-5-4-2">
 <ul class="org-ul">
 <li>192.168.161.128主机</li>
 </ul>
@@ -584,12 +753,13 @@ vim /etc/hosts
 </div>
 </div>
 
-
-<div id="outline-container-orgc90c7ff" class="outline-3">
-<h3 id="orgc90c7ff"><span class="section-number-3">5.5</span> postgresql部署</h3>
-<div class="outline-text-3" id="text-5-5">
+<div id="outline-container-orgbb21a6f" class="outline-4">
+<h4 id="orgbb21a6f"><span class="section-number-4">5.4.3</span> postgresql部署</h4>
+<div class="outline-text-4" id="text-5-4-3">
 <pre class="example">
 每一个数据库主机节点(192.168.161.128,192.168.161.129,192.168.161.130)上都要部署
+
+最好手工安装，符合自己的规划要求
 </pre>
 <ul class="org-ul">
 <li>192.168.161.128</li>
@@ -612,160 +782,212 @@ sudo apt-get install postgresql
 </div>
 </div>
 
-
-<div id="outline-container-orgcd2876e" class="outline-3">
-<h3 id="orgcd2876e"><span class="section-number-3">5.6</span> pg-poolII的部署</h3>
-<div class="outline-text-3" id="text-5-6">
+<div id="outline-container-orge8cd8ae" class="outline-4">
+<h4 id="orge8cd8ae"><span class="section-number-4">5.4.4</span> pg-poolII的部署</h4>
+<div class="outline-text-4" id="text-5-4-4">
 <pre class="example">
-pg-poolII主备节点(192.168.161.128,192.168.161.129)上都要部署
+pg-poolII的主备节点(192.168.161.128,192.168.161.129)上都要部署
 </pre>
 <ul class="org-ul">
 <li>192.168.161.128</li>
 </ul>
 <pre class="example">
-// root用户脚本署部
-# ./pgpool2.sh 
-
-mkdir /var/run/pgpoo
-lapt-get install arping
+pg-pool安装
 </pre>
+
 <pre class="example">
-配置主机的pgpool
-vim /usr/local/pgpool2/etc/pgpool.conf
-use_watchdog = on         // 开启看门狗x
-wd_hostname = 'IOTA-001'  // pgpool2的备机是它自己的主机名
-delegate_IP = '192.168.161.138'  // vip 即 float ip
-heartbeat_destination0 = 'IOTA-002'  // 对方的主机名
-other_pgpool_hostname0 = 'IOTA-002'
-other_pgpool_port0 = 9999
+pool_passwd 文件
 
-# 修改进程id文件的位置
-pid_file_name = '/run/pgpool.pid'
-# 日志目录
-logdir = '/var/log'
-
-#
-enable_pool_hba = on
-
-# 数据复制和负载均衡
-listen_addresses = '*'  // 任意客户端都可以连接
-replication_mode = on
-load_balance_mode = on
-
-修改网卡接口名(eth0,ens33)
-// 所有eth0网卡名的地方换成你机器的网卡名
-
-
-
-backend_hostname0 = 'IOTA-001' // 主节点
-
-backend_hostname1 = 'IOTA-002' // 其他备用节点
-backend_port1 = 5433
-backend_weight1 = 1
-backend_data_directory1 = '/var/lib/pgsql/data'
-backend_flag1 = 'ALLOW_TO_FAILOVER'
-
-
-
-./pg_md5 -p   //错误
-pcp.confiog ./pg_md5 原始密码
-poo_passwd 文件
 ./pg_md5 -m -u hengjun 123456
+vim pool_passwd 
+hengjun:md5f71e3919151ed71c9a1cb1460bd8e832
+</pre>
 
+<pre class="example">
+pcp.conf 文件
+./pg_md5 -p 123456
+vim pcp.conf
+hengjun:e10adc3949ba59abbe56e057f20f883e
+</pre>
 
-vim pool_passwd
+<pre class="example">
+pool_hba.conf 文件
+vim pool_hba.conf 
+host    all         all         0.0.0.0/0             md5
+</pre>
 
-hengjun:e10adc3949ba59abbe56e057f20f883eDETAIL
+<pre class="example">
+pgpool.conf 文件
+
+vim pgpool.conf
+&lt; listen_addresses = '*'
+---
+&gt; listen_addresses = 'localhost'
+64c64
+&lt; backend_hostname0 = 'IOTA-001'
+---
+&gt; backend_hostname0 = 'localhost'
+70,71c70
+&lt; # '/var/lib/pgsql/data'
+&lt; backend_data_directory0 = '/var/lib/postgresql/9.5/main'
+---
+&gt; backend_data_directory0 = '/var/lib/pgsql/data'
+76,86c75,79
+&lt; backend_hostname1 = 'IOTA-002'
+&lt; backend_port1 = 5432
+&lt; backend_weight1 = 1
+&lt; backend_data_directory1 = '/var/lib/postgresql/9.5/main'
+&lt; backend_flag1 = 'ALLOW_TO_FAILOVER'
+&lt; 
+&lt; backend_hostname2 = 'IOTA-003'
+&lt; backend_port2 = 5432
+&lt; backend_weight2 = 1
+&lt; backend_data_directory2 = '/var/lib/postgresql/9.5/main'
+&lt; backend_flag2 = 'ALLOW_TO_FAILOVER'
+---
+&gt; #backend_hostname1 = 'host2'
+&gt; #backend_port1 = 5433
+&gt; #backend_weight1 = 1
+&gt; #backend_data_directory1 = '/data1'
+&gt; #backend_flag1 = 'ALLOW_TO_FAILOVER'
+90c83
+&lt; enable_pool_hba = on 
+---
+&gt; enable_pool_hba = off
+224c217
+&lt; pid_file_name = '/run/pgpool.pid'
+---
+&gt; pid_file_name = '/var/run/pgpool/pgpool.pid'
+227c220
+&lt; logdir = '/var/log'
+---
+&gt; logdir = '/var/log/pgpool'
+252c245
+&lt; replication_mode = on
+---
+&gt; replication_mode = off
+292c285
+&lt; load_balance_mode = on
+---
+&gt; load_balance_mode = off
+473c466
+&lt; use_watchdog = on
+---
+&gt; use_watchdog = off
+
+&lt; wd_hostname = 'IOTA-001'
+---
+&gt; wd_hostname = ''
+513c506
+&lt; delegate_IP = '192.168.161.138'
+---
+&gt; delegate_IP = ''
+520,521c513
+&lt; # if_up_cmd = 'ip addr add $_IP_$/24 dev eth0 label eth0:0'
+&lt; if_up_cmd = 'ip addr add $_IP_$/24 dev ens33 label ens33:0'
+---
+&gt; if_up_cmd = 'ip addr add $_IP_$/24 dev eth0 label eth0:0'
+524,525c516
+&lt; # if_down_cmd = 'ip addr del $_IP_$/24 dev eth0'
+&lt; if_down_cmd = 'ip addr del $_IP_$/24 dev ens33'
+---
+&gt; if_down_cmd = 'ip addr del $_IP_$/24 dev eth0'
+580c571
+&lt; heartbeat_destination0 = 'IOTA-002'
+---
+&gt; heartbeat_destination0 = 'host0_ip1'
+621c612
+&lt; other_pgpool_hostname0 = 'IOTA-002'
+---
+&gt; #other_pgpool_hostname0 = 'host0'
+624c615
+&lt; other_pgpool_port0 = 9999
+
+&gt; #other_pgpool_port0 = 5432
+627c618
+&lt; other_wd_port0 = 9000
+---
+&gt; #other_wd_port0 = 9000
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4c46700" class="outline-4">
+<h4 id="org4c46700"><span class="section-number-4">5.4.5</span> 验证结果</h4>
+<div class="outline-text-4" id="text-5-4-5">
+<ul class="org-ul">
+<li>启动pg-pool2</li>
+</ul>
+<pre class="example">
+./pgpool -n
+生成vip(float_ip)
 </pre>
 
 
 <ul class="org-ul">
-<li>192.168.161.129</li>
+<li>用vip:9999登陆数据库</li>
 </ul>
 <pre class="example">
-// root用户脚本署部
-# ./pgpool2.sh root用户脚本署部
-
-mkdir /var/run/pgpool
+psql -U hengjun -h 192.168.161.138 iotadream -p 9999
 </pre>
 
 
-
+<ul class="org-ul">
+<li>查看节点状态</li>
+</ul>
 <pre class="example">
-配置备机的pgpool
-vim /usr/local/pgpool2/etc/pgpool.conf
-use_watchdog = on         // 开启看门狗
-wd_hostname = 'IOTA-002'  // pgpool2的备机是它自己的主机名
+多个客户端登陆，查看每次负载到哪台机器上
+psql -U hengjun -h 192.168.161.138 iotadream -p 9999
+show pool_nodes; //查看 status load_balance_node
 
-delegate_IP = '192.168.161.138'  // vip 即 float ip
-heartbeat_destination0 = 'IOTA-001'  // 对方的主机名
-other_pgpool_hostname0 = 'IOTA-001'  // 对方的主名机
-other_pgpool_port0 = 9999
-other_wd_port0 = 9000
-
-# 修改进程id文件的位置
-pid_file_name = '/run/pgpool.pid'
-# 日志目录
-logdir = '/var/log'
-
-# #
-enable_pool_hba = on
-
-# 数据复制和负载均衡
-listen_addresses = '*'  // 任意客户端都可以连接
-replication_mode = on
-load_balance_mode = on
-
-修改网卡接口名(eth0,ens33)
-// 所有eth0网卡名的地方换成你机器的网卡名
-
-
-./pg_md5 -p   //错误
-pcp.confiog ./pg_md5 原始密码
-poo_passwd 文件
-./pg_md5 -m -u hengjun 123456
+psql -U hengjun -h 192.168.161.138 iotadream -p 9999
+show pool_nodes;//查看 status load_balance_node
 </pre>
 
-
+<ul class="org-ul">
+<li>插入数据查看效果</li>
+</ul>
 <pre class="example">
-vim pool_hba.conf
-###
-host    all         all         0.0.0.0/0             md5
+INSERT INTO company(id,name,age) VALUES (7,'abb7',7);
+</pre>
+
+<ul class="org-ul">
+<li>恢复修复好的故障节点</li>
+</ul>
+<pre class="example">
+sudo /etc/init.d/postgresql stop
+继续查看各个节点的状态
+
+sudo /etc/init.d/postgresql start
+pgpool上执行,无需重启pg-pool
+./pcp_attach_node -d -h IOTA-001 -U hengjun -n 1  // ./pcp_attach_node --help 查看帮助
+</pre>
+
+<ul class="org-ul">
+<li>待完善问题</li>
+</ul>
+<pre class="example">
+1 各个pg服务器时间同步问题？
+
+2 各个软件需要手工安装，便于目录组织规则，方便卸载
+
+3 各种服务的开机自启动与管理
+
+4 主键的的设计(id是否有问题，uuid？还是其它？不要自己给自己找麻烦)
+
+5 自动化搭建环境（适应各种环境，裸机已有规划好的主机）
+
+... ...
+... ...
+... ...
 </pre>
 </div>
-</div>
-
-
-
-
-
-
-
-
-<div id="outline-container-org737741f" class="outline-3">
-<h3 id="org737741f"><span class="section-number-3">5.7</span> 常用命令</h3>
-<div class="outline-text-3" id="text-5-7">
-<pre class="example">
-1 登陆pg-pool
-  psql -U dbuser -h float_ip dbname -p 9999
-  psql -U hengjun -h 192.168.161.138 iotadream -p 9999 
-
-2 查看节点状态
-show pool_nodes;
-
-//恢复down的节点
-./pcp_attach_node -d -h IOTA-001 -U hengjun -n 0
-./pcp_attach_node -d -h IOTA-001 -U hengjun -n 1
-./pcp_attach_node -d -h IOTA-001 -U hengjun -n 2  
-
-//最后-n 是node编号，show pool_nodes查看
-</pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-20 周二 18:11</p>
+<p class="date">Created: 2016-12-22 周四 17:58</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
