@@ -3,9 +3,11 @@
 
 * node.js概览
 #+BEGIN_EXAMPLE
-javascript脚本性语言
-异步I/O
-事件驱动
+
+编写高性能网络服务器的javascript脚本性语言(用js开发服务端程序)
+
+单线程异步I/O，事件驱动
+
 #+END_EXAMPLE
 
 
@@ -38,8 +40,6 @@ c/P/l/s/j/nodejs/example:master*? λ node 001.js
 Welcome To IOTA!
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
-
-
 
 ** Question 2
 + Q：如何定义变量呢？
@@ -179,8 +179,6 @@ ch_b1 == int_b1? true
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
 
-
-
 ** Question 3
 + Q：如何定义数组呢？
 + A:
@@ -253,7 +251,6 @@ arr_a4.length =  28
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
 
-
 ** Question 4
 + Q：如何定义字典呢？
 + A:
@@ -312,7 +309,6 @@ c/P/l/s/j/nodejs/example:master*? λ
 
 #+END_EXAMPLE
 
-
 ** Question 5
 + Q 5.1：如何定义函数呢？
 + A:
@@ -366,6 +362,59 @@ c/P/l/s/j/nodejs/example:master*? λ
 ** Question 6
 + Q: 如何导入其它js文件中的函数呢？
 + A:
+#+BEGIN_EXAMPLE
+// lib.js
+module.exports = {
+    funname1: function(arg1, arg2) {
+    // do something
+    },
+    funname2: function(arg1, arg2) {
+    // do something
+    }
+};
+
+// 006.js
+var libfun = require("./lib.js");
+#+END_EXAMPLE
+#+BEGIN_EXAMPLE
+// lib.js
+/******************************************************************************/
+module.exports = {
+
+    print_log: function(level, msg) {
+        if (level == "ERRO") {
+            console.log("\033[31m[" + level + "]\033[0m" + msg);
+        } else if (level == "INFO") {
+            console.log("\033[32m[" + level + "]\033[0m" + msg);
+        } else if (level == "WARN") {
+            console.log("\033[33m[" + level + "]\033[0m" + msg);
+        }
+    },
+
+    print_log2: function(level, msg) {
+        if (level == "ERRO") {
+            console.log("\033[31m[" + level + "]\033[0m" + msg);
+        } else if (level == "INFO") {
+            console.log("\033[32m[" + level + "]\033[0m" + msg);
+        } else if (level == "WARN") {
+            console.log("\033[33m[" + level + "]\033[0m" + msg);
+        }
+    }
+
+};
+/******************************************************************************/
+
+// 006.js
+
+var libfun = require("./lib.js");
+libfun.print_log("INFO", "print_log function from lib.js");
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+c/P/l/study/nodejs/example:master*? λ node.exe 006.js 
+[INFO]print_log function from lib.js
+c/P/l/study/nodejs/example:master*? λ 
+#+END_EXAMPLE
 
 ** Question 7
 + Q 7.1: node.js面向对象的特性呢？
@@ -382,7 +431,7 @@ c/P/l/s/j/nodejs/example:master*? λ
 
 + Q 7.3: 那结构体可以继承吗？
 #+BEGIN_EXAMPLE
-可以才用组合的方式
+可以用组合的方式
 #+END_EXAMPLE
 
 ** Question 8
@@ -396,10 +445,15 @@ c/P/l/s/j/nodejs/example:master*? λ
 #+BEGIN_EXAMPLE
 2 采用async可以做到用同步的写法实现异步的功能
 #+END_EXAMPLE
+
 ** Question 9
 + Q: node.js事件驱动
 + A:
-
+#+BEGIN_EXAMPLE
+消息名(相当于通道)
+向一个消息名里抛出消息 emit
+从一个消息名里监听消息 once （多种模式）
+#+END_EXAMPLE
 ** Question 10
 + Q: node.js的web后端开发
 + A:
@@ -410,6 +464,7 @@ file
 mysql,postgresql
 mongodb
 #+END_EXAMPLE
+
 
 * es6
 #+BEGIN_EXAMPLE
@@ -452,7 +507,6 @@ console.log("this is not for loop i: ", i);
 ReferenceError: i is not defined
 #+END_EXAMPLE
 
-
 ** for of 直接遍历数组的值
 #+BEGIN_EXAMPLE
 let myArry = ['a', 'ab', "b", "bc"];
@@ -470,7 +524,6 @@ b
 bc
 c/P/l/s/javascript/nodejs/es6:master*? λ 
 #+END_EXAMPLE
-
 
 ** 函数定义
  #+BEGIN_EXAMPLE
@@ -493,7 +546,6 @@ my name is:  abb
 c/P/l/s/javascript/nodejs/es6:master*? λ 
 #+END_EXAMPLE
 
-
 ** 类定义（class）
 #+BEGIN_EXAMPLE
 // es6_004.js
@@ -515,7 +567,6 @@ my name is: bccc
 c/P/l/s/javascript/nodejs/es6:master*? λ 
 
 #+END_EXAMPLE
-
 
 ** 继承类定义（class，extends）
 #+BEGIN_EXAMPLE
@@ -552,9 +603,15 @@ Jem is boy
 c/P/l/s/javascript/nodejs/es6:master*? λ 
 #+END_EXAMPLE
 
-
 ** 公有导出
+#+BEGIN_EXAMPLE
+// lib.js
+module.exports  ==>  export
+export {funct, var, var};
 
+require  ==> import
+import {funct, var,var} from "./lib.js"
+#+END_EXAMPLE
 
 ** 箭头函数
 #+BEGIN_EXAMPLE
@@ -582,7 +639,6 @@ ab 1
 c/P/l/s/javascript/nodejs/es6:master*? λ 
 #+END_EXAMPLE
 
-
 ** 字符串模板
 #+BEGIN_EXAMPLE
 // es6_008.js
@@ -598,7 +654,6 @@ random num is 0.8724538604517855
 random num is $num
 c/P/l/s/javascript/nodejs/es6:master*? λ 
 #+END_EXAMPLE
-
 
 ** 解构(函数多返回值)
 #+BEGIN_EXAMPLE

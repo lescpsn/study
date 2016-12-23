@@ -1,6 +1,5 @@
 // es6_004.js
 
-//exports
 class Human { // 方式1: export直接导出成共有，供外部文件访问
     constructor(name) { // 相当于构造函数
         this.name = name;
@@ -20,10 +19,10 @@ function eating() {
 }
 
 // 方式2: export直接导出成共有，供外部文件访问
-// export {
-//     runing,
-//     eating
-// };
+export {
+     runing,
+     eating
+ };
 
 runing();
 eating();
