@@ -133,7 +133,7 @@ user -> unix1
 
 ** uuid
 #+BEGIN_EXAMPLE
-uuid是唯一，做主键是否优于自增的id呢？h
+uuid是唯一，做主键是否优于自增的id呢？
 可以数据的保证独立性，不仅表独立，库中也是独立
 #+END_EXAMPLE
 ** json/jsonb

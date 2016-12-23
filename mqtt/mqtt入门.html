@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-22 周四 10:11 -->
+<!-- 2016-12-22 周四 18:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MQTT入门</title>
@@ -233,31 +233,31 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4da80b4">1. MQTT协议概览</a>
+<li><a href="#orgc3b106b">1. MQTT协议概览</a>
 <ul>
-<li><a href="#orge2e0e22">1.1. 关键词解释</a></li>
-<li><a href="#org7d2de90">1.2. MQTT协议主要特性</a></li>
+<li><a href="#orgc6ec2d4">1.1. 关键词解释</a></li>
+<li><a href="#orgd5965b9">1.2. MQTT协议主要特性</a></li>
 </ul>
 </li>
-<li><a href="#org2411fd2">2. mqtt协议详解</a>
+<li><a href="#org6b63770">2. mqtt协议详解</a>
 <ul>
-<li><a href="#org93e9efe">2.1. Topic(主题)</a></li>
-<li><a href="#orgb8ea93f">2.2. 协议格式</a></li>
-<li><a href="#org9e3d865">2.3. 固定头部</a></li>
-<li><a href="#org7f08c24">2.4. 可变头部</a></li>
-<li><a href="#orgd5decb9">2.5. 有效负载</a></li>
+<li><a href="#orgc37a1b7">2.1. Topic(主题)</a></li>
+<li><a href="#org72a0b55">2.2. 协议格式</a></li>
+<li><a href="#org8a27b53">2.3. 固定头部</a></li>
+<li><a href="#orgcab5144">2.4. 可变头部</a></li>
+<li><a href="#org589c5a2">2.5. 有效负载</a></li>
 </ul>
 </li>
-<li><a href="#orgd6f6afd">3. emqttd集群</a></li>
+<li><a href="#orgc12d3c8">3. emqttd集群</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4da80b4" class="outline-2">
-<h2 id="org4da80b4"><span class="section-number-2">1</span> MQTT协议概览</h2>
+<div id="outline-container-orgc3b106b" class="outline-2">
+<h2 id="orgc3b106b"><span class="section-number-2">1</span> MQTT协议概览</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orge2e0e22" class="outline-3">
-<h3 id="orge2e0e22"><span class="section-number-3">1.1</span> 关键词解释</h3>
+</div><div id="outline-container-orgc6ec2d4" class="outline-3">
+<h3 id="orgc6ec2d4"><span class="section-number-3">1.1</span> 关键词解释</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>MQTT</li>
@@ -318,8 +318,8 @@ QoS Level(服务质量级别)，三种模式
 </div>
 </div>
 
-<div id="outline-container-org7d2de90" class="outline-3">
-<h3 id="org7d2de90"><span class="section-number-3">1.2</span> MQTT协议主要特性</h3>
+<div id="outline-container-orgd5965b9" class="outline-3">
+<h3 id="orgd5965b9"><span class="section-number-3">1.2</span> MQTT协议主要特性</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>使用发布消息/订阅消息模式，提供了一个发布者可以有多个订阅者的一对多的模式</li>
@@ -335,11 +335,11 @@ QoS Level(服务质量级别)，三种模式
 </div>
 
 
-<div id="outline-container-org2411fd2" class="outline-2">
-<h2 id="org2411fd2"><span class="section-number-2">2</span> mqtt协议详解</h2>
+<div id="outline-container-org6b63770" class="outline-2">
+<h2 id="org6b63770"><span class="section-number-2">2</span> mqtt协议详解</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org93e9efe" class="outline-3">
-<h3 id="org93e9efe"><span class="section-number-3">2.1</span> Topic(主题)</h3>
+</div><div id="outline-container-orgc37a1b7" class="outline-3">
+<h3 id="orgc37a1b7"><span class="section-number-3">2.1</span> Topic(主题)</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>作用</li>
@@ -383,8 +383,8 @@ mosquitto_pub -h 192.168.161.128 -t music/香港/男/周杰伦/a -m "龙卷风" 
 </pre>
 </div>
 </div>
-<div id="outline-container-orgb8ea93f" class="outline-3">
-<h3 id="orgb8ea93f"><span class="section-number-3">2.2</span> 协议格式</h3>
+<div id="outline-container-org72a0b55" class="outline-3">
+<h3 id="org72a0b55"><span class="section-number-3">2.2</span> 协议格式</h3>
 <div class="outline-text-3" id="text-2-2">
 <pre class="example">
 MQTT命令消息一般组成结构：
@@ -400,8 +400,8 @@ MQTT命令消息一般组成结构：
 </div>
 </div>
 
-<div id="outline-container-org9e3d865" class="outline-3">
-<h3 id="org9e3d865"><span class="section-number-3">2.3</span> 固定头部</h3>
+<div id="outline-container-org8a27b53" class="outline-3">
+<h3 id="org8a27b53"><span class="section-number-3">2.3</span> 固定头部</h3>
 <div class="outline-text-3" id="text-2-3">
 
 <div class="figure">
@@ -444,12 +444,12 @@ Byte 2：
 </div>
 </div>
 
-<div id="outline-container-org7f08c24" class="outline-3">
-<h3 id="org7f08c24"><span class="section-number-3">2.4</span> 可变头部</h3>
+<div id="outline-container-orgcab5144" class="outline-3">
+<h3 id="orgcab5144"><span class="section-number-3">2.4</span> 可变头部</h3>
 </div>
 
-<div id="outline-container-orgd5decb9" class="outline-3">
-<h3 id="orgd5decb9"><span class="section-number-3">2.5</span> 有效负载</h3>
+<div id="outline-container-org589c5a2" class="outline-3">
+<h3 id="org589c5a2"><span class="section-number-3">2.5</span> 有效负载</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li>CONNECT</li>
@@ -462,8 +462,8 @@ Byte 2：
 </div>
 
 
-<div id="outline-container-orgd6f6afd" class="outline-2">
-<h2 id="orgd6f6afd"><span class="section-number-2">3</span> emqttd集群</h2>
+<div id="outline-container-orgc12d3c8" class="outline-2">
+<h2 id="orgc12d3c8"><span class="section-number-2">3</span> emqttd集群</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>集群环境搭建</li>
@@ -550,7 +550,7 @@ http://192.168.161.129:18083/
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-22 周四 10:11</p>
+<p class="date">Created: 2016-12-22 周四 18:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
