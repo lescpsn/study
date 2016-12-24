@@ -1,6 +1,41 @@
 #+TITLE: emacs-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+* emacs安装
+** windows
++ 下载安装包
+#+BEGIN_EXAMPLE
+gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使用
+#+END_EXAMPLE
+
++ 配置PATH环境变量
+#+BEGIN_EXAMPLE
+如：将emacs安装目录的bin目录C:\Local\Program Files\emacs\bin添加到PATH环境变量中
+#+END_EXAMPLE
+
++ emacs默认信息
+#+BEGIN_EXAMPLE
+家目录HOME：C:\Users\用户名\AppData\Roaming\
+
+启动加载配置目录：%HOME%\.emacs.d
+
+启动加载配置文件：%HOME%\.emacs
+
+.emacs.d目录和.emacs文件两选一，.emacs文件为老式的启动方式，目前兼容，不利于插件包的管理
+
+比较优秀的方式是采用.emacs.d目录控制emacs插件包
+#+END_EXAMPLE
+
+
+** linux
+
+
 * org-mode
 + 文档标题
 #+BEGIN_EXAMPLE

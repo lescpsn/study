@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-24 周六 14:22 -->
+<!-- 2016-12-24 周六 15:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs-study历程</title>
@@ -233,21 +233,79 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc589fc5">1. org-mode</a></li>
-<li><a href="#orgb423065">2. tramp</a></li>
-<li><a href="#org82be589">3. issue</a>
+<li><a href="#org998dc79">1. emacs安装</a>
 <ul>
-<li><a href="#orga1ea05f">3.1. windows</a></li>
-<li><a href="#org8d91a48">3.2. linux</a></li>
+<li><a href="#org804b406">1.1. windows</a></li>
+<li><a href="#orga861d3c">1.2. linux</a></li>
+</ul>
+</li>
+<li><a href="#org65e7fe4">2. org-mode</a></li>
+<li><a href="#org9fbb2db">3. tramp</a></li>
+<li><a href="#org76d8e53">4. issue</a>
+<ul>
+<li><a href="#org8dc63bb">4.1. windows</a></li>
+<li><a href="#org2af2c79">4.2. linux</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc589fc5" class="outline-2">
-<h2 id="orgc589fc5"><span class="section-number-2">1</span> org-mode</h2>
+<div id="outline-container-org998dc79" class="outline-2">
+<h2 id="org998dc79"><span class="section-number-2">1</span> emacs安装</h2>
 <div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org804b406" class="outline-3">
+<h3 id="org804b406"><span class="section-number-3">1.1</span> windows</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>下载安装包</li>
+</ul>
+<pre class="example">
+gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
+</pre>
+
+<ul class="org-ul">
+<li>安装</li>
+</ul>
+<pre class="example">
+emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使用
+</pre>
+
+<ul class="org-ul">
+<li>配置PATH环境变量</li>
+</ul>
+<pre class="example">
+如：将emacs安装目录的bin目录C:\Local\Program Files\emacs\bin添加到PATH环境变量中
+</pre>
+
+<ul class="org-ul">
+<li>emacs默认信息</li>
+</ul>
+<pre class="example">
+家目录HOME：C:\Users\用户名\AppData\Roaming\
+
+启动加载配置目录：%HOME%\.emacs.d
+
+启动加载配置文件：%HOME%\.emacs
+
+.emacs.d目录和.emacs文件两选一，.emacs文件为老式的启动方式，目前兼容，不利于插件包的管理
+
+比较优秀的方式是采用.emacs.d目录控制emacs插件包
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orga861d3c" class="outline-3">
+<h3 id="orga861d3c"><span class="section-number-3">1.2</span> linux</h3>
+</div>
+</div>
+
+
+<div id="outline-container-org65e7fe4" class="outline-2">
+<h2 id="org65e7fe4"><span class="section-number-2">2</span> org-mode</h2>
+<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>文档标题</li>
 </ul>
@@ -266,9 +324,9 @@ for the JavaScript code in this tag.
 
 
 
-<div id="outline-container-orgb423065" class="outline-2">
-<h2 id="orgb423065"><span class="section-number-2">2</span> tramp</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org9fbb2db" class="outline-2">
+<h2 id="org9fbb2db"><span class="section-number-2">3</span> tramp</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>tramp简介</li>
 </ul>
@@ -311,12 +369,12 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 </div>
 
-<div id="outline-container-org82be589" class="outline-2">
-<h2 id="org82be589"><span class="section-number-2">3</span> issue</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orga1ea05f" class="outline-3">
-<h3 id="orga1ea05f"><span class="section-number-3">3.1</span> windows</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-org76d8e53" class="outline-2">
+<h2 id="org76d8e53"><span class="section-number-2">4</span> issue</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org8dc63bb" class="outline-3">
+<h3 id="org8dc63bb"><span class="section-number-3">4.1</span> windows</h3>
+<div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>Error: (file-error “Searching for program” “no such file or directory” “diff”)</li>
 </ul>
@@ -328,13 +386,13 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 </div>
 
-<div id="outline-container-org8d91a48" class="outline-3">
-<h3 id="org8d91a48"><span class="section-number-3">3.2</span> linux</h3>
+<div id="outline-container-org2af2c79" class="outline-3">
+<h3 id="org2af2c79"><span class="section-number-3">4.2</span> linux</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-24 周六 14:22</p>
+<p class="date">Created: 2016-12-24 周六 15:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

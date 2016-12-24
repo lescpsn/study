@@ -1,8 +1,0 @@
-1 配置终端显示颜色
-bash shell:
-vim ~/.bashrc
-export TERM=xterm-256color
-
-fish shell:
-vim ~/.config/fish/config.fish (若没有，直接创建该文件)
-set -x TERM xterm-256color
