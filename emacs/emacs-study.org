@@ -6,6 +6,7 @@
 + 下载安装包
 #+BEGIN_EXAMPLE
 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+
 http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
 #+END_EXAMPLE
 
@@ -36,6 +37,65 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 ** linux
 
 
+* spacemacs安装
+** windows
++ 安装spacemacs
+#+BEGIN_EXAMPLE
+直接从git上下载代码到用户的家目录中，并取名为.emacs.d，
+
+windows的家目录一般为C:\Users\用户名\AppData\Roaming\
+
+git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roaming\.emacs.d
+
+
+#+END_EXAMPLE
+
++ 启动emacs
+#+BEGIN_EXAMPLE
+如果之前运行过emacs，且windows的家目录下有.emacs文件，请删除掉
+
+spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
+
+1 选择emacs模式
+
+2 选择standard(spacemacs)
+
+3 选择full-featured(helm)
+
+4 第一次启动后，然后关闭emacs
+
+5 HOME目录下会自动生成C:\Users\carhj\AppData\Roaming\.spacemacs这个文件
+#+END_EXAMPLE
+
++ .spacemacs文件配置
+#+BEGIN_EXAMPLE
+用现有的模板文件.spacemacs覆盖掉HOME目录下的.spacemacs,也可以自己慢慢维护.spacemacs文件
+#+END_EXAMPLE
++ 相关工具的安装
+
+#+BEGIN_EXAMPLE
+1. 安装 source code font 字体
+   https://github.com/adobe-fonts/source-code-pro/downloads 下载 source code font 字体
+   TTF下所有文件拷贝到c:/windows/font
+
+2. 安装 zlib
+   http://gnuwin32.sourceforge.net/packages/zlib.htm 下载windows版本的zlib
+   安装zlib，一路回车法，将安装后的bin添加到PATH环境变量中去
+
+3. 安装 aspell
+   http://aspell.net/win32/ 下载Aspell-0-50-3-3-Setup.exe，Aspell-en-0.50-2-3.exe两个软件
+   先安装Aspell-0-50-3-3-Setup.exe，再安装Aspell-en-0.50-2-3.exe（属于字典库）
+   安装后的bin添加到PATH环境变量中去
+
+4. 安装 diff
+   https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/ 
+   下载KDiff3-64bit-Setup_0.9.98-2.exe
+   一路回车法安装diff
+   安装后的bin添加到PATH环境变量中去
+#+END_EXAMPLE
+
+
+** linux
 * org-mode
 + 文档标题
 #+BEGIN_EXAMPLE
@@ -80,6 +140,7 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 首次要在windows的cmd行下，运用plink访问一次目标主机，否则因为没有添加公钥会一直卡死
 #+END_EXAMPLE
 
+
 * issue
 ** windows
 + Error: (file-error “Searching for program” “no such file or directory” “diff”)
@@ -87,6 +148,18 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 需要安装diff工具
 下载https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
 安装KDiff3-64bit-Setup_0.9.98-2.exe，并将配置到环境变量中去
+#+END_EXAMPLE
+
+
++ The directory ~/.emacs.d/server is unsafe
+#+BEGIN_EXAMPLE
+~/.emacs.d/server 目录属主修改为当前用户
+右键 --> 属性 --> 安全 --> 高级 -->修改所有者
+#+END_EXAMPLE
+
++ javascript格式化代码
+#+BEGIN_EXAMPLE
+npm -g install js-beautify
 #+END_EXAMPLE
 
 ** linux

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-24 周六 15:41 -->
+<!-- 2016-12-24 周六 16:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs-study历程</title>
@@ -233,35 +233,42 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org998dc79">1. emacs安装</a>
+<li><a href="#org7480464">1. emacs安装</a>
 <ul>
-<li><a href="#org804b406">1.1. windows</a></li>
-<li><a href="#orga861d3c">1.2. linux</a></li>
+<li><a href="#orge280b35">1.1. windows</a></li>
+<li><a href="#org94613fe">1.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#org65e7fe4">2. org-mode</a></li>
-<li><a href="#org9fbb2db">3. tramp</a></li>
-<li><a href="#org76d8e53">4. issue</a>
+<li><a href="#orgef1d202">2. spacemacs安装</a>
 <ul>
-<li><a href="#org8dc63bb">4.1. windows</a></li>
-<li><a href="#org2af2c79">4.2. linux</a></li>
+<li><a href="#org50639e2">2.1. windows</a></li>
+<li><a href="#orgb45189d">2.2. linux</a></li>
+</ul>
+</li>
+<li><a href="#orga0db03c">3. org-mode</a></li>
+<li><a href="#org1f5c199">4. tramp</a></li>
+<li><a href="#orgde2567e">5. issue</a>
+<ul>
+<li><a href="#org24d02ed">5.1. windows</a></li>
+<li><a href="#orgd137e51">5.2. linux</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org998dc79" class="outline-2">
-<h2 id="org998dc79"><span class="section-number-2">1</span> emacs安装</h2>
+<div id="outline-container-org7480464" class="outline-2">
+<h2 id="org7480464"><span class="section-number-2">1</span> emacs安装</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org804b406" class="outline-3">
-<h3 id="org804b406"><span class="section-number-3">1.1</span> windows</h3>
+</div><div id="outline-container-orge280b35" class="outline-3">
+<h3 id="orge280b35"><span class="section-number-3">1.1</span> windows</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>下载安装包</li>
 </ul>
 <pre class="example">
 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+
 http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
 </pre>
 
@@ -297,15 +304,89 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 </div>
 
 
-<div id="outline-container-orga861d3c" class="outline-3">
-<h3 id="orga861d3c"><span class="section-number-3">1.2</span> linux</h3>
+<div id="outline-container-org94613fe" class="outline-3">
+<h3 id="org94613fe"><span class="section-number-3">1.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org65e7fe4" class="outline-2">
-<h2 id="org65e7fe4"><span class="section-number-2">2</span> org-mode</h2>
+<div id="outline-container-orgef1d202" class="outline-2">
+<h2 id="orgef1d202"><span class="section-number-2">2</span> spacemacs安装</h2>
 <div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org50639e2" class="outline-3">
+<h3 id="org50639e2"><span class="section-number-3">2.1</span> windows</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>安装spacemacs</li>
+</ul>
+<pre class="example">
+直接从git上下载代码到用户的家目录中，并取名为.emacs.d，
+
+windows的家目录一般为C:\Users\用户名\AppData\Roaming\
+
+git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roaming\.emacs.d
+</pre>
+
+<ul class="org-ul">
+<li>启动emacs</li>
+</ul>
+<pre class="example">
+如果之前运行过emacs，且windows的家目录下有.emacs文件，请删除掉
+
+spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
+
+1 选择emacs模式
+
+2 选择standard(spacemacs)
+
+3 选择full-featured(helm)
+
+4 第一次启动后，然后关闭emacs
+
+5 HOME目录下会自动生成C:\Users\carhj\AppData\Roaming\.spacemacs这个文件
+</pre>
+
+<ul class="org-ul">
+<li>.spacemacs文件配置</li>
+</ul>
+<pre class="example">
+用现有的模板文件.spacemacs覆盖掉HOME目录下的.spacemacs,也可以自己慢慢维护.spacemacs文件
+</pre>
+<ul class="org-ul">
+<li>相关工具的安装</li>
+</ul>
+
+<pre class="example">
+1. 安装 source code font 字体
+   https://github.com/adobe-fonts/source-code-pro/downloads 下载 source code font 字体
+   TTF下所有文件拷贝到c:/windows/font
+
+2. 安装 zlib
+   http://gnuwin32.sourceforge.net/packages/zlib.htm 下载windows版本的zlib
+   安装zlib，一路回车法，将安装后的bin添加到PATH环境变量中去
+
+3. 安装 aspell
+   http://aspell.net/win32/ 下载Aspell-0-50-3-3-Setup.exe，Aspell-en-0.50-2-3.exe两个软件
+   先安装Aspell-0-50-3-3-Setup.exe，再安装Aspell-en-0.50-2-3.exe（属于字典库）
+   安装后的bin添加到PATH环境变量中去
+
+4. 安装 diff
+   https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/ 
+   下载KDiff3-64bit-Setup_0.9.98-2.exe
+   一路回车法安装diff
+   安装后的bin添加到PATH环境变量中去
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgb45189d" class="outline-3">
+<h3 id="orgb45189d"><span class="section-number-3">2.2</span> linux</h3>
+</div>
+</div>
+<div id="outline-container-orga0db03c" class="outline-2">
+<h2 id="orga0db03c"><span class="section-number-2">3</span> org-mode</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>文档标题</li>
 </ul>
@@ -324,9 +405,9 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 
 
 
-<div id="outline-container-org9fbb2db" class="outline-2">
-<h2 id="org9fbb2db"><span class="section-number-2">3</span> tramp</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org1f5c199" class="outline-2">
+<h2 id="org1f5c199"><span class="section-number-2">4</span> tramp</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>tramp简介</li>
 </ul>
@@ -369,12 +450,13 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 </div>
 
-<div id="outline-container-org76d8e53" class="outline-2">
-<h2 id="org76d8e53"><span class="section-number-2">4</span> issue</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org8dc63bb" class="outline-3">
-<h3 id="org8dc63bb"><span class="section-number-3">4.1</span> windows</h3>
-<div class="outline-text-3" id="text-4-1">
+
+<div id="outline-container-orgde2567e" class="outline-2">
+<h2 id="orgde2567e"><span class="section-number-2">5</span> issue</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org24d02ed" class="outline-3">
+<h3 id="org24d02ed"><span class="section-number-3">5.1</span> windows</h3>
+<div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>Error: (file-error “Searching for program” “no such file or directory” “diff”)</li>
 </ul>
@@ -383,16 +465,32 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 下载https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
 安装KDiff3-64bit-Setup_0.9.98-2.exe，并将配置到环境变量中去
 </pre>
+
+
+<ul class="org-ul">
+<li>The directory ~/.emacs.d/server is unsafe</li>
+</ul>
+<pre class="example">
+~/.emacs.d/server 目录属主修改为当前用户
+右键 --&gt; 属性 --&gt; 安全 --&gt; 高级 --&gt;修改所有者
+</pre>
+
+<ul class="org-ul">
+<li>javascript格式化代码</li>
+</ul>
+<pre class="example">
+npm -g install js-beautify
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org2af2c79" class="outline-3">
-<h3 id="org2af2c79"><span class="section-number-3">4.2</span> linux</h3>
+<div id="outline-container-orgd137e51" class="outline-3">
+<h3 id="orgd137e51"><span class="section-number-3">5.2</span> linux</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-24 周六 15:41</p>
+<p class="date">Created: 2016-12-24 周六 16:13</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
