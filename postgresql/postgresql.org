@@ -1,4 +1,4 @@
-#+TITLE:  Postgresql入门
+#+TITLE:  POSTGRESQL入门
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
 * postgresql安装
@@ -175,7 +175,7 @@ file_fdw(csv,txt文件)，做日志分析，统计，有点像spark的sql
 ** HA相关名词解释
 + HA
 #+BEGIN_EXAMPLE
-HA: High Available，高可用性
+HA: High Available，高可用性，提供不间断服务
 #+END_EXAMPLE
 
 + Hot Standby
@@ -236,7 +236,7 @@ pg_pool连接接口,管理主从的切换
 master: 192.168.1.128  Read & Write
 slave:  192.168.1.129  Read Only
                                 ----->192.168.1.128:5432 (master)
-pg_pool 192.168.1.136:9999  ---|
+pg_pool 192.168.1.138:9999  ---|
                                 ----->192.168.1.129:5432 (slave)
 master坏了了，pg_pool让slave升级成master(Read & Write)
 

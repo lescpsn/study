@@ -84,6 +84,7 @@ Topic(主题)就是Puber(发布者)和Suber(订阅者)之间的桥梁，Suber(�
 实例演示
 #+BEGIN_EXAMPLE
 # 启动192.168.161.128服务器的mqtt服务 注意如果集群都要起来
+cd ~/local
 ./bin/emqttd start
 
 #192.168.161.129客户端发起订阅了music/香港/男/+这个主题的消息
@@ -193,7 +194,6 @@ Byte 2：
 
 #+BEGIN_EXAMPLE
 订阅主题集群图
-
 
 topic1              topic1,topic3
 ---------         ---------

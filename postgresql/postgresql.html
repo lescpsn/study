@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-22 周四 18:21 -->
+<!-- 2016-12-23 周五 15:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Postgresql入门</title>
+<title>POSTGRESQL入门</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -228,36 +228,36 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Postgresql入门</h1>
+<h1 class="title">POSTGRESQL入门</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd5525af">1. postgresql安装</a></li>
-<li><a href="#org32a5a73">2. 初始化设置</a></li>
-<li><a href="#org0fb6cfe">3. 常用数据库操作</a></li>
-<li><a href="#org6f04a0d">4. Postgresql特性</a>
+<li><a href="#org4dd7b32">1. postgresql安装</a></li>
+<li><a href="#orgb324647">2. 初始化设置</a></li>
+<li><a href="#orge49100f">3. 常用数据库操作</a></li>
+<li><a href="#org1587600">4. Postgresql特性</a>
 <ul>
-<li><a href="#org6204d8f">4.1. 数据库认证模式</a></li>
-<li><a href="#org78dee55">4.2. uuid</a></li>
-<li><a href="#org62336e9">4.3. json/jsonb</a></li>
-<li><a href="#org1ebcd44">4.4. 数组</a></li>
-<li><a href="#org8bcbbd6">4.5. 几何类型</a></li>
-<li><a href="#org6e28e07">4.6. fdw</a></li>
+<li><a href="#org4495113">4.1. 数据库认证模式</a></li>
+<li><a href="#org0e79502">4.2. uuid</a></li>
+<li><a href="#orgd4a04f5">4.3. json/jsonb</a></li>
+<li><a href="#org586de08">4.4. 数组</a></li>
+<li><a href="#org2aac13d">4.5. 几何类型</a></li>
+<li><a href="#orgd76337d">4.6. fdw</a></li>
 </ul>
 </li>
-<li><a href="#orgef17a0e">5. postgresql高可用性HA(High Available)</a>
+<li><a href="#org81d2df2">5. postgresql高可用性HA(High Available)</a>
 <ul>
-<li><a href="#org85ff3c2">5.1. HA相关名词解释</a></li>
-<li><a href="#org863b84d">5.2. HA相关软件</a></li>
-<li><a href="#orgcfd2b0a">5.3. 双机</a></li>
-<li><a href="#orgd9105d4">5.4. 集群</a>
+<li><a href="#org4220d6e">5.1. HA相关名词解释</a></li>
+<li><a href="#org829601d">5.2. HA相关软件</a></li>
+<li><a href="#orgee3aabc">5.3. 双机</a></li>
+<li><a href="#org9ec32fe">5.4. 集群</a>
 <ul>
-<li><a href="#orgcb6af7a">5.4.1. 组网规划</a></li>
-<li><a href="#org048a3fb">5.4.2. 主机名配置</a></li>
-<li><a href="#org4fdfa8c">5.4.3. postgresql部署</a></li>
-<li><a href="#orge50cad5">5.4.4. pg-poolII的部署</a></li>
-<li><a href="#orga238fd7">5.4.5. 验证结果</a></li>
+<li><a href="#org984cfc4">5.4.1. 组网规划</a></li>
+<li><a href="#org3f949bb">5.4.2. 主机名配置</a></li>
+<li><a href="#org597ac36">5.4.3. postgresql部署</a></li>
+<li><a href="#org1802460">5.4.4. pg-poolII的部署</a></li>
+<li><a href="#orga85b90a">5.4.5. 验证结果</a></li>
 </ul>
 </li>
 </ul>
@@ -266,8 +266,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd5525af" class="outline-2">
-<h2 id="orgd5525af"><span class="section-number-2">1</span> postgresql安装</h2>
+<div id="outline-container-org4dd7b32" class="outline-2">
+<h2 id="org4dd7b32"><span class="section-number-2">1</span> postgresql安装</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>网络方式安装</li>
@@ -303,8 +303,8 @@ postgresql数据库中自动创建了一个最高权限的postgres数据库用�
 </div>
 
 
-<div id="outline-container-org32a5a73" class="outline-2">
-<h2 id="org32a5a73"><span class="section-number-2">2</span> 初始化设置</h2>
+<div id="outline-container-orgb324647" class="outline-2">
+<h2 id="orgb324647"><span class="section-number-2">2</span> 初始化设置</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>创建数据库访问用户和数据库</li>
@@ -337,8 +337,8 @@ host    replication     all             0.0.0.0/0                 md5
 </div>
 
 
-<div id="outline-container-org0fb6cfe" class="outline-2">
-<h2 id="org0fb6cfe"><span class="section-number-2">3</span> 常用数据库操作</h2>
+<div id="outline-container-orge49100f" class="outline-2">
+<h2 id="orge49100f"><span class="section-number-2">3</span> 常用数据库操作</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>连接命令</li>
@@ -423,11 +423,11 @@ SELECT * FROM tablename;
 </div>
 
 
-<div id="outline-container-org6f04a0d" class="outline-2">
-<h2 id="org6f04a0d"><span class="section-number-2">4</span> Postgresql特性</h2>
+<div id="outline-container-org1587600" class="outline-2">
+<h2 id="org1587600"><span class="section-number-2">4</span> Postgresql特性</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-org6204d8f" class="outline-3">
-<h3 id="org6204d8f"><span class="section-number-3">4.1</span> 数据库认证模式</h3>
+</div><div id="outline-container-org4495113" class="outline-3">
+<h3 id="org4495113"><span class="section-number-3">4.1</span> 数据库认证模式</h3>
 <div class="outline-text-3" id="text-4-1">
 <pre class="example">
 # METHOD can be "trust", "reject", "md5", "password", "gss", "sspi",
@@ -443,8 +443,8 @@ user -&gt; unix1
 </div>
 </div>
 
-<div id="outline-container-org78dee55" class="outline-3">
-<h3 id="org78dee55"><span class="section-number-3">4.2</span> uuid</h3>
+<div id="outline-container-org0e79502" class="outline-3">
+<h3 id="org0e79502"><span class="section-number-3">4.2</span> uuid</h3>
 <div class="outline-text-3" id="text-4-2">
 <pre class="example">
 uuid是唯一，做主键是否优于自增的id呢？
@@ -452,8 +452,8 @@ uuid是唯一，做主键是否优于自增的id呢？
 </pre>
 </div>
 </div>
-<div id="outline-container-org62336e9" class="outline-3">
-<h3 id="org62336e9"><span class="section-number-3">4.3</span> json/jsonb</h3>
+<div id="outline-container-orgd4a04f5" class="outline-3">
+<h3 id="orgd4a04f5"><span class="section-number-3">4.3</span> json/jsonb</h3>
 <div class="outline-text-3" id="text-4-3">
 <pre class="example">
 json插入的速度快，jsonb需要转换
@@ -462,8 +462,8 @@ json插入的速度快，jsonb需要转换
 </div>
 </div>
 
-<div id="outline-container-org1ebcd44" class="outline-3">
-<h3 id="org1ebcd44"><span class="section-number-3">4.4</span> 数组</h3>
+<div id="outline-container-org586de08" class="outline-3">
+<h3 id="org586de08"><span class="section-number-3">4.4</span> 数组</h3>
 <div class="outline-text-3" id="text-4-4">
 <pre class="example">
 create table arry_table(id serial primary key, teacher varchar[]);
@@ -472,8 +472,8 @@ insert into arry_table(teacher) values ('{"Mr Wang","Mrs Li"}');
 </div>
 </div>
 
-<div id="outline-container-org8bcbbd6" class="outline-3">
-<h3 id="org8bcbbd6"><span class="section-number-3">4.5</span> 几何类型</h3>
+<div id="outline-container-org2aac13d" class="outline-3">
+<h3 id="org2aac13d"><span class="section-number-3">4.5</span> 几何类型</h3>
 <div class="outline-text-3" id="text-4-5">
 <pre class="example">
 地图坐标相关
@@ -481,8 +481,8 @@ insert into arry_table(teacher) values ('{"Mr Wang","Mrs Li"}');
 </div>
 </div>
 
-<div id="outline-container-org6e28e07" class="outline-3">
-<h3 id="org6e28e07"><span class="section-number-3">4.6</span> fdw</h3>
+<div id="outline-container-orgd76337d" class="outline-3">
+<h3 id="orgd76337d"><span class="section-number-3">4.6</span> fdw</h3>
 <div class="outline-text-3" id="text-4-6">
 <pre class="example">
 foreign data wrapper 可以操作外部数据
@@ -504,17 +504,17 @@ file_fdw(csv,txt文件)，做日志分析，统计，有点像spark的sql
 </div>
 
 
-<div id="outline-container-orgef17a0e" class="outline-2">
-<h2 id="orgef17a0e"><span class="section-number-2">5</span> postgresql高可用性HA(High Available)</h2>
+<div id="outline-container-org81d2df2" class="outline-2">
+<h2 id="org81d2df2"><span class="section-number-2">5</span> postgresql高可用性HA(High Available)</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org85ff3c2" class="outline-3">
-<h3 id="org85ff3c2"><span class="section-number-3">5.1</span> HA相关名词解释</h3>
+</div><div id="outline-container-org4220d6e" class="outline-3">
+<h3 id="org4220d6e"><span class="section-number-3">5.1</span> HA相关名词解释</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>HA</li>
 </ul>
 <pre class="example">
-HA: High Available，高可用性
+HA: High Available，高可用性，提供不间断服务
 </pre>
 
 <ul class="org-ul">
@@ -549,8 +549,8 @@ VIP(Float IP)：Virtual IP Addres，虚拟ip，通常也俗称浮动IP
 </pre>
 </div>
 </div>
-<div id="outline-container-org863b84d" class="outline-3">
-<h3 id="org863b84d"><span class="section-number-3">5.2</span> HA相关软件</h3>
+<div id="outline-container-org829601d" class="outline-3">
+<h3 id="org829601d"><span class="section-number-3">5.2</span> HA相关软件</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>Heartbeat/KeepAlived</li>
@@ -576,8 +576,8 @@ pg连接池管理
 </div>
 </div>
 
-<div id="outline-container-orgcfd2b0a" class="outline-3">
-<h3 id="orgcfd2b0a"><span class="section-number-3">5.3</span> 双机</h3>
+<div id="outline-container-orgee3aabc" class="outline-3">
+<h3 id="orgee3aabc"><span class="section-number-3">5.3</span> 双机</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li>pg原生流复制</li>
@@ -606,7 +606,7 @@ pg_pool连接接口,管理主从的切换
 master: 192.168.1.128  Read &amp; Write
 slave:  192.168.1.129  Read Only
                                 -----&gt;192.168.1.128:5432 (master)
-pg_pool 192.168.1.136:9999  ---|
+pg_pool 192.168.1.138:9999  ---|
                                 -----&gt;192.168.1.129:5432 (slave)
 master坏了了，pg_pool让slave升级成master(Read &amp; Write)
 
@@ -672,8 +672,8 @@ pg-pool slave  启动pg-pool
 </div>
 
 
-<div id="outline-container-orgd9105d4" class="outline-3">
-<h3 id="orgd9105d4"><span class="section-number-3">5.4</span> 集群</h3>
+<div id="outline-container-org9ec32fe" class="outline-3">
+<h3 id="org9ec32fe"><span class="section-number-3">5.4</span> 集群</h3>
 <div class="outline-text-3" id="text-5-4">
 <pre class="example">
 集群实现负载均衡，每台机器都可以读写
@@ -688,8 +688,8 @@ pg-pool slave  启动pg-pool
 </p>
 </div>
 </div>
-<div id="outline-container-orgcb6af7a" class="outline-4">
-<h4 id="orgcb6af7a"><span class="section-number-4">5.4.1</span> 组网规划</h4>
+<div id="outline-container-org984cfc4" class="outline-4">
+<h4 id="org984cfc4"><span class="section-number-4">5.4.1</span> 组网规划</h4>
 <div class="outline-text-4" id="text-5-4-1">
 <pre class="example">
 vip：192.168.161.138 
@@ -701,8 +701,8 @@ vip：192.168.161.138
 </div>
 </div>
 
-<div id="outline-container-org048a3fb" class="outline-4">
-<h4 id="org048a3fb"><span class="section-number-4">5.4.2</span> 主机名配置</h4>
+<div id="outline-container-org3f949bb" class="outline-4">
+<h4 id="org3f949bb"><span class="section-number-4">5.4.2</span> 主机名配置</h4>
 <div class="outline-text-4" id="text-5-4-2">
 <ul class="org-ul">
 <li>192.168.161.128主机</li>
@@ -753,8 +753,8 @@ vim /etc/hosts
 </div>
 </div>
 
-<div id="outline-container-org4fdfa8c" class="outline-4">
-<h4 id="org4fdfa8c"><span class="section-number-4">5.4.3</span> postgresql部署</h4>
+<div id="outline-container-org597ac36" class="outline-4">
+<h4 id="org597ac36"><span class="section-number-4">5.4.3</span> postgresql部署</h4>
 <div class="outline-text-4" id="text-5-4-3">
 <pre class="example">
 每一个数据库主机节点(192.168.161.128,192.168.161.129,192.168.161.130)上都要部署
@@ -782,8 +782,8 @@ sudo apt-get install postgresql
 </div>
 </div>
 
-<div id="outline-container-orge50cad5" class="outline-4">
-<h4 id="orge50cad5"><span class="section-number-4">5.4.4</span> pg-poolII的部署</h4>
+<div id="outline-container-org1802460" class="outline-4">
+<h4 id="org1802460"><span class="section-number-4">5.4.4</span> pg-poolII的部署</h4>
 <div class="outline-text-4" id="text-5-4-4">
 <pre class="example">
 pg-poolII的主备节点(192.168.161.128,192.168.161.129)上都要部署
@@ -912,8 +912,8 @@ vim pgpool.conf
 </div>
 </div>
 
-<div id="outline-container-orga238fd7" class="outline-4">
-<h4 id="orga238fd7"><span class="section-number-4">5.4.5</span> 验证结果</h4>
+<div id="outline-container-orga85b90a" class="outline-4">
+<h4 id="orga85b90a"><span class="section-number-4">5.4.5</span> 验证结果</h4>
 <div class="outline-text-4" id="text-5-4-5">
 <ul class="org-ul">
 <li>启动pg-pool2</li>
@@ -987,7 +987,7 @@ pgpool上执行,无需重启pg-pool
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-22 周四 18:21</p>
+<p class="date">Created: 2016-12-23 周五 15:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
