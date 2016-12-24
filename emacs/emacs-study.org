@@ -33,6 +33,14 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 比较优秀的方式是采用.emacs.d目录控制emacs插件包
 #+END_EXAMPLE
 
++ emacs启动
+#+BEGIN_EXAMPLE
+runemacs.exe启动emacs
+#+END_EXAMPLE
+
+
+
+
 
 ** linux
 
@@ -43,6 +51,8 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 #+BEGIN_EXAMPLE
 直接从git上下载代码到用户的家目录中，并取名为.emacs.d，
 
+如果之前运行过emacs，且windows的家目录下有.emacs文件和.emacs.d目录，请删除掉
+
 windows的家目录一般为C:\Users\用户名\AppData\Roaming\
 
 git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roaming\.emacs.d
@@ -52,7 +62,7 @@ git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roami
 
 + 启动emacs
 #+BEGIN_EXAMPLE
-如果之前运行过emacs，且windows的家目录下有.emacs文件，请删除掉
+
 
 spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 
@@ -96,6 +106,8 @@ spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 
 
 ** linux
+
+
 * org-mode
 + 文档标题
 #+BEGIN_EXAMPLE
