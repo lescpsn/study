@@ -1,6 +1,19 @@
 #+TITLE: emacs-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+* org-mode
++ 文档标题
+#+BEGIN_EXAMPLE
+#+TITLE: 文档标题名
+#+END_EXAMPLE
+
++ 引入外部css文件
+#+BEGIN_EXAMPLE
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+#+END_EXAMPLE
+
+
+
 * tramp
 + tramp简介
 #+BEGIN_EXAMPLE
