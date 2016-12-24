@@ -44,3 +44,14 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 #+BEGIN_EXAMPLE
 首次要在windows的cmd行下，运用plink访问一次目标主机，否则因为没有添加公钥会一直卡死
 #+END_EXAMPLE
+
+* issue
+** windows
++ Error: (file-error “Searching for program” “no such file or directory” “diff”)
+#+BEGIN_EXAMPLE
+需要安装diff工具
+下载https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
+安装KDiff3-64bit-Setup_0.9.98-2.exe，并将配置到环境变量中去
+#+END_EXAMPLE
+
+** linux
