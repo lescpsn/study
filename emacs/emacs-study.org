@@ -73,6 +73,17 @@ spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 + .spacemacs文件配置
 #+BEGIN_EXAMPLE
 用现有的模板文件.spacemacs覆盖掉HOME目录下的.spacemacs,也可以自己慢慢维护.spacemacs文件
+
+如若自己维护.spacemacs文件，至少也要修改下下面的两处，否则国内的网络让其无法正常运行
+
+修改插件仓储链接超时时间为60秒
+dotspacemacs-elpa-timeout 60
+
+修改LPA的仓储源，在 dotspacemacs/user-init 函数中
+(setq configuration-layer--elpa-archives
+    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+      ("org-cn"   . "http://elpa.emacs-china.org/org/")
+      ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 #+END_EXAMPLE
 
 + 相关工具的安装
@@ -126,14 +137,14 @@ spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 * tramp
 + tramp简介
 #+BEGIN_EXAMPLE
-tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器上的文件的了
+tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器上的文件
 #+END_EXAMPLE
 
 + 安装
 #+BEGIN_EXAMPLE
-1 安装 tramp 包
-2 安装plink.exe，将plink.exe放置到emacs的bin目录下
-  plink.exe从ssh的客户端工具putty中拷贝过来
+1 emacs-24.5以上版本已经自带tramp包
+
+2 安装plink.exe，将plink.exe放置到emacs的bin目录下，plink.exe从ssh的客户端工具putty中拷贝过来
 #+END_EXAMPLE
 
 + 配置
@@ -154,6 +165,11 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 首次要在windows的cmd行下，运用plink访问一次目标主机，否则因为没有添加公钥会一直卡死
 #+END_EXAMPLE
 
+* 常用快捷键
++ C-M-\ (M-x indent-region)
+#+BEGIN_EXAMPLE
+格式化代码
+#+END_EXAMPLE
 
 * issue
 ** windows

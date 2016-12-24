@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-24 周六 19:44 -->
+<!-- 2016-12-24 周六 21:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs-study历程</title>
@@ -233,35 +233,36 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org72de022">1. emacs安装</a>
+<li><a href="#org3651866">1. emacs安装</a>
 <ul>
-<li><a href="#orgbe649a0">1.1. windows</a></li>
-<li><a href="#org3b22628">1.2. linux</a></li>
+<li><a href="#orgb094f34">1.1. windows</a></li>
+<li><a href="#org76d7c77">1.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#org31377c8">2. spacemacs安装</a>
+<li><a href="#org9347220">2. spacemacs安装</a>
 <ul>
-<li><a href="#org6bc697f">2.1. windows</a></li>
-<li><a href="#org601ef71">2.2. linux</a></li>
+<li><a href="#org330396c">2.1. windows</a></li>
+<li><a href="#orgc87d663">2.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#org0149d34">3. org-mode</a></li>
-<li><a href="#org0c05486">4. tramp</a></li>
-<li><a href="#org1e78b6a">5. issue</a>
+<li><a href="#org1f941f2">3. org-mode</a></li>
+<li><a href="#org426cbc9">4. tramp</a></li>
+<li><a href="#orge2f3851">5. 常用快捷键</a></li>
+<li><a href="#org8ab34ad">6. issue</a>
 <ul>
-<li><a href="#org9f92f17">5.1. windows</a></li>
-<li><a href="#orgbea1477">5.2. linux</a></li>
+<li><a href="#org5eb3e0d">6.1. windows</a></li>
+<li><a href="#orgf0a894b">6.2. linux</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org72de022" class="outline-2">
-<h2 id="org72de022"><span class="section-number-2">1</span> emacs安装</h2>
+<div id="outline-container-org3651866" class="outline-2">
+<h2 id="org3651866"><span class="section-number-2">1</span> emacs安装</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgbe649a0" class="outline-3">
-<h3 id="orgbe649a0"><span class="section-number-3">1.1</span> windows</h3>
+</div><div id="outline-container-orgb094f34" class="outline-3">
+<h3 id="orgb094f34"><span class="section-number-3">1.1</span> windows</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>下载安装包</li>
@@ -310,17 +311,17 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 </div>
 </div>
 
-<div id="outline-container-org3b22628" class="outline-3">
-<h3 id="org3b22628"><span class="section-number-3">1.2</span> linux</h3>
+<div id="outline-container-org76d7c77" class="outline-3">
+<h3 id="org76d7c77"><span class="section-number-3">1.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org31377c8" class="outline-2">
-<h2 id="org31377c8"><span class="section-number-2">2</span> spacemacs安装</h2>
+<div id="outline-container-org9347220" class="outline-2">
+<h2 id="org9347220"><span class="section-number-2">2</span> spacemacs安装</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org6bc697f" class="outline-3">
-<h3 id="org6bc697f"><span class="section-number-3">2.1</span> windows</h3>
+</div><div id="outline-container-org330396c" class="outline-3">
+<h3 id="org330396c"><span class="section-number-3">2.1</span> windows</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>安装spacemacs</li>
@@ -357,6 +358,17 @@ spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 </ul>
 <pre class="example">
 用现有的模板文件.spacemacs覆盖掉HOME目录下的.spacemacs,也可以自己慢慢维护.spacemacs文件
+
+如若自己维护.spacemacs文件，至少也要修改下下面的两处，否则国内的网络让其无法正常运行
+
+修改插件仓储链接超时时间为60秒
+dotspacemacs-elpa-timeout 60
+
+修改LPA的仓储源，在 dotspacemacs/user-init 函数中
+(setq configuration-layer--elpa-archives
+    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+      ("org-cn"   . "http://elpa.emacs-china.org/org/")
+      ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 </pre>
 
 <ul class="org-ul">
@@ -394,14 +406,14 @@ spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 </pre>
 </div>
 </div>
-<div id="outline-container-org601ef71" class="outline-3">
-<h3 id="org601ef71"><span class="section-number-3">2.2</span> linux</h3>
+<div id="outline-container-orgc87d663" class="outline-3">
+<h3 id="orgc87d663"><span class="section-number-3">2.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org0149d34" class="outline-2">
-<h2 id="org0149d34"><span class="section-number-2">3</span> org-mode</h2>
+<div id="outline-container-org1f941f2" class="outline-2">
+<h2 id="org1f941f2"><span class="section-number-2">3</span> org-mode</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>文档标题</li>
@@ -421,23 +433,23 @@ spacemacs采用.emacs.d目录来控制emacs了，无需.emacs文件了
 
 
 
-<div id="outline-container-org0c05486" class="outline-2">
-<h2 id="org0c05486"><span class="section-number-2">4</span> tramp</h2>
+<div id="outline-container-org426cbc9" class="outline-2">
+<h2 id="org426cbc9"><span class="section-number-2">4</span> tramp</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>tramp简介</li>
 </ul>
 <pre class="example">
-tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器上的文件的了
+tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器上的文件
 </pre>
 
 <ul class="org-ul">
 <li>安装</li>
 </ul>
 <pre class="example">
-1 安装 tramp 包
-2 安装plink.exe，将plink.exe放置到emacs的bin目录下
-  plink.exe从ssh的客户端工具putty中拷贝过来
+1 emacs-24.5以上版本已经自带tramp包
+
+2 安装plink.exe，将plink.exe放置到emacs的bin目录下，plink.exe从ssh的客户端工具putty中拷贝过来
 </pre>
 
 <ul class="org-ul">
@@ -466,13 +478,24 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 </div>
 
-
-<div id="outline-container-org1e78b6a" class="outline-2">
-<h2 id="org1e78b6a"><span class="section-number-2">5</span> issue</h2>
+<div id="outline-container-orge2f3851" class="outline-2">
+<h2 id="orge2f3851"><span class="section-number-2">5</span> 常用快捷键</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org9f92f17" class="outline-3">
-<h3 id="org9f92f17"><span class="section-number-3">5.1</span> windows</h3>
-<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>C-M-\ (M-x indent-region)</li>
+</ul>
+<pre class="example">
+格式化代码
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8ab34ad" class="outline-2">
+<h2 id="org8ab34ad"><span class="section-number-2">6</span> issue</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-org5eb3e0d" class="outline-3">
+<h3 id="org5eb3e0d"><span class="section-number-3">6.1</span> windows</h3>
+<div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Error: (file-error “Searching for program” “no such file or directory” “diff”)</li>
 </ul>
@@ -500,13 +523,13 @@ npm -g install js-beautify
 </div>
 </div>
 
-<div id="outline-container-orgbea1477" class="outline-3">
-<h3 id="orgbea1477"><span class="section-number-3">5.2</span> linux</h3>
+<div id="outline-container-orgf0a894b" class="outline-3">
+<h3 id="orgf0a894b"><span class="section-number-3">6.2</span> linux</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-24 周六 19:44</p>
+<p class="date">Created: 2016-12-24 周六 21:25</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
