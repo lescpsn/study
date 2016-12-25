@@ -165,11 +165,60 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 首次要在windows的cmd行下，运用plink访问一次目标主机，否则因为没有添加公钥会一直卡死
 #+END_EXAMPLE
 
+
 * 常用快捷键
 + C-M-\ (M-x indent-region)
 #+BEGIN_EXAMPLE
 格式化代码
 #+END_EXAMPLE
+
++ C-@（C-S-2）
+#+BEGIN_EXAMPLE
+打标 mark set
+#+END_EXAMPLE
+
+* spacemacs教程
+** shell-mode
++ C-c :
+#+BEGIN_EXAMPLE
+设置当前shell脚本类型（bash，sh，ksh）
+#+END_EXAMPLE
+
++ C-c (
+#+BEGIN_EXAMPLE
+快速定义一个函数
+#+END_EXAMPLE
+
+** golang-mode
++ C-c C-a
+#+BEGIN_EXAMPLE
+快速import一个库
+#+END_EXAMPLE
+
++ C-c C-d
+#+BEGIN_EXAMPLE
+查看一个函数的声明
+#+END_EXAMPLE
+
++ C-c C-j
+#+BEGIN_EXAMPLE
+查看一个函数的详细定义
+#+END_EXAMPLE
+
++ M-*
+#+BEGIN_EXAMPLE
+跳回到原处
+#+END_EXAMPLE
+
++ M-RET i r
+#+BEGIN_EXAMPLE
+删除多余的import包
+#+END_EXAMPLE
+
+
+** python-mode
+
+** javascript-mode
 
 * issue
 ** windows
