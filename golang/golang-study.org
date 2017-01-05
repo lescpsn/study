@@ -1,0 +1,30 @@
+#+TITLE: golang-study历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+* go test
++ xxx _test.go 
+#+BEGIN_EXAMPLE
+xxx.go为源文件，xxx _test.go为源文件对应的测试文件
+#+END_EXAMPLE
++ go test -v
+#+BEGIN_EXAMPLE
+打印测试详细过程，包括日志
+#+END_EXAMPLE
+
++ go test -v xxx _test.go xxx.go 
+#+BEGIN_EXAMPLE
+测试指定文件，需带上原始文件
+#+END_EXAMPLE
+* issue
++ godef: no declaration found for net.ResolveTCPAddr
+#+BEGIN_EXAMPLE
+修改github.com\rogpeppe\godef\go\parser\parser.go中源代码,注释掉报错的这行
+//name, err := p.pathToName(litToString(path), filepath.Dir(filename))
+name, _ := p.pathToName(litToString(path), filepath.Dir(filename))
+
+//p.error(path.Pos(), fmt.Sprintf("cannot find identifier for package %q: %v", litToString(path), err))
+
+重新编译安装一下
+go install github.com/rogpeppe/godef
+#+END_EXAMPLE
+

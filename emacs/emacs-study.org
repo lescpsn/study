@@ -121,6 +121,58 @@ dotspacemacs-elpa-timeout 60
 ** linux
 
 
+* TUTORIAL学习
++ 常用键定义
+#+BEGIN_EXAMPLE
+C :Ctrl
+M :Alt(或者ESC)
+#+END_EXAMPLE
+
++ 基本操作
+#+BEGIN_EXAMPLE
+C-V : 向下移动一屏幕
+M-V : 向上移动一屏幕
+C-l : 将光标所在的行重绘于屏幕的上，中，下
+C-p : 上一行
+C-n : 下一行
+C-f : 右移一个字符
+C-b : 左移一个字符
+M-f : 右移一个词
+M-b : 左移一个词
+C-a : 移到一行行首
+C-e : 移到一行行尾
+M-a : 移到一段段首
+M-e : 移到一段段尾
+M-< : 跳到行首
+M-> : 跳到行尾
+C-u 数字 command : 指定的command执行重复的次数
+M-数字 : 选择窗口
+C-g : 终止命令
+C-x 1 : 保留光标所在的窗格，关闭掉其它所有的窗格
+C-h k command : 显示某个命令的用法文档
+C-x : 代表和窗口，文件，缓冲区有关的命令
+DEL : Backspace 
+C-d : 删除光标后一个字符
+M-DEL : 删除光标前一个单词（C-DEL也是一样）
+M-d : 删除光标后一个单词
+C-k : 删除光标到行尾
+M-k : 删除光标到段尾
+C-y : 粘贴
+M-y : 必须紧接着C-y后操作，可以恢复剪切缓冲区之前的内容
+C-/ : 恢复到前一次的操作(C-_也是一样）
+* 文件（FILE）
+#+END_EXAMPLE
+
+
+
+
+
+
+
+
+
+
+
 * org-mode
 + 文档标题
 #+BEGIN_EXAMPLE
@@ -172,12 +224,58 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 格式化代码
 #+END_EXAMPLE
 
-+ C-@（C-S-2）
++ C-@ (Ctrl+Shift+2)
 #+BEGIN_EXAMPLE
 打标 mark set
 #+END_EXAMPLE
 
++ M-;
+#+BEGIN_EXAMPLE
+注释掉选择区的代码
+#+END_EXAMPLE
+
++ M-% (Alt+Shift+5)
+#+BEGIN_EXAMPLE
+查找替换，y确认
+#+END_EXAMPLE
+
++ M-d 
+#+BEGIN_EXAMPLE
+向后删除一个单词
+#+END_EXAMPLE
+
++ M-DEL(DEL可以是Delete或者Backspace)
+#+BEGIN_EXAMPLE
+向前删除一个单词
+#+END_EXAMPLE
+
++ M-w 或者 M-W (M-w 可能被qq语音输入占用)
+#+BEGIN_EXAMPLE
+复制选择的块
+#+END_EXAMPLE
+
++ C-y
+#+BEGIN_EXAMPLE
+粘贴buf中复制的块或剪切的块
+#+END_EXAMPLE
+
++ C-w
+#+BEGIN_EXAMPLE
+剪切(删除)选择的区域块，可以用C-y粘贴恢复回来
+#+END_EXAMPLE
+
++ C-k
+#+BEGIN_EXAMPLE
+剪切(删除)光标所在的行，可以用C-y粘贴恢复回来
+#+END_EXAMPLE
+
+
+
 * spacemacs教程
+** 常用快捷键
+#+BEGIN_EXAMPLE
+M-数字 : 选择窗口
+#+END_EXAMPLE
 ** shell-mode
 + C-c :
 #+BEGIN_EXAMPLE
@@ -215,10 +313,10 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 删除多余的import包
 #+END_EXAMPLE
 
-
 ** python-mode
 
 ** javascript-mode
+
 
 * issue
 ** windows

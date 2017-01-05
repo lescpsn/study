@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-25 周日 12:04 -->
+<!-- 2017-01-03 周二 15:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs-study历程</title>
@@ -233,44 +233,47 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgebe9cc3">1. emacs安装</a>
+<li><a href="#orga4d546f">1. emacs安装</a>
 <ul>
-<li><a href="#org10c5b65">1.1. windows</a></li>
-<li><a href="#org73e71c7">1.2. linux</a></li>
+<li><a href="#org5c582c3">1.1. windows</a></li>
+<li><a href="#org609b5b8">1.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#org9a34f14">2. spacemacs安装</a>
+<li><a href="#org41f47d3">2. spacemacs安装</a>
 <ul>
-<li><a href="#org7bd79c5">2.1. windows</a></li>
-<li><a href="#org142375b">2.2. linux</a></li>
+<li><a href="#orgeded5fa">2.1. windows</a></li>
+<li><a href="#orga71e18e">2.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#org1707f75">3. org-mode</a></li>
-<li><a href="#org470372d">4. tramp</a></li>
-<li><a href="#org446fc4b">5. 常用快捷键</a></li>
-<li><a href="#org430ed58">6. spacemacs教程</a>
+<li><a href="#org4c537c7">3. TUTORIAL学习</a></li>
+<li><a href="#orgd08c4da">4. 文件（FILE）</a></li>
+<li><a href="#org9df13af">5. org-mode</a></li>
+<li><a href="#orgfd866fb">6. tramp</a></li>
+<li><a href="#orgbd5d40a">7. 常用快捷键</a></li>
+<li><a href="#orgf9b0f81">8. spacemacs教程</a>
 <ul>
-<li><a href="#org903021a">6.1. shell-mode</a></li>
-<li><a href="#org82c577f">6.2. golang-mode</a></li>
-<li><a href="#org7df328f">6.3. python-mode</a></li>
-<li><a href="#orgbec2ba9">6.4. javascript-mode</a></li>
+<li><a href="#orgfa23078">8.1. 常用快捷键</a></li>
+<li><a href="#org0345d80">8.2. shell-mode</a></li>
+<li><a href="#org25496f1">8.3. golang-mode</a></li>
+<li><a href="#org17031ef">8.4. python-mode</a></li>
+<li><a href="#org74686fd">8.5. javascript-mode</a></li>
 </ul>
 </li>
-<li><a href="#org9840b3b">7. issue</a>
+<li><a href="#orgb2367e8">9. issue</a>
 <ul>
-<li><a href="#org325d97d">7.1. windows</a></li>
-<li><a href="#orgaa4004e">7.2. linux</a></li>
+<li><a href="#orgc3dcf76">9.1. windows</a></li>
+<li><a href="#org89f3ab1">9.2. linux</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgebe9cc3" class="outline-2">
-<h2 id="orgebe9cc3"><span class="section-number-2">1</span> emacs安装</h2>
+<div id="outline-container-orga4d546f" class="outline-2">
+<h2 id="orga4d546f"><span class="section-number-2">1</span> emacs安装</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org10c5b65" class="outline-3">
-<h3 id="org10c5b65"><span class="section-number-3">1.1</span> windows</h3>
+</div><div id="outline-container-org5c582c3" class="outline-3">
+<h3 id="org5c582c3"><span class="section-number-3">1.1</span> windows</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>下载安装包</li>
@@ -319,17 +322,17 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 </div>
 </div>
 
-<div id="outline-container-org73e71c7" class="outline-3">
-<h3 id="org73e71c7"><span class="section-number-3">1.2</span> linux</h3>
+<div id="outline-container-org609b5b8" class="outline-3">
+<h3 id="org609b5b8"><span class="section-number-3">1.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org9a34f14" class="outline-2">
-<h2 id="org9a34f14"><span class="section-number-2">2</span> spacemacs安装</h2>
+<div id="outline-container-org41f47d3" class="outline-2">
+<h2 id="org41f47d3"><span class="section-number-2">2</span> spacemacs安装</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org7bd79c5" class="outline-3">
-<h3 id="org7bd79c5"><span class="section-number-3">2.1</span> windows</h3>
+</div><div id="outline-container-orgeded5fa" class="outline-3">
+<h3 id="orgeded5fa"><span class="section-number-3">2.1</span> windows</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>安装spacemacs</li>
@@ -414,15 +417,83 @@ dotspacemacs-elpa-timeout 60
 </pre>
 </div>
 </div>
-<div id="outline-container-org142375b" class="outline-3">
-<h3 id="org142375b"><span class="section-number-3">2.2</span> linux</h3>
+<div id="outline-container-orga71e18e" class="outline-3">
+<h3 id="orga71e18e"><span class="section-number-3">2.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org1707f75" class="outline-2">
-<h2 id="org1707f75"><span class="section-number-2">3</span> org-mode</h2>
+<div id="outline-container-org4c537c7" class="outline-2">
+<h2 id="org4c537c7"><span class="section-number-2">3</span> TUTORIAL学习</h2>
 <div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>常用键定义</li>
+</ul>
+<pre class="example">
+C :Ctrl
+M :Alt(或者ESC)
+</pre>
+
+<ul class="org-ul">
+<li>基本操作</li>
+</ul>
+<p>
+#+BEGIN<sub>EXAMPLE</sub>
+C-V : 向下移动一屏幕
+M-V : 向上移动一屏幕
+C-l : 将光标所在的行重绘于屏幕的上，中，下
+C-p : 上一行
+C-n : 下一行
+C-f : 右移一个字符
+C-b : 左移一个字符
+M-f : 右移一个词
+M-b : 左移一个词
+C-a : 移到一行行首
+C-e : 移到一行行尾
+M-a : 移到一段段首
+M-e : 移到一段段尾
+M-&lt; : 跳到行首
+M-&gt; : 跳到行尾
+C-u 数字 command : 指定的command执行重复的次数
+M-数字 : 选择窗口
+C-g : 终止命令
+C-x 1 : 保留光标所在的窗格，关闭掉其它所有的窗格
+C-h k command : 显示某个命令的用法文档
+C-x : 代表和窗口，文件，缓冲区有关的命令
+DEL : Backspace 
+C-d : 删除光标后一个字符
+M-DEL : 删除光标前一个单词（C-DEL也是一样）
+M-d : 删除光标后一个单词
+C-k : 删除光标到行尾
+M-k : 删除光标到段尾
+C-y : 粘贴
+M-y : 必须紧接着C-y后操作，可以恢复剪切缓冲区之前的内容
+C-/ : 恢复到前一次的操作(C-<sub>也是一样</sub>）
+</p>
+</div>
+</div>
+<div id="outline-container-orgd08c4da" class="outline-2">
+<h2 id="orgd08c4da"><span class="section-number-2">4</span> 文件（FILE）</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+#+END<sub>EXAMPLE</sub>
+</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org9df13af" class="outline-2">
+<h2 id="org9df13af"><span class="section-number-2">5</span> org-mode</h2>
+<div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>文档标题</li>
 </ul>
@@ -441,9 +512,9 @@ dotspacemacs-elpa-timeout 60
 
 
 
-<div id="outline-container-org470372d" class="outline-2">
-<h2 id="org470372d"><span class="section-number-2">4</span> tramp</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgfd866fb" class="outline-2">
+<h2 id="orgfd866fb"><span class="section-number-2">6</span> tramp</h2>
+<div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>tramp简介</li>
 </ul>
@@ -487,9 +558,9 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 
 
-<div id="outline-container-org446fc4b" class="outline-2">
-<h2 id="org446fc4b"><span class="section-number-2">5</span> 常用快捷键</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgbd5d40a" class="outline-2">
+<h2 id="orgbd5d40a"><span class="section-number-2">7</span> 常用快捷键</h2>
+<div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>C-M-\ (M-x indent-region)</li>
 </ul>
@@ -498,20 +569,86 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </pre>
 
 <ul class="org-ul">
-<li>C-@（C-S-2）</li>
+<li>C-@ (Ctrl+Shift+2)</li>
 </ul>
 <pre class="example">
 打标 mark set
 </pre>
+
+<ul class="org-ul">
+<li>M-;</li>
+</ul>
+<pre class="example">
+注释掉选择区的代码
+</pre>
+
+<ul class="org-ul">
+<li>M-% (Alt+Shift+5)</li>
+</ul>
+<pre class="example">
+查找替换，y确认
+</pre>
+
+<ul class="org-ul">
+<li>M-d</li>
+</ul>
+<pre class="example">
+向后删除一个单词
+</pre>
+
+<ul class="org-ul">
+<li>M-DEL(DEL可以是Delete或者Backspace)</li>
+</ul>
+<pre class="example">
+向前删除一个单词
+</pre>
+
+<ul class="org-ul">
+<li>M-w 或者 M-W (M-w 可能被qq语音输入占用)</li>
+</ul>
+<pre class="example">
+复制选择的块
+</pre>
+
+<ul class="org-ul">
+<li>C-y</li>
+</ul>
+<pre class="example">
+粘贴buf中复制的块或剪切的块
+</pre>
+
+<ul class="org-ul">
+<li>C-w</li>
+</ul>
+<pre class="example">
+剪切(删除)选择的区域块，可以用C-y粘贴恢复回来
+</pre>
+
+<ul class="org-ul">
+<li>C-k</li>
+</ul>
+<pre class="example">
+剪切(删除)光标所在的行，可以用C-y粘贴恢复回来
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org430ed58" class="outline-2">
-<h2 id="org430ed58"><span class="section-number-2">6</span> spacemacs教程</h2>
-<div class="outline-text-2" id="text-6">
-</div><div id="outline-container-org903021a" class="outline-3">
-<h3 id="org903021a"><span class="section-number-3">6.1</span> shell-mode</h3>
-<div class="outline-text-3" id="text-6-1">
+
+
+<div id="outline-container-orgf9b0f81" class="outline-2">
+<h2 id="orgf9b0f81"><span class="section-number-2">8</span> spacemacs教程</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-orgfa23078" class="outline-3">
+<h3 id="orgfa23078"><span class="section-number-3">8.1</span> 常用快捷键</h3>
+<div class="outline-text-3" id="text-8-1">
+<pre class="example">
+M-数字 : 选择窗口
+</pre>
+</div>
+</div>
+<div id="outline-container-org0345d80" class="outline-3">
+<h3 id="org0345d80"><span class="section-number-3">8.2</span> shell-mode</h3>
+<div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>C-c :</li>
 </ul>
@@ -528,9 +665,9 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 </div>
 
-<div id="outline-container-org82c577f" class="outline-3">
-<h3 id="org82c577f"><span class="section-number-3">6.2</span> golang-mode</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-org25496f1" class="outline-3">
+<h3 id="org25496f1"><span class="section-number-3">8.3</span> golang-mode</h3>
+<div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
 <li>C-c C-a</li>
 </ul>
@@ -568,22 +705,22 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 </div>
 
-
-<div id="outline-container-org7df328f" class="outline-3">
-<h3 id="org7df328f"><span class="section-number-3">6.3</span> python-mode</h3>
+<div id="outline-container-org17031ef" class="outline-3">
+<h3 id="org17031ef"><span class="section-number-3">8.4</span> python-mode</h3>
 </div>
 
-<div id="outline-container-orgbec2ba9" class="outline-3">
-<h3 id="orgbec2ba9"><span class="section-number-3">6.4</span> javascript-mode</h3>
+<div id="outline-container-org74686fd" class="outline-3">
+<h3 id="org74686fd"><span class="section-number-3">8.5</span> javascript-mode</h3>
 </div>
 </div>
 
-<div id="outline-container-org9840b3b" class="outline-2">
-<h2 id="org9840b3b"><span class="section-number-2">7</span> issue</h2>
-<div class="outline-text-2" id="text-7">
-</div><div id="outline-container-org325d97d" class="outline-3">
-<h3 id="org325d97d"><span class="section-number-3">7.1</span> windows</h3>
-<div class="outline-text-3" id="text-7-1">
+
+<div id="outline-container-orgb2367e8" class="outline-2">
+<h2 id="orgb2367e8"><span class="section-number-2">9</span> issue</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-orgc3dcf76" class="outline-3">
+<h3 id="orgc3dcf76"><span class="section-number-3">9.1</span> windows</h3>
+<div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>Error: (file-error “Searching for program” “no such file or directory” “diff”)</li>
 </ul>
@@ -611,13 +748,13 @@ npm -g install js-beautify
 </div>
 </div>
 
-<div id="outline-container-orgaa4004e" class="outline-3">
-<h3 id="orgaa4004e"><span class="section-number-3">7.2</span> linux</h3>
+<div id="outline-container-org89f3ab1" class="outline-3">
+<h3 id="org89f3ab1"><span class="section-number-3">9.2</span> linux</h3>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-25 周日 12:04</p>
+<p class="date">Created: 2017-01-03 周二 15:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
