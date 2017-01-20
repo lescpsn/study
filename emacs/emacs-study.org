@@ -160,18 +160,8 @@ M-k : 删除光标到段尾
 C-y : 粘贴
 M-y : 必须紧接着C-y后操作，可以恢复剪切缓冲区之前的内容
 C-/ : 恢复到前一次的操作(C-_也是一样）
-* 文件（FILE）
 #+END_EXAMPLE
-
-
-
-
-
-
-
-
-
-
+* 文件（FILE）
 
 * org-mode
 + 文档标题
@@ -340,3 +330,9 @@ npm -g install js-beautify
 #+END_EXAMPLE
 
 ** linux
+
+* lisp
++ C-x C-e 
+#+BEGIN_EXAMPLE
+运算lisp
+#+END_EXAMPLE
