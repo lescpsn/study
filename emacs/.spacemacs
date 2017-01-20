@@ -314,5 +314,9 @@ you should place your code here."
 (setq tramp-default-method "plink")
   )
 
+ ;; 去除中文字典检查use apsell as ispell backend
+ (setq-default ispell-program-name "aspell")
+ ;; use American English as ispell default dictionary
+ (ispell-change-dictionary "american" t)
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

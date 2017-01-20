@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-01-17 周二 22:32 -->
+<!-- 2017-01-21 周六 01:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>emacs-study历程</title>
@@ -233,47 +233,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org90a22a5">1. emacs安装</a>
+<li><a href="#org010c81d">1. emacs安装</a>
 <ul>
-<li><a href="#org16255c3">1.1. windows</a></li>
-<li><a href="#org101c886">1.2. linux</a></li>
+<li><a href="#orgf1f1315">1.1. windows</a></li>
+<li><a href="#org54b6d57">1.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#orge9d952a">2. spacemacs安装</a>
+<li><a href="#orgb9ced85">2. spacemacs安装</a>
 <ul>
-<li><a href="#org76339aa">2.1. windows</a></li>
-<li><a href="#org4a4fb02">2.2. linux</a></li>
+<li><a href="#orge1063ed">2.1. windows</a></li>
+<li><a href="#orgac06929">2.2. linux</a></li>
 </ul>
 </li>
-<li><a href="#org9adb8a8">3. TUTORIAL学习</a></li>
-<li><a href="#orgecaf767">4. 文件（FILE）</a></li>
-<li><a href="#org34597e8">5. org-mode</a></li>
-<li><a href="#org1083235">6. tramp</a></li>
-<li><a href="#org8493431">7. 常用快捷键</a></li>
-<li><a href="#org326b04c">8. spacemacs教程</a>
+<li><a href="#orgcf7afe8">3. TUTORIAL学习</a></li>
+<li><a href="#orgd584af8">4. 文件（FILE）</a></li>
+<li><a href="#orgfe43b35">5. org-mode</a></li>
+<li><a href="#org4f7ce4f">6. tramp</a></li>
+<li><a href="#org5527f38">7. 常用快捷键</a></li>
+<li><a href="#orgd06b8cd">8. spacemacs教程</a>
 <ul>
-<li><a href="#org2343880">8.1. 常用快捷键</a></li>
-<li><a href="#org42850a7">8.2. shell-mode</a></li>
-<li><a href="#orgbff3999">8.3. golang-mode</a></li>
-<li><a href="#org659c9f0">8.4. python-mode</a></li>
-<li><a href="#org0ea74eb">8.5. javascript-mode</a></li>
+<li><a href="#org07fcb20">8.1. 常用快捷键</a></li>
+<li><a href="#org36e4920">8.2. shell-mode</a></li>
+<li><a href="#org3e3d749">8.3. golang-mode</a></li>
+<li><a href="#orgc3a7e71">8.4. python-mode</a></li>
+<li><a href="#org315c05f">8.5. javascript-mode</a></li>
 </ul>
 </li>
-<li><a href="#orgf552a7a">9. issue</a>
+<li><a href="#org7af393f">9. issue</a>
 <ul>
-<li><a href="#orgb8825ef">9.1. windows</a></li>
-<li><a href="#org82a069e">9.2. linux</a></li>
+<li><a href="#org467b759">9.1. windows</a></li>
+<li><a href="#orgadf7e49">9.2. linux</a></li>
 </ul>
 </li>
+<li><a href="#orgbbe9f02">10. lisp</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org90a22a5" class="outline-2">
-<h2 id="org90a22a5"><span class="section-number-2">1</span> emacs安装</h2>
+<div id="outline-container-org010c81d" class="outline-2">
+<h2 id="org010c81d"><span class="section-number-2">1</span> emacs安装</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org16255c3" class="outline-3">
-<h3 id="org16255c3"><span class="section-number-3">1.1</span> windows</h3>
+</div><div id="outline-container-orgf1f1315" class="outline-3">
+<h3 id="orgf1f1315"><span class="section-number-3">1.1</span> windows</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>下载安装包</li>
@@ -281,14 +282,15 @@ for the JavaScript code in this tag.
 <pre class="example">
 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
 
-http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
+http://ftp.gnu.org/gnu/emacs/windows/emacs-25.1-2-x86_64-w64-mingw32.zip
 </pre>
 
 <ul class="org-ul">
 <li>安装</li>
 </ul>
 <pre class="example">
-emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使用
+emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
+直接解压到自己规划好的目录并修改为自己喜欢的名字即可以使用，如E:\Local\emacs
 </pre>
 
 <ul class="org-ul">
@@ -298,19 +300,17 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 如：将emacs安装目录的bin目录C:\Local\Program Files\emacs\bin添加到PATH环境变量中
 </pre>
 
+
 <ul class="org-ul">
-<li>emacs默认信息</li>
+<li>规划emacs配置目录.emacs.d</li>
 </ul>
 <pre class="example">
-家目录HOME：C:\Users\用户名\AppData\Roaming\
-
-启动加载配置目录：%HOME%\.emacs.d
-
-启动加载配置文件：%HOME%\.emacs
-
-.emacs.d目录和.emacs文件两选一，.emacs文件为老式的启动方式，目前兼容，不利于插件包的管理
-
-比较优秀的方式是采用.emacs.d目录控制emacs插件包
+1 编辑C:\Users\carhj\AppData\Roaming\.emacs.d\init.el文件,且
+  且保证C:\Users\carhj\AppData\Roaming\目录中不能有.emacs文件
+(setenv "HOME" "E:/Local/emacs/")
+(setenv "PATH" "E:/Local/emacs/")
+(setq default-directory "E:/Projects/lescpsn/")
+(load-file "E:/Local/emacs/.emacs.d/init.el")
 </pre>
 
 <ul class="org-ul">
@@ -322,17 +322,17 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 </div>
 </div>
 
-<div id="outline-container-org101c886" class="outline-3">
-<h3 id="org101c886"><span class="section-number-3">1.2</span> linux</h3>
+<div id="outline-container-org54b6d57" class="outline-3">
+<h3 id="org54b6d57"><span class="section-number-3">1.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orge9d952a" class="outline-2">
-<h2 id="orge9d952a"><span class="section-number-2">2</span> spacemacs安装</h2>
+<div id="outline-container-orgb9ced85" class="outline-2">
+<h2 id="orgb9ced85"><span class="section-number-2">2</span> spacemacs安装</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org76339aa" class="outline-3">
-<h3 id="org76339aa"><span class="section-number-3">2.1</span> windows</h3>
+</div><div id="outline-container-orge1063ed" class="outline-3">
+<h3 id="orge1063ed"><span class="section-number-3">2.1</span> windows</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>安装spacemacs</li>
@@ -405,6 +405,10 @@ dotspacemacs-elpa-timeout 60
    下载KDiff3-64bit-Setup_0.9.98-2.exe
    一路回车法安装diff
    安装后的bin添加到PATH环境变量中去
+
+5. 安装 tern
+   采用nmp包管理工具安装，没有npm的话，先需先安装nodejs
+   npm install -g tern
 </pre>
 
 <ul class="org-ul">
@@ -417,14 +421,14 @@ dotspacemacs-elpa-timeout 60
 </pre>
 </div>
 </div>
-<div id="outline-container-org4a4fb02" class="outline-3">
-<h3 id="org4a4fb02"><span class="section-number-3">2.2</span> linux</h3>
+<div id="outline-container-orgac06929" class="outline-3">
+<h3 id="orgac06929"><span class="section-number-3">2.2</span> linux</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org9adb8a8" class="outline-2">
-<h2 id="org9adb8a8"><span class="section-number-2">3</span> TUTORIAL学习</h2>
+<div id="outline-container-orgcf7afe8" class="outline-2">
+<h2 id="orgcf7afe8"><span class="section-number-2">3</span> TUTORIAL学习</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>常用键定义</li>
@@ -471,23 +475,14 @@ C-/ : 恢复到前一次的操作(C-_也是一样）
 </pre>
 </div>
 </div>
-<div id="outline-container-orgecaf767" class="outline-2">
-<h2 id="orgecaf767"><span class="section-number-2">4</span> 文件（FILE）</h2>
+
+<div id="outline-container-orgd584af8" class="outline-2">
+<h2 id="orgd584af8"><span class="section-number-2">4</span> 文件（FILE）</h2>
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-<div id="outline-container-org34597e8" class="outline-2">
-<h2 id="org34597e8"><span class="section-number-2">5</span> org-mode</h2>
+<div id="outline-container-orgfe43b35" class="outline-2">
+<h2 id="orgfe43b35"><span class="section-number-2">5</span> org-mode</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>文档标题</li>
@@ -507,8 +502,8 @@ C-/ : 恢复到前一次的操作(C-_也是一样）
 
 
 
-<div id="outline-container-org1083235" class="outline-2">
-<h2 id="org1083235"><span class="section-number-2">6</span> tramp</h2>
+<div id="outline-container-org4f7ce4f" class="outline-2">
+<h2 id="org4f7ce4f"><span class="section-number-2">6</span> tramp</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>tramp简介</li>
@@ -553,8 +548,8 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 </div>
 
 
-<div id="outline-container-org8493431" class="outline-2">
-<h2 id="org8493431"><span class="section-number-2">7</span> 常用快捷键</h2>
+<div id="outline-container-org5527f38" class="outline-2">
+<h2 id="org5527f38"><span class="section-number-2">7</span> 常用快捷键</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>C-M-\ (M-x indent-region)</li>
@@ -630,19 +625,19 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 
 
 
-<div id="outline-container-org326b04c" class="outline-2">
-<h2 id="org326b04c"><span class="section-number-2">8</span> spacemacs教程</h2>
+<div id="outline-container-orgd06b8cd" class="outline-2">
+<h2 id="orgd06b8cd"><span class="section-number-2">8</span> spacemacs教程</h2>
 <div class="outline-text-2" id="text-8">
-</div><div id="outline-container-org2343880" class="outline-3">
-<h3 id="org2343880"><span class="section-number-3">8.1</span> 常用快捷键</h3>
+</div><div id="outline-container-org07fcb20" class="outline-3">
+<h3 id="org07fcb20"><span class="section-number-3">8.1</span> 常用快捷键</h3>
 <div class="outline-text-3" id="text-8-1">
 <pre class="example">
 M-数字 : 选择窗口
 </pre>
 </div>
 </div>
-<div id="outline-container-org42850a7" class="outline-3">
-<h3 id="org42850a7"><span class="section-number-3">8.2</span> shell-mode</h3>
+<div id="outline-container-org36e4920" class="outline-3">
+<h3 id="org36e4920"><span class="section-number-3">8.2</span> shell-mode</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>C-c :</li>
@@ -660,8 +655,8 @@ M-数字 : 选择窗口
 </div>
 </div>
 
-<div id="outline-container-orgbff3999" class="outline-3">
-<h3 id="orgbff3999"><span class="section-number-3">8.3</span> golang-mode</h3>
+<div id="outline-container-org3e3d749" class="outline-3">
+<h3 id="org3e3d749"><span class="section-number-3">8.3</span> golang-mode</h3>
 <div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
 <li>C-c C-a</li>
@@ -700,21 +695,21 @@ M-数字 : 选择窗口
 </div>
 </div>
 
-<div id="outline-container-org659c9f0" class="outline-3">
-<h3 id="org659c9f0"><span class="section-number-3">8.4</span> python-mode</h3>
+<div id="outline-container-orgc3a7e71" class="outline-3">
+<h3 id="orgc3a7e71"><span class="section-number-3">8.4</span> python-mode</h3>
 </div>
 
-<div id="outline-container-org0ea74eb" class="outline-3">
-<h3 id="org0ea74eb"><span class="section-number-3">8.5</span> javascript-mode</h3>
+<div id="outline-container-org315c05f" class="outline-3">
+<h3 id="org315c05f"><span class="section-number-3">8.5</span> javascript-mode</h3>
 </div>
 </div>
 
 
-<div id="outline-container-orgf552a7a" class="outline-2">
-<h2 id="orgf552a7a"><span class="section-number-2">9</span> issue</h2>
+<div id="outline-container-org7af393f" class="outline-2">
+<h2 id="org7af393f"><span class="section-number-2">9</span> issue</h2>
 <div class="outline-text-2" id="text-9">
-</div><div id="outline-container-orgb8825ef" class="outline-3">
-<h3 id="orgb8825ef"><span class="section-number-3">9.1</span> windows</h3>
+</div><div id="outline-container-org467b759" class="outline-3">
+<h3 id="org467b759"><span class="section-number-3">9.1</span> windows</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>Error: (file-error “Searching for program” “no such file or directory” “diff”)</li>
@@ -743,13 +738,26 @@ npm -g install js-beautify
 </div>
 </div>
 
-<div id="outline-container-org82a069e" class="outline-3">
-<h3 id="org82a069e"><span class="section-number-3">9.2</span> linux</h3>
+<div id="outline-container-orgadf7e49" class="outline-3">
+<h3 id="orgadf7e49"><span class="section-number-3">9.2</span> linux</h3>
+</div>
+</div>
+
+
+<div id="outline-container-orgbbe9f02" class="outline-2">
+<h2 id="orgbbe9f02"><span class="section-number-2">10</span> lisp</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>C-x C-e</li>
+</ul>
+<pre class="example">
+运算lisp
+</pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-01-17 周二 22:32</p>
+<p class="date">Created: 2017-01-21 周六 01:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

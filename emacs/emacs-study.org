@@ -7,12 +7,13 @@
 #+BEGIN_EXAMPLE
 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
 
-http://ftp.gnu.org/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip
+http://ftp.gnu.org/gnu/emacs/windows/emacs-25.1-2-x86_64-w64-mingw32.zip
 #+END_EXAMPLE
 
 + 安装
 #+BEGIN_EXAMPLE
-emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使用
+emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
+直接解压到自己规划好的目录并修改为自己喜欢的名字即可以使用，如E:\Local\emacs
 #+END_EXAMPLE
 
 + 配置PATH环境变量
@@ -20,17 +21,15 @@ emacs-24.5-bin-i686-mingw32.zip为二进制bin版本，直接解压就可以使�
 如：将emacs安装目录的bin目录C:\Local\Program Files\emacs\bin添加到PATH环境变量中
 #+END_EXAMPLE
 
-+ emacs默认信息
+
++ 规划emacs配置目录.emacs.d
 #+BEGIN_EXAMPLE
-家目录HOME：C:\Users\用户名\AppData\Roaming\
-
-启动加载配置目录：%HOME%\.emacs.d
-
-启动加载配置文件：%HOME%\.emacs
-
-.emacs.d目录和.emacs文件两选一，.emacs文件为老式的启动方式，目前兼容，不利于插件包的管理
-
-比较优秀的方式是采用.emacs.d目录控制emacs插件包
+1 编辑C:\Users\carhj\AppData\Roaming\.emacs.d\init.el文件,且
+  且保证C:\Users\carhj\AppData\Roaming\目录中不能有.emacs文件
+(setenv "HOME" "E:/Local/emacs/")
+(setenv "PATH" "E:/Local/emacs/")
+(setq default-directory "E:/Projects/lescpsn/")
+(load-file "E:/Local/emacs/.emacs.d/init.el")
 #+END_EXAMPLE
 
 + emacs启动
@@ -107,6 +106,10 @@ dotspacemacs-elpa-timeout 60
    下载KDiff3-64bit-Setup_0.9.98-2.exe
    一路回车法安装diff
    安装后的bin添加到PATH环境变量中去
+
+5. 安装 tern
+   采用nmp包管理工具安装，没有npm的话，先需先安装nodejs
+   npm install -g tern
 #+END_EXAMPLE
 
 + issue
@@ -161,7 +164,9 @@ C-y : 粘贴
 M-y : 必须紧接着C-y后操作，可以恢复剪切缓冲区之前的内容
 C-/ : 恢复到前一次的操作(C-_也是一样）
 #+END_EXAMPLE
+
 * 文件（FILE）
+
 
 * org-mode
 + 文档标题
@@ -330,6 +335,7 @@ npm -g install js-beautify
 #+END_EXAMPLE
 
 ** linux
+
 
 * lisp
 + C-x C-e 
