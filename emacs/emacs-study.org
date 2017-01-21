@@ -6,7 +6,6 @@
 + 下载安装包
 #+BEGIN_EXAMPLE
 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
-
 http://ftp.gnu.org/gnu/emacs/windows/emacs-25.1-2-x86_64-w64-mingw32.zip
 #+END_EXAMPLE
 
@@ -27,7 +26,7 @@ emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
 1 编辑C:\Users\carhj\AppData\Roaming\.emacs.d\init.el文件,且
   且保证C:\Users\carhj\AppData\Roaming\目录中不能有.emacs文件
 (setenv "HOME" "E:/Local/emacs/")
-(setenv "PATH" "E:/Local/emacs/")
+;;(setenv "PATH" "E:/Local/emacs/")
 (setq default-directory "E:/Projects/lescpsn/")
 (load-file "E:/Local/emacs/.emacs.d/init.el")
 #+END_EXAMPLE
@@ -102,7 +101,7 @@ dotspacemacs-elpa-timeout 60
    安装后的bin添加到PATH环境变量中去
 
 4. 安装 diff
-   https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/ 
+   https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
    下载KDiff3-64bit-Setup_0.9.98-2.exe
    一路回车法安装diff
    安装后的bin添加到PATH环境变量中去
@@ -118,7 +117,7 @@ dotspacemacs-elpa-timeout 60
   github网络问题，evil-unimpaire不容易装上,手工下载melpa后,放入到emacs.d\.cache\quelpa\目录下,
   重启emacs
 
-  
+
 
 #+END_EXAMPLE
 ** linux
@@ -154,7 +153,7 @@ C-g : 终止命令
 C-x 1 : 保留光标所在的窗格，关闭掉其它所有的窗格
 C-h k command : 显示某个命令的用法文档
 C-x : 代表和窗口，文件，缓冲区有关的命令
-DEL : Backspace 
+DEL : Backspace
 C-d : 删除光标后一个字符
 M-DEL : 删除光标前一个单词（C-DEL也是一样）
 M-d : 删除光标后一个单词
@@ -234,7 +233,7 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 查找替换，y确认
 #+END_EXAMPLE
 
-+ M-d 
++ M-d
 #+BEGIN_EXAMPLE
 向后删除一个单词
 #+END_EXAMPLE
@@ -338,7 +337,7 @@ npm -g install js-beautify
 
 
 * lisp
-+ C-x C-e 
++ C-x C-e
 #+BEGIN_EXAMPLE
 运算lisp
 #+END_EXAMPLE
