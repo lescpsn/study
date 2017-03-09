@@ -19,23 +19,26 @@ emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
 
 + 配置PATH环境变量
 #+BEGIN_EXAMPLE
-如：将emacs安装目录的bin目录C:\Local\Program Files\emacs\bin添加到PATH环境变量中
+如：将emacs安装目录的bin目录D:\Local\emacs\bin添加到PATH环境变量中
 #+END_EXAMPLE
 
 
 + 规划emacs配置目录.emacs.d
 #+BEGIN_EXAMPLE
-1 编辑C:\Users\carhj\AppData\Roaming\.emacs.d\init.el文件,且
-  且保证C:\Users\carhj\AppData\Roaming\目录中不能有.emacs文件
-(setenv "HOME" "E:/Local/emacs/")
+编辑C:\Users\carhj\AppData\Roaming\.emacs.d\init.el文件,且保证C:\Users\carhj\AppData\Roaming\
+
+目录中不能有.emacs文件
+
+(setenv "HOME" "D:/Local/emacs/")
 ;;(setenv "PATH" "E:/Local/emacs/")
 (setq default-directory "E:/Projects/lescpsn/")
-(load-file "E:/Local/emacs/.emacs.d/init.el")
+(load-file "D:/Local/emacs/.emacs.d/init.el")
 #+END_EXAMPLE
 
 + emacs启动
 #+BEGIN_EXAMPLE
 创建runemacs.exe的快捷方式到桌面，右键 --> 属性 --> 起始位置
+删除"D:/Local/emacs/.emacs.d/init.el"文件，恢复到初始状态 git checkout -- init.el，再次启动emacs
 #+END_EXAMPLE
 
 ** linux

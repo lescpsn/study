@@ -31,11 +31,11 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     python
-     windows-scripts
-     javascript
-     html
      go
+     html	 
+     javascript
+     python
+     windows-scripts	 
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -140,10 +140,10 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 24
+                               :size 18
                                :weight normal
                                :width normal
-                               :powerline-scale 1.2)
+                               :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -302,7 +302,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
       ("org-cn"   . "http://elpa.emacs-china.org/org/")
       ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
- )
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -324,7 +324,7 @@ you should place your code here."
  (setq projectile-switch-project-action 'neotree-projectile-action)
  (setq neo-show-hidden-files t) ;; 显示隐藏文件
  (setq neo-smart-open t)
- (global-set-key [f9] 'neotree-toggle)
+ (global-set-key [f8] 'neotree-toggle)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
