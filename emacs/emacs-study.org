@@ -6,13 +6,15 @@
 + 下载安装包
 #+BEGIN_EXAMPLE
 gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+
 http://ftp.gnu.org/gnu/emacs/windows/emacs-25.1-2-x86_64-w64-mingw32.zip
 #+END_EXAMPLE
 
 + 安装
 #+BEGIN_EXAMPLE
 emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
-直接解压到自己规划好的目录并修改为自己喜欢的名字即可以使用，如E:\Local\emacs
+
+直接解压到自己规划好的目录并修改为自己喜欢的名字即可以使用，如D:\Local\emacs
 #+END_EXAMPLE
 
 + 配置PATH环境变量
