@@ -55,6 +55,11 @@ emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
 windows的家目录一般为C:\Users\用户名\AppData\Roaming\
 
 git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roaming\.emacs.d
+
+拷贝.spacemacs文件到C:\Users\carhj\AppData\Roaming\目录下
+
+拷贝elpa目录到C:\Users\carhj\AppData\Roaming\.emacs.d\目录下
+
 #+END_EXAMPLE
 
 + 启动emacs
@@ -125,7 +130,28 @@ dotspacemacs-elpa-timeout 60
 
 
 #+END_EXAMPLE
+
 ** linux
+
+
+
+* prelude 安装
+** windows
++ 安装prelude
+#+BEGIN_EXAMPLE
+github上下载源代码
+
+git clone https://github.com/bbatsov/prelude.git ~/.emacs.d
+
+cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需要模块
+
+注意：'prelude-evil是vim操作模式，如果是emacs的操作风格请不要放开
+
+复制准备好的插件包elpa到~/.emacs.d/下
+
+复制my@prelude.el文件到~/.emacs.d/personal/目录下
+
+#+END_EXAMPLE
 
 
 * TUTORIAL学习
