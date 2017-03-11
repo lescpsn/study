@@ -136,7 +136,7 @@ dotspacemacs-elpa-timeout 60
 
 
 * prelude 安装
-** windows
+** Windows
 + 安装prelude
 #+BEGIN_EXAMPLE
 github上下载源代码
@@ -151,7 +151,47 @@ cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需
 
 复制my@prelude.el文件到~/.emacs.d/personal/目录下
 
+设置字体F10->option->set default font
+保存设置F10->option->save
 #+END_EXAMPLE
+
+** Linux
++ 安装prelude
+#+BEGIN_EXAMPLE
+github上下载源代码
+git clone https://github.com/bbatsov/prelude.git ~/.emacs.d
+
+cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需要模块
+
+修改插件源
+vim  ~/.emacs.d/core/prelude-packages.el
+("melpa" . "http://elpa.emacs-china.org/melpa/")
+            
+
+复制自己的配置文件my@prelude.el文件到~/.emacs.d/personal/目录下
+
+
+ad-handle-definition: `ido-completing-read' got redefined有卡死現象
+（應該是網絡環境引起的ssh客戶端不能測試鏈接）
+暂且修改
+sudo vim /etc/ssh/ssh_config 
+ConnectTimeout 1
+
+#+END_EXAMPLE
++ 开启xterm终端256色
+#+BEGIN_EXAMPLE
+bash shell
+vim ~/.bashrc
+if [ "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
+
+fish shell
+vim ~/.config/fish/config.fish
+set -x TERM xterm-256color 
+
+#+END_EXAMPLE
+
 
 
 * TUTORIAL学习
