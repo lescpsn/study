@@ -132,6 +132,16 @@ dotspacemacs-elpa-timeout 60
 #+END_EXAMPLE
 
 ** linux
++ 安装spacemacs
+#+BEGIN_EXAMPLE
+直接从git上下载代码到用户的家目录中，并取名为.emacs.d，
+
+如果之前运行过emacs，且windows的家目录下有.emacs文件和.emacs.d目录，请删除掉
+
+git clone https://github.com/syl20bnr/spacemacs.git .emacs.d
+
+首次运行emacs让其生成.spacemacs文件 修改.spacemacs文件的插件数据源
+#+END_EXAMPLE
 
 
 
@@ -192,7 +202,13 @@ set -x TERM xterm-256color
 
 #+END_EXAMPLE
 
-
++ 更新插件
+#+BEGIN_EXAMPLE
+如果采用打包好的elpa插件源，由于平台的不同，肯能要更新下
+package-list-packages 进入列表
+package-menu-mark-upgrade [U] 设置更新标识
+package-menu-execute [x]执行更新操作
+#+END_EXAMPLE
 
 * TUTORIAL学习
 + 常用键定义
