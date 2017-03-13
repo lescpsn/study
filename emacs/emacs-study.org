@@ -60,6 +60,7 @@ TAGS用以工程中代码跳转
 
 
 * spacemacs安装
+
 ** windows
 + 安装spacemacs
 #+BEGIN_EXAMPLE
@@ -190,17 +191,19 @@ https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
 
 
 * prelude 安装
-** Windows
-+ 安装prelude
+** 安装prelude
 #+BEGIN_EXAMPLE
 github上下载源代码
 
 git clone https://github.com/bbatsov/prelude.git ~/.emacs.d
 
 cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需要模块
+注意：;; (require 'prelude-evil)是vim操作模式，如果是emacs的操作风格请不要放开
+#+END_EXAMPLE
 
-注意：'prelude-evil是vim操作模式，如果是emacs的操作风格请不要放开
 
+** Windows
+#+BEGIN_EXAMPLE
 复制准备好的插件包elpa到~/.emacs.d/下
 
 复制my@prelude.el文件到~/.emacs.d/personal/目录下
@@ -209,18 +212,12 @@ cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需
 保存设置F10->option->save
 #+END_EXAMPLE
 
+
 ** Linux
-+ 安装prelude
 #+BEGIN_EXAMPLE
-github上下载源代码
-git clone https://github.com/bbatsov/prelude.git ~/.emacs.d
-
-cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需要模块
-
 修改插件源
 vim  ~/.emacs.d/core/prelude-packages.el
 ("melpa" . "http://elpa.emacs-china.org/melpa/")
-            
 
 复制自己的配置文件my@prelude.el文件到~/.emacs.d/personal/目录下
 
