@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-26 周日 18:58 -->
+<!-- 2017-03-11 周六 17:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python-Study</title>
@@ -233,18 +233,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb6931e2">1. Python开发环境搭建</a>
+<li><a href="#org32d8808">1. Python开发环境搭建</a>
 <ul>
-<li><a href="#org056dd08">1.1. Windows</a></li>
-<li><a href="#org619ded3">1.2. Linux</a></li>
+<li><a href="#org12eb10f">1.1. Windows</a></li>
+<li><a href="#org12066b0">1.2. Linux</a></li>
+<li><a href="#org0df9d24">1.3. conda常用命令</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb6931e2" class="outline-2">
-<h2 id="orgb6931e2"><span class="section-number-2">1</span> Python开发环境搭建</h2>
+<div id="outline-container-org32d8808" class="outline-2">
+<h2 id="org32d8808"><span class="section-number-2">1</span> Python开发环境搭建</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="example">
 由于python2和python3两者有较大的差别，且暂未统一且不兼容。为了使两者完美的和谐共存，可以采用
@@ -254,8 +255,8 @@ virtualenv或anaconda等方式管理多版本python共存。由于anaconda本身
 所以无须再独立安装python了。anaconda详细用法见Anaconda详细教程.html
 </pre>
 </div>
-<div id="outline-container-org056dd08" class="outline-3">
-<h3 id="org056dd08"><span class="section-number-3">1.1</span> Windows</h3>
+<div id="outline-container-org12eb10f" class="outline-3">
+<h3 id="org12eb10f"><span class="section-number-3">1.1</span> Windows</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>下载并安装anaconda</li>
@@ -280,45 +281,58 @@ conda config --set show_channel_urls yes
 
 最后生成的配置文件在C:\Users\carhj\.condarc，即也可以直接编辑该文件
 </pre>
+</div>
+</div>
 
+
+<div id="outline-container-org12066b0" class="outline-3">
+<h3 id="org12066b0"><span class="section-number-3">1.2</span> Linux</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>conda常用命令</li>
+<li>下载并安装anacoda</li>
 </ul>
+<pre class="example">
+从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的版本
+Anaconda3-4.2.0-Linux-x86_64.sh
+
+执行shell脚本安装
+bash Anaconda3-4.2.0-Linux-x86_64.sh 一路回车法
+
+which conda      (查看conda的安装位置)
+
+conda --version  (查看conda的版本)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0df9d24" class="outline-3">
+<h3 id="org0df9d24"><span class="section-number-3">1.3</span> conda常用命令</h3>
+<div class="outline-text-3" id="text-1-3">
 <pre class="example">
 conda update conda          (升级conda)
 
 conda create -n py2env python=2  anaconda 
-(创建一个指定py2版本的新环境python2，并且包含指定的模块hanaconda。)
+(创建一个指定py2版本的新环境python2，并且包含指定的模块aconda。)
 
-conda create -n py3env python=3           
+conda create -n py3env python=3
 (创建一个指定py3版本的新环境python3，只包含python的基本模块。)
-
 
 conda info -e               (查看当前系统中所有的python环境)
 
 conda remove -n py2env --all  (删除某个版本python的环境)
 
+activate py2env            (windows下激活某个环境)
+deactivate                 (windows退出某个环境)
 
-
-activate py2env            (激活某个环境)
-
-deactivate                 (退出某个环境)
+source activate py2env     (linux下激活某个环境)
+source deactivate          (linux退出某个环境)
 </pre>
-</div>
-</div>
-
-<div id="outline-container-org619ded3" class="outline-3">
-<h3 id="org619ded3"><span class="section-number-3">1.2</span> Linux</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>安装anacoda</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-02-26 周日 18:58</p>
+<p class="date">Created: 2017-03-11 周六 17:32</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
