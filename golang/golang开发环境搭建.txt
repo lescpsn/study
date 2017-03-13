@@ -13,21 +13,6 @@
 
     1.4 将%GOPATH%/bin，%GOROOT%/bin路径追加到%PATH%环境变量中
 
-2 linux（ubuntu）下的Golang开发环境搭建
-  2.1 网络方式直接安装golang
-      apt-get install golang
-  2.2 配置GOPATH环境变量
-      bash shell:
-      vim ~/.bashrc
-      export GOPATH=~/projects/golang
-
-      fish shell:
-      vim ~/.config/fish/config.fish (若没有，直接创建该文件)
-      set -x GOPATH ~/Projects/lescpsn/golang
-  2.3 GOPATH下创建三个必须的目录
-      mkdir $GOPATH/src
-      mkdir $GOPATH/bin
-      mkdir $GOPATH/pkg
 
 3. 安装Golang常用工具
    1 x/tools 安装
@@ -37,11 +22,10 @@
        cp  github.com/golang/tools golang.org/x/tools
 
    go install golang.org/x/tools/cmd/goimports
-   godef: 代码跳转
-   go get -v -u -x github.com/rogpeppe/godef
 
-   gocode: 代码补全
-   go get -v -u -x github.com/nsf/gocode
+
+
+
 
    lint: 检查代码规范性 go get -v -u -x github.com/golang/lint 出问题（需要golang.org/x/tools）
    下载，手工安装
@@ -70,7 +54,6 @@
 
 go get gopkg.in/yaml.v1 -->https://github.com/go-yaml/yaml
 go get gopkg.in/pg.v4"  -->go get -u -v -x github.com/go-pg/pg
-
 
 
 go get -u -v -x gopkg.in/robfig/cron.v2

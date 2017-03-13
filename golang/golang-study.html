@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-27 周二 12:01 -->
+<!-- 2017-03-11 周六 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>golang-study历程</title>
@@ -233,15 +233,68 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7e02cd5">1. go test</a></li>
-<li><a href="#org3b8a65b">2. issue</a></li>
+<li><a href="#org0adc363">1. Golang开发环境搭建</a>
+<ul>
+<li><a href="#org67f9db1">1.1. Linux</a></li>
+</ul>
+</li>
+<li><a href="#orgaa59b23">2. Golang工程开发工具</a></li>
+<li><a href="#orgf3860f6">3. go test</a></li>
+<li><a href="#org8cecd96">4. issue</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7e02cd5" class="outline-2">
-<h2 id="org7e02cd5"><span class="section-number-2">1</span> go test</h2>
+<div id="outline-container-org0adc363" class="outline-2">
+<h2 id="org0adc363"><span class="section-number-2">1</span> Golang开发环境搭建</h2>
 <div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org67f9db1" class="outline-3">
+<h3 id="org67f9db1"><span class="section-number-3">1.1</span> Linux</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>安装Golang</li>
+</ul>
+<pre class="example">
+sudo apt-get install golang
+
+vim .bashrc
+export GOPATH=~/Projects/lescpsn/golang
+mkdir $GOPATH/src
+mkdir $GOPATH/bin
+mkdir $GOPATH/pkg
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgaa59b23" class="outline-2">
+<h2 id="orgaa59b23"><span class="section-number-2">2</span> Golang工程开发工具</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>配置开发工具的环境变量</li>
+</ul>
+<pre class="example">
+vim .bashrc
+export PATH=$PATH:$GOPATH/bin
+</pre>
+
+<ul class="org-ul">
+<li>gocode</li>
+</ul>
+<pre class="example">
+代码补全
+go get -v -u -x github.com/nsf/gocode
+</pre>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgf3860f6" class="outline-2">
+<h2 id="orgf3860f6"><span class="section-number-2">3</span> go test</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>xxx _test.go</li>
 </ul>
@@ -263,9 +316,9 @@ xxx.go为源文件，xxx _test.go为源文件对应的测试文件
 </pre>
 </div>
 </div>
-<div id="outline-container-org3b8a65b" class="outline-2">
-<h2 id="org3b8a65b"><span class="section-number-2">2</span> issue</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org8cecd96" class="outline-2">
+<h2 id="org8cecd96"><span class="section-number-2">4</span> issue</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>godef: no declaration found for net.ResolveTCPAddr</li>
 </ul>
@@ -283,7 +336,7 @@ go install github.com/rogpeppe/godef
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-27 周二 12:01</p>
+<p class="date">Created: 2017-03-11 周六 15:27</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

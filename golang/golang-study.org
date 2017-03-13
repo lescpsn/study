@@ -1,6 +1,46 @@
 #+TITLE: golang-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+* Golang开发环境搭建
+** Linux
+  + 安装Golang
+#+BEGIN_EXAMPLE
+sudo apt-get install golang
+
+bash shell:
+vim ~/.bashrc
+export GOPATH=~/Projects/lescpsn/golang
+
+fish  shell:
+vim  ~/.config/fish/config.fish (若没有，直接创建该文件)
+set -x GOPATH ~/Projects/lescpsn/golang
+
+mkdir $GOPATH/src
+mkdir $GOPATH/bin
+mkdir $GOPATH/pkg
+#+END_EXAMPLE
+
+
+* Golang工程开发工具
++ 配置开发工具的环境变量
+#+BEGIN_EXAMPLE
+vim .bashrc
+export PATH=$PATH:$GOPATH/bin
+#+END_EXAMPLE
+
++ gocode
+#+BEGIN_EXAMPLE
+代码补全
+go get -u -v -x github.com/nsf/gocode
+#+END_EXAMPLE
+
++ godef
+#+BEGIN_EXAMPLE
+代码跳转
+go get -u -v -x github.com/rogpeppe/godef
+#+END_EXAMPLE
+
+
 * go test
 + xxx _test.go 
 #+BEGIN_EXAMPLE

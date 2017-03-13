@@ -41,7 +41,22 @@ emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
 删除"D:/Local/emacs/.emacs.d/init.el"文件，恢复到初始状态 git checkout -- init.el，再次启动emacs
 #+END_EXAMPLE
 
+
 ** linux
++ 网络安装
+#+BEGIN_EXAMPLE
+sudo apt-get install emacs
+#+END_EXAMPLE
+
+
+** 相关工具
++ etags
+#+BEGIN_EXAMPLE
+apt-get install global
+etags filename (find . -name *.py | xargs etags) 生成TAGS文件
+
+TAGS用以工程中代码跳转
+#+END_EXAMPLE
 
 
 * spacemacs安装
@@ -94,32 +109,6 @@ dotspacemacs-elpa-timeout 60
       ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 #+END_EXAMPLE
 
-+ 相关工具的安装
-
-#+BEGIN_EXAMPLE
-1. 安装 source code font 字体
-   https://github.com/adobe-fonts/source-code-pro/downloads 下载 source code font 字体
-   TTF下所有文件拷贝到c:/windows/font
-
-2. 安装 zlib
-   http://gnuwin32.sourceforge.net/packages/zlib.htm 下载windows版本的zlib
-   安装zlib，一路回车法，将安装后的bin添加到PATH环境变量中去
-
-3. 安装 aspell
-   http://aspell.net/win32/ 下载Aspell-0-50-3-3-Setup.exe，Aspell-en-0.50-2-3.exe两个软件
-   先安装Aspell-0-50-3-3-Setup.exe，再安装Aspell-en-0.50-2-3.exe（属于字典库）
-   安装后的bin添加到PATH环境变量中去
-
-4. 安装 diff
-   https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
-   下载KDiff3-64bit-Setup_0.9.98-2.exe
-   一路回车法安装diff
-   安装后的bin添加到PATH环境变量中去
-
-5. 安装 tern
-   采用nmp包管理工具安装，没有npm的话，先需先安装nodejs
-   npm install -g tern
-#+END_EXAMPLE
 
 + issue
 #+BEGIN_EXAMPLE
@@ -130,6 +119,7 @@ dotspacemacs-elpa-timeout 60
 
 
 #+END_EXAMPLE
+
 
 ** linux
 + 安装spacemacs
@@ -143,6 +133,60 @@ git clone https://github.com/syl20bnr/spacemacs.git .emacs.d
 首次运行emacs让其生成.spacemacs文件 修改.spacemacs文件的插件数据源
 #+END_EXAMPLE
 
+
+
+** 相关工具的安装
++ 安装 aspell
+#+BEGIN_EXAMPLE
+windows:
+http://aspell.net/win32/ 下载Aspell-0-50-3-3-Setup.exe，Aspell-en-0.50-2-3.exe两个软件
+先安装Aspell-0-50-3-3-Setup.exe，再安装Aspell-en-0.50-2-3.exe（属于字典库）
+安装后的bin添加到PATH环境变量中去
+
+linux:
+sudo apt-get install aspell  (aspell-en英语字典库自动安装了)
+sudo apt-get install aspell-hy(美语)
+#+END_EXAMPLE
+
++ 安装 tern
+#+BEGIN_EXAMPLE
+windows:
+采用nmp包管理工具安装，没有npm的话，先需先安装nodejs
+npm install -g tern
+
+linux:
+采用nmp包管理工具安装，没有npm的话，先需先安装nodejs(这种安装方式可能有坑)
+sudo apt-get install nodejs (安装好检查下which node nodejs)
+由于ubuntu上名字叫nodejs,所有可以做个软链接
+ln -s /usr/bin/nodejs /usr/bin/node
+sudo apt-get install npm
+
+sudo npm install -g tern
+sudo npm -g install js-beautify
+#+END_EXAMPLE
+
++ 安装 source code font 字体
+#+BEGIN_EXAMPLE
+https://github.com/adobe-fonts/source-code-pro/downloads 下载 source code font 字体
+
+TTF下所有文件拷贝到c:/windows/font
+#+END_EXAMPLE
+
++ 安装 zlib
+#+BEGIN_EXAMPLE
+http://gnuwin32.sourceforge.net/packages/zlib.htm 下载windows版本的zlib
+
+安装zlib，一路回车法，将安装后的bin添加到PATH环境变量中去
+#+END_EXAMPLE
+
++ 安装 diff
+#+BEGIN_EXAMPLE
+https://sourceforge.net/projects/kdiff3/files/kdiff3/0.9.98/
+
+下载KDiff3-64bit-Setup_0.9.98-2.exe
+
+一路回车法安装diff,安装后的bin添加到PATH环境变量中去
+#+END_EXAMPLE
 
 
 * prelude 安装
@@ -210,6 +254,7 @@ package-menu-mark-upgrade [U] 设置更新标识
 package-menu-execute [x]执行更新操作
 #+END_EXAMPLE
 
+
 * TUTORIAL学习
 + 常用键定义
 #+BEGIN_EXAMPLE
@@ -251,8 +296,8 @@ M-y : 必须紧接着C-y后操作，可以恢复剪切缓冲区之前的内容
 C-/ : 恢复到前一次的操作(C-_也是一样）
 #+END_EXAMPLE
 
-* 文件（FILE）
 
+* 文件（FILE）
 
 * org-mode
 + 文档标题
@@ -357,16 +402,7 @@ tramp主要实现远程访问Linux服务器，可以直接编辑远程服务器�
 #+BEGIN_EXAMPLE
 M-数字 : 选择窗口
 #+END_EXAMPLE
-** shell-mode
-+ C-c :
-#+BEGIN_EXAMPLE
-设置当前shell脚本类型（bash，sh，ksh）
-#+END_EXAMPLE
 
-+ C-c (
-#+BEGIN_EXAMPLE
-快速定义一个函数
-#+END_EXAMPLE
 
 ** golang-mode
 + C-c C-a
@@ -379,14 +415,11 @@ M-数字 : 选择窗口
 查看一个函数的声明
 #+END_EXAMPLE
 
-+ C-c C-j
++ C-c C-j/M-*
 #+BEGIN_EXAMPLE
-查看一个函数的详细定义
-#+END_EXAMPLE
+C-c C-j :跳转到函数定义处
 
-+ M-*
-#+BEGIN_EXAMPLE
-跳回到原处
+M-* :跳回到原处
 #+END_EXAMPLE
 
 + M-RET i r
@@ -394,9 +427,43 @@ M-数字 : 选择窗口
 删除多余的import包
 #+END_EXAMPLE
 
-** python-mode
+
+** html-mode
++ C-j/C-RET/TAB
+#+BEGIN_EXAMPLE
+标签快速配对
+#+END_EXAMPLE
+
 
 ** javascript-mode
+
+
+** python-mode
++ M-./M-*
+#+BEGIN_EXAMPLE
+M-. :跳转到函数定义处
+
+M-* :跳回到原处
+#+END_EXAMPLE
+
+
+** shell-mode
++ C-c :
+#+BEGIN_EXAMPLE
+设置当前shell脚本类型（bash，sh，ksh）
+#+END_EXAMPLE
+
++ C-c (
+#+BEGIN_EXAMPLE
+快速定义一个函数
+#+END_EXAMPLE
+
+
+
+
+
+
+
 
 
 * issue
