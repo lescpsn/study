@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-23 周五 14:36 -->
+<!-- 2017-03-15 周三 21:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NODE.JS &amp; ES6</title>
@@ -233,42 +233,42 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd4f9bad">1. node.js概览</a></li>
-<li><a href="#orgb046ed7">2. 向node.js发问</a>
+<li><a href="#org1dc68a3">1. node.js概览</a></li>
+<li><a href="#org57ee80f">2. 向node.js发问</a>
 <ul>
-<li><a href="#org3e7c38c">2.1. Question 1</a></li>
-<li><a href="#org77c9ac1">2.2. Question 2</a></li>
-<li><a href="#orga0c46b4">2.3. Question 3</a></li>
-<li><a href="#org8ea3429">2.4. Question 4</a></li>
-<li><a href="#org87bc7f0">2.5. Question 5</a></li>
-<li><a href="#org425d558">2.6. Question 6</a></li>
-<li><a href="#orgd6312dc">2.7. Question 7</a></li>
-<li><a href="#org7c7f7c5">2.8. Question 8</a></li>
-<li><a href="#orgfdf9ff9">2.9. Question 9</a></li>
-<li><a href="#orgba79678">2.10. Question 10</a></li>
+<li><a href="#org389c385">2.1. Question 1</a></li>
+<li><a href="#org95eb8c2">2.2. Question 2</a></li>
+<li><a href="#org16d1622">2.3. Question 3</a></li>
+<li><a href="#orgb63b698">2.4. Question 4</a></li>
+<li><a href="#org2e6a19c">2.5. Question 5</a></li>
+<li><a href="#org2062c98">2.6. Question 6</a></li>
+<li><a href="#orgf3ba3d1">2.7. Question 7</a></li>
+<li><a href="#org23c4373">2.8. Question 8</a></li>
+<li><a href="#orgd8c5e85">2.9. Question 9</a></li>
+<li><a href="#org7d6fbf7">2.10. Question 10</a></li>
 </ul>
 </li>
-<li><a href="#orgffcc1a7">3. es6</a>
+<li><a href="#org7cf1056">3. es6</a>
 <ul>
-<li><a href="#orgd2b9dc2">3.1. let 和 const</a></li>
-<li><a href="#org85d70e1">3.2. for of 直接遍历数组的值</a></li>
-<li><a href="#org425f1f3">3.3. 函数定义</a></li>
-<li><a href="#orgaf79601">3.4. 类定义（class）</a></li>
-<li><a href="#org04618f3">3.5. 继承类定义（class，extends）</a></li>
-<li><a href="#orgc1e4d1a">3.6. 公有导出</a></li>
-<li><a href="#orgdf76af0">3.7. 箭头函数</a></li>
-<li><a href="#org52d8180">3.8. 字符串模板</a></li>
-<li><a href="#org2b3d749">3.9. 解构(函数多返回值)</a></li>
-<li><a href="#org08bc20f">3.10. 函数参数默认值</a></li>
-<li><a href="#org5bb34ab">3.11. 新增的集合相关类型</a></li>
+<li><a href="#orgb4704cb">3.1. let 和 const</a></li>
+<li><a href="#orgf1f21e6">3.2. for of 直接遍历数组的值</a></li>
+<li><a href="#org1f3a5fb">3.3. 函数定义</a></li>
+<li><a href="#org759098b">3.4. 类定义（class）</a></li>
+<li><a href="#orga0bc933">3.5. 继承类定义（class，extends）</a></li>
+<li><a href="#orgc625d83">3.6. 公有导出</a></li>
+<li><a href="#org8b6d1ab">3.7. 箭头函数</a></li>
+<li><a href="#org9286aa3">3.8. 字符串模板</a></li>
+<li><a href="#orgb9fc0da">3.9. 解构(函数多返回值)</a></li>
+<li><a href="#org9c6c0b5">3.10. 函数参数默认值</a></li>
+<li><a href="#orgfc2c97e">3.11. 新增的集合相关类型</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd4f9bad" class="outline-2">
-<h2 id="orgd4f9bad"><span class="section-number-2">1</span> node.js概览</h2>
+<div id="outline-container-org1dc68a3" class="outline-2">
+<h2 id="org1dc68a3"><span class="section-number-2">1</span> node.js概览</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="example">
 编写高性能网络服务器的javascript脚本性语言(用js开发服务端程序)
@@ -279,11 +279,11 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgb046ed7" class="outline-2">
-<h2 id="orgb046ed7"><span class="section-number-2">2</span> 向node.js发问</h2>
+<div id="outline-container-org57ee80f" class="outline-2">
+<h2 id="org57ee80f"><span class="section-number-2">2</span> 向node.js发问</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org3e7c38c" class="outline-3">
-<h3 id="org3e7c38c"><span class="section-number-3">2.1</span> Question 1</h3>
+</div><div id="outline-container-org389c385" class="outline-3">
+<h3 id="org389c385"><span class="section-number-3">2.1</span> Question 1</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Q：如何运行第一个node.js程序？</li>
@@ -317,8 +317,8 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org77c9ac1" class="outline-3">
-<h3 id="org77c9ac1"><span class="section-number-3">2.2</span> Question 2</h3>
+<div id="outline-container-org95eb8c2" class="outline-3">
+<h3 id="org95eb8c2"><span class="section-number-3">2.2</span> Question 2</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Q：如何定义变量呢？</li>
@@ -460,8 +460,8 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-orga0c46b4" class="outline-3">
-<h3 id="orga0c46b4"><span class="section-number-3">2.3</span> Question 3</h3>
+<div id="outline-container-org16d1622" class="outline-3">
+<h3 id="org16d1622"><span class="section-number-3">2.3</span> Question 3</h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>Q：如何定义数组呢？</li>
@@ -537,8 +537,8 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org8ea3429" class="outline-3">
-<h3 id="org8ea3429"><span class="section-number-3">2.4</span> Question 4</h3>
+<div id="outline-container-orgb63b698" class="outline-3">
+<h3 id="orgb63b698"><span class="section-number-3">2.4</span> Question 4</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>Q：如何定义字典呢？</li>
@@ -599,8 +599,8 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org87bc7f0" class="outline-3">
-<h3 id="org87bc7f0"><span class="section-number-3">2.5</span> Question 5</h3>
+<div id="outline-container-org2e6a19c" class="outline-3">
+<h3 id="org2e6a19c"><span class="section-number-3">2.5</span> Question 5</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li>Q 5.1：如何定义函数呢？</li>
@@ -659,8 +659,8 @@ c/P/l/s/j/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org425d558" class="outline-3">
-<h3 id="org425d558"><span class="section-number-3">2.6</span> Question 6</h3>
+<div id="outline-container-org2062c98" class="outline-3">
+<h3 id="org2062c98"><span class="section-number-3">2.6</span> Question 6</h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li>Q: 如何导入其它js文件中的函数呢？</li>
@@ -722,8 +722,8 @@ c/P/l/study/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-orgd6312dc" class="outline-3">
-<h3 id="orgd6312dc"><span class="section-number-3">2.7</span> Question 7</h3>
+<div id="outline-container-orgf3ba3d1" class="outline-3">
+<h3 id="orgf3ba3d1"><span class="section-number-3">2.7</span> Question 7</h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
 <li>Q 7.1: node.js面向对象的特性呢？</li>
@@ -750,8 +750,8 @@ c/P/l/study/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org7c7f7c5" class="outline-3">
-<h3 id="org7c7f7c5"><span class="section-number-3">2.8</span> Question 8</h3>
+<div id="outline-container-org23c4373" class="outline-3">
+<h3 id="org23c4373"><span class="section-number-3">2.8</span> Question 8</h3>
 <div class="outline-text-3" id="text-2-8">
 <ul class="org-ul">
 <li>Q: node.js如何实现异步呢？</li>
@@ -767,8 +767,8 @@ c/P/l/study/nodejs/example:master*? λ
 </div>
 </div>
 
-<div id="outline-container-orgfdf9ff9" class="outline-3">
-<h3 id="orgfdf9ff9"><span class="section-number-3">2.9</span> Question 9</h3>
+<div id="outline-container-orgd8c5e85" class="outline-3">
+<h3 id="orgd8c5e85"><span class="section-number-3">2.9</span> Question 9</h3>
 <div class="outline-text-3" id="text-2-9">
 <ul class="org-ul">
 <li>Q: node.js事件驱动</li>
@@ -781,8 +781,8 @@ c/P/l/study/nodejs/example:master*? λ
 </pre>
 </div>
 </div>
-<div id="outline-container-orgba79678" class="outline-3">
-<h3 id="orgba79678"><span class="section-number-3">2.10</span> Question 10</h3>
+<div id="outline-container-org7d6fbf7" class="outline-3">
+<h3 id="org7d6fbf7"><span class="section-number-3">2.10</span> Question 10</h3>
 <div class="outline-text-3" id="text-2-10">
 <ul class="org-ul">
 <li>Q: node.js的web后端开发</li>
@@ -800,15 +800,15 @@ mongodb
 </div>
 
 
-<div id="outline-container-orgffcc1a7" class="outline-2">
-<h2 id="orgffcc1a7"><span class="section-number-2">3</span> es6</h2>
+<div id="outline-container-org7cf1056" class="outline-2">
+<h2 id="org7cf1056"><span class="section-number-2">3</span> es6</h2>
 <div class="outline-text-2" id="text-3">
 <pre class="example">
 ECMAScript语言规范第6版，规范编写JS代码的方式！
 </pre>
 </div>
-<div id="outline-container-orgd2b9dc2" class="outline-3">
-<h3 id="orgd2b9dc2"><span class="section-number-3">3.1</span> let 和 const</h3>
+<div id="outline-container-orgb4704cb" class="outline-3">
+<h3 id="orgb4704cb"><span class="section-number-3">3.1</span> let 和 const</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>let</li>
@@ -852,8 +852,8 @@ ReferenceError: i is not defined
 </div>
 </div>
 
-<div id="outline-container-org85d70e1" class="outline-3">
-<h3 id="org85d70e1"><span class="section-number-3">3.2</span> for of 直接遍历数组的值</h3>
+<div id="outline-container-orgf1f21e6" class="outline-3">
+<h3 id="orgf1f21e6"><span class="section-number-3">3.2</span> for of 直接遍历数组的值</h3>
 <div class="outline-text-3" id="text-3-2">
 <pre class="example">
 let myArry = ['a', 'ab', "b", "bc"];
@@ -874,8 +874,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org425f1f3" class="outline-3">
-<h3 id="org425f1f3"><span class="section-number-3">3.3</span> 函数定义</h3>
+<div id="outline-container-org1f3a5fb" class="outline-3">
+<h3 id="org1f3a5fb"><span class="section-number-3">3.3</span> 函数定义</h3>
 <div class="outline-text-3" id="text-3-3">
 <pre class="example">
 getName: function(name)  ==&gt;     getName(name)
@@ -899,8 +899,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-orgaf79601" class="outline-3">
-<h3 id="orgaf79601"><span class="section-number-3">3.4</span> 类定义（class）</h3>
+<div id="outline-container-org759098b" class="outline-3">
+<h3 id="org759098b"><span class="section-number-3">3.4</span> 类定义（class）</h3>
 <div class="outline-text-3" id="text-3-4">
 <pre class="example">
 // es6_004.js
@@ -924,8 +924,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org04618f3" class="outline-3">
-<h3 id="org04618f3"><span class="section-number-3">3.5</span> 继承类定义（class，extends）</h3>
+<div id="outline-container-orga0bc933" class="outline-3">
+<h3 id="orga0bc933"><span class="section-number-3">3.5</span> 继承类定义（class，extends）</h3>
 <div class="outline-text-3" id="text-3-5">
 <pre class="example">
 // es6_005.js
@@ -963,8 +963,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-orgc1e4d1a" class="outline-3">
-<h3 id="orgc1e4d1a"><span class="section-number-3">3.6</span> 公有导出</h3>
+<div id="outline-container-orgc625d83" class="outline-3">
+<h3 id="orgc625d83"><span class="section-number-3">3.6</span> 公有导出</h3>
 <div class="outline-text-3" id="text-3-6">
 <pre class="example">
 // lib.js
@@ -977,8 +977,8 @@ import {funct, var,var} from "./lib.js"
 </div>
 </div>
 
-<div id="outline-container-orgdf76af0" class="outline-3">
-<h3 id="orgdf76af0"><span class="section-number-3">3.7</span> 箭头函数</h3>
+<div id="outline-container-org8b6d1ab" class="outline-3">
+<h3 id="org8b6d1ab"><span class="section-number-3">3.7</span> 箭头函数</h3>
 <div class="outline-text-3" id="text-3-7">
 <pre class="example">
 箭头操作符 =&gt; 简化了函数的书写。操作符左边为输入的参数，而右边则是进行的操作以及返回的值
@@ -1007,8 +1007,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org52d8180" class="outline-3">
-<h3 id="org52d8180"><span class="section-number-3">3.8</span> 字符串模板</h3>
+<div id="outline-container-org9286aa3" class="outline-3">
+<h3 id="org9286aa3"><span class="section-number-3">3.8</span> 字符串模板</h3>
 <div class="outline-text-3" id="text-3-8">
 <pre class="example">
 // es6_008.js
@@ -1027,8 +1027,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org2b3d749" class="outline-3">
-<h3 id="org2b3d749"><span class="section-number-3">3.9</span> 解构(函数多返回值)</h3>
+<div id="outline-container-orgb9fc0da" class="outline-3">
+<h3 id="orgb9fc0da"><span class="section-number-3">3.9</span> 解构(函数多返回值)</h3>
 <div class="outline-text-3" id="text-3-9">
 <pre class="example">
 如果函数返回多个值，可以直接返回一个数组，数组中的值会自动被解析到对应接收该值的数组变量中。
@@ -1061,8 +1061,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org08bc20f" class="outline-3">
-<h3 id="org08bc20f"><span class="section-number-3">3.10</span> 函数参数默认值</h3>
+<div id="outline-container-org9c6c0b5" class="outline-3">
+<h3 id="org9c6c0b5"><span class="section-number-3">3.10</span> 函数参数默认值</h3>
 <div class="outline-text-3" id="text-3-10">
 <pre class="example">
 // es6_010.js
@@ -1084,8 +1084,8 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 
-<div id="outline-container-org5bb34ab" class="outline-3">
-<h3 id="org5bb34ab"><span class="section-number-3">3.11</span> 新增的集合相关类型</h3>
+<div id="outline-container-orgfc2c97e" class="outline-3">
+<h3 id="orgfc2c97e"><span class="section-number-3">3.11</span> 新增的集合相关类型</h3>
 <div class="outline-text-3" id="text-3-11">
 <ul class="org-ul">
 <li>map set</li>
@@ -1133,7 +1133,7 @@ c/P/l/s/javascript/nodejs/es6:master*? λ
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2016-12-23 周五 14:36</p>
+<p class="date">Created: 2017-03-15 周三 21:38</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
