@@ -88,4 +88,27 @@ emacs 插件
 Emacs Pro Essentials
 #+END_EXAMPLE
 
+#+BEGIN_EXAMPLE
+atom 相关插件
+Emacs Pro Essentials
+#+END_EXAMPLE
 
+
+
+
+* sublime之go开发环境搭建
+** 安装GoSublime
+#+BEGIN_EXAMPLE
+C +　S　+ P -> pci -> gosub
+#+END_EXAMPLE
+
+** 设置GoSublime
+#+BEGIN_EXAMPLE
+首选项 -> package设置 -> Gopsublime -> setting user 
+{
+    "env": {
+        "GOPATH": "E:/Projects/lescpsn/golang", //go程序的个人代码工程路径
+        "GOROOT": "D:/Go"   //go语言的安装路径
+    }
+}
+#+END_EXAMPLE
