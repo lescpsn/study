@@ -112,3 +112,13 @@ C +　S　+ P -> pci -> gosub
     }
 }
 #+END_EXAMPLE
+
+
+
+1. sublime 添加到右键
+cmd -> regedit
+1 HKEY_CLASSESS_ROOT->*->Shell 
+新建项Sublime Text 3（安装的目录名字） -> 
+  |新建字符串Icon(值是安装路径C:\Local\Sublime Text 3\sublime_text.exe,0)
+->|
+  |新建项Command(修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe %1)
