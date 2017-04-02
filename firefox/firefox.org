@@ -1,27 +1,28 @@
 #+TITLE: Firefox-Study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
-
 * 插件介绍
-** KeySnail + Hok
+** KeySnail 
++ KeySnail
 #+BEGIN_EXAMPLE
-firefox模拟emacs操作的一个插件
+github上下载keysnail.xpi文件
+
+右键用火狐浏览器方式打开keysnail.xpi，基本默认安装就是
+ 
+安装完成后火狐浏览器的右上角会出现相关图标，可以点击打开插件管理，继续安装keysnail的相关插件
 #+END_EXAMPLE
-+ 安装
+
++ Hok
 #+BEGIN_EXAMPLE
-1. windows
-   1.1 github上下载keysnail.xpi文件
+打开keysnail的插件管理，安装Hok，
 
-   1.2 右键用火狐浏览器方式打开keysnail.xpi，基本默认安装就是了
+github上可以自行学习Hok的相关配置的用法
 
-   1.3 安装keysnail相关插件：https://github.com/mooz/keysnail/wiki/plugin，右键安装即可
-       Hok，Caret hint，Tanything，bmany
-       右键每个插件，新链接打开可以查看到每个插件的详细用法
-    其实主要安装一个Hot就可以了
+编辑~/.keysnail.js文件,具体可以查看官 方文档
 
-   1.4 编辑.keysnail.js文件,大E可以换成小e
+注意：以下配置项目最好放在.keysnail.js文件的最后，否则好像有冲突
 
-key.setViewKey('F', function (aEvent, aArg) {
+key.setViewKey('e', function (aEvent, aArg) {
     ext.exec("hok-start-foreground-mode", aArg);
 }, 'Hok - Foreground hint mode', true);
 
@@ -41,16 +42,21 @@ key.setViewKey('c', function (aEvent, aArg) {
     ext.exec("hok-yank-foreground-mode", aArg);
 }, 'Hok - Foreground yank hint mode', true);
 
-修改下这个键，否则和放大缩小有冲突
+如果出现快捷键的冲突，如浏览器的放大和缩小快捷(C - +, C - -)，请修改下这个键
 key.negativeArgument1Key = "C-+";
-2. linxu
-
-3. mac
-
 #+END_EXAMPLE
+
++ emacs相关插件
+#+BEGIN_EXAMPLE
+目录一个Hok基本够用了，已经可以让你的火狐操作如虎添翼的，以下插件后续继续研究
+
+Caret hint，Tanything，bmany
+#+END_EXAMPLE
+
 
 * 常用快捷键
 + 快捷键缩写说明：C->Ctrl，S->Shift，D->Delete
 #+BEGIN_EXAMPLE
 清除各种缓存的快捷键：C + S + D
 #+END_EXAMPLE
+ 

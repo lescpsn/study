@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-01-20 周五 19:52 -->
+<!-- 2017-04-02 周日 23:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Firefox-Study历程</title>
@@ -233,43 +233,46 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgaaa9a4d">1. 插件介绍</a>
+<li><a href="#org54cb2e2">1. 插件介绍</a>
 <ul>
-<li><a href="#org61e53e7">1.1. KeySnail + Hok</a></li>
+<li><a href="#orge9084be">1.1. KeySnail</a></li>
 </ul>
 </li>
-<li><a href="#org274565c">2. 常用快捷键</a></li>
+<li><a href="#orgfecb7d6">2. 常用快捷键</a></li>
 </ul>
 </div>
 </div>
 
-
-<div id="outline-container-orgaaa9a4d" class="outline-2">
-<h2 id="orgaaa9a4d"><span class="section-number-2">1</span> 插件介绍</h2>
+<div id="outline-container-org54cb2e2" class="outline-2">
+<h2 id="org54cb2e2"><span class="section-number-2">1</span> 插件介绍</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org61e53e7" class="outline-3">
-<h3 id="org61e53e7"><span class="section-number-3">1.1</span> KeySnail + Hok</h3>
+</div><div id="outline-container-orge9084be" class="outline-3">
+<h3 id="orge9084be"><span class="section-number-3">1.1</span> KeySnail</h3>
 <div class="outline-text-3" id="text-1-1">
-<pre class="example">
-firefox模拟emacs操作的一个插件
-</pre>
 <ul class="org-ul">
-<li>安装</li>
+<li>KeySnail</li>
 </ul>
 <pre class="example">
-1. windows
-   1.1 github上下载keysnail.xpi文件
+github上下载keysnail.xpi文件
 
-   1.2 右键用火狐浏览器方式打开keysnail.xpi，基本默认安装就是了
+右键用火狐浏览器方式打开keysnail.xpi，基本默认安装就是
+ 
+安装完成后火狐浏览器的右上角会出现相关图标，可以点击打开插件管理，继续安装keysnail的相关插件
+</pre>
 
-   1.3 安装keysnail相关插件：https://github.com/mooz/keysnail/wiki/plugin，右键安装即可
-       Hok，Caret hint，Tanything，bmany
-       右键每个插件，新链接打开可以查看到每个插件的详细用法
-    其实主要安装一个Hot就可以了
+<ul class="org-ul">
+<li>Hok</li>
+</ul>
+<pre class="example">
+打开keysnail的插件管理，安装Hok，
 
-   1.4 编辑.keysnail.js文件,大E可以换成小e
+github上可以自行学习Hok的相关配置的用法
 
-key.setViewKey('F', function (aEvent, aArg) {
+编辑~/.keysnail.js文件,具体可以查看官 方文档
+
+注意：以下配置项目最好放在.keysnail.js文件的最后，否则好像有冲突
+
+key.setViewKey('e', function (aEvent, aArg) {
     ext.exec("hok-start-foreground-mode", aArg);
 }, 'Hok - Foreground hint mode', true);
 
@@ -289,18 +292,25 @@ key.setViewKey('c', function (aEvent, aArg) {
     ext.exec("hok-yank-foreground-mode", aArg);
 }, 'Hok - Foreground yank hint mode', true);
 
-修改下这个键，否则和放大缩小有冲突
+如果出现快捷键的冲突，如浏览器的放大和缩小快捷(C - +, C - -)，请修改下这个键
 key.negativeArgument1Key = "C-+";
-2. linxu
+</pre>
 
-3. mac
+<ul class="org-ul">
+<li>emacs相关插件</li>
+</ul>
+<pre class="example">
+目录一个Hok基本够用了，已经可以让你的火狐操作如虎添翼的，以下插件后续继续研究
+
+Caret hint，Tanything，bmany
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org274565c" class="outline-2">
-<h2 id="org274565c"><span class="section-number-2">2</span> 常用快捷键</h2>
+
+<div id="outline-container-orgfecb7d6" class="outline-2">
+<h2 id="orgfecb7d6"><span class="section-number-2">2</span> 常用快捷键</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>快捷键缩写说明：C-&gt;Ctrl，S-&gt;Shift，D-&gt;Delete</li>
@@ -312,7 +322,7 @@ key.negativeArgument1Key = "C-+";
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-01-20 周五 19:52</p>
+<p class="date">Created: 2017-04-02 周日 23:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
