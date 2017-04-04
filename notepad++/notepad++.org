@@ -1,0 +1,13 @@
+#+TITLE:  NOTEPAD++
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+
+* 安装
+#+BEGIN_EXAMPLE
+npp.7.3.2.Installer.x64
+
+官网下载对应平台的最新安装包，选择好安装路径，傻瓜式一路回车法安装
+#+END_EXAMPLE
+
+
+
