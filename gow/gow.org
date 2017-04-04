@@ -1,0 +1,14 @@
+#+TITLE: GOW
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+#+BEGIN_EXAMPLE
+Gow是一个相当于轻量级Cygwin的替代品，封装了Linux命令在windows下的实现
+#+END_EXAMPLE
+
+* 安装
+#+BEGIN_EXAMPLE
+github上https://github.com/bmatzelle/gow/downloads
+
+下载最新对应系统的安装包，傻瓜式一路回车法安装即可
+
+安装完成后自动将执行程序的路径添加到PATH环境变量中去了
+#+END_EXAMPLE
