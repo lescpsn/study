@@ -1,0 +1,43 @@
+#+TITLE: SecureCRT
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+* SecureCRT
+** 常用设置
++ 鼠标中键粘贴
+#+BEGIN_EXAMPLE
+全局选项 -> 终端 -> 粘贴用 中
+#+END_EXAMPLE
+
+
++ 快速clone会话
+#+BEGIN_EXAMPLE
+会话选项 -> 终端 -> 仿真 -> 映射键 -> 输入要映射的快捷键
+SSH功能 -> SSH_NEW_SESSION
+#+END_EXAMPLE
+
+
++ 显示隐藏文件
+#+BEGIN_EXAMPLE
+全局选项 -> 文件传输 -> 查看 -> 不显示点(.)文件 (去掉勾选)
+#+END_EXAMPLE
+
++ 显示文件夹树
+#+BEGIN_EXAMPLE
+全局选项 -> 文件传输 -> 查看 -> 显示文件夹树 (去掉勾选)
+可能会引起bug
+可能链接上通过SecureFX再修改单次会话
+菜单 -> 视图 -> 文件夹树
+#+END_EXAMPLE
+
+** emacs模式
+#+BEGIN_EXAMPLE
+会话选项 -> 终端 -> 仿真 -> Eamcs -> 使用ALT作为元键
+会话选项 -> 终端 -> 仿真 -> 映射键 -> Backspace发送delete
+#+END_EXAMPLE
+
+* SecureFX
+#+BEGIN_EXAMPLE
+SecureCRT自带的ftp/sftp工具，比起Xshell，Putty等终端工具，还要另行安装，方便许多
+#+END_EXAMPLE
+
+
+
