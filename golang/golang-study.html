@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-11 周六 15:27 -->
+<!-- 2017-04-03 周一 03:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>golang-study历程</title>
@@ -233,43 +233,115 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0adc363">1. Golang开发环境搭建</a>
+<li><a href="#orgd8a52bb">1. Golang开发环境搭建</a>
 <ul>
-<li><a href="#org67f9db1">1.1. Linux</a></li>
+<li><a href="#org3783043">1.1. Windows</a></li>
+<li><a href="#org13cce94">1.2. Linux</a></li>
+<li><a href="#org10525ce">1.3. Golang常用命令</a></li>
 </ul>
 </li>
-<li><a href="#orgaa59b23">2. Golang工程开发工具</a></li>
-<li><a href="#orgf3860f6">3. go test</a></li>
-<li><a href="#org8cecd96">4. issue</a></li>
+<li><a href="#org229fa1e">2. Golang工程开发工具</a></li>
+<li><a href="#orgeb5b6f1">3. go test</a></li>
+<li><a href="#org09490cb">4. issue</a></li>
 </ul>
+</div>
+</div>
+<pre class="example">
+Golang学习的相关网站
+官网    : https://golang.org
+</pre>
+
+<div id="outline-container-orgd8a52bb" class="outline-2">
+<h2 id="orgd8a52bb"><span class="section-number-2">1</span> Golang开发环境搭建</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org3783043" class="outline-3">
+<h3 id="org3783043"><span class="section-number-3">1.1</span> Windows</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>golang安装</li>
+</ul>
+<pre class="example">
+官网 https://golang.org/dl/ 下载windows对应版本的最新Golang安装包
+
+指定好安装路径，傻瓜式一路回车法安装
+</pre>
+
+<ul class="org-ul">
+<li>设置GOPATH环境变量</li>
+</ul>
+<pre class="example">
+设置GOPATH环境变量（windows下如何添加环境变量，自行百度），
+在%GOPATH%目录下分别创建bin，pkg，src三个目录
+mkdir %GOPATH%/bin
+mkdir %GOPATH%/pkg
+mkdir %GOPATH%/src
+
+GOPATH的具体值根据自己的目录规划习惯，以后所有的工程项目目录必须放在%GOPATH%/src目录下
+如：
+%GOPATH%/src/projectname
+%GOPATH%/src/github.com/username/projectname
+
+%GOPATH%/src下的工程项目目录可以递归包含任意层次的目录结构
+</pre>
+
+<ul class="org-ul">
+<li>添加PATH环境变量</li>
+</ul>
+<pre class="example">
+将 %GOPATH%/bin 追加到%PATH%环境变量中
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org0adc363" class="outline-2">
-<h2 id="org0adc363"><span class="section-number-2">1</span> Golang开发环境搭建</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org67f9db1" class="outline-3">
-<h3 id="org67f9db1"><span class="section-number-3">1.1</span> Linux</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org13cce94" class="outline-3">
+<h3 id="org13cce94"><span class="section-number-3">1.2</span> Linux</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>安装Golang</li>
 </ul>
 <pre class="example">
 sudo apt-get install golang
 
-vim .bashrc
+bash shell:
+vim ~/.bashrc
 export GOPATH=~/Projects/lescpsn/golang
+
+fish  shell:
+vim  ~/.config/fish/config.fish (若没有，直接创建该文件)
+set -x GOPATH ~/Projects/lescpsn/golang
+
 mkdir $GOPATH/src
 mkdir $GOPATH/bin
 mkdir $GOPATH/pkg
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org10525ce" class="outline-3">
+<h3 id="org10525ce"><span class="section-number-3">1.3</span> Golang常用命令</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>查看go版本</li>
+</ul>
+<pre class="example">
+go version
+</pre>
+
+<ul class="org-ul">
+<li>查看go环境变量</li>
+</ul>
+<pre class="example">
+go env
+</pre>
+</div>
+</div>
 </div>
 
 
-<div id="outline-container-orgaa59b23" class="outline-2">
-<h2 id="orgaa59b23"><span class="section-number-2">2</span> Golang工程开发工具</h2>
+
+
+<div id="outline-container-org229fa1e" class="outline-2">
+<h2 id="org229fa1e"><span class="section-number-2">2</span> Golang工程开发工具</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>配置开发工具的环境变量</li>
@@ -284,16 +356,22 @@ export PATH=$PATH:$GOPATH/bin
 </ul>
 <pre class="example">
 代码补全
-go get -v -u -x github.com/nsf/gocode
+go get -u -v -x github.com/nsf/gocode
+</pre>
+
+<ul class="org-ul">
+<li>godef</li>
+</ul>
+<pre class="example">
+代码跳转
+go get -u -v -x github.com/rogpeppe/godef
 </pre>
 </div>
 </div>
 
 
-
-
-<div id="outline-container-orgf3860f6" class="outline-2">
-<h2 id="orgf3860f6"><span class="section-number-2">3</span> go test</h2>
+<div id="outline-container-orgeb5b6f1" class="outline-2">
+<h2 id="orgeb5b6f1"><span class="section-number-2">3</span> go test</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>xxx _test.go</li>
@@ -316,8 +394,8 @@ xxx.go为源文件，xxx _test.go为源文件对应的测试文件
 </pre>
 </div>
 </div>
-<div id="outline-container-org8cecd96" class="outline-2">
-<h2 id="org8cecd96"><span class="section-number-2">4</span> issue</h2>
+<div id="outline-container-org09490cb" class="outline-2">
+<h2 id="org09490cb"><span class="section-number-2">4</span> issue</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>godef: no declaration found for net.ResolveTCPAddr</li>
@@ -336,7 +414,7 @@ go install github.com/rogpeppe/godef
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-03-11 周六 15:27</p>
+<p class="date">Created: 2017-04-03 周一 03:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

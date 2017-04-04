@@ -1,9 +1,25 @@
 #+TITLE: vscode-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+* vscode部署
+** 安装
+*** Windows下安装
 
++ 主程序安装
+#+BEGIN_EXAMPLE
+官网下载对应平台的最新安装包，
+
+选择好安装路径，傻瓜式一路回车法安装
+#+END_EXAMPLE
+
+** 全局插件安装
+#+BEGIN_EXAMPLE
+Emacs-Keymap
+#+END_EXAMPLE
 
 * Golang开发环境搭建
+** vscode扩展中安装Go
+
 ** 安装golang相关工具
 + golang.org/x/tools的安装
 #+BEGIN_EXAMPLE
@@ -16,7 +32,7 @@ git clone https://github.com/golang/tools.git
 
 + golint安装
 #+BEGIN_EXAMPLE
-方式一：
+golint 需要用到 golang.org\x\tools包
 go get -v -u -x github.com/golang/lint/golint
 #+END_EXAMPLE
 
@@ -38,15 +54,9 @@ go install sourcegraph.com\sqs\goreturns
 go get -u -v -x github.com/lukehoban/go-outline
 #+END_EXAMPLE
 
-
 + 安装gopkgs
 #+BEGIN_EXAMPLE
 go get -u -v -x github.com/tpng/gopkgs
-#+END_EXAMPLE
-
-+ 安装gometalinter
-#+BEGIN_EXAMPLE
-go get -u -v -x github.com/alecthomas/gometalinter
 #+END_EXAMPLE
 
 + 安装gocode
@@ -54,32 +64,15 @@ go get -u -v -x github.com/alecthomas/gometalinter
 go get -u -v -x github.com/nsf/gocode
 #+END_EXAMPLE
 
-
 + 安装godef
 #+BEGIN_EXAMPLE
 go get -u -v -x github.com/rogpeppe/godef
 #+END_EXAMPLE
 
-
-* Golang开发环境搭建
-** Linux
-  + 安装Golang
++ 安装gometalinter
 #+BEGIN_EXAMPLE
-sudo apt-get install golang
-
-bash shell:
-vim ~/.bashrc
-export GOPATH=~/Projects/lescpsn/golang
-
-fish  shell:
-vim  ~/.config/fish/config.fish (若没有，直接创建该文件)
-set -x GOPATH ~/Projects/lescpsn/golang
-
-mkdir $GOPATH/src
-mkdir $GOPATH/bin
-mkdir $GOPATH/pkg
+go get -u -v -x github.com/alecthomas/gometalinter
 #+END_EXAMPLE
-
 
 * Golang工程开发工具
 + 配置开发工具的环境变量
@@ -102,6 +95,14 @@ go get -u -v -x github.com/rogpeppe/godef
 
 
 
+
+
+
+* Python开发环境的搭建
++ Python扩展安装
+#+BEGIN_EXAMPLE
+一般只要打开.py的文件，会自动提示安装python扩展，选择Python(目前下载量最高)安装即可
+#+END_EXAMPLE
 
 * issue
 + godef: no declaration found for net.ResolveTCPAddr

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-25 周六 23:42 -->
+<!-- 2017-04-04 周二 01:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sublime-study历程</title>
@@ -233,33 +233,35 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org475714f">1. sublime安装</a>
+<li><a href="#orga0a6582">1. 安装</a>
 <ul>
-<li><a href="#orgb76bbe4">1.1. Windows平台</a></li>
+<li><a href="#orga4ea080">1.1. Windows平台</a></li>
+</ul>
+</li>
+<li><a href="#org321dc2f">2. sublime之go开发环境搭建</a>
+<ul>
+<li><a href="#org5c21af2">2.1. 安装GoSublime</a></li>
+<li><a href="#orge7a9791">2.2. 设置GoSublime</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org475714f" class="outline-2">
-<h2 id="org475714f"><span class="section-number-2">1</span> sublime安装</h2>
+<div id="outline-container-orga0a6582" class="outline-2">
+<h2 id="orga0a6582"><span class="section-number-2">1</span> 安装</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgb76bbe4" class="outline-3">
-<h3 id="orgb76bbe4"><span class="section-number-3">1.1</span> Windows平台</h3>
+</div><div id="outline-container-orga4ea080" class="outline-3">
+<h3 id="orga4ea080"><span class="section-number-3">1.1</span> Windows平台</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>官网下载对应的安装包</li>
+<li>主程序安装</li>
 </ul>
 <pre class="example">
-便携版 sublime3
-http://www.sublimetext.com/3
-</pre>
+官网http://www.sublimetext.com/3下载对应平台的最新安装包，
 
-<ul class="org-ul">
-<li>安装</li>
-</ul>
-<pre class="example">
-因为是便携版，直接解压到自己规划的指定的路径下即可
+选择好安装路径，傻瓜式一路回车法安装
+
+也可以选择下载便携版，直接解压到自己规划的指定的路径下即可
 </pre>
 
 <ul class="org-ul">
@@ -270,22 +272,41 @@ C + ·
 import urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
 </pre>
 
-
 <ul class="org-ul">
 <li>安装中文包</li>
 </ul>
 <pre class="example">
-C + S + p -&gt; install package -&gt; chineseLocalizations (汉化包)
+C + S + p -&gt; install package (pci) -&gt; chineseLocalizations (汉化包)
 </pre>
+
+
+<ul class="org-ul">
+<li>sublime添加到右键</li>
+</ul>
+<pre class="example">
+修改注册表
+
+cmd -&gt; regedit -&gt; HKEY_CLASSESS_ROOT -&gt; * -&gt;Shell 
+
+新建节点Sublime Text 3（安装的目录名字）
+
+该项下新建两个字段
+1 新建字符串 Icon (修改值为安装路径 C:\Local\Sublime Text 3\sublime_text.exe,0)
+                            
+
+2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe %1)
+</pre>
+
+
 
 <ul class="org-ul">
 <li>issue</li>
 </ul>
 <pre class="example">
 中文输入，光标不跟踪，一直悬浮在左上角
-C + S + p -&gt; install package -&gt; IMESupport
-win10下需要卸载掉系统自带的输入法，测试只能支持第三方方输入法，比如搜狗
-其实还是蛮大的bug的，很稳定
+C + S + p -&gt; install package -&gt; IMESupport (win10下不起作用)
+
+有网友解决方案说需要卸载掉系统自带的输入法，安装第三方方输入法，比如搜狗，其实还是很不稳定，bug蛮大
 </pre>
 
 <pre class="example">
@@ -300,16 +321,89 @@ win10下需要卸载掉系统自带的输入法，测试只能支持第三方方
 </pre>
 
 <pre class="example">
-安装主题 seti_UI
-"theme": "Seti.sublime-theme"
-"theme": "Seti.sublime-theme"
+安装主题 spacegray
+该主题的详细配置请参看github
+  "spacegray_fileicons": true,
+	"spacegray_sidebar_font_xlarge": true,
+	"spacegray_sidebar_tree_xlarge": true,
+	"spacegray_tabs_auto_width": true,
+	"spacegray_tabs_xlarge": true,
+	"theme": "Spacegray.sublime-theme"
+
+    "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+    "spacegray_fileicons": true,
+    "spacegray_sidebar_font_xlarge": true,
+    "spacegray_sidebar_tree_xlarge": true,
+    "spacegray_tabs_auto_width": true,
+    "spacegray_tabs_xlarge": true,
+    "theme": "Spacegray.sublime-theme"
+</pre>
+
+<pre class="example">
+设置tab为4个空格
+"tab_size": 4,
+"translate_tabs_to_spaces": true,
+</pre>
+
+<pre class="example">
+显示出空格为点号
+"draw_white_space": "all",
+</pre>
+
+
+
+<pre class="example">
+sftp 插件
+"draw_white_space": "all",
+</pre>
+
+
+<pre class="example">
+emacs 插件
+Emacs Pro Essentials
+</pre>
+
+<pre class="example">
+atom 相关插件
+Emacs Pro Essentials
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org321dc2f" class="outline-2">
+<h2 id="org321dc2f"><span class="section-number-2">2</span> sublime之go开发环境搭建</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org5c21af2" class="outline-3">
+<h3 id="org5c21af2"><span class="section-number-3">2.1</span> 安装GoSublime</h3>
+<div class="outline-text-3" id="text-2-1">
+<pre class="example">
+C +　S　+ P -&gt; pci -&gt; gosub
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge7a9791" class="outline-3">
+<h3 id="orge7a9791"><span class="section-number-3">2.2</span> 设置GoSublime</h3>
+<div class="outline-text-3" id="text-2-2">
+<pre class="example">
+首选项 -&gt; package设置 -&gt; Gopsublime -&gt; setting user 
+{
+    "env": {
+        "GOPATH": "E:/Projects/lescpsn/golang", //go程序的个人代码工程路径
+        "GOROOT": "D:/Go"   //go语言的安装路径
+    }
+}
 </pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2017-03-25 周六 23:42</p>
+<p class="date">Created: 2017-04-04 周二 01:02</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

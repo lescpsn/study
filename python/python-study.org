@@ -27,7 +27,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/f
 
 conda config --set show_channel_urls yes
 
-最后生成的配置文件在C:\Users\carhj\.condarc，即也可以直接编辑该文件
+最后生成的配置文件在 C:\Users\lescpsn\AppData\Roaming\.condarc 即也可以直接编辑该文件
 #+END_EXAMPLE
 
 

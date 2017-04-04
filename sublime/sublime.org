@@ -1,16 +1,14 @@
 #+TITLE: sublime-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
-* sublime安装
+* 安装
 ** Windows平台
-+ 官网下载对应的安装包
++ 主程序安装
 #+BEGIN_EXAMPLE
-便携版 sublime3
-http://www.sublimetext.com/3
-#+END_EXAMPLE
+官网http://www.sublimetext.com/3下载对应平台的最新安装包，
 
-+ 安装
-#+BEGIN_EXAMPLE
-因为是便携版，直接解压到自己规划的指定的路径下即可
+选择好安装路径，傻瓜式一路回车法安装
+
+也可以选择下载便携版，直接解压到自己规划的指定的路径下即可
 #+END_EXAMPLE
 
 + 安装 package control
@@ -19,18 +17,36 @@ C + ·
 import urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
 #+END_EXAMPLE
 
-
 + 安装中文包
 #+BEGIN_EXAMPLE
-C + S + p -> install package -> chineseLocalizations (汉化包)
+C + S + p -> install package (pci) -> chineseLocalizations (汉化包)
 #+END_EXAMPLE
+
+
++ sublime添加到右键
+#+BEGIN_EXAMPLE
+修改注册表
+
+cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell 
+
+新建节点Sublime Text 3（安装的目录名字）
+
+该项下新建两个字段
+1 新建字符串 Icon (修改值为安装路径 C:\Local\Sublime Text 3\sublime_text.exe,0)
+                            
+
+2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe %1)
+
+#+END_EXAMPLE
+
+
 
 + issue
 #+BEGIN_EXAMPLE
 中文输入，光标不跟踪，一直悬浮在左上角
-C + S + p -> install package -> IMESupport
-win10下需要卸载掉系统自带的输入法，测试只能支持第三方方输入法，比如搜狗
-其实还是蛮大的bug的，很稳定
+C + S + p -> install package -> IMESupport (win10下不起作用)
+
+有网友解决方案说需要卸载掉系统自带的输入法，安装第三方方输入法，比如搜狗，其实还是很不稳定，bug蛮大
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
@@ -115,10 +131,3 @@ C +　S　+ P -> pci -> gosub
 
 
 
-1. sublime 添加到右键
-cmd -> regedit
-1 HKEY_CLASSESS_ROOT->*->Shell 
-新建项Sublime Text 3（安装的目录名字） -> 
-  |新建字符串Icon(值是安装路径C:\Local\Sublime Text 3\sublime_text.exe,0)
-->|
-  |新建项Command(修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe %1)
