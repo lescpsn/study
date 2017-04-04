@@ -1,0 +1,61 @@
+#+TITLE: UltraEdit
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+
+* 安装
+** Windows平台
++ 主程序安装
+#+BEGIN_EXAMPLE
+官网下载对应平台的最新安装包，
+
+选择好安装路径，傻瓜式一路回车法安装
+#+END_EXAMPLE
+
+* 常用配置
+*** 现代菜单
+#+BEGIN_EXAMPLE
+标题栏右击选择现代菜单，老式菜单是指以前老版本的菜单布局方式
+#+END_EXAMPLE
+
+
+*** 自定义快速访问工具栏
+#+BEGIN_EXAMPLE
+右击标题栏空白区 -> 自定义快速访问工具栏 -> 都移除
+
+#+END_EXAMPLE
+
+
+*** 在Ribbon上显示
+#+BEGIN_EXAMPLE
+左上角有个小三角，点击在Ribbon上显示
+#+END_EXAMPLE
+
+
+*** 最小化Ribbon
+#+BEGIN_EXAMPLE
+标题栏右击最小化Ribbon
+#+END_EXAMPLE
+
+
+*** 取消文件保存自动备份bak文件
+#+BEGIN_EXAMPLE
+ 高级 -> 设置 -> 文件处理 -> 备份 -> 不备份
+#+END_EXAMPLE
+
+*** 设置缩进为4空格
+#+BEGIN_EXAMPLE
+ 高级 -> 设置 -> 编辑器 -> 自动换行制表符设置
+#+END_EXAMPLE
+
+*** 添加右键菜单
+#+BEGIN_EXAMPLE
+ 高级 -> 设置 -> 文件关联 -> 与资源管理器集成
+ #+END_EXAMPLE
+
+*** 设置主题
+#+BEGIN_EXAMPLE
+布局 -> 主题 -> 选择自己喜欢的主题（Classic）
+#+END_EXAMPLE
+
+
+
