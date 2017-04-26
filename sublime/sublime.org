@@ -91,26 +91,20 @@ C + S + p -> install package -> IMESupport (win10下不起作用)
 "draw_white_space": "all",
 #+END_EXAMPLE
 
-
-
 #+BEGIN_EXAMPLE
 sftp 插件
 "draw_white_space": "all",
-#+END_EXAMPLE
-
-
-#+BEGIN_EXAMPLE
-emacs 插件
-Emacs Pro Essentials
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
 atom 相关插件
 Emacs Pro Essentials
 #+END_EXAMPLE
-
-
-
+* 相关插件
++ emacs 插件
+#+BEGIN_EXAMPLE
+Emacs Pro Essentials
+#+END_EXAMPLE
 
 * sublime之go开发环境搭建
 ** 安装GoSublime

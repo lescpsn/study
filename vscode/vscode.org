@@ -12,10 +12,27 @@
 选择好安装路径，傻瓜式一路回车法安装
 #+END_EXAMPLE
 
+*** Windows删除
+#+BEGIN_EXAMPLE
+下载完程序，可以自行选择保留下列的信息文件夹
+
+插件路径：
+C:\Users\lescpsn\.vscode
+
+个人配置路径
+C:\Users\lescpsn\AppData\Roaming\Code
+#+END_EXAMPLE
+
+
 ** 全局插件安装
 #+BEGIN_EXAMPLE
 Emacs-Keymap
 #+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+F1:Project-manage
+#+END_EXAMPLE
+
 
 * Golang开发环境搭建
 ** vscode扩展中安装Go
@@ -92,7 +109,6 @@ go get -u -v -x github.com/nsf/gocode
 代码跳转
 go get -u -v -x github.com/rogpeppe/godef
 #+END_EXAMPLE
-
 
 
 

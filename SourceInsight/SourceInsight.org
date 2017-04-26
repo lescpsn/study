@@ -8,5 +8,23 @@
 
 一路回车版
 #+END_EXAMPLE
+
 * Linux
 + 安装anacoda
+
+
+
+
+* issue
++ 自动加载外部更改
+#+BEGIN_EXAMPLE
+选项 -> 参数选择 -> 文件 -> 重装入修改的文件询问（不勾选）
+#+END_EXAMPLE
+
++ 自动加载新增文件
+#+BEGIN_EXAMPLE
+项目 -> 同步文件 -> 文件 -> 自动加载新文件
+#+END_EXAMPLE
+
+
+

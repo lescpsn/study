@@ -1,5 +1,6 @@
 #+TITLE: emacs-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
 * emacs安装
 ** windows
 + 下载安装包
@@ -220,6 +221,7 @@ github上下载源代码
 git clone https://github.com/bbatsov/prelude.git ~/.emacs.d
 
 cp ~/.emacs.d/sample/prelude-modules.el ~/.emacs.d/  修改该文件，打开需要模块
+
 注意：;; (require 'prelude-evil)是vim操作模式，如果是emacs的操作风格请不要放开
 #+END_EXAMPLE
 
@@ -487,6 +489,13 @@ M-* :跳回到原处
 
 * issue
 ** windows
++ emacs狂占cpu
+#+BEGIN_EXAMPLE
+有些Windows版本的emacs非常耗cpu，由于emacs的默认字体不兼容引起的，
+可以修改下emacs的默认字体就OK了。也可以换成低版本的不带mingw的emacs版本
+如；emacs-24.3-bin-i386
+#+END_EXAMPLE
+
 + Error: (file-error “Searching for program” “no such file or directory” “diff”)
 #+BEGIN_EXAMPLE
 需要安装diff工具
@@ -508,6 +517,17 @@ npm -g install js-beautify
 
 ** linux
 
+
+* 利用emacs构建强大的cmd
+#+BEGIN_EXAMPLE
+1. 创建快捷方式，右键属性
+
+2. 目标runemcs加上-Q参数，不需要加载.emacs.d的配置文件，裸启。
+
+3. 高级 -> 以管理员运行
+
+4. 双击快捷方式，启动emacs后，ESC-x -> eshell 就可以运行牛逼的eshell
+#+END_EXAMPLE
 
 * lisp
 + C-x C-e
