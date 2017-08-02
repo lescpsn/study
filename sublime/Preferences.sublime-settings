@@ -1,0 +1,18 @@
+{
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+
+	// 显示出空格和制表符
+	"draw_white_space": "all",
+
+	// 保存文件时自动删除行尾空白符
+	"trim_trailing_white_space_on_save": true,
+
+	// 显示编码格式
+	"show_encoding": true,
+
+	// 显示行结束模式，linux/windows/mac
+	"show_line_endings": true
+}

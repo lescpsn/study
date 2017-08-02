@@ -1,6 +1,20 @@
-#+TITLE: sublime-study历程
+#+TITLE: Sublime3
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+* 卸载
++ 卸载主程序
+#+BEGIN_EXAMPLE
+进入sublime3的安装目录下(例如：C:\Local\Sublime Text 3)，双击 unins000.exe 即可卸载主程序
+#+END_EXAMPLE
+
++ 删除插件包及其配置
+#+BEGIN_EXAMPLE
+进入 C:\Users\用户\AppData\Roaming\ 目录下
+
+删除 Sublime Text 3 目录
+#+END_EXAMPLE
+
 * 安装
+
 ** Windows平台
 + 主程序安装
 #+BEGIN_EXAMPLE
@@ -8,18 +22,29 @@
 
 选择好安装路径，傻瓜式一路回车法安装
 
+勾选 Add to explorer context menu(添加到右键，也可以自行修改注册表添加)
+
 也可以选择下载便携版，直接解压到自己规划的指定的路径下即可
+
+根据个人需要创建桌面快捷方式
+#+END_EXAMPLE
+
+
++ 配置Sublime
+#+BEGIN_EXAMPLE
+windows10，根据个人需要，右击快捷方式 -> 属性 -> 快捷方式(高级) -> 用管理员方式运行
 #+END_EXAMPLE
 
 + 安装 package control
 #+BEGIN_EXAMPLE
-C + ·
+C + `
+sublimetext3:
 import urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
-#+END_EXAMPLE
 
-+ 安装中文包
-#+BEGIN_EXAMPLE
-C + S + p -> install package (pci) -> chineseLocalizations (汉化包)
+sublimetext2:
+import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), 'wb' ).write( urllib2.urlopen( 'http://sublime.wbond.net/' +pf.replace( ' ','%20' )).read()); print( 'Please restart Sublime Text to finish installation')
+
+C + S + p -> Install Package Control
 #+END_EXAMPLE
 
 
@@ -32,16 +57,14 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 新建节点Sublime Text 3（安装的目录名字）
 
 该项下新建两个字段
-1 新建字符串 Icon (修改值为安装路径 C:\Local\Sublime Text 3\sublime_text.exe,0)
+1 新建字符串 Icon (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe,0)
                             
 
-2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe %1)
-
+2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe "%1")
 #+END_EXAMPLE
 
-
-
-+ issue
+* issue
++ 光标不跟踪
 #+BEGIN_EXAMPLE
 中文输入，光标不跟踪，一直悬浮在左上角
 C + S + p -> install package -> IMESupport (win10下不起作用)
@@ -50,72 +73,203 @@ C + S + p -> install package -> IMESupport (win10下不起作用)
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-打开文件夹总是在新窗口
-首选项->设置->User
-"open_files_in_new_window": false,
+目录树中文文件/夹显示乱码
 #+END_EXAMPLE
 
+
+* 常用插件
++ Package Control
 #+BEGIN_EXAMPLE
-双击打开文件，而不是文件夹
-"preview_on_click": false,
+插件包管理工具
+C + S + p -> Install Package Control
 #+END_EXAMPLE
 
++ 安装中文包
 #+BEGIN_EXAMPLE
-安装主题 spacegray
-该主题的详细配置请参看github
-  "spacegray_fileicons": true,
-	"spacegray_sidebar_font_xlarge": true,
-	"spacegray_sidebar_tree_xlarge": true,
-	"spacegray_tabs_auto_width": true,
-	"spacegray_tabs_xlarge": true,
-	"theme": "Spacegray.sublime-theme"
-
-    "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
-    "spacegray_fileicons": true,
-    "spacegray_sidebar_font_xlarge": true,
-    "spacegray_sidebar_tree_xlarge": true,
-    "spacegray_tabs_auto_width": true,
-    "spacegray_tabs_xlarge": true,
-    "theme": "Spacegray.sublime-theme"
-
+C + S + p -> Package Control:Install(pci) -> chineseLocalizations (汉化包)
 #+END_EXAMPLE
 
++ cmake 插件
 #+BEGIN_EXAMPLE
-设置tab为4个空格
-"tab_size": 4,
-"translate_tabs_to_spaces": true,
+C + S + p -> Package Control:Install(pci) -> CMake
+
+CMakeLists.txt是txt结尾的文本，需要手动指定下CMakeLists.txt文件的格式
+
+打开CMakeLists.txt -> 视图 -> 语法 -> CMake
 #+END_EXAMPLE
 
+
++ markdown 插件
 #+BEGIN_EXAMPLE
-显示出空格为点号
-"draw_white_space": "all",
+1. MarkdownEditing : 
+   集成了编辑Markdown编辑的很多快捷键
+
+2. SmartMarkdown : 
+   tab键盘的妙用，类似emacs的org
+
+
+3. Markdown Preview : 
+   C-b生成网页HTML，在文档最前面添加[TOC]自动生成目录；
+   C+S+p
 #+END_EXAMPLE
 
+
++ html-css-js格式化
 #+BEGIN_EXAMPLE
-sftp 插件
-"draw_white_space": "all",
+HTML-CSS-JS Prettify :
+需要设置node.exe的觉得路径
+首选项(alt+n) -> Package Settings -> HTML/CSS/JS Prettify -> Set node Path
+C+S-h
 #+END_EXAMPLE
 
+
+
+
+
+
+
+
+
++ 支持含有gbk编码的中文文件
 #+BEGIN_EXAMPLE
-atom 相关插件
-Emacs Pro Essentials
+C + S + p -> Package Control:Install(pci) -> ConvertToUTF8
+gbk编码中文文件可以正常显示
 #+END_EXAMPLE
-* 相关插件
+
+
++ c/c++代码格式化
+#+BEGIN_EXAMPLE
+C + S + p -> Package Control:Install(pci) -> SublimeAStyleFormatter
+
+菜单 -> 首选项(Alt + n) -> packege settings -> SublimeAStyleFormatter -> Settings Users
+
+用户设置
+{
+    "autoformat_on_save": true,
+
+    "options_default": {
+        "style": "java",
+        "indent": "spaces",
+        "indent-spaces": 4,
+    }
+}
+#+END_EXAMPLE
+
 + emacs 插件
 #+BEGIN_EXAMPLE
 Emacs Pro Essentials
 #+END_EXAMPLE
 
-+ 支持gbk编码的文件
+
+* 常用菜单设置
++ dos2unix
 #+BEGIN_EXAMPLE
-ConvertToUTF8
+视图 -> 行结束符 -> Unix换行符(LF)
 #+END_EXAMPLE
+
+
+* 常用配置文件设置
++ 概述
+#+BEGIN_EXAMPLE
+Sublime3的用户设置的配置文件保存在
+
+C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublime-settings
+
+如果自己理解比较深入的话，可以直接编辑该json文件，无需从GUI菜单中进入
+
+经常对该文件优化备份，下次即可直接使用，无须在一个个手工配置
+
+#+END_EXAMPLE
+
++ 菜单 -> 首选项 -> 设置
+
+#+BEGIN_EXAMPLE
+菜单 -> 首选项(Alt + n) -> 设置，字段都是json格式的写法
+
+// 显示出空格和制表符
+"draw_white_space": "all",
+
+
+// 保存时自动删除行尾空白符
+"trim_trailing_white_space_on_save": true,
+
+// 显示编码格式
+"show_encoding": true,
+
+// 显示行结尾模式，linux/windows/mac
+"show_line_endings": true,
+
+// 侧边栏双击文件打开
+"preview_on_click": false,
+
+// 取消打开文件夹总是在新窗口
+"open_files_in_new_window": false,
+
+// 安装完Theme - spacegray插件再设置，可以参考github上的设置
+// 设置侧边栏为Spacegray主题
+"theme": "Spacegray.sublime-theme",
+
+// 设置主编辑区为Spacegray颜色主题
+"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+
+// 设置文件类型关联的图标
+"spacegray_fileicons": true,
+
+// 设置侧边栏文件名字体为大字体（可以不用设置了）
+"spacegray_sidebar_font_xlarge": true,
+"spacegray_sidebar_tree_xlarge": true,
+
+// 设置打开的文件名标签为大字体(large以上有bug,normal可以不用设置，默认就是normal)
+"spacegray_tabs_font_normal": true,
+"spacegray_tabs_font_large": true,
+
+// tab的高度
+"spacegray_tabs_large": true,
+
+// tab的宽度
+"spacegray_tabs_auto_width": true,
+
+
+// 侧边栏中文文件显示方块乱码
+"dpi_scale": 1.0,
+
+// 禁止tab补全功能，否则乱补全
+"tab_completion": false,
+
+#+END_EXAMPLE
+
++ 菜单 -> 首选项 -> 设置-特定语法(针对每一种语言)
+#+BEGIN_EXAMPLE
+// 缩进用空格代替tab
+"translate_tabs_to_spaces": true,
+#+END_EXAMPLE
+
+
+* 常用快捷键
++ 代码注释
+#+BEGIN_EXAMPLE
+C + /
+#+END_EXAMPLE
+
++ 代码缩进
+#+BEGIN_EXAMPLE
+C + [ : 左缩进
+C + ] : 右缩进
+#+END_EXAMPLE
+
++ 放大与缩小
+#+BEGIN_EXAMPLE
+C + + : 放大
+C + - : 缩小
+#+END_EXAMPLE
+
 
 * sublime之go开发环境搭建
 ** 安装GoSublime
 #+BEGIN_EXAMPLE
 C +　S　+ P -> pci -> gosub
 #+END_EXAMPLE
+
 
 ** 设置GoSublime
 #+BEGIN_EXAMPLE
