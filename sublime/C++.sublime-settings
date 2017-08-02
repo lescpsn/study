@@ -1,0 +1,5 @@
+// These settings override both User and Default settings for the C++ syntax
+{
+	// 缩进用空格代替tab
+	"translate_tabs_to_spaces": true
+}

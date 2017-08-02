@@ -169,6 +169,8 @@ Emacs Pro Essentials
 
 
 * 常用配置文件设置
+
+** 公用设置
 + 概述
 #+BEGIN_EXAMPLE
 Sublime3的用户设置的配置文件保存在
@@ -182,7 +184,6 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublim
 #+END_EXAMPLE
 
 + 菜单 -> 首选项 -> 设置
-
 #+BEGIN_EXAMPLE
 菜单 -> 首选项(Alt + n) -> 设置，字段都是json格式的写法
 
@@ -238,9 +239,25 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublim
 
 #+END_EXAMPLE
 
+
+** C++设置
+
++ 概述
+#+BEGIN_EXAMPLE
+Sublime3的c++配置文件保存在
+
+C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\C++.sublime-settings
+
+如果自己理解比较深入的话，可以直接编辑该json文件，无需从GUI菜单中进入
+
+经常对该文件优化备份，下次即可直接使用，无须在一个个手工配置
+
+#+END_EXAMPLE
+
+
 + 菜单 -> 首选项 -> 设置-特定语法(针对每一种语言)
 #+BEGIN_EXAMPLE
-// 缩进用空格代替tab
+// 使用空格代替tab缩进
 "translate_tabs_to_spaces": true,
 #+END_EXAMPLE
 
