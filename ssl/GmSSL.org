@@ -1,0 +1,48 @@
+#+TITLE:  GmSSL
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+** 下载源代码
+#+BEGIN_EXAMPLE
+git clone https://github.com/guanzhi/GmSSL.git
+#+END_EXAMPLE
+
+
+** 编译
+*** Windows
+#+BEGIN_EXAMPLE
+切换分支
+git checkout -b  GmSSL-v1 origin/GmSSL-v1
+
+编译配置
+perl Configure VC-WIN32  no-asm  --prefix=C:\Local\usr\GmSSL32
+或者
+perl Configure VC-WIN32  no-asm  --prefix=/C/Local/usr/GmSSL32
+
+编译配置
+ms\do_nt.bat
+nmake  -f ms\nt.mak
+#+END_EXAMPLE
+
+*** Linux
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+
+** 编译及安装
+#+BEGIN_EXAMPLE
+// 切换下分支（master主分支更新较快，有时便宜会通过不了）
+git checkout -b GmSSL-v1 origin/GmSSL-v1
+
+// config配置
+./config no-saf no-sdf no-skf no-sof no-zuc // 可能编译通过不了
+./config
+
+// 编译
+make
+
+// 安装(gmssl默认安装到/usr/local/ssl/bin/gmssl)
+sudo make install
+#+END_EXAMPLE
+
+

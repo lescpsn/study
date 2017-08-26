@@ -1,0 +1,43 @@
+1. 定位到vs的命令行目录中
+    cd C:\Local\Microsoft Visual Studio 12.0\Common7\Tools\Shortcuts
+    VS2013 开发人员命令提示
+
+2. 切换到GmSSL的目录中
+    cd C:\Projects\SafeBox\SDK\GmSSL
+
+3 . 编译
+    perl Configure VC-WIN32 no-asm  --prefix=C:/Local/usr/GmSSL32
+    perl Configure no-asm --prefix=C:/Local/usr/GmSSL32 VC-WIN32 
+    perl Configure VC-WIN64A no-asm  --prefix=C:\Local\usr\GmSSL64 DSO_WIN32
+
+    perl Configure  no-asm --prefix=C:\Local\usr\GmSSL64 os/compiler[:VC-WIN64A] 
+
+    
+    ms\do_ms.bat
+    nmake -f ms\nt.mak clean
+    nmake -f ms\nt.mak
+
+    nmake -f ms\ntdll.mak clean
+    nmake -f ms\ntdll.mak
+
+    ms\do_nt.bat
+    nmake -f ms\nt.mak clean
+    nmake -f ms\nt.mak
+
+    nmake -f ms\ntdll.mak clean
+    nmake -f ms\ntdll.mak
+
+4 . linux下编译
+./config no-saf no-sdf no-skf no-sof no-zuc no-shared
+
+./config no-saf  no-skf no-sof no-zuc no-shared
+
+
+./config --prefix=/usr/local/gmssl
+
+
+/usr/local/gmssl/bin/gmssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:sm2p256v1 -pkeyopt ec_param_enc:named_curve  -out signkey.pem
+/usr/local/gmssl/bin/gmssl pkey -pubout -in signkey.pem  -out vrfykey.pem
+
+
+/usr/local/gmssl/bin/gmssl req -new -key signkey.pem -out cert.csr
