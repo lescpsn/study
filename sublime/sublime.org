@@ -1,5 +1,5 @@
 #+TITLE: Sublime3
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 * 卸载
 + 卸载主程序
 #+BEGIN_EXAMPLE
@@ -13,18 +13,21 @@
 删除 Sublime Text 3 目录
 #+END_EXAMPLE
 
+
 * 安装
 
 ** Windows平台
 + 主程序安装
 #+BEGIN_EXAMPLE
+1. 安装版
 官网http://www.sublimetext.com/3下载对应平台的最新安装包，
 
-选择好安装路径，傻瓜式一路回车法安装
+选择好安装路径 -> 一路回车法
 
 勾选 Add to explorer context menu(添加到右键，也可以自行修改注册表添加)
 
-也可以选择下载便携版，直接解压到自己规划的指定的路径下即可
+2. 绿色便携版
+下载便携版，直接解压到自己规划好的路径下即可
 
 根据个人需要创建桌面快捷方式
 #+END_EXAMPLE
@@ -32,7 +35,9 @@
 
 + 配置Sublime
 #+BEGIN_EXAMPLE
-windows10，根据个人需要，右击快捷方式 -> 属性 -> 快捷方式(高级) -> 用管理员方式运行
+windows10，根据个人需要，右击快捷方式 -> 属性 -> 快捷方式(高级) -> 
+
+千万不能以管理员运行方式运行快捷方式(否则文件就不能以拖拽的方式打开)
 #+END_EXAMPLE
 
 + 安装 package control
@@ -63,13 +68,15 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe "%1")
 #+END_EXAMPLE
 
+
 * issue
-+ 光标不跟踪
++ 中文输入光标不跟踪
 #+BEGIN_EXAMPLE
 中文输入，光标不跟踪，一直悬浮在左上角
-C + S + p -> install package -> IMESupport (win10下不起作用)
 
-有网友解决方案说需要卸载掉系统自带的输入法，安装第三方方输入法，比如搜狗，其实还是很不稳定，bug蛮大
+有网友解决方案卸载掉系统自带的输入法，安装第三方方输入法，比如qq输入法，搜狗输入法仍然不可以
+
+C + S + p -> install package -> IMESupport
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
@@ -78,6 +85,10 @@ C + S + p -> install package -> IMESupport (win10下不起作用)
 
 
 * 常用插件
+#+BEGIN_EXAMPLE
+https://packagecontrol.io/ 插件的官网查找自己需要的插件
+#+END_EXAMPLE
+
 + Package Control
 #+BEGIN_EXAMPLE
 插件包管理工具
@@ -98,6 +109,10 @@ CMakeLists.txt是txt结尾的文本，需要手动指定下CMakeLists.txt文件�
 打开CMakeLists.txt -> 视图 -> 语法 -> CMake
 #+END_EXAMPLE
 
++ end - end - end
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
 
 + markdown 插件
 #+BEGIN_EXAMPLE
@@ -121,11 +136,6 @@ HTML-CSS-JS Prettify :
 首选项(alt+n) -> Package Settings -> HTML/CSS/JS Prettify -> Set node Path
 C+S-h
 #+END_EXAMPLE
-
-
-
-
-
 
 
 
@@ -161,13 +171,6 @@ Emacs Pro Essentials
 #+END_EXAMPLE
 
 
-* 常用菜单设置
-+ dos2unix
-#+BEGIN_EXAMPLE
-视图 -> 行结束符 -> Unix换行符(LF)
-#+END_EXAMPLE
-
-
 * 常用配置文件设置
 
 ** 公用设置
@@ -190,15 +193,31 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublim
 // 显示出空格和制表符
 "draw_white_space": "all",
 
-
 // 保存时自动删除行尾空白符
 "trim_trailing_white_space_on_save": true,
 
-// 显示编码格式
+// 显示文件编码格式
 "show_encoding": true,
 
 // 显示行结尾模式，linux/windows/mac
 "show_line_endings": true,
+
+// end - end
+
+// 使用空格代替tab缩进
+"translate_tabs_to_spaces": true,
+
+// 中文文件名字显示方块乱码
+"dpi_scale": 1.0,
+
+
+
+
+
+
+
+
+
 
 // 侧边栏双击文件打开
 "preview_on_click": false,
@@ -231,8 +250,6 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublim
 "spacegray_tabs_auto_width": true,
 
 
-// 侧边栏中文文件显示方块乱码
-"dpi_scale": 1.0,
 
 // 禁止tab补全功能，否则乱补全
 "tab_completion": false,
@@ -262,6 +279,7 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\C++.sublime-settin
 #+END_EXAMPLE
 
 
+
 * 常用快捷键
 + 代码注释
 #+BEGIN_EXAMPLE
@@ -278,6 +296,14 @@ C + ] : 右缩进
 #+BEGIN_EXAMPLE
 C + + : 放大
 C + - : 缩小
+#+END_EXAMPLE
+
+
+
+* 常用菜单设置
++ dos2unix
+#+BEGIN_EXAMPLE
+视图 -> 行结束符 -> Unix换行符(LF)
 #+END_EXAMPLE
 
 
