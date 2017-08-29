@@ -70,14 +70,6 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 
 
 * issue
-+ 中文输入光标不跟踪
-#+BEGIN_EXAMPLE
-中文输入，光标不跟踪，一直悬浮在左上角
-
-有网友解决方案卸载掉系统自带的输入法，安装第三方方输入法，比如qq输入法，搜狗输入法仍然不可以
-
-C + S + p -> install package -> IMESupport
-#+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
 目录树中文文件/夹显示乱码
@@ -99,6 +91,18 @@ C + S + p -> Install Package Control
 #+BEGIN_EXAMPLE
 C + S + p -> Package Control:Install(pci) -> chineseLocalizations (汉化包)
 #+END_EXAMPLE
+
++ IMESupport 插件
+#+BEGIN_EXAMPLE
+中文输入法，光标不跟踪
+
+网友提供的解决方案卸载掉系统自带的输入法，安装第三方方输入法，比如qq输入法，
+
+搜狗输入法bug仍然存在
+
+C + S + p -> install package -> IMESupport
+#+END_EXAMPLE
+
 
 + cmake 插件
 #+BEGIN_EXAMPLE
@@ -202,7 +206,7 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublim
 // 显示行结尾模式，linux/windows/mac
 "show_line_endings": true,
 
-// end - end
+// end - end - end - end
 
 // 使用空格代替tab缩进
 "translate_tabs_to_spaces": true,
