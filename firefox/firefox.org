@@ -68,8 +68,3 @@ Caret hint，Tanything，bmany
 #+BEGIN_EXAMPLE
 C + S + D
 #+END_EXAMPLE
-
-
-
-
- 
