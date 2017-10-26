@@ -1,15 +1,20 @@
 #+TITLE: Firefox-Study历程
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
-* 插件介绍
-** KeySnail 
+*** 插件介绍
+**** KeySnail 
 + KeySnail
 #+BEGIN_EXAMPLE
-github上下载keysnail.xpi文件
+https://github.com/mooz/keysnail.git 下载keysnail.xpi文件
 
 右键用火狐浏览器方式打开keysnail.xpi，基本默认安装就是
  
 安装完成后火狐浏览器的右上角会出现相关图标，可以点击打开插件管理，继续安装keysnail的相关插件
+
+或者
+wget https://github.com/mooz/keysnail/raw/master/keysnail.xpi
+
+firefox keysnail.xpi
 #+END_EXAMPLE
 
 + Hok
@@ -54,9 +59,17 @@ Caret hint，Tanything，bmany
 #+END_EXAMPLE
 
 
-* 常用快捷键
-+ 快捷键缩写说明：C->Ctrl，S->Shift，D->Delete
+*** 常用快捷键
 #+BEGIN_EXAMPLE
-清除各种缓存的快捷键：C + S + D
+快捷键缩写说明：C->Ctrl，S->Shift，D->Delete
 #+END_EXAMPLE
+
++清除各种缓存的快捷键
+#+BEGIN_EXAMPLE
+C + S + D
+#+END_EXAMPLE
+
+
+
+
  
