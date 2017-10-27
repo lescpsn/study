@@ -1,0 +1,13 @@
+#+TITLE:e ruby学习历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+* ruby安装
+** Linux
+#+BEGIN_EXAMPLE
+sudo apt-get install ruby
+#+END_EXAMPLE
+
+
+
+
+

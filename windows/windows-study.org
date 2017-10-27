@@ -1,6 +1,45 @@
 #+TITLE: Windows-Study
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+* Windows系统常用设置
++ 键盘映射
+#+BEGIN_EXAMPLE
+win + r -> regedit 进入注册表
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout
+
+新建二进制项 Scancode Map
+00 00 00 00 00 00 00 00
+03 00 00 00 3A 00 01 00
+01 00 3A 00 1D E0 38 E0
+38 E0 00 00 00 00 00 00
+#+END_EXAMPLE
+
+
+* issue
++ exe文件不能正常显示图标
+#+BEGIN_EXAMPLE
+方法1：
+taskkill /im explorer.exe /f	
+cd /d %userprofile%\appdata\local
+del IconCache.db /a
+start explorer.exe
+
+方法2：
+cd C:\Users\lescpsn\AppData\Local
+删除 IconCache.db
+taskkill /im explorer.exe /f	
+start explorer.exe
+#+END_EXAMPLE
+
+
++ 统升级完后，很多系统的应用打不开
+#+BEGIN_EXAMPLE
+win + x -> 命令提示符（管理员）-> PowerShell ->
+
+Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+#+END_EXAMPLE
+
 * Windows下常用开发软件
 ** Notepad++
 *** Notepad++安装

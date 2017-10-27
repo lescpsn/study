@@ -2,6 +2,7 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
 * postgresql安装
+** Linux
 + 网络方式安装
 #+BEGIN_EXAMPLE
 > sudo apt-get install postgresql
@@ -31,15 +32,37 @@ postgresql数据库中自动创建了一个最高权限的postgres数据库用�
 #+END_EXAMPLE
 
 
-* 初始化设置
-+ 创建数据库访问用户和数据库
+** Windows
++ 下载
 #+BEGIN_EXAMPLE
-> su - postgres
-> psql
-> CREATE USER hengjun WITH SUPERUSER PASSWORD '123456';  
-//SUPERUSER：超级用户的意思，权限较高
-> CREATE DATABASE iotadream;
-> \q                                                     //退出psql客户端
+官网下载最新版本的postgresql
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+选择好自己规划好的安装路径C:\Local\PostgreSQL\9.6
+
+设置好superuser超级用户密码： 123456(系统默认数据库超级用户postgres的密码)
+
+设置好服务端口号： 5432
+
+一路回车法
+
+暂且不选择安装 stack builder
+#+END_EXAMPLE
+
++ 配置
+#+BEGIN_EXAMPLE
+安装完成后，系统中默认会创建一个数据库超级用户postgres和postgres数据库
+#+END_EXAMPLE
+
+* 初始化设置
++ 新建项目工程的数据库和访问用户
+#+BEGIN_EXAMPLE
+psql -U postgres -h 127.0.0.1
+=# CREATE USER hengjun WITH SUPERUSER PASSWORD '123456';  //SUPERUSER：超级用户的意思，权限较高
+=# CREATE DATABASE godream;
+=# \q                                                     //退出psql客户端
 #+END_EXAMPLE
 
 + 开启数据库远程访问

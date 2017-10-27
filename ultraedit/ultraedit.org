@@ -1,54 +1,44 @@
 #+TITLE: UltraEdit
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
-
-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 * 安装
-** Windows平台
-+ 主程序安装
+
+** 主程序安装
 #+BEGIN_EXAMPLE
 官网下载对应平台的最新安装包，
 
-选择好安装路径，傻瓜式一路回车法安装
+选择好安装路径 -> 一路回车法
 #+END_EXAMPLE
 
-** 注冊ftp模块
+
+** 注册
 #+BEGIN_EXAMPLE
-cd C:\Local\UltraEdit ( 切換到UltraEdit的安裝目錄下 )
-regsvr32.exe  wodFtpDLX64.dll
+断网 -> 启动 UltraEdit -> 输入许可证密钥 -> 许可证ID(任意数字123456) -> 密码(任意数字654321) ->
+
+激活 -> 脱机激活 -> 再次填上刚刚输入的许可证ID和密码 -> 运行注册机 -> 复制用户码1和用户码2到注册机中 ->
+
+点击生成 -> 将生成的验证码1和验证码2复制到程序中 -> 点击激活 -> 注册和激活成功
 #+END_EXAMPLE
 
-* 常用配置
-*** 现代菜单
+
+** 常用配置
 #+BEGIN_EXAMPLE
-工具栏右击 -> 工具栏/菜单模式 -> 选择现代菜单，传统菜单是指以前老版本的菜单布局方式
+用户的配置信息最终都是保存在
+C:\Users\lescpsn\AppData\Roaming\IDMComp\UltraEdit\Uedit32u.ini 文件中。
 #+END_EXAMPLE
-
-*** 自定义快速访问工具栏
-#+BEGIN_EXAMPLE
-右击标题栏空白区 -> 定义快速访问工具栏 -> 都移除
-#+END_EXAMPLE
-
-*** 在Ribbon上显示
-#+BEGIN_EXAMPLE
-左上角有个小三角，点击在Ribbon上显示
-#+END_EXAMPLE
-
-*** 最小化Ribbon
-#+BEGIN_EXAMPLE
-标题栏右击最小化Ribbon,Ribbon 功能区精简模式
-#+END_EXAMPLE
-
 *** 取消文件保存自动备份bak文件
 #+BEGIN_EXAMPLE
  高级 -> 设置 -> 文件处理 -> 备份 -> 不备份
 #+END_EXAMPLE
 
-*** 设置主题
+
+
+*** 文件修改自动加载
 #+BEGIN_EXAMPLE
-布局 -> 主题 -> 选择自己喜欢的主题（Classic）
+高级 -> 设置 -> 文件处理 -> 文件更改检查 -> 自动更新已经更改的文件
 #+END_EXAMPLE
 
-*** 添加右键菜单
+
+*** 添加到右键菜单
 #+BEGIN_EXAMPLE
 方法1：
 高级 -> 设置 -> 文件关联 -> 与资源管理器集成(这种方式感觉不好)
@@ -59,16 +49,94 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 新建节点UltraEdit安装的目录名字）
 
 该项下新建两个字段
-1 新建字符串 Icon (修改值为安装路径 C:\Local\UltraEdit\uedit64.exe,0)
-                            
+1 新建字符串 Icon (修改值为安装路径 C:\Local\UltraEdit\Uedit32.exe,0)
 
-2 新建项 Command (修改默认值为 C:\Local\UltraEdit\uedit64.exe %1)
+2 新建项 Command (修改默认值为 C:\Local\UltraEdit\Uedit32.exe "%1")
  #+END_EXAMPLE
 
-*** 文件修改自动加载
+
+
+*** 设置字体
 #+BEGIN_EXAMPLE
-高级 -> 设置 -> 文件处理 -> 文件更改检查 -> 自动更新已经更改的文件
+视图 -> 字体 -> 设置字体
 #+END_EXAMPLE
+
+
+
+*** 设置列模式字体
+#+BEGIN_EXAMPLE
+视图 -> 字体 -> 设置十六进制/列模式字体
+#+END_EXAMPLE
+
+
+
+*** 显示空格和制表符
+#+BEGIN_EXAMPLE
+视图 -> 显示空格/制表符
+#+END_EXAMPLE
+
+
+
+
+*** 设置制表符
+#+BEGIN_EXAMPLE
+高级 -> 设置 -> 编辑器 -> 自动换行/制表符设置 -> 制表站值 -> 8
+#+END_EXAMPLE
+
+
+*** 设置显示换行符
+#+BEGIN_EXAMPLE
+视图 -> 显示换行符
+#+END_EXAMPLE
+
+
+
+
+*** 设置不启动多个实例
+#+BEGIN_EXAMPLE
+高级 -> 设置 -> 应用程序布局 -> 其它 -> 取消允许多个实例
+
+如果多个实例的话，每次右键打开会启动多个ultraedit
+#+END_EXAMPLE
+
+*** 设置主题
+#+BEGIN_EXAMPLE
+布局 -> 主题 -> 选择自己喜欢的主题（Classic/Titanium/Glitch）
+#+END_EXAMPLE
+
+
+
+*** end -end - end
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+
+
+*** 现代菜单
+#+BEGIN_EXAMPLE
+工具栏右击 -> 工具栏/菜单模式 -> 选择现代菜单，传统菜单是指以前老版本的菜单布局方式
+#+END_EXAMPLE
+
+
+*** 自定义快速访问工具栏
+#+BEGIN_EXAMPLE
+右击标题栏空白区 -> 定义快速访问工具栏 -> 都移除
+#+END_EXAMPLE
+
+
+*** 在Ribbon上显示
+#+BEGIN_EXAMPLE
+左上角有个小三角，点击在Ribbon上显示
+#+END_EXAMPLE
+
+
+*** 最小化Ribbon
+#+BEGIN_EXAMPLE
+标题栏右击最小化Ribbon,Ribbon 功能区精简模式
+#+END_EXAMPLE
+
+
 *** 设置缩进为4空格(针对每个编程语言)
 #+BEGIN_EXAMPLE
 高级 -> 设置 -> 编辑器 -> 自动换行制表符设置
@@ -77,20 +145,66 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 
 -> 用空格代替制表符 -> 制表站值（4） -> 缩进空格（4）
 #+END_EXAMPLE
+
+
 *** 修改默认utf-8编码
 #+BEGIN_EXAMPLE
 高级 -> 设置 -> 文件处理 -> 编码 -> 默认编码UTF-8
 #+END_EXAMPLE
 
+
 *** 左侧显示文件视图
 #+BEGIN_EXAMPLE
 布局 -> 文件视图
 #+END_EXAMPLE
+
+
 *** 新建文件类型
 #+BEGIN_EXAMPLE
 高级 -> 设置 -> 文件处理 -> DOS/Unix/Mac处理 -> 新建文件的默认类型 -> UNIX
 #+END_EXAMPLE
-* 常用快捷键
+
+
+** 注冊ftp模块
+#+BEGIN_EXAMPLE
+cd C:\Local\UltraEdit (切换到UltraEdit的安裝目录下)
+regsvr32.exe  wodFtpDLX64.dll
+#+END_EXAMPLE
+
+
+* 个性化快捷键定制
+#+BEGIN_EXAMPLE
+高级 -> 设置 -> 映射键，设置自己个性化的快捷键
+C:\Users\lescpsn\AppData\Roaming\IDMComp\UltraEdit
+A -> Alt
+C -> Ctrl
+S -> Shift
+#+END_EXAMPLE
+
++ 删除行尾空格
+#+BEGIN_EXAMPLE
+A-/
+#+END_EXAMPLE
+
++ 添加注释
+#+BEGIN_EXAMPLE
+C-/
+#+END_EXAMPLE
+
++ 删除注释注释
+#+BEGIN_EXAMPLE
+C-\
+#+END_EXAMPLE
+
+
+
++ end - end -end
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+
+
 + C-u
 #+BEGIN_EXAMPLE
 左侧显示文件视图
@@ -101,7 +215,5 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 查看文件的16进制编码
 #+END_EXAMPLE
 
-+ C-/
-#+BEGIN_EXAMPLE
-删除行尾空格
-#+END_EXAMPLE
+
+

@@ -1,0 +1,123 @@
+#+TITLE: Windows-Subsystem-Linux
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+* 安装wsl
+#+BEGIN_EXAMPLE
+wsl即Windows-Subsystem-Linux,Windows下的Linux子系统
+#+END_EXAMPLE
+
+** 安装wsl
+#+BEGIN_EXAMPLE
+所有设置 -> 更新和安全 -> 针对开发人员 -> 开发人员模式 -> 左上角查找设置
+
+启用或关闭windows功能 -> 适用于Linux的Windows子系统(Beta)
+#+END_EXAMPLE
+
++ 方式一
+#+BEGIN_EXAMPLE
+管理员运行cmd
+
+lxrun /install
+#+END_EXAMPLE
+
++ 方式二
+#+BEGIN_EXAMPLE
+管理员运行cmd
+
+bash
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+安装完成后，根据系统提示，自动创建一个unix用户
+#+END_EXAMPLE
+
+
+** 卸载wsl
+#+BEGIN_EXAMPLE
+管理员运行cmd
+
+lxrun /uninstall /full
+#+END_EXAMPLE
+
+
+* 安装wsl-terminal
+#+BEGIN_EXAMPLE
+wsl原生的bash比较弱，可以采用二次封装好的wsl-terminal，功能强大很多
+#+END_EXAMPLE
+
+** 安装
+#+BEGIN_EXAMPLE
+github上https://github.com/goreliu/wsl-terminal/releases
+
+下载wsl-terminal的绿色版7z包，直接解压到目标目录中去即可
+#+END_EXAMPLE
+
+** 配置
++ 发送桌面快捷方式
+#+BEGIN_EXAMPLE
+右击open-wsl.exe -> 发送桌面快捷方式 
+右击快捷方式 -> 修改起始位置 -> 高级 -> 用管理员身份运行
+#+END_EXAMPLE
+
++ 升级系统
+#+BEGIN_EXAMPLE
+首次启动open-wsl.exe，升级系统
+sudo apt-get upgrade
+#+END_EXAMPLE
+
+
++ 安装zsh&oh-my-zsh
+#+BEGIN_EXAMPLE
+sudo apt-get install zsh
+sudo apt-get install git
+sudo curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+#+END_EXAMPLE
+
+
++ 修改用户默认登陆shell
+#+BEGIN_EXAMPLE
+编辑 C:\Local\wsl-terminal\etc\wsl-terminal.conf
+
+shell=zsh
+
+退出open-wsl.exe，重新登陆配置zsh
+#+END_EXAMPLE
+
++ 修改open-wsl.exe主题
+#+BEGIN_EXAMPLE
+右击左上角的图标 -> Options -> Looks -> Theme -> base16-seti-ui
+Text -> Font -> Select -> 设置自己喜欢的字体
+#+END_EXAMPLE
+
++ 修改777权限目录的颜色
+#+BEGIN_EXAMPLE
+dircolors >>~/.zshrc
+
+vim ~/.zshrc
+
+ow 01 34
+#+END_EXAMPLE
+
++ 安装cbwin
+#+BEGIN_EXAMPLE
+cbwin可以实现在linux中执行windows中的命令
+
+cd /mnt/c/Local/wsl-terminal/bin
+
+sudo bash -x ./install_cbwin.sh
+
+双击 outbash.exe，然后编辑 C:\Local\wsl-terminal\etc\wsl-terminal.conf
+
+use_cbwin=1
+
+wcmd dir 测试可以执行windows的命令
+#+END_EXAMPLE
+
++ 修改系统的apt数据源
+#+BEGIN_EXAMPLE
+vim /etc/apt/source.list
+
+加快软件安装的速度
+
+sudo apt-get update
+#+END_EXAMPLE

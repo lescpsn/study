@@ -1,6 +1,5 @@
 #+TITLE: emacs-study历程
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
-
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 * emacs安装
 ** windows
 + 下载安装包
@@ -48,10 +47,16 @@ emacs25以上版本在win10上可能会很卡，需要把font字体，具体哪�
 至少Source Code Pro这种字体应该是没有问题的
 #+END_EXAMPLE
 
+
 ** linux
-+ 网络安装
++ ubuntu版本
 #+BEGIN_EXAMPLE
 sudo apt-get install emacs
+#+END_EXAMPLE
+
++ arch版本
+#+BEGIN_EXAMPLE
+pacman -S emacs
 #+END_EXAMPLE
 
 
@@ -66,7 +71,6 @@ TAGS用以工程中代码跳转
 
 
 * spacemacs安装
-
 ** windows
 + 安装spacemacs
 #+BEGIN_EXAMPLE
@@ -123,8 +127,12 @@ dotspacemacs-elpa-timeout 60
   github网络问题，evil-unimpaire不容易装上,手工下载melpa后,放入到emacs.d\.cache\quelpa\目录下,
   重启emacs
 
+#+END_EXAMPLE
 
-
+#+BEGIN_EXAMPLE
+2 tern
+tern not found
+npm install -g tern
 #+END_EXAMPLE
 
 
@@ -314,6 +322,43 @@ M-k : 删除光标到段尾
 C-y : 粘贴
 M-y : 必须紧接着C-y后操作，可以恢复剪切缓冲区之前的内容
 C-/ : 恢复到前一次的操作(C-_也是一样）
+
+C-x C-f : 打开文件
+C-x C-s : 保存当前文件
+C-x s   : 保存全部缓冲区文件
+
+C-x : 字符扩展, C-x之后输入另一个字符或者组合键。
+M-x : 命令名扩展, M-x之后输入一个命令名。
+C-z : 挂起当前的emacs
+C-x C-z : 挂起当前的emacs
+C-x 1 : 关掉其它所有窗格，只保留一个。
+C-x u : 撤销。
+M-x recover file <Return> : 恢复#file#自动保存的文件
+C-h m : 可以查看当前主模式的文档。
+
+
+搜索（SEARCHING）
+C-s : 向前搜索
+C-r : 向后搜索
+C-x 2 : 分割成两个窗口
+C-M-v : 移动下面的窗口
+C-x o : 移动下面的窗口
+C-x 2 C-f : 另开一个窗口，打开一个文件
+
+M-x make-frame : 创建一个新窗口
+M-x delete-frame : 关闭一个新窗口
+
+ESC ESC ESC。这是一个最通用的“离开”命令
+
+C-h ? : 查看帮助
+C-h c : C-p 之后再输入一个组合键C-p，Emacs 会给出C-p的说明
+C-h k C-p。
+C-h f
+C-h v
+C-h a        相关命令搜索（Command Apropos）。
+delete-horizontal-space	      M-\
+
+C-h i        阅读联机手册（也就是通常讲的 Info）。
 #+END_EXAMPLE
 
 
@@ -528,6 +573,7 @@ npm -g install js-beautify
 
 4. 双击快捷方式，启动emacs后，ESC-x -> eshell 就可以运行牛逼的eshell
 #+END_EXAMPLE
+
 
 * lisp
 + C-x C-e

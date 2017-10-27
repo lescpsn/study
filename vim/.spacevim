@@ -1,0 +1,61 @@
+function! Layers()
+    Layer 'fzf'
+    Layer 'unite'
+    Layer 'better-defaults'
+    Layer 'chinese'
+endfunction
+
+function! UserInit()
+    " 1 VimIM vim内嵌中文输入法插件
+    Plug 'vim-scripts/VimIM'
+
+    " 2 nerdtree 目录树相关插件
+    Plug 'scrooloose/nerdtree'
+    Plug 'jistr/vim-nerdtree-tabs'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+endfunction
+
+function! UserConfig()
+    " 1 公共设置
+    " 1.1 设置tab为4个字符宽度
+    set tabstop=4
+
+    " 1.2 设置缩进为4个字符宽度
+    set shiftwidth=4
+
+    " 1.3 设置显示空格和table
+    set list
+
+    " 1.4 开启右侧滚动条
+    set guioptions+=r
+
+    " 1.5 设置字体
+    set guifont=Consolas:h16
+
+    " 1.6 启动伊始最大化
+    autocmd GUIEnter * simalt ~x
+
+    " 2 nerdtree 相关设置
+    " 2.1 启动伊始加载 nerdtree
+    autocmd vimenter * NERDTree
+
+    " 2.2 nerdtree 打开/关闭 映射的快捷键
+    map <F8> :NERDTreeToggle<CR>
+
+    " 2.3 nerdtree 中显示git未跟踪的文件状态
+    let g:NERDTreeShowIgnoredStatus = 1
+
+    " 2.4 设置 nerdtree 中文件的git状态图标
+    let g:NERDTreeIndicatorMapCustom = {
+        \ "Modified"  : "✹",
+        \ "Staged"    : "✚",
+        \ "Untracked" : "✭",
+        \ "Renamed"   : "➜",
+        \ "Unmerged"  : "═",
+        \ "Deleted"   : "✖",
+        \ "Dirty"     : "✗",
+        \ "Clean"     : "✔︎",
+        \ 'Ignored'   : '☒',
+        \ "Unknown"   : "?"
+        \ }
+endfunction

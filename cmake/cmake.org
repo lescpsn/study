@@ -1,0 +1,37 @@
+#+title: cmake学习
+cmake ../..
+msbuild.exe
+
+* Visual Studio
++ 系统中只有一个版本Visual Studio
+#+BEGIN_EXAMPLE
+系统中安装完Visual Studio
+
+cmake和Visual Studio是息息相关的，无需设置任何环境变量
+
+cmake可以自动关联到Visual Studio的编译器cl，完成工程的自动构建
+#+END_EXAMPLE
+
++ 系统中有多个版本Visual Studio
+#+BEGIN_EXAMPLE
+当系统中有多个版本的Visual Studio
+
+采用-G选项指定Visual Studio版本来构建工程
+
+cmake .. -G "Visual Studio 12 2013"
+#+END_EXAMPLE
+
+* cmake常用选项
++ ARCHIVE_OUTPUT_DIRECTORY
+#+BEGIN_EXAMPLE
+设置lib,exp生成的路径
+#+END_EXAMPLE
+
++ RUNTIME_OUTPUT_DIRECTORY
+#+BEGIN_EXAMPLE
+设置dll，ilk，pdb生成的路径
+#+END_EXAMPLE
+
+
+
+

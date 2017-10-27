@@ -1,57 +1,100 @@
 #+TITLE: Notepad++学习
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
-* 安装
+** 安装
 #+BEGIN_EXAMPLE
-最好选择32位版本，64位插件那可能会有些问题
+最好选择32位版本，64位版本的插件管理器暂且不支持。其实notepad++的很多版本插件管理器都有问题
 
-官网下载对应平台的最新安装包npp.7.3.3.Installer.exe
+官网下载windows32位平台的最新安装包，如：npp.7.3.Installer.exe
 
-选择好适合的安装目录，一路回车法
+选择好安装目录 -> 自定义安装类型 -> Localization(chinese) -> 
+
+组件(勾选创建桌面图标) -> 安装
+
+菜单 -> 插件 -> 插件管理(查看插件管理是否有效，即使很多32位的版本也无效)
 #+END_EXAMPLE
 
-* 配置
-+ 左侧显示文件夹
-#+BEGIN_EXAMPLE
-视图 -> 文件夹工作区
-#+END_EXAMPLE
+** 配置
 
-+ 左侧显示文件夹
++ 显示空格与制表符
 #+BEGIN_EXAMPLE
 视图 -> 显示符号 -> 显示空格与制表符
 #+END_EXAMPLE
 
-+ 制表符
++ 主题与字体
 #+BEGIN_EXAMPLE
-设置 -> 首选项 -> 语言 -> c/cpp -> 制表符宽度4/替换为空格
-设置 -> 首选项 -> 语言 -> python -> 制表符宽度4/替换为空格
+
+设置 -> 语言格式设置 -> 选择主题(Obsidian) -> 字体(可以默认Source Code Pro) -> 字体大小14
+
+使用全局字体，使用全局字体大小 -> 保存关闭
+
+主题： zenburn
+字体： Source Code Pro, 大小: 14
+字体： Consolas, 大小: 14
 #+END_EXAMPLE
 
-+ 设置字体
++ 文件更新自动载入
 #+BEGIN_EXAMPLE
-设置 -> 语言格式设置
+设置 -> 首选项 -> 其他 -> 自动检测文件状态 -> 自动更新文件
 #+END_EXAMPLE
 
-+ 新增主题
++ 打开文件标签设置
 #+BEGIN_EXAMPLE
-http://wiki.macromates.com/Themes/UserSubmittedThemes
-下载主题插件morrow Night 把主题的xml的xml文件拷贝到C:\Users\lescpsn\AppData\Roaming\Notepad++\themes下即可
+设置 -> 首选项 -> 常用 -> 标签 -> 
+取消 缩小 
+取消 为当前标签绘制彩色条
 #+END_EXAMPLE
 
-* 插件
-+ NppAStyle
++ 工具栏
 #+BEGIN_EXAMPLE
-代碼格式化插件
-https://sourceforge.net/projects/nppastyle/?source=typ_redirect 下載bin版本
-將unicode目錄下的dll庫拷貝到npp安裝目錄的插件目錄下C:\Local\Notepad++\plugins
-用法：插件 -> NppAStyle -> Options -> java(風格)
+设置 -> 首选项 -> 常用 -> 工具栏 -> 
+勾选 隐藏
 #+END_EXAMPLE
 
-* python相关
++ 视图
+#+BEGIN_EXAMPLE
+视图 -> 显示符号 -> 显示缩进参考线
+#+END_EXAMPLE
+
+
++ 自动缩进为空格
+#+BEGIN_EXAMPLE
+设置 -> 首选项 -> 语言 -> 制表符设置 ->选定语言 -> (取消默认值)替换为空格
+#+END_EXAMPLE
+
++ 文档切换关闭列表
+#+BEGIN_EXAMPLE
+设置 -> 首选项 -> 其他 -> 文档切换(去除启用)
+#+END_EXAMPLE
+
+
+
+
+** 主题插件
+*** 主题
++ Npp-VS2012-Dark
+#+BEGIN_EXAMPLE
+git clone http://github.com/SeanCline/Npp-VS2012-Dark.git
+设置 -> 导入 -> 导入主题 -> 选择 VS2012-Dark.xml
+
+或者直接拷贝 VS2012-Dark.xml 到 Notepad++安装目录下的themes文件夹中(themes若无，新建)
+
+重启notepad++
+#+END_EXAMPLE
+
+*** 插件
++ Compare
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+
+
+
+** python相关
 + 运行python
 #+BEGIN_EXAMPLE
 F5 -> 保存 cmd /k python "$(FULL_CURRENT_PATH)" & ECHO. & PAUSE & EXIT
-
 映射成Ctrl + F5 快捷键
 #+END_EXAMPLE
 

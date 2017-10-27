@@ -9,40 +9,117 @@ git clone https://github.com/guanzhi/GmSSL.git
 
 ** 编译
 *** Windows
+
+**** 安装vs community 2013
++ 下载
 #+BEGIN_EXAMPLE
-切换分支
-git checkout -b  GmSSL-v1 origin/GmSSL-v1
+注意: vs2015及其以上的版本可能有坑, 不适用本文档, 暂不想花时间去解决, 直接先用vs2013版本
 
-编译配置
-perl Configure VC-WIN32  no-asm  --prefix=C:\Local\usr\GmSSL32
-或者
-perl Configure VC-WIN32  no-asm  --prefix=/C/Local/usr/GmSSL32
-
-编译配置
-ms\do_nt.bat
-nmake  -f ms\nt.mak
+官网https://www.visualstudio.com/downloads/下载vs2013的iso版本
 #+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+指定好安装目录 -> 自定义安装 -> 勾选VC++ -> 一路回车法
+#+END_EXAMPLE
+
++ 修改PATH环境变量(可选)
+#+BEGIN_EXAMPLE
+vs安装路径下的C:\Local\Microsoft Visual Studio 12.0\VC\bin\cl.exe即编译器, 相当于linux下的gcc
+
+将C:\Local\Microsoft Visual Studio 12.0\VC\bin路径添加到环境变量PATH中
+#+END_EXAMPLE
+
++ 添加INCLUDE环境变量(可选)
+#+BEGIN_EXAMPLE
+INCLUDE环境变量相当于头文件的搜索路径, 将
+
+C:\Local\Microsoft Visual Studio 12.0\VC\include
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include
+
+添加到环境变量INCLUDE中
+#+END_EXAMPLE
+
++ 添加LIB环境变量(可选)
+#+BEGIN_EXAMPLE
+LIB环境变量相当于库文件链接搜索路径, 将
+
+C:\Local\Microsoft Visual Studio 12.0\VC\lib
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib
+
+添加到环境变量LIB中
+#+END_EXAMPLE
+
+
+**** 安装perl
++ 下载
+#+BEGIN_EXAMPLE
+官网https://www.perl.org/get.html下载 ActiveState Perl对应系统版本(32位或者64位)
+#+END_EXAMPLE
+
++ 安装及配置
+#+BEGIN_EXAMPLE
+选择custom方式 -> 指定好安装目录 -> 一路回车法
+#+END_EXAMPLE
+
++ 测试安装是否成功
+#+BEGIN_EXAMPLE
+where perl
+#+END_EXAMPLE
+
+
+**** 安装nasm(早期版本需要)
+#+BEGIN_EXAMPLE
+vs自带的汇编编译器，OpenSSL不支持，需要另外安装nasm汇编编译器
+
+官网 http://www.nasm.us/pub/nasm/releasebuilds/2.12.02/win64/
+
+下载对应的windows版本
+
+在openssl的1.1及其以上版本是不需要的，编译时直接nmake就可以了.
+
+网络上很多文章描述的编译时有一步ms\do_nasm过程, 其实已经过时了.
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+指定好安装目录 -> 一路回车法, 之后将安装后的目录添加到环境变量PATH中去。
+#+END_EXAMPLE
+
+
+**** 编译GmSSL
+#+BEGIN_EXAMPLE
+cd GmSSL
+%comspec% /k ""C:\Local\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"" x86  (这步很重要, 设置编译的环境变量, 头文件, 动态库等)
+perl Configure VC-WIN32 no-base58 --prefix="C:\Local\usr\GmSSL32"
+
+修改代码include\openssl\speck.h, 必须采用/**/注释, 如果采用//注释, 则perl脚本不能解析
+/* void speck_expand16(SPECK_TYPE16 const K[SPECK_KEY_LEN16], SPECK_TYPE16 S[SPECK_ROUNDS16]); */
+/* void speck_expand32(SPECK_TYPE32 const K[SPECK_KEY_LEN32], SPECK_TYPE32 S[SPECK_ROUNDS32]); */
+/* void speck_expand64(SPECK_TYPE64 const K[SPECK_KEY_LEN64], SPECK_TYPE64 S[SPECK_ROUNDS64]); */
+
+perl util/mkdef.pl crypto update  (每次修改了.h头文件, 都需要执行该脚本, 让其自动生成util/libcrypto.num)
+
+nmake clean
+nmake
+nmake test
+nmake install
+#+END_EXAMPLE
+
+
+**** 生成
+#+BEGIN_EXAMPLE
+头文件        : ./include/openssl
+动态库引用文件 : *.lib            
+动态库        : *.dll
+#+END_EXAMPLE
+
 
 *** Linux
 #+BEGIN_EXAMPLE
 
-#+END_EXAMPLE
-
-
-** 编译及安装
-#+BEGIN_EXAMPLE
-// 切换下分支（master主分支更新较快，有时便宜会通过不了）
-git checkout -b GmSSL-v1 origin/GmSSL-v1
-
-// config配置
-./config no-saf no-sdf no-skf no-sof no-zuc // 可能编译通过不了
-./config
-
-// 编译
-make
-
-// 安装(gmssl默认安装到/usr/local/ssl/bin/gmssl)
-sudo make install
 #+END_EXAMPLE
 
 

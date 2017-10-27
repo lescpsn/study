@@ -1,0 +1,19 @@
+#+TITLE: dokany历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+* 安装dokany
+#+BEGIN_EXAMPLE
+官网https://github.com/dokan-dev/dokany/releases/tag/v1.0.3下载最新的安装包
+DokanSetupDbg.exe
+#+END_EXAMPLE
+
+* issue
++ Can't install driver
+#+BEGIN_EXAMPLE
+AllocationUnitSize: 512 SectorSize: 512
+Dokan Error: CreateFile Failed \\.\Dokan_1: 2
+Can't install driver
+win10
+设置 -> 所有设置 -> 更新和安全 -> 恢复 -> 立即启动 ->
+
+疑难解答 -> 高级选项 -> 启动设置 -> 选7禁用驱动程序强制签名
+#+END_EXAMPLE

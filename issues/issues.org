@@ -1,0 +1,66 @@
+#+TITLE: ISSUES记录
+* ISSUES
+** emacs
++ 多用户配置文件
+
++ daemon服务加速启动方式
+
++ emacs添加到右键中
+** http
+*** http \r\n 问题
+
+
+** c语言
+*** 字节序
+#+BEGIN_EXAMPLE
+char * 类型
+0x0039512C  42 c2 fe 5b de 23 3e 4a 11 68 e6 5b 5b 05 43 1a
+0x0039513C  09 b6 6e 9f 48 d0 83 66 30 ec dc bd 6e b8 39 de
+
+
+long * 类型
+0x00983DE0  5b fe c2 42 4a 3e 23 de 5b e6 68 11 1a 43 05 5b
+0x00983DF0  9f 6e b6 09 66 83 d0 48 bd dc ec 30 de 39 b8 6e
+
+转换后出现字节序混乱
+#+END_EXAMPLE
+
+
+*** size_t
+#+BEGIN_EXAMPLE
+size_t的深入学习
+#+END_EXAMPLE
+
+** work
+*** GmSSL编译静态库
+
+*** keypass预研
+
+*** 源文件版权说明格式
+
+*** cmd显示\033[32m之类的颜色控制
+
+** tech
+#+BEGIN_EXAMPLE
+http://stackoverflow.com/questions/32158738/python-on-electron-framework
+#+END_EXAMPLE
+
+** spy
+#+BEGIN_EXAMPLE
+spy mfc
+#+END_EXAMPLE
+
+
+** win10 小娜
+#+BEGIN_EXAMPLE
+#+END_EXAMPLE
+
+
+
+** 未使用IP和已使用的IP
+#+BEGIN_EXAMPLE
+#+END_EXAMPLE
+
+
+
+## swig

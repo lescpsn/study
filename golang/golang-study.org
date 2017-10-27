@@ -1,39 +1,35 @@
 #+TITLE: golang-study历程
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
-#+BEGIN_EXAMPLE
-Golang学习的相关网站
-官网    : https://golang.org
-#+END_EXAMPLE
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
-* Golang开发环境搭建
+* Golang安装
 ** Windows
 + golang安装
 #+BEGIN_EXAMPLE
 官网 https://golang.org/dl/ 下载windows对应版本的最新Golang安装包
 
-指定好安装路径，傻瓜式一路回车法安装
+设置好安装路径，一路回车
 #+END_EXAMPLE
 
 + 设置GOPATH环境变量
 #+BEGIN_EXAMPLE
 设置GOPATH环境变量（windows下如何添加环境变量，自行百度），
+GOPATH的具体值根据自己的目录规划习惯，以后所有的工程项目目录必须放在%GOPATH%/src目录下
 在%GOPATH%目录下分别创建bin，pkg，src三个目录
+
 mkdir %GOPATH%/bin
 mkdir %GOPATH%/pkg
 mkdir %GOPATH%/src
 
-GOPATH的具体值根据自己的目录规划习惯，以后所有的工程项目目录必须放在%GOPATH%/src目录下
-如：
-%GOPATH%/src/projectname
-%GOPATH%/src/github.com/username/projectname
-
-%GOPATH%/src下的工程项目目录可以递归包含任意层次的目录结构
+项目1如：%GOPATH%/src/projectname1
+%GOPATH%/src下的工程项目目录可以递归包含任意层次的目录结构,项目2如：
+%GOPATH%/src/github.com/username/projectname2
 #+END_EXAMPLE
 
 + 添加PATH环境变量
 #+BEGIN_EXAMPLE
 将 %GOPATH%/bin 追加到%PATH%环境变量中
 #+END_EXAMPLE
+
 
 ** Linux
   + 安装Golang
@@ -53,6 +49,7 @@ mkdir $GOPATH/bin
 mkdir $GOPATH/pkg
 #+END_EXAMPLE
 
+
 ** Golang常用命令
 + 查看go版本
 #+BEGIN_EXAMPLE
@@ -63,8 +60,6 @@ go version
 #+BEGIN_EXAMPLE
 go env
 #+END_EXAMPLE
-
-
 
 
 * Golang工程开发工具

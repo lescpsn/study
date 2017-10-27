@@ -1,0 +1,54 @@
+*** 安装
+#+BEGIN_EXAMPLE
+fish-shell必须是fish 2.2.0以上版本, 否则后续oh-my-fish的配置不支持2.2.0以下版本
+#+END_EXAMPLE
+
+**** arch
+#+BEGIN_EXAMPLE
+pacman -S fish
+#+END_EXAMPLE
+
+**** ubuntu
+#+BEGIN_EXAMPLE
+sudo apt-get install fish 
+apt-get upgrade fish  (升级fish)
+#+END_EXAMPLE
+
+
+*** 安装 fish-shell 的配置 oh-my-fish
+#+BEGIN_EXAMPLE
+curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+#+END_EXAMPLE
+
+
+*** 安装eden主题
+#+BEGIN_EXAMPLE
+omf install https://github.com/amio/omf-theme-eden
+
+更多主题参看：https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md
+
+omf theme lambda
+#+END_EXAMPLE
+
+
+*** fish-shell的配置文件
+#+BEGIN_EXAMPLE
+当前用户fish-shell的配置文件为 ~/.config/fish/config.fish, 如果没有该文件，可以自行新建一个该同名文件
+#+END_EXAMPLE
+
+
+*** 用法
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+*** 修改用户的默认登录shell
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+*** 更多
+#+BEGIN_EXAMPLE
+详细参看官方文档 https://github.com/oh-my-fish/oh-my-fish
+#+END_EXAMPLE
+

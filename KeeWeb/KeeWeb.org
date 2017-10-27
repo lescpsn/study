@@ -1,0 +1,138 @@
+#+TITLE: ~KeeWeb试用分析报告~
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+** 总览
+#+BEGIN_EXAMPLE
+基于electron框架，采用html，css，js实现的跨平台客户端，视图与数据绑定的风格，易扩展，易维护
+#+END_EXAMPLE
+
+
+** 特点
+#+BEGIN_EXAMPLE
+所有操作动作，一般都是图标形式给出，而非文字说明，哪里可以操作，那个图标就是可以被激活。
+
+视图和数据绑定的，每个表单的填写无需再点击确定按钮
+#+END_EXAMPLE
+*** 多密码文件并存
+#+BEGIN_EXAMPLE
+可以同时打开多个密码保存文件，利于密码文件规划。
+#+END_EXAMPLE
+[[./keeweb/多个密码文件共存.png]]
+
+
+*** 支持附件功能，尤其方便上传图片
+#+BEGIN_EXAMPLE
+附件支持图片png等格式，txt纯文本格式在线打开，pdf等格式需要下载阅读。
+#+END_EXAMPLE
+[[./keeweb/支持附件.png]]
+
+
+*** 每个密码配置项支持任意扩展
+#+BEGIN_EXAMPLE
+每个密码配置项需要加密的栏目不可能完全一致的，极其需要可以定制扩展任意多属性栏目
+像信用卡最后三位cvv号，像网站就不需要。
+#+END_EXAMPLE
+
+
+*** 搜索配合各种排序
+#+BEGIN_EXAMPLE
+支持常用栏目的正序，倒序，附件也可以排序
+#+END_EXAMPLE
+
+
+*** 搜索标签颜色
+#+BEGIN_EXAMPLE
+支持逗号分割的多标签，极其方便在多个密码文件或者分组直接定位密码项目，
+颜色也支持搜索功能，颜色和标签可以理解为搜索功能的强大补充
+#+END_EXAMPLE
+
+
+*** 颜色icon图标
+#+BEGIN_EXAMPLE
+左侧项目总览不暂不支持。
+#+END_EXAMPLE
+
+
+*** 项目的删除采用回收站缓冲暂删机制
+#+BEGIN_EXAMPLE
+所有删除项目都是采用暂且丢到回收站的机制。方便恢复，恢复好像只支持拖拽。没有一次彻底性删除功能
+#+END_EXAMPLE
+
+
+*** 自动代替功能
+#+BEGIN_EXAMPLE
+暂且只是看到一个引子，理论上讲该功能是不可能实现的，涉及到各种OCR的破解
+#+END_EXAMPLE
+
+
+*** 多种网络存储方式
+#+BEGIN_EXAMPLE
+dropbox googledriver ...
+#+END_EXAMPLE
+
+
+
+*** 密码生成器
+#+BEGIN_EXAMPLE
+直接定位到需要输入密码的地方。
+#+END_EXAMPLE
+
+
+*** 支持web方式访问
+#+BEGIN_EXAMPLE
+无需安装客户端，可以实现客户端的大部分功能。即使方便出差人士。直接可以和网络存储对接。
+https://app.keeweb.info/
+#+END_EXAMPLE
+
+
+*** 自带软件升级功能
+#+BEGIN_EXAMPLE
+全局设置里支持多种升级模式
+#+END_EXAMPLE
+
+
+*** 显示定制
+#+BEGIN_EXAMPLE
+全局设置里支持主题，表格形式显示密码项。
+#+END_EXAMPLE
+
+
+*** 支持拖拽功能
+#+BEGIN_EXAMPLE
+方便移动项目的位置
+#+END_EXAMPLE
+
+
+
+*** xml数据导入功能
+#+BEGIN_EXAMPLE
+支持外部密码数据文件的导入，方便从其它密码托管软件中迁移过来。没有导出功能。
+#+END_EXAMPLE
+
+
+
+*** 没有备份还原功能
+#+BEGIN_EXAMPLE
+文件的备份是系统层级的，由用户自行把握。
+#+END_EXAMPLE
+
+
+*** 自带demon演示项目
+#+BEGIN_EXAMPLE
+方便学习，可以考虑加入动画演示流程。
+#+END_EXAMPLE
+
+
+*** 左边栏分类不够清晰
+#+BEGIN_EXAMPLE
+标签，密码文件栏目分割没有给出明显提示，不支持颜色icon配置
+#+END_EXAMPLE
+
+
+*** 操作流不够友好
+#+BEGIN_EXAMPLE
+操作流程可以继续加强设计，像群组的删除，需要点开群组设置，方可以删除。
+每个密码项的删除也是这种风格，需要点开详细项目，方可以删除。
+先要新建项目再自行保存文件，而非先建立文件。可能和keeweb支持多种存储方式有关了。
+#+END_EXAMPLE
+

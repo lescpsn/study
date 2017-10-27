@@ -1,0 +1,336 @@
+#+TITLE: Gitlab之项目管理
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/org-worg.css"/>
+
+* Gitlab简介
+#+BEGIN_EXAMPLE
+Gitlab是什么呢？Gitlab就是山寨版的Github。那Github又是什么了？Github是全球最优秀的代码仓储托管平台，因其强大的git-flow工作流，
+
+让不同地点的不同人，协同开发变的异常容易。那为何不直接采用Github进行代码托管了？第一Github私有仓储要钱。第二即使有私有仓储，有很多
+
+企业也是很不愿意把自己的代码暴露在公网上了，更希望有个本地仓储。那Gitlab就应运而生了。
+#+END_EXAMPLE
+
+
+* Git-flow工作流
+#+BEGIN_EXAMPLE
+强大的git-flow工作流会让你的工作爽到不要，不要，不要的。那什么是git-flow工作流呢？一张图胜过千言万语
+#+END_EXAMPLE
+
+file:gitlab-flow.png
+file:git-flow2.png
+
+
+* Gitlab安装
+#+BEGIN_EXAMPLE
+简介
+
+Gitlab Community Edition -> gitlab-ce 社区版     免费
+
+Enterprise Edition Starter -> gitlab-ees 企业版  收费
+
+Enterprise Edition Premium -> gitlab-eep 企业版  收费
+
+采用免费的gitlab-ce社区版，搭建在自己的服务器上，纯手工搭建gitlab还是比较耗时和困难的
+
+为了提高安装的成功率，采用国内网络镜像方式安装，目前国内提供了清华和浙大的两个镜像
+#+END_EXAMPLE
+
+** Ubuntu 平台
++ 信任GitLab的GPG公钥
+#+BEGIN_EXAMPLE
+curl https://packages.gitlab.com/gpg.key 2>/dev/null | sudo apt-key add - &>/dev/null
+#+END_EXAMPLE
+
++ 添加apt-get的数据源
+#+BEGIN_EXAMPLE
+选择其一即可
+
+浙大镜像
+echo "deb http://mirrors.lifetoy.org/gitlab-ce/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list.d/gitlab-ce.list
+
+清华镜像
+echo "deb http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/ubuntu xenial main" | sudo tee -a /etc/apt/sources.list.d/gitlab-ce.list
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+sudo apt-get update
+sudo apt-get install gitlab-ce
+sudo apt-get install gitlab-ce=9.3.4
+
+#+END_EXAMPLE
+
+
+** Redhat/Centos 平台
+
+
+* Gitlab后台命令
++ 查看版本
+#+BEGIN_EXAMPLE
+cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
+#+END_EXAMPLE
+
++ 查看gitlab-ctl的帮助
+#+BEGIN_EXAMPLE
+sudo gitlab-ctl -h
+#+END_EXAMPLE
+
++ 配置Gitlab
+#+BEGIN_EXAMPLE
+sudo gitlab-ctl reconfigure
+#+END_EXAMPLE
+
++ 重启Gitlab所有服务
+#+BEGIN_EXAMPLE
+sudo gitlab-ctl restart
+#+END_EXAMPLE
+
++ 停止Gitlab所有服务
+#+BEGIN_EXAMPLE
+sudo gitlab-ctl stop
+#+END_EXAMPLE
+
++ 启动Gitlab所有服务
+#+BEGIN_EXAMPLE
+sudo gitlab-ctl start
+#+END_EXAMPLE
+
++ 卸载Gitlab
+#+BEGIN_EXAMPLE
+sudo gitlab-ctl uninstall
+#+END_EXAMPLE
+
+
+* Gitlab配置
++ 汉化
+#+BEGIN_EXAMPLE
+1 停止服务
+sudo gitlab-ctl stop
+
+2 备份原始版本文件
+cd /opt/gitlab/embedded/service
+sudo cp -rf gitlab-rails gitlab-rails.20170704
+
+3 下载汉化源码
+git clone https://gitlab.com/xhang/gitlab.git gitlabZH
+
+4 切换到对应的汉化版本
+cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
+cd gitlabZH
+git branch -av
+git checkout -b my-9-3-stable-zh origin/9-3-stable-zh 
+cp -rf * /opt/gitlab/embedded/service/gitlab-rails/
+
+5 重新配置，并启动服务
+sudo gitlab-ctl reconfigure
+sudo gitlab-ctl start
+#+END_EXAMPLE
+
++ 修改访问的url
+#+BEGIN_EXAMPLE
+1 修改url
+sudo vim /etc/gitlab/gitlab.rb
+external_url 'http://192.168.3.159'
+
+sudo vim /opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml
+host: 192.168.3.159
+
+2 重新载入配置并重启服务
+sudo gitlab-ctl reconfigure
+sudo gitlab-ctl start
+#+END_EXAMPLE
+
+
+* Gitlab使用
+** 用户
+*** 管理员用户
+#+BEGIN_EXAMPLE
+gitlab部署完就默认有个root管理员用户，比普通用户主页多了个扳手的管理区域最高权限拥有者，
+
+拥有一切权限，可以创建用户，创建群组，创建项目，是整个gitlab的管理者
+#+END_EXAMPLE
+
+*** 普通用户
+#+BEGIN_EXAMPLE
+可以创建项目组，创建项目，不可以创建gitlab系统用户，可以将gitlab系统中的用户授权到自己的私有项目中
+#+END_EXAMPLE
+
+
+** 工程组与工程
+*** 简介
+#+BEGIN_EXAMPLE
+工程组是多个工程的集合，多个工程隶属与某一个工程组，工程组项目的访问URL会带上工程组的命名空间
+
+如：http://192.168.1.1/GroupName/ProjectName
+#+END_EXAMPLE
+
+
+*** 类别
+#+BEGIN_EXAMPLE
+1 私有项目  只有授权的gitlab用户才有工程或工程组的某些权限
+  
+2 internet项目  只有是登陆到gitlab系统中的用户，才可以访问
+
+3 公有  无须用户都可以访问查看项目
+#+END_EXAMPLE
+
+
+*** 项目组命名规范
+#+BEGIN_EXAMPLE
+xyja, XYJA, Xyja, 
+
+winclient, WINCLIENT, WinClient, winClient 
+
+win_client, WIN_CLIENT, Win_Client, win_Client 
+
+http://192.168.1.1/SafeBox/WinClient
+
+http://192.168.1.1/SafeBox/AndClient
+
+http://192.168.1.1/SafeBox/CloudService 
+
+http://192.168.1.1/SafeBox/IosClient
+#+END_EXAMPLE
+
+
+*** 权限分配
++ 权限介绍
+#+BEGIN_EXAMPLE
+某一个用户隶属某个工程集或工程时，就会有一个对应的角色
+
+如：访客，报告者，开发者，主程序员，所有者，每种角色的权限不用可以参看帮助文档
+
+拥有者   相当于PM
+
+主程序员 相当于TM
+
+开发人员 相当于Coder 没有权限建立里程碑
+#+END_EXAMPLE
+
+
+** 工单（issues）
+*** 工单常见属性
+#+BEGIN_EXAMPLE
+隶属哪个项目，隶属哪个里程碑，当前隶属到哪一个人
+#+END_EXAMPLE
+
+
+** 里程碑
+*** 介绍
+#+BEGIN_EXAMPLE
+将每个issues工单进行更加细致的种类划分，便于管理
+#+END_EXAMPLE
+
+
+*** 种类划分
+#+BEGIN_EXAMPLE
+研发        : 预研 + 开发 + bug
+Pretech    : 预研，存在未知因素
+Block      : 因为某些原因某项任务进行不下去
+Task       : 开发，无任何风险
+Bug        : bug
+#+END_EXAMPLE
+
+
+* git-flow演示
+
+
+** 建立用户
+#+BEGIN_EXAMPLE
+系统中新建三个用户，准备规划到具体项目中的角色，分别为pm，coder，tester
+#+END_EXAMPLE
++ pm
+#+BEGIN_EXAMPLE
+项目组的所有者，具有有整个git工程的最高权限
+#+END_EXAMPLE
+
++ coder
+#+BEGIN_EXAMPLE
+项目组的开发人员，git工程的master主分支没有提交权限
+#+END_EXAMPLE
+
++ tester
+#+BEGIN_EXAMPLE
+项目组的测试人员，git工程的没有查看代码的权限，可以有提交issue的权限
+#+END_EXAMPLE
+
+
+
+** pm建立工程组
++ pm用户发起项目
+#+BEGIN_EXAMPLE
+新建私有建项组SafeBox
+
+SafeBox组下建立WinClient工程
+
+SafeBox组下建立AndClient工程
+
+SafeBox组下建立CloudService工程
+
+#+END_EXAMPLE
+
++ 分配coder用户角色
+#+BEGIN_EXAMPLE
+分配coder为项目组的 开发人员 角色
+#+END_EXAMPLE
+
++ 分配tester用户角色
+#+BEGIN_EXAMPLE
+分配coder用户为项目组的 访客（类似测试人员） 角色
+#+END_EXAMPLE
+
+
+
+** 建立里程碑
+#+BEGIN_EXAMPLE
+名字不能超过8个字符
+#+END_EXAMPLE
++ Task
+#+BEGIN_EXAMPLE
+工程组或工程的日常开发任务集
+#+END_EXAMPLE
+
++ Bug
+#+BEGIN_EXAMPLE
+工程组或工程的Bug集
+#+END_EXAMPLE
+
++ Pretech
+#+BEGIN_EXAMPLE
+工程组或工程的预研技术任务集
+#+END_EXAMPLE
+
+
+
+** git多分支开发流
++ 简介
+#+BEGIN_EXAMPLE
+
+issue工单发起(项目组的任何成员) ->pm(评审完下发到具体开发人员) ->coder（编码单元测试完成）->提交到自己的分支 ->
+
+issue转向到pm并向pm发起合并代码请求 ->pm审查并合并代码 ->(ci自动化集成)自动部署到测试环境 ->issue转到tester ->测试完成 ->关闭issue
+
+->部署到生产环境
+#+END_EXAMPLE
+
++ pm
+#+BEGIN_EXAMPLE
+pm本身是一个coder，同时也是一个leader,
+关注整个项目所有未关闭的工单
+#+END_EXAMPLE
+
++ coder&tester&其它
+#+BEGIN_EXAMPLE
+只关注我名下的工单
+#+END_EXAMPLE
+
+
+* Gitlab模板
+** issues模板
+#+BEGIN_EXAMPLE
+mkdir ProjectName/.gitlab/issue_templates/
+touch bug.md
+#+END_EXAMPLE
+
+
+** 看板其实是issues的另外一种展现方式

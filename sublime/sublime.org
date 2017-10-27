@@ -103,7 +103,6 @@ C + S + p -> Package Control:Install(pci) -> chineseLocalizations (汉化包)
 C + S + p -> install package -> IMESupport
 #+END_EXAMPLE
 
-
 + cmake 插件
 #+BEGIN_EXAMPLE
 C + S + p -> Package Control:Install(pci) -> CMake
@@ -112,6 +111,28 @@ CMakeLists.txt是txt结尾的文本，需要手动指定下CMakeLists.txt文件�
 
 打开CMakeLists.txt -> 视图 -> 语法 -> CMake
 #+END_EXAMPLE
+
++ 支持含有gbk编码的中文文件
+#+BEGIN_EXAMPLE
+sublime默认只支持utf8编码，ConvertToUTF8插件可以支持读取gbk编码的文件。
+C + S + p -> Package Control:Install(pci) -> ConvertToUTF8
+gbk编码中文文件可以正常显示
+#+END_EXAMPLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 + end - end - end
 #+BEGIN_EXAMPLE
@@ -144,11 +165,6 @@ C+S-h
 
 
 
-+ 支持含有gbk编码的中文文件
-#+BEGIN_EXAMPLE
-C + S + p -> Package Control:Install(pci) -> ConvertToUTF8
-gbk编码中文文件可以正常显示
-#+END_EXAMPLE
 
 
 + c/c++代码格式化
@@ -205,6 +221,30 @@ C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublim
 
 // 显示行结尾模式，linux/windows/mac
 "show_line_endings": true,
+
+// 文件末尾自动保留一个空行
+"ensure_newline_at_eof_on_save": true,
+
+// 不自动打开上次关闭时的文件
+"hot_exit": false,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // end - end - end - end
 
@@ -303,6 +343,11 @@ C + - : 缩小
 #+END_EXAMPLE
 
 
+
+* 搭建项目
+#+BEGIN_EXAMPLE
+项目 -> 添加文件夹到项目 -> 保存工程
+#+END_EXAMPLE
 
 * 常用菜单设置
 + dos2unix

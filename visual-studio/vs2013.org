@@ -69,3 +69,10 @@ clean:
 #+BEGIN_EXAMPLE
 工具 ->  选项 -> 文本编辑器 -> 所有语言 -> 制表符 -> 制表符大小（4），插入空格
 #+END_EXAMPLE
+
++ 不能断点
+#+BEGIN_EXAMPLE
+
+菜单 -> 工具 -> 选项 -> 调试 -> 常规 -> 要求源文件与原始版本完全匹配
+
+#+END_EXAMPLE

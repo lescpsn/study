@@ -1,0 +1,51 @@
+#+TITLE: gtag学习
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+* Windows
+** 下载
+#+BEGIN_EXAMPLE
+官网 https://www.gnu.org/software/global/download.html 下载windows的二进制版本
+
+http://adoxa.altervista.org/global/
+#+END_EXAMPLE
+
+** 安装
+#+BEGIN_EXAMPLE
+直接解压到自己规划好的目录目录中：C:\Local\glo656wb
+#+END_EXAMPLE
+
+** 配置PATH环境变量
+#+BEGIN_EXAMPLE
+将C:\Local\glo656wb\bin加入到windows的系统环境变量PATH中去
+#+END_EXAMPLE
+
+
+** gtags用法
+
+*** 切换到工程目录下
+#+BEGIN_EXAMPLE
+gtags -v 
+#+END_EXAMPLE
+
+*** 生成文件介绍
+#+BEGIN_EXAMPLE
+执行完gtags -v后，工程目录下会生成GPATH，GRTAGS，GTAGS三个文件
+
+GTAGS  : 对象定义的数据库
+GRTAGS : 对象引用的数据库
+GPATh  : 路径的数据库
+
+#+END_EXAMPLE
+
+*** 相关命令用法
+#+BEGIN_EXAMPLE
+global funcName     : 查看函数名funcName
+global -r funcName  : 查看函数被引用的地方
+#+END_EXAMPLE
+
+** ggtags
+#+BEGIN_EXAMPLE
+M-x list-packages
+#+END_EXAMPLE
+* Linux
+** 下载

@@ -1,0 +1,10 @@
+#+TITLE:c++-study历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+
+
+* cpp编程规范
+
+* cpp学习记录
+
+*
+

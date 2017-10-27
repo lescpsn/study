@@ -26,5 +26,14 @@
 项目 -> 同步文件 -> 文件 -> 自动加载新文件
 #+END_EXAMPLE
 
++ utf-8中文乱码
+#+BEGIN_EXAMPLE
+安装插件包siplus，将其复制到SourceInsight的安装目录下
+#+END_EXAMPLE
 
++ tab显示乱码
+#+BEGIN_EXAMPLE
+打开工程 -> Options -> Document Options对话框，把右下角
 
+Visible tabs选项前的勾去掉即可
+#+END_EXAMPLE

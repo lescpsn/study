@@ -1,0 +1,44 @@
+#+TITLE: googletest
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+* 安装googletest
+** 下载源代码
+#+BEGIN_EXAMPLE
+git clone https://github.com/google/googletest.git
+#+END_EXAMPLE
+
+** vs编译源代码
+#+BEGIN_EXAMPLE
+直接用vs打开C:\Projects\googletest\googletest\msvc\gtest.sln
+F7编译，在
+#+END_EXAMPLE
+
+** 安装googletest
++ 创建一个存放lib库的目录
+#+BEGIN_EXAMPLE
+mkdir C:\Local\usr\lib
+#+END_EXAMPLE
+
++ 安装lib库到系统中去
+#+BEGIN_EXAMPLE
+cp  C:\Projects\googletest\googletest\msvc\gtest\Debug\gtestd.lib C:\Local\usr\lib
+
+cp C:\Projects\googletest\googletest\msvc\gtest\Debug\gtest_maind.lib C:\Local\usr\lib
+#+END_EXAMPLE
+
++ 安装头文件到系统中去
+#+BEGIN_EXAMPLE
+cp C:\Projects\googletest\googletest\include\gtest C:\Local\usr\include
+#+END_EXAMPLE
+
+
+** 添加环境变量
+#+BEGIN_EXAMPLE
+LIB C:\Local\usr\lib
+INCLUDE C:\Local\usr\include
+GTEST_LIBRARY C:\Local\usr\lib\gtestd.lib
+GTEST_MAIN_LIBRARY C:\Local\usr\lib\gtest_maind.lib
+#+END_EXAMPLE
+
+
+

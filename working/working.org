@@ -1,0 +1,9 @@
+**  工作计划
+| 任务                             | 计划用时 |
+| Password Safe功能介绍文档描述    | 1天      |
+| com控件pkcs7的asn1文件解析接口   | 2天      |
+| Password Safe优化                | 2天      |
+| dll库接口文档编写                | 2天      |
+| dll库的google test测试sample整理 | 2天      |
+
+

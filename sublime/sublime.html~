@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-08-30 周三 20:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sublime3</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sublime3</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc6fa779">1. 卸载</a></li>
+<li><a href="#orgac6927f">2. 安装</a>
+<ul>
+<li><a href="#org488d387">2.1. Windows平台</a></li>
+</ul>
+</li>
+<li><a href="#org17b9f0d">3. issue</a></li>
+<li><a href="#org918b86a">4. 常用插件</a></li>
+<li><a href="#org69cb509">5. 常用配置文件设置</a>
+<ul>
+<li><a href="#org83e8477">5.1. 公用设置</a></li>
+<li><a href="#org136c0c3">5.2. C++设置</a></li>
+</ul>
+</li>
+<li><a href="#org7ae0e5e">6. 常用快捷键</a></li>
+<li><a href="#org9e02c66">7. 常用菜单设置</a></li>
+<li><a href="#org4062012">8. sublime之go开发环境搭建</a>
+<ul>
+<li><a href="#orgc2ce310">8.1. 安装GoSublime</a></li>
+<li><a href="#org376a5e0">8.2. 设置GoSublime</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc6fa779" class="outline-2">
+<h2 id="orgc6fa779"><span class="section-number-2">1</span> 卸载</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>卸载主程序</li>
+</ul>
+<pre class="example">
+进入sublime3的安装目录下(例如：C:\Local\Sublime Text 3)，双击 unins000.exe 即可卸载主程序
+</pre>
+
+<ul class="org-ul">
+<li>删除插件包及其配置</li>
+</ul>
+<pre class="example">
+进入 C:\Users\用户\AppData\Roaming\ 目录下
+
+删除 Sublime Text 3 目录
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgac6927f" class="outline-2">
+<h2 id="orgac6927f"><span class="section-number-2">2</span> 安装</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org488d387" class="outline-3">
+<h3 id="org488d387"><span class="section-number-3">2.1</span> Windows平台</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>主程序安装</li>
+</ul>
+<pre class="example">
+1. 安装版
+官网http://www.sublimetext.com/3下载对应平台的最新安装包，
+
+选择好安装路径 -&gt; 一路回车法
+
+勾选 Add to explorer context menu(添加到右键，也可以自行修改注册表添加)
+
+2. 绿色便携版
+下载便携版，直接解压到自己规划好的路径下即可
+
+根据个人需要创建桌面快捷方式
+</pre>
+
+
+<ul class="org-ul">
+<li>配置Sublime</li>
+</ul>
+<pre class="example">
+windows10，根据个人需要，右击快捷方式 -&gt; 属性 -&gt; 快捷方式(高级) -&gt; 
+
+千万不能以管理员运行方式运行快捷方式(否则文件就不能以拖拽的方式打开)
+</pre>
+
+<ul class="org-ul">
+<li>安装 package control</li>
+</ul>
+<pre class="example">
+C + `
+sublimetext3:
+import urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+
+sublimetext2:
+import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), 'wb' ).write( urllib2.urlopen( 'http://sublime.wbond.net/' +pf.replace( ' ','%20' )).read()); print( 'Please restart Sublime Text to finish installation')
+
+C + S + p -&gt; Install Package Control
+</pre>
+
+
+<ul class="org-ul">
+<li>sublime添加到右键</li>
+</ul>
+<pre class="example">
+修改注册表
+
+cmd -&gt; regedit -&gt; HKEY_CLASSESS_ROOT -&gt; * -&gt;Shell 
+
+新建节点Sublime Text 3（安装的目录名字）
+
+该项下新建两个字段
+1 新建字符串 Icon (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe,0)
+                            
+
+2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe "%1")
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org17b9f0d" class="outline-2">
+<h2 id="org17b9f0d"><span class="section-number-2">3</span> issue</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+目录树中文文件/夹显示乱码
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org918b86a" class="outline-2">
+<h2 id="org918b86a"><span class="section-number-2">4</span> 常用插件</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="example">
+https://packagecontrol.io/ 插件的官网查找自己需要的插件
+</pre>
+
+<ul class="org-ul">
+<li>Package Control</li>
+</ul>
+<pre class="example">
+插件包管理工具
+C + S + p -&gt; Install Package Control
+</pre>
+
+<ul class="org-ul">
+<li>安装中文包</li>
+</ul>
+<pre class="example">
+C + S + p -&gt; Package Control:Install(pci) -&gt; chineseLocalizations (汉化包)
+</pre>
+
+<ul class="org-ul">
+<li>IMESupport 插件</li>
+</ul>
+<pre class="example">
+中文输入法，光标不跟踪
+
+网友提供的解决方案卸载掉系统自带的输入法，安装第三方方输入法，比如qq输入法，
+
+搜狗输入法bug仍然存在
+
+C + S + p -&gt; install package -&gt; IMESupport
+</pre>
+
+<ul class="org-ul">
+<li>cmake 插件</li>
+</ul>
+<pre class="example">
+C + S + p -&gt; Package Control:Install(pci) -&gt; CMake
+
+CMakeLists.txt是txt结尾的文本，需要手动指定下CMakeLists.txt文件的格式
+
+打开CMakeLists.txt -&gt; 视图 -&gt; 语法 -&gt; CMake
+</pre>
+
+<ul class="org-ul">
+<li>支持含有gbk编码的中文文件</li>
+</ul>
+<pre class="example">
+sublime默认只支持utf8编码，ConvertToUTF8插件可以支持读取gbk编码的文件。
+C + S + p -&gt; Package Control:Install(pci) -&gt; ConvertToUTF8
+gbk编码中文文件可以正常显示
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="org-ul">
+<li>end - end - end</li>
+</ul>
+<pre class="example">
+
+</pre>
+
+<ul class="org-ul">
+<li>markdown 插件</li>
+</ul>
+<pre class="example">
+1. MarkdownEditing : 
+   集成了编辑Markdown编辑的很多快捷键
+
+2. SmartMarkdown : 
+   tab键盘的妙用，类似emacs的org
+
+
+3. Markdown Preview : 
+   C-b生成网页HTML，在文档最前面添加[TOC]自动生成目录；
+   C+S+p
+</pre>
+
+
+<ul class="org-ul">
+<li>html-css-js格式化</li>
+</ul>
+<pre class="example">
+HTML-CSS-JS Prettify :
+需要设置node.exe的觉得路径
+首选项(alt+n) -&gt; Package Settings -&gt; HTML/CSS/JS Prettify -&gt; Set node Path
+C+S-h
+</pre>
+
+
+
+
+
+
+<ul class="org-ul">
+<li>c/c++代码格式化</li>
+</ul>
+<pre class="example">
+C + S + p -&gt; Package Control:Install(pci) -&gt; SublimeAStyleFormatter
+
+菜单 -&gt; 首选项(Alt + n) -&gt; packege settings -&gt; SublimeAStyleFormatter -&gt; Settings Users
+
+用户设置
+{
+    "autoformat_on_save": true,
+
+    "options_default": {
+        "style": "java",
+        "indent": "spaces",
+        "indent-spaces": 4,
+    }
+}
+</pre>
+
+<ul class="org-ul">
+<li>emacs 插件</li>
+</ul>
+<pre class="example">
+Emacs Pro Essentials
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org69cb509" class="outline-2">
+<h2 id="org69cb509"><span class="section-number-2">5</span> 常用配置文件设置</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org83e8477" class="outline-3">
+<h3 id="org83e8477"><span class="section-number-3">5.1</span> 公用设置</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>概述</li>
+</ul>
+<pre class="example">
+Sublime3的用户设置的配置文件保存在
+
+C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\Preferences.sublime-settings
+
+如果自己理解比较深入的话，可以直接编辑该json文件，无需从GUI菜单中进入
+
+经常对该文件优化备份，下次即可直接使用，无须在一个个手工配置
+
+</pre>
+
+<ul class="org-ul">
+<li>菜单 -&gt; 首选项 -&gt; 设置</li>
+</ul>
+<pre class="example">
+菜单 -&gt; 首选项(Alt + n) -&gt; 设置，字段都是json格式的写法
+
+// 显示出空格和制表符
+"draw_white_space": "all",
+
+// 保存时自动删除行尾空白符
+"trim_trailing_white_space_on_save": true,
+
+// 显示文件编码格式
+"show_encoding": true,
+
+// 显示行结尾模式，linux/windows/mac
+"show_line_endings": true,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// end - end - end - end
+
+// 使用空格代替tab缩进
+"translate_tabs_to_spaces": true,
+
+// 中文文件名字显示方块乱码
+"dpi_scale": 1.0,
+
+
+
+
+
+
+
+
+
+
+// 侧边栏双击文件打开
+"preview_on_click": false,
+
+// 取消打开文件夹总是在新窗口
+"open_files_in_new_window": false,
+
+// 安装完Theme - spacegray插件再设置，可以参考github上的设置
+// 设置侧边栏为Spacegray主题
+"theme": "Spacegray.sublime-theme",
+
+// 设置主编辑区为Spacegray颜色主题
+"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+
+// 设置文件类型关联的图标
+"spacegray_fileicons": true,
+
+// 设置侧边栏文件名字体为大字体（可以不用设置了）
+"spacegray_sidebar_font_xlarge": true,
+"spacegray_sidebar_tree_xlarge": true,
+
+// 设置打开的文件名标签为大字体(large以上有bug,normal可以不用设置，默认就是normal)
+"spacegray_tabs_font_normal": true,
+"spacegray_tabs_font_large": true,
+
+// tab的高度
+"spacegray_tabs_large": true,
+
+// tab的宽度
+"spacegray_tabs_auto_width": true,
+
+
+
+// 禁止tab补全功能，否则乱补全
+"tab_completion": false,
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org136c0c3" class="outline-3">
+<h3 id="org136c0c3"><span class="section-number-3">5.2</span> C++设置</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>概述</li>
+</ul>
+<pre class="example">
+Sublime3的c++配置文件保存在
+
+C:\Users\lescpsn\AppData\Roaming\Sublime Text 3\Packages\User\C++.sublime-settings
+
+如果自己理解比较深入的话，可以直接编辑该json文件，无需从GUI菜单中进入
+
+经常对该文件优化备份，下次即可直接使用，无须在一个个手工配置
+
+</pre>
+
+
+<ul class="org-ul">
+<li>菜单 -&gt; 首选项 -&gt; 设置-特定语法(针对每一种语言)</li>
+</ul>
+<pre class="example">
+// 使用空格代替tab缩进
+"translate_tabs_to_spaces": true,
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org7ae0e5e" class="outline-2">
+<h2 id="org7ae0e5e"><span class="section-number-2">6</span> 常用快捷键</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>代码注释</li>
+</ul>
+<pre class="example">
+C + /
+</pre>
+
+<ul class="org-ul">
+<li>代码缩进</li>
+</ul>
+<pre class="example">
+C + [ : 左缩进
+C + ] : 右缩进
+</pre>
+
+<ul class="org-ul">
+<li>放大与缩小</li>
+</ul>
+<pre class="example">
+C + + : 放大
+C + - : 缩小
+</pre>
+</div>
+</div>
+
+
+
+<div id="outline-container-org9e02c66" class="outline-2">
+<h2 id="org9e02c66"><span class="section-number-2">7</span> 常用菜单设置</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>dos2unix</li>
+</ul>
+<pre class="example">
+视图 -&gt; 行结束符 -&gt; Unix换行符(LF)
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org4062012" class="outline-2">
+<h2 id="org4062012"><span class="section-number-2">8</span> sublime之go开发环境搭建</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-orgc2ce310" class="outline-3">
+<h3 id="orgc2ce310"><span class="section-number-3">8.1</span> 安装GoSublime</h3>
+<div class="outline-text-3" id="text-8-1">
+<pre class="example">
+C +　S　+ P -&gt; pci -&gt; gosub
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org376a5e0" class="outline-3">
+<h3 id="org376a5e0"><span class="section-number-3">8.2</span> 设置GoSublime</h3>
+<div class="outline-text-3" id="text-8-2">
+<pre class="example">
+首选项 -&gt; package设置 -&gt; Gopsublime -&gt; setting user 
+{
+    "env": {
+        "GOPATH": "E:/Projects/lescpsn/golang", //go程序的个人代码工程路径
+        "GOROOT": "D:/Go"   //go语言的安装路径
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-08-30 周三 20:14</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

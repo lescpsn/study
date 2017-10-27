@@ -1,0 +1,13 @@
+#+TITLE: Beyond Compare 4
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+* Beyond Compare 4
++ 安装
+#+BEGIN_EXAMPLE
+选择好目录路径，一路回车法
+#+END_EXAMPLE
+
++ 30天到期破方法
+#+BEGIN_EXAMPLE
+直接删除BCUnrar.dll方法
+#+END_EXAMPLE

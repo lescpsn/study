@@ -1,0 +1,17 @@
+#+title:zsh-shell & oh-my-zsh
+
+* 安装
+** zsh
+#+BEGIN_EXAMPLE
+sudo apt-get install zsh
+#+END_EXAMPLE
+
+** 安装oh-my-zsh
+#+BEGIN_EXAMPLE
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+#+END_EXAMPLE
+
+** 更改默认shell
+#+BEGIN_EXAMPLE
+chsh -s `which zsh`
+#+END_EXAMPLE

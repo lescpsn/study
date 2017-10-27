@@ -1,0 +1,23 @@
+#+TITLE: JAVA学习记录
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+* JDK安装
+** 下载最新版本的jdk
+#+BEGIN_EXAMPLE
+Java SE Development Kit 8u131
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+#+END_EXAMPLE
+
+** 安装
+#+BEGIN_EXAMPLE
+选择好自己规划好的安装路径
+c:\Local\java\jdk1.8.0_131
+c:\Local\java\jre1.8.0_131
+一路回车法
+#+END_EXAMPLE
+
+** 配置环境变量
+#+BEGIN_EXAMPLE
+JAVA_HOME : 新增一个该环境变量c:\Local\java\jdk1.8.0_131
+PATH : 追加 %JAVA_HOME%\bin;c:\Local\java\jre1.8.0_131\bin
+#+END_EXAMPLE

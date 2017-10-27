@@ -1,3 +1,36 @@
+#+TILE:
+* ubuntu
+** 中文字符集环境配置
++ 安装简体中文语言包
+#+BEGIN_EXAMPLE
+apt-cache search language | grep zh
+sudo apt-get install language-pack-zh-hans
+#+END_EXAMPLE
+
++ 编辑系统支持字符集
+#+BEGIN_EXAMPLE
+sudo -i vim /var/lib/locales/supported.d/local
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+#+END_EXAMPLE
+
++ 修改系统默认环境字符
+#+BEGIN_EXAMPLE
+sudo -i vim /etc/default/locale
+LANG="zh_CN.UTF-8"
+LANGUAGE="zh_CN:"
+#+END_EXAMPLE
+
++ 生成locale数据库
+#+BEGIN_EXAMPLE
+sudo -i locale-gen --purge
+sudo -i locale-gen
+sudo -i locale-gen zh_CN.UTF-8
+#+END_EXAMPLE
+
+
+* centos
+
 [ ubuntu-apt-get ]
         1、清理apt-get数据源
            rm -rf /var/lib/apt/lists/*
@@ -14,11 +47,6 @@
            sudo -i vim /var/lib/locales/supported.d/local
            en_US.UTF-8 UTF-8
            zh_CN.UTF-8 UTF-8
-
-        2、修改系统默认字符
-           sudo -i vim /etc/default/locale
-           LANG="zh_CN.UTF-8"
-           LANGUAGE="zh_CN:"
 
         3、sudo -i locale-gen
 
