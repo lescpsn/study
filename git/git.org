@@ -1,0 +1,59 @@
+#+TITLE: Git-Study记录
+
+* 搭建git仓储
+** 安装git
+#+BEGIN_EXAMPLE
+sudo apt-get install git
+#+END_EXAMPLE
+
+
+** 新建git系统用户
+#+BEGIN_EXAMPLE
+sudo useradd git
+sudo passwd git ( 修改密码 )
+#+END_EXAMPLE
+
+
+** 新建仓储目录根目录
+#+BEGIN_EXAMPLE
+sudo mkdir /jsxyja
+sudo chown -R git:git /jsxyja
+#+END_EXAMPLE
+
+
+** 新建仓储
+#+BEGIN_EXAMPLE
+每一个仓储都是基于仓储目录根目录下的
+sudo git init --bare /jsxyja/xyjactl.git
+sudo chown -R git:git /jsxyja/xyjactl.git
+#+END_EXAMPLE
+
+
+** git客户端可以下载
+#+BEGIN_EXAMPLE
+git clone git@192.168.3.211:/jsxyja/xyjactl.git
+#+END_EXAMPLE
+
+
+* git常用设置
++ git clone
+#+BEGIN_EXAMPLE
+git clone --progress -v
+#+END_EXAMPLE
+
++ 设置邮箱
+#+BEGIN_EXAMPLE
+git configuration user.email "chehengjun@jsxyja.com"
+#+END_EXAMPLE
+
++ 设置用户
+#+BEGIN_EXAMPLE
+git configuration user.name "chehj"
+#+END_EXAMPLE
+
+
++ 设置push无需输入密码
+#+BEGIN_EXAMPLE
+git config credential.helper store
+#+END_EXAMPLE
+
