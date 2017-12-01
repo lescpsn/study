@@ -1,5 +1,55 @@
-#+TITLE: Firefox-Study历程
+#+TITLE: Firefox-Study历程 
+
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+*** 安装
+
+#+BEGIN_EXAMPLE
+选择 自定义安装模式(Custom) -> 开发工具 -> 工具扩展
+
+1 JavaScript Debugger
+
+2 Console Filter
+
+3 Component Viewer : XPCOM 组件查看器
+
+4 Extension Developer : 辅助开发扩展的扩展
+#+END_EXAMPLE
+
+*** Profile目录
+#+BEGIN_EXAMPLE
+最后的插件都是放在 %profile% 目录下
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+Firefox:
+可以从C:\Users\lescpsn\AppData\Roaming\Mozilla\Firefox\profiles.ini文件中查看
+C:\Users\lescpsn\AppData\Roaming\Mozilla\Firefox\Profiles\xxx
+
+TB:
+可以从C:\Users\lescpsn\AppData\Roaming\Thunderbird\profiles.ini文件中查看
+C:\Users\lescpsn\AppData\Roaming\Thunderbird\Profiles\xxx
+#+END_EXAMPLE
+
+
+#+BEGIN_EXAMPLE
+thunderbird.exe -P 建立一个自己独立的Profile目录
+
+指定以test的Profile启动thunderbird.exe
+
+set MOZ_NO_REMOTE=1
+thunderbird.exe -P test
+#+END_EXAMPLE
+
+*** 已安装的扩展
+#+BEGIN_EXAMPLE
+
+%profile%/extensions.ini保存已安装的扩展信息
+
+#+END_EXAMPLE
+
+
+
 
 
 *** 插件介绍
@@ -68,4 +118,16 @@ Caret hint，Tanything，bmany
 +清除各种缓存的快捷键
 #+BEGIN_EXAMPLE
 C + S + D
+#+END_EXAMPLE
+
+
+*** 插件开发
+#+BEGIN_EXAMPLE
+https://www.cnblogs.com/jxsoft/archive/2011/04/07/2008175.html
+#+END_EXAMPLE
+
+
+*** study website
+#+BEGIN_EXAMPLE
+https://github.com/Bozar/daily_scripts/blob/daily/.keysnail.js
 #+END_EXAMPLE

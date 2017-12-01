@@ -119,6 +119,12 @@ C + S + p -> Package Control:Install(pci) -> ConvertToUTF8
 gbk编码中文文件可以正常显示
 #+END_EXAMPLE
 
++ json格式化
+#+BEGIN_EXAMPLE
+C + S + p -> Package Control:Install(pci) -> Pretty JSON
+
+#+END_EXAMPLE
+
 
 
 
@@ -348,6 +354,7 @@ C + - : 缩小
 #+BEGIN_EXAMPLE
 项目 -> 添加文件夹到项目 -> 保存工程
 #+END_EXAMPLE
+
 
 * 常用菜单设置
 + dos2unix

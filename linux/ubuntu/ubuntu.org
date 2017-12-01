@@ -1,0 +1,17 @@
+#+TITLE: ubuntu-study历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../style/my-org-worg.css"/>
+
+
+*** 常用操作
++ 更新apt数据源
+#+BEGIN_EXAMPLE
+sudo vim /etc/apt/sources.list
+
+#+END_EXAMPLE
+
+
++ 更新apt数据源
+#+BEGIN_EXAMPLE
+fddddddddd
+#+END_EXAMPLE
+   

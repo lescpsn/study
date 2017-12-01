@@ -30,6 +30,30 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 
 ** 全局插件
+
++ golang语言插件
+#+BEGIN_EXAMPLE
+安装 Go (Rich go language support for Visual Studio Code 插件) 
+#+END_EXAMPLE
+
+
++ C/C++语言插件
+#+BEGIN_EXAMPLE
+安装 C/C++
+#+END_EXAMPLE
+
++ CMake语言插件
+#+BEGIN_EXAMPLE
+安装 CMake
+#+END_EXAMPLE
+
+
++ Python语言插件
+#+BEGIN_EXAMPLE
+安装 Python
+#+END_EXAMPLE
+
+
 #+BEGIN_EXAMPLE
 Emacs-Keymap
 #+END_EXAMPLE
@@ -49,20 +73,29 @@ F1:Project-manage
 #+END_EXAMPLE
 
 
-** IDE For Golang C/C++
-
-** IDE For Golang Python
-+ Python扩展安装
-#+BEGIN_EXAMPLE
-一般只要打开.py的文件，会自动提示安装python扩展，选择Python(目前下载量最高)安装即可
-#+END_EXAMPLE
-
-
 ** IDE For Golang
-+ 打开任意后缀.go的文件
+
++ 安装gopkgs
 #+BEGIN_EXAMPLE
-Rich go language support for Visual Studio Code
+老版：
+go get -u -v -x github.com/tpng/gopkgs
+新版：
+go get -u -v -x github.com/uudashr/gopkgs/cmd/gopkgs
 #+END_EXAMPLE
+
++ 安装gocode
+#+BEGIN_EXAMPLE
+代码补全
+go get -u -v -x github.com/nsf/gocode
+#+END_EXAMPLE
+
++ 安装godef
+#+BEGIN_EXAMPLE
+代码跳转
+go get -u -v -x github.com/rogpeppe/godef
+#+END_EXAMPLE
+
+
 
 + golang.org/x/tools的安装
 #+BEGIN_EXAMPLE
@@ -77,11 +110,6 @@ git clone http://github.com/golang/tools.git
 #+END_EXAMPLE
 
 
-+ 安装gocode
-#+BEGIN_EXAMPLE
-代码补全
-go get -u -v -x github.com/nsf/gocode
-#+END_EXAMPLE
 
 + 安装go-outline
 #+BEGIN_EXAMPLE
@@ -89,24 +117,12 @@ go get -v -x github.com/ramya-rao-a/go-outline
 事先下载好tools后，可以不用-u 
 #+END_EXAMPLE
 
-+ 安装godef
-#+BEGIN_EXAMPLE
-代码跳转
-go get -u -v -x github.com/rogpeppe/godef
-#+END_EXAMPLE
 
 + 安装delve
 #+BEGIN_EXAMPLE
 go get -u -v -x github.com/derekparker/delve/cmd/dlv
 #+END_EXAMPLE
 
-+ 安装gopkgs
-#+BEGIN_EXAMPLE
-老版：
-go get -u -v -x github.com/tpng/gopkgs
-新版：
-go get -u -v -x github.com/uudashr/gopkgs/cmd/gopkgs
-#+END_EXAMPLE
 
 
 
@@ -142,6 +158,16 @@ go get -u -v -x github.com/lukehoban/go-outline
 #+BEGIN_EXAMPLE
 go get -u -v -x github.com/alecthomas/gometalinter
 #+END_EXAMPLE
+
+
+** IDE For Python
++ Python扩展安装
+#+BEGIN_EXAMPLE
+一般只要打开.py的文件，会自动提示安装python扩展，选择Python(目前下载量最高)安装即可
+#+END_EXAMPLE
+
+
+** IDE For Golang C/C++
 
 
 ** issue

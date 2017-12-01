@@ -1,8 +1,9 @@
+#+TITLE: vim-study
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
 * space-vim
 #+BEGIN_EXAMPLE
-工程URL : https://github.com/liuchengxu/space-vim
+工程网址 : https://github.com/liuchengxu/space-vim
 #+END_EXAMPLE
 
 ** Windows版本
@@ -125,6 +126,7 @@ Plug 'vim-scripts/VimIM'
 Plug 'scrooloose/nerdtree'
 #+END_EXAMPLE
 
+
 ****  常用配置
 #+BEGIN_EXAMPLE
 ~/.spacevim文件中UserConfig()函数中配置用户个性配置
@@ -151,6 +153,16 @@ map <F8> :NERDTreeMirror<CR>  // 隐藏目录树
 ** Linux版本
 
 *** 安装
++安装unzip
+#+BEGIN_EXAMPLE
+arch-linux:
+pacman -S unzip
+
+ubuntu-linux:
+sudo apt-get install unzip
+#+END_EXAMPLE
+
++安装space-vim
 #+BEGIN_EXAMPLE
 git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
 
@@ -163,6 +175,12 @@ make vim
 
 
 * 常用快捷键
+
++ C-w C-w
+#+BEGIN_EXAMPLE
+切换窗口
+#+END_EXAMPLE
+
 + C-q table
 #+BEGIN_EXAMPLE
 在table被设置成空格的情况，强制输入table
@@ -182,3 +200,4 @@ make vim
 #+BEGIN_EXAMPLE
 删除行尾多余的空格
 #+END_EXAMPLE
+
