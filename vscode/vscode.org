@@ -30,12 +30,10 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 
 ** 全局插件
-
 + golang语言插件
 #+BEGIN_EXAMPLE
 安装 Go (Rich go language support for Visual Studio Code 插件) 
 #+END_EXAMPLE
-
 
 + C/C++语言插件
 #+BEGIN_EXAMPLE
@@ -53,6 +51,15 @@ C:\Users\lescpsn\AppData\Roaming\Code
 安装 Python
 #+END_EXAMPLE
 
++ 颜色主题插件
+#+BEGIN_EXAMPLE
+安装 One Dark Pro
+#+END_EXAMPLE
+
++ 文件类型icons
+#+BEGIN_EXAMPLE
+安装 VSCode Creat Icons
+#+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
 Emacs-Keymap
@@ -64,6 +71,8 @@ F1:Project-manage
 
 
 ** 全局配置
+
+*** 常用配置
 #+BEGIN_EXAMPLE
 // 控制编辑器中呈现空白字符的方式，可能为“无”、“边界”和“全部”。“边界”选项不会在单词之间呈现单空格。
 "editor.renderWhitespace": "all",
@@ -72,9 +81,30 @@ F1:Project-manage
 "files.trimTrailingWhitespace": true,
 #+END_EXAMPLE
 
+*** 定义快捷键盘
+#+BEGIN_EXAMPLE
+C-k C-s 打开搜索键绑定
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+搜索键绑定 -> 输入大写 -> C-k C-u
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+搜索键绑定 -> 输入小写 -> C-k C-l
+#+END_EXAMPLE
+
+** msys2交叉环境
+#+BEGIN_EXAMPLE
+非常重要：
+采用msys2交叉编译环境，应该选用和windows的golang一样的版本
+否则后续安装的程序，很多不起作用
+#+END_EXAMPLE
+
+
+
 
 ** IDE For Golang
-
 + 安装gopkgs
 #+BEGIN_EXAMPLE
 老版：
@@ -95,55 +125,71 @@ go get -u -v -x github.com/nsf/gocode
 go get -u -v -x github.com/rogpeppe/godef
 #+END_EXAMPLE
 
-
-
 + golang.org/x/tools的安装
 #+BEGIN_EXAMPLE
 github.com/golang 等价于 golang.org/x
 
+Windows:
 md %GOPATH%\src\golang.org\x
-
 cd %GOPATH%\src\golang.org\x
+
+Linux:
+mkdir -p $GOPATH/src/golang.org/x
+cd $GOPATH/src/golang.org/x
+
 
 git clone http://github.com/golang/tools.git
 以后git pull 更新
 #+END_EXAMPLE
 
++ dlv调试器安装
+#+BEGIN_EXAMPLE
+go get -u -v -x github.com/derekparker/delve/cmd/dlv
+#+END_EXAMPLE
 
 
 + 安装go-outline
 #+BEGIN_EXAMPLE
-go get -v -x github.com/ramya-rao-a/go-outline
+因为被墙了，需要事先从git的源下载好golang.org\x\tools
+详情见golang.org/x/tools的安装
+
 事先下载好tools后，可以不用-u 
+go get -v -x github.com/ramya-rao-a/go-outline
 #+END_EXAMPLE
 
 
 + 安装delve
 #+BEGIN_EXAMPLE
 go get -u -v -x github.com/derekparker/delve/cmd/dlv
+cmd中运行。msys2交叉环境中执行可能会出问题
 #+END_EXAMPLE
-
-
-
-
 
 + golint安装
 #+BEGIN_EXAMPLE
 golint 需要用到 golang.org\x\tools包
-go get -v -u -x github.com/golang/lint/golint
+规范代码的，比如导出函数需要加注释
+go get -v -x github.com/golang/lint/golint
 #+END_EXAMPLE
 
 + 安装goreturns
 #+BEGIN_EXAMPLE
+格式化代码
 两种方式安装
-方式一：
+方式一：(-u好像失效)
 go get -u -v -x sourcegraph.com/sqs/goreturns
+go get - -v -x sourcegraph.com/sqs/goreturns
+
 
 方式二：
-mkdir  %GOPATH%\src\sourcegraph.com\sqs\goreturns
-cd %GOPATH%\src\sourcegraph.com\sqs\goreturns
-git clone https://github.com/sqs/goreturns
-go install sourcegraph.com\sqs\goreturns
+mkdir -p $GOPATH/src/sourcegraph.com/sqs
+cd $GOPATH/src/sourcegraph.com/sqs
+git clone http://github.com/sqs/goreturns
+go install sourcegraph.com/sqs/goreturns
+
+
+方式三：
+go get -u -v -x github.com/sqs/goreturns
+go get -v -x github.com/sqs/goreturns
 #+END_EXAMPLE
 
 + 安装go-outline
@@ -157,6 +203,26 @@ go get -u -v -x github.com/lukehoban/go-outline
 + 安装gometalinter
 #+BEGIN_EXAMPLE
 go get -u -v -x github.com/alecthomas/gometalinter
+#+END_EXAMPLE
+
++ 需要安装的模块
+#+BEGIN_EXAMPLE
+
+Installing github.com/acroca/go-symbols FAILED
+Installing golang.org/x/tools/cmd/guru FAILED
+Installing golang.org/x/tools/cmd/gorename FAILED
+Installing github.com/fatih/gomodifytags SUCCEEDED
+Installing github.com/haya14busa/goplay/cmd/goplay SUCCEEDED
+Installing github.com/josharian/impl FAILED
+Installing sourcegraph.com/sqs/goreturns FAILED
+Installing github.com/golang/lint/golint FAILED
+
+  goplay
+  impl
+  goreturns
+  golint
+  gotests
+  dlv
 #+END_EXAMPLE
 
 
