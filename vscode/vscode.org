@@ -94,15 +94,13 @@ C-k C-s 打开搜索键绑定
 搜索键绑定 -> 输入小写 -> C-k C-l
 #+END_EXAMPLE
 
+
 ** msys2交叉环境
 #+BEGIN_EXAMPLE
 非常重要：
 采用msys2交叉编译环境，应该选用和windows的golang一样的版本
 否则后续安装的程序，很多不起作用
 #+END_EXAMPLE
-
-
-
 
 ** IDE For Golang
 + 安装gopkgs
@@ -229,7 +227,9 @@ Installing github.com/golang/lint/golint FAILED
 ** IDE For Python
 + Python扩展安装
 #+BEGIN_EXAMPLE
-一般只要打开.py的文件，会自动提示安装python扩展，选择Python(目前下载量最高)安装即可
+一般只要打开.py的文件，会自动提示安装python扩展
+
+选择Python(目前下载量最高)安装即可
 #+END_EXAMPLE
 
 

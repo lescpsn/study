@@ -1,0 +1,38 @@
+#+TITLE: rust-study历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+** rust安装
+
+#+BEGIN_EXAMPLE
+官方安装文档说明
+https://www.rust-lang.org/zh-CN/install.html
+#+END_EXAMPLE
+
+*** windows
++ 下载安装包
+#+BEGIN_EXAMPLE
+官网https://www.rust-lang.org/zh-CN/install.html下载最新的rustup-init.exe
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+双击运行rustup-init.exe，然后按照屏幕上的说明进行操作，
+选择1，默认安装
+#+END_EXAMPLE
+
+
+*** linux
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+
+** 第一rust程序
+#+BEGIN_EXAMPLE
+1. 001.rs 以后缀001.rs命名源文件
+
+2. 编写源码
+
+3. 编译
+   rustc 001.rs
+#+END_EXAMPLE

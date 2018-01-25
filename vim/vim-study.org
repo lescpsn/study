@@ -2,16 +2,26 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
 * space-vim
+
++ 工程网址
 #+BEGIN_EXAMPLE
-工程网址 : https://github.com/liuchengxu/space-vim
+https://github.com/liuchengxu/space-vim
 #+END_EXAMPLE
+
++ 下载space-vim仓存
+#+BEGIN_EXAMPLE
+git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
+注意：windows不能创建以.开头的文件，可以采用git-bash命令行下载
+
+
+ln -s ~/.space-vim/init.vim ~/.vimrc
+windows平台每次git pull 更新仓存后，都需要手工更新  ~/.vimrc
+#+END_EXAMPLE
+
+
 
 ** Windows版本
 *** 安装
-+ 安装git
-#+BEGIN_EXAMPLE
-安装git
-#+END_EXAMPLE
 
 + 安装gvim
 #+BEGIN_EXAMPLE
@@ -24,7 +34,7 @@
 设置好安装路径 -> 一路回车法
 
 3. 修改注册表添加右键vim打开
-win + r -> cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell 
+win + r -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell 
 
 新建节点vim80（安装的目录名字）
 
@@ -47,15 +57,8 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 #+END_EXAMPLE
 
 
-+ 下载space-vim仓存
-#+BEGIN_EXAMPLE
-用户家目录下右键运行Git Bash（因为windows命令行不能创建以.开头的文件）
-git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
-ln -s ~/.space-vim/init.vim ~/.vimrc
-#+END_EXAMPLE
 
-
-+ 安装python3.5
++ 安装python3.5(注意版本)
 #+BEGIN_EXAMPLE
 勾选 Add Python 3.5 to PATH -> 选择Customize定制安装 -> 
 
@@ -153,7 +156,7 @@ map <F8> :NERDTreeMirror<CR>  // 隐藏目录树
 ** Linux版本
 
 *** 安装
-+安装unzip
++ 安装unzip
 #+BEGIN_EXAMPLE
 arch-linux:
 pacman -S unzip
@@ -162,13 +165,16 @@ ubuntu-linux:
 sudo apt-get install unzip
 #+END_EXAMPLE
 
-+安装space-vim
++ 安装curl
+#+BEGIN_EXAMPLE
+sudo apt-get install curl
+#+END_EXAMPLE
+
++ 安装space-vim
 #+BEGIN_EXAMPLE
 git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
 
 cd ~/.space-vim
-
-make 
 
 make vim 
 #+END_EXAMPLE

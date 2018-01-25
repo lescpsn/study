@@ -1,4 +1,4 @@
-#+TITLE: Firefox-Study历程 
+#+TITLE: Firefox-Study历程
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
@@ -16,7 +16,9 @@
 4 Extension Developer : 辅助开发扩展的扩展
 #+END_EXAMPLE
 
+
 *** Profile目录
+
 #+BEGIN_EXAMPLE
 最后的插件都是放在 %profile% 目录下
 #+END_EXAMPLE
@@ -41,6 +43,7 @@ set MOZ_NO_REMOTE=1
 thunderbird.exe -P test
 #+END_EXAMPLE
 
+
 *** 已安装的扩展
 #+BEGIN_EXAMPLE
 
@@ -49,17 +52,15 @@ thunderbird.exe -P test
 #+END_EXAMPLE
 
 
-
-
-
 *** 插件介绍
-**** KeySnail 
+**** KeySnail
 + KeySnail
 #+BEGIN_EXAMPLE
-https://github.com/mooz/keysnail.git 下载keysnail.xpi文件
+注意：打开火狐选项，关闭掉多进程模式，否则一些快捷键失效
+https://github.com/mooz/keysnail.git 下载 keysnail.xpi 文件
 
 右键用火狐浏览器方式打开keysnail.xpi，基本默认安装就是
- 
+
 安装完成后火狐浏览器的右上角会出现相关图标，可以点击打开插件管理，继续安装keysnail的相关插件
 
 或者
@@ -70,13 +71,29 @@ firefox keysnail.xpi
 
 + Hok
 #+BEGIN_EXAMPLE
+相关学习文档
+http://blog.cwchen.tw/firefox/2014/08/08/keysnail/
+http://blog.binchen.org/posts/use-firefox-in-emacs-way-3.html
+
+配置参考
+https://gist.githubusercontent.com/redguardtoo/003ac86d4c11b70b870a/raw/32356b071785248c0ff56d9c5896168263efefdd/.keysnail.js
+
 打开keysnail的插件管理，安装Hok，
 
 github上可以自行学习Hok的相关配置的用法
 
+首次启动firfox，在用户的家目录下自动新建一个~/.keysnail.js文件
+
+打开firfox选项，关闭掉火狐的多进程，否则一些快捷键失效。
+
+如果出现快捷键的冲突，如浏览器的放大和缩小快捷(C - +, C - -)，请修改下这个键
+key.negativeArgument1Key = "C-+";
+
+
 编辑~/.keysnail.js文件,具体可以查看官 方文档
 
 注意：以下配置项目最好放在.keysnail.js文件的最后，否则好像有冲突
+(关闭掉多进程后可以不用编写以下配置了)
 
 key.setViewKey('e', function (aEvent, aArg) {
     ext.exec("hok-start-foreground-mode", aArg);
@@ -98,8 +115,6 @@ key.setViewKey('c', function (aEvent, aArg) {
     ext.exec("hok-yank-foreground-mode", aArg);
 }, 'Hok - Foreground yank hint mode', true);
 
-如果出现快捷键的冲突，如浏览器的放大和缩小快捷(C - +, C - -)，请修改下这个键
-key.negativeArgument1Key = "C-+";
 #+END_EXAMPLE
 
 + emacs相关插件

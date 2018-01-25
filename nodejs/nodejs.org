@@ -12,6 +12,7 @@
 
 
 * 向node.js发问
+
 ** Question 1
 + Q：如何运行第一个node.js程序？
 + A:
@@ -40,6 +41,7 @@ c/P/l/s/j/nodejs/example:master*? λ node 001.js
 Welcome To IOTA!
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
+
 
 ** Question 2
 + Q：如何定义变量呢？
@@ -179,6 +181,7 @@ ch_b1 == int_b1? true
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
 
+
 ** Question 3
 + Q：如何定义数组呢？
 + A:
@@ -251,6 +254,7 @@ arr_a4.length =  28
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
 
+
 ** Question 4
 + Q：如何定义字典呢？
 + A:
@@ -309,6 +313,7 @@ c/P/l/s/j/nodejs/example:master*? λ
 
 #+END_EXAMPLE
 
+
 ** Question 5
 + Q 5.1：如何定义函数呢？
 + A:
@@ -358,6 +363,7 @@ c/P/l/s/j/nodejs/example:master*? λ node 005.js
 [WARN]This is WARN test.
 c/P/l/s/j/nodejs/example:master*? λ 
 #+END_EXAMPLE
+
 
 ** Question 6
 + Q: 如何导入其它js文件中的函数呢？
@@ -416,6 +422,7 @@ c/P/l/study/nodejs/example:master*? λ node.exe 006.js
 c/P/l/study/nodejs/example:master*? λ 
 #+END_EXAMPLE
 
+
 ** Question 7
 + Q 7.1: node.js面向对象的特性呢？
 + A:
@@ -434,6 +441,7 @@ c/P/l/study/nodejs/example:master*? λ
 可以用组合的方式
 #+END_EXAMPLE
 
+
 ** Question 8
 + Q: node.js如何实现异步呢？
 + A:
@@ -446,6 +454,7 @@ c/P/l/study/nodejs/example:master*? λ
 2 采用async可以做到用同步的写法实现异步的功能
 #+END_EXAMPLE
 
+
 ** Question 9
 + Q: node.js事件驱动
 + A:
@@ -454,6 +463,7 @@ c/P/l/study/nodejs/example:master*? λ
 向一个消息名里抛出消息 emit
 从一个消息名里监听消息 once （多种模式）
 #+END_EXAMPLE
+
 ** Question 10
 + Q: node.js的web后端开发
 + A:
