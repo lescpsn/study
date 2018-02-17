@@ -1,9 +1,9 @@
-#+TITLE: golang-study历程
+#+TITLE: Golang-study历程
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
-* Golang安装
+* 安装Golang
 ** Windows
-+ golang安装
++ 安装Golang
 #+BEGIN_EXAMPLE
 官网 https://golang.org/dl/ 下载windows对应版本的最新Golang安装包
 
@@ -13,21 +13,27 @@
 + 设置GOPATH环境变量
 #+BEGIN_EXAMPLE
 设置GOPATH环境变量（windows下如何添加环境变量，自行百度），
-GOPATH的具体值根据自己的目录规划习惯，以后所有的工程项目目录必须放在%GOPATH%/src目录下
+
+GOPATH的具体值根据自己的目录规划习惯，以后所有的golang工程目录必须放在%GOPATH%/src目录下
+
 在%GOPATH%目录下分别创建bin，pkg，src三个目录
 
 mkdir %GOPATH%/bin
 mkdir %GOPATH%/pkg
 mkdir %GOPATH%/src
 
-项目1如：%GOPATH%/src/projectname1
-%GOPATH%/src下的工程项目目录可以递归包含任意层次的目录结构,项目2如：
+如项目1：%GOPATH%/src/projectname1
+
+%GOPATH%/src下的工程目录可以递归包含任意层次的目录结构,如项目2：
+
 %GOPATH%/src/github.com/username/projectname2
 #+END_EXAMPLE
 
 + 添加PATH环境变量
 #+BEGIN_EXAMPLE
+
 将 %GOPATH%/bin 追加到%PATH%环境变量中
+
 #+END_EXAMPLE
 
 
@@ -38,11 +44,12 @@ sudo apt-get install golang
 
 bash shell:
 vim ~/.bashrc
-export GOPATH=~/Projects/lescpsn/golang
+export GOPATH=~/Projects/lescpsn/GoProjects
+export PATH=$PATH:$GOPATH/bin
 
 fish  shell:
 vim  ~/.config/fish/config.fish (若没有，直接创建该文件)
-set -x GOPATH ~/Projects/lescpsn/golang
+set -x GOPATH ~/Projects/lescpsn/GoProjects
 
 mkdir $GOPATH/src
 mkdir $GOPATH/bin
@@ -63,17 +70,26 @@ go env
 
 
 * Golang工程开发工具
-+ 配置开发工具的环境变量
+
++gopkgs
 #+BEGIN_EXAMPLE
-vim .bashrc
-export PATH=$PATH:$GOPATH/bin
+go get -u -v -x github.com/uudashr/gopkgs/cmd/gopkgs
 #+END_EXAMPLE
+
+
++goreturns
+#+BEGIN_EXAMPLE
+goreturns依赖tools，不能加-u，否则会去golang.org/x更新，而导致不成功
+go get -v -x sourcegraph.com/sqs/goreturns
+#+END_EXAMPLE
+
 
 + gocode
 #+BEGIN_EXAMPLE
 代码补全
 go get -u -v -x github.com/nsf/gocode
 #+END_EXAMPLE
+
 
 + godef
 #+BEGIN_EXAMPLE
@@ -82,8 +98,15 @@ go get -u -v -x github.com/rogpeppe/godef
 #+END_EXAMPLE
 
 
++ dlv
+#+BEGIN_EXAMPLE
+调试器
+go get -u -v -x github.com/derekparker/delve/cmd/dlv
+#+END_EXAMPLE
+
+
 * go test
-+ xxx _test.go 
++ xxx _test.go
 #+BEGIN_EXAMPLE
 xxx.go为源文件，xxx _test.go为源文件对应的测试文件
 #+END_EXAMPLE
@@ -92,10 +115,13 @@ xxx.go为源文件，xxx _test.go为源文件对应的测试文件
 打印测试详细过程，包括日志
 #+END_EXAMPLE
 
-+ go test -v xxx _test.go xxx.go 
++ go test -v xxx _test.go xxx.go
 #+BEGIN_EXAMPLE
 测试指定文件，需带上原始文件
 #+END_EXAMPLE
+
+
+
 * issue
 + godef: no declaration found for net.ResolveTCPAddr
 #+BEGIN_EXAMPLE
