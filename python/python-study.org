@@ -1,15 +1,19 @@
 #+TITLE: Python-Study
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
-* Python开发环境搭建
+** 构建Python开发环境
 #+BEGIN_EXAMPLE
-由于python2和python3两者有较大的差别，且暂未统一且不兼容。为了使两者完美的和谐共存，可以采用
 
-virtualenv或anaconda等方式管理多版本python共存。由于anaconda本身已经包含了各个版本的python，
+由于python2和python3两者有较大的差别，且有些不兼容。为了系统中两个版本能完美的和谐共存，
 
-所以无须再独立安装python了。
+可以采用virtualenv或anaconda等方式管理任意多个版本python。以anaconda为列，由于anaconda
+
+本身已经包含了各个版本的python，所以无须再独立安装python了。
+
 #+END_EXAMPLE
-** Windows
+
+
+*** Windows
 + 下载并安装anaconda
 #+BEGIN_EXAMPLE
 从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的版本
@@ -31,7 +35,7 @@ conda config --set show_channel_urls yes
 #+END_EXAMPLE
 
 
-** Linux
+*** Linux
 + 下载并安装anacoda
 #+BEGIN_EXAMPLE
 从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的版本
@@ -46,7 +50,7 @@ conda --version  (查看conda的版本)
 #+END_EXAMPLE
 
 
-** conda常用命令
+*** conda常用命令
 + 升级conda
 #+BEGIN_EXAMPLE
 conda update conda          (升级conda)
