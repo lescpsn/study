@@ -22,7 +22,7 @@ Anaconda3-5.1.0-Windows-x86_64.exe，
 
 Install for All Users ->设置好预安装的路径 -> 设置好高级选项
 
-去掉两个高级选项(1 Add Anaconda to,2 Register Anaconda as) ->
+(勾选1 Add Anaconda to，去除2 Register Anaconda as) ->
 
 一路回车法
 
