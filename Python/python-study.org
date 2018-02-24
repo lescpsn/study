@@ -13,13 +13,18 @@
 #+END_EXAMPLE
 
 
-
 *** Windows
 + 下载并安装anaconda
 #+BEGIN_EXAMPLE
-从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的版本
+从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的windows版本
 
-Anaconda3-4.3.0.1-Windows-x86_64.exe，一路回车法安装到自己定义好的目录下了。
+Anaconda3-5.1.0-Windows-x86_64.exe，
+
+Install for All Users ->设置好预安装的路径 -> 设置好高级选项
+
+去掉两个高级选项(1 Add Anaconda to,2 Register Anaconda as) ->
+
+一路回车法
 
 where conda      (查看conda的安装位置)
 
@@ -28,6 +33,8 @@ conda --version  (查看conda的版本)
 
 + 设置conda仓储的镜像
 #+BEGIN_EXAMPLE
+可以加速三方库下载的速度
+
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 
 conda config --set show_channel_urls yes
@@ -52,6 +59,12 @@ conda --version  (查看conda的版本)
 
 
 *** conda常用命令
++ 查看conda配置
+#+BEGIN_EXAMPLE
+conda config --show
+#+END_EXAMPLE
+
+
 + 升级conda
 #+BEGIN_EXAMPLE
 conda update conda          (升级conda)
