@@ -16,9 +16,9 @@
 *** Windows
 + 下载并安装anaconda
 #+BEGIN_EXAMPLE
-从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的windows版本
+从清大大学的镜像网站：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/ 下载适合的
 
-Anaconda3-5.1.0-Windows-x86_64.exe，
+windows版本 xAnaconda3-5.1.0-Windows-x86_64.exe
 
 Install for All Users ->设置好预安装的路径 -> 设置好高级选项
 
