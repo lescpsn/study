@@ -1,7 +1,9 @@
 #+TITLE: Windows-Study
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
-* Windows系统常用设置
+
+** Windows系统常用设置
+
 + 键盘映射
 #+BEGIN_EXAMPLE
 win + r -> regedit 进入注册表
@@ -16,7 +18,19 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout
 #+END_EXAMPLE
 
 
-* issue
++ 修改C:\用户显示为C:\Users
+#+BEGIN_EXAMPLE
+显示系统中的隐藏文件，并将
+
+C:\Users\desktop.ini 改名为 C:\Users\bak.desktop.ini
+
+或删除也可
+
+#+END_EXAMPLE
+
+
+
+** Issue
 + exe文件不能正常显示图标
 #+BEGIN_EXAMPLE
 方法1：
@@ -40,20 +54,7 @@ win + x -> 命令提示符（管理员）-> PowerShell ->
 Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 #+END_EXAMPLE
 
-* Windows下常用开发软件
-** Notepad++
-*** Notepad++安装
-#+BEGIN_EXAMPLE
-官网 https://notepad-plus-plus.org/ 下载最新32位版本, 64位版本暂且不支持插件管理功能
-
-一路回车法安装到指定的目录下，选择创建桌面快捷方式
-#+END_EXAMPLE
-
-*** Notepad++常用技巧
-+ 安装explorer穿件
-#+BEGIN_EXAMPLE
-显示系统目录结构
-#+END_EXAMPLE
+** Windows下常用开发软件
 
 
 ** Source Insight
@@ -63,7 +64,7 @@ http://www.liangchan.net/soft/softdown.asp?softid=3947
 #+END_EXAMPLE
 
 
-* Cygwin For Windows
+** Cygwin For Windows
 #+BEGIN_EXAMPLE
 不推荐使用cygwin，体验效果非常不好，30秒之内轻松将其搞死，还是直接上VMware虚拟机干净利索
 #+END_EXAMPLE
