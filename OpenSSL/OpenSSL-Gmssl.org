@@ -10,7 +10,9 @@ git clone https://github.com/guanzhi/GmSSL.git GmSSL
 #+END_EXAMPLE
 
 
+
 ** 编译
+
 
 *** Windows
 #+BEGIN_EXAMPLE
@@ -66,6 +68,7 @@ C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib
 #+END_EXAMPLE
 
 
+
 **** 安装perl
 + 下载
 #+BEGIN_EXAMPLE
@@ -83,7 +86,8 @@ where perl
 #+END_EXAMPLE
 
 
-**** 安装nasm(早期版本需要)
+
+**** 安装nasm(有些版本可能需要)
 #+BEGIN_EXAMPLE
 vs自带的汇编编译器，OpenSSL不支持，需要另外安装nasm汇编编译器
 
@@ -94,6 +98,8 @@ vs自带的汇编编译器，OpenSSL不支持，需要另外安装nasm汇编编�
 在openssl的1.1及其以上版本是不需要的，编译时直接nmake就可以了.
 
 网络上很多文章描述的编译时有一步ms\do_nasm过程, 其实已经过时了.
+
+GmSSL可能需要，安装完成后，将nasm加入到系统的PATH环境变量中
 #+END_EXAMPLE
 
 + 安装
@@ -102,8 +108,8 @@ vs自带的汇编编译器，OpenSSL不支持，需要另外安装nasm汇编编�
 #+END_EXAMPLE
 
 
-**** 编译
 
+**** 编译
 #+BEGIN_EXAMPLE
 启动vs命令行编译环境，这步很重要, 设置编译的环境变量, 头文件, 动态库等
 win + r
@@ -133,6 +139,7 @@ nmake install
 cd GmSSL (切换到 GmSSL 目录下)
 
 perl Configure VC-WIN32 no-deprecated no-base58 --prefix="C:\Local\usr\GmSSL32" --openssldir="C:\Local\usr\GmSSL32"
+(no-deprecated即不编译1.1.0废弃的函数)
 
 nmake clean
 
@@ -141,7 +148,30 @@ nmake
 nmake test
 
 nmake install
+
+issue:
+
+1
+注释掉bn.h
+/*
+ # if OPENSSL_API_COMPAT < 0x10100000L
+ void BN_init(BIGNUM *a);
+ # endif
+*/
+
+
+注释掉crypto.h
+/*
+ #  if OPENSSL_API_COMPAT < 0x10100000L
+ int CRYPTO_num_locks(void);
+ #  else
+ #   define CRYPTO_num_locks()                    (1)
+ #  endif
+*/
+
 #+END_EXAMPLE
+
+
 
 **** 生成
 #+BEGIN_EXAMPLE
@@ -152,6 +182,8 @@ nmake install
 动态库        : *.dll
 
 #+END_EXAMPLE
+
+
 
 
 
