@@ -1,9 +1,12 @@
-#+TITLE:  OpenSSL
+#+TITLE:  OpenSSL & GmSSL
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
 ** 官网下载源码
 #+BEGIN_EXAMPLE
 git clone https://github.com/openssl/openssl.git OpenSSL
+
+或者
+git clone https://github.com/guanzhi/GmSSL.git GmSSL
 #+END_EXAMPLE
 
 
@@ -12,9 +15,12 @@ git clone https://github.com/openssl/openssl.git OpenSSL
 *** Windows
 #+BEGIN_EXAMPLE
 windows下编译，master分支经常有问题，若master分支编译不通过，可以试试切换到一个稳定的分支下再编译
-如：OpenSSL_1_1_0-stable
-
+如：OpenSSL
 git checkout -b OpenSSL_1_1_0-stable origin/OpenSSL_1_1_0-stable
+
+如：GmSSL
+git checkout -b GmSSL-v1 origin/GmSSL-v1
+
 #+END_EXAMPLE
 
 **** 安装vs
@@ -96,13 +102,17 @@ vs自带的汇编编译器，OpenSSL不支持，需要另外安装nasm汇编编�
 #+END_EXAMPLE
 
 
-**** 编译OpenSSL
+**** 编译
+
 #+BEGIN_EXAMPLE
-启动vs命令行环境，这步很重要, 设置编译的环境变量, 头文件, 动态库等
+启动vs命令行编译环境，这步很重要, 设置编译的环境变量, 头文件, 动态库等
 win + r
 
 %comspec% /k ""C:\Local\VisualStudioEnterprise2017\Common7\Tools\VsDevCmd.bat""
+#+END_EXAMPLE
 
++ OpenSSL
+#+BEGIN_EXAMPLE
 cd OpenSSL (切换到 OpenSSL 目录下)
 
 perl Configure VC-WIN32 --prefix="C:\Local\usr\OpenSSL32" --openssldir="C:\Local\usr\OpenSSL32"
@@ -115,24 +125,60 @@ nmake
 nmake test
 
 nmake install
+
 #+END_EXAMPLE
 
++ GmSSL
+#+BEGIN_EXAMPLE
+cd GmSSL
+perl Configure VC-WIN32 no-base58 --prefix="C:\Local\usr\GmSSL32" --openssldir="C:\Local\usr\GmSSL32"
+
+修改代码include\openssl\speck.h, 必须采用/**/注释, 如果采用//注释, 则perl脚本不能解析
+/* void speck_expand16(SPECK_TYPE16 const K[SPECK_KEY_LEN16], SPECK_TYPE16 S[SPECK_ROUNDS16]); */
+/* void speck_expand32(SPECK_TYPE32 const K[SPECK_KEY_LEN32], SPECK_TYPE32 S[SPECK_ROUNDS32]); */
+/* void speck_expand64(SPECK_TYPE64 const K[SPECK_KEY_LEN64], SPECK_TYPE64 S[SPECK_ROUNDS64]); */
+
+perl util/mkdef.pl crypto update  (每次修改了.h头文件, 都需要执行该脚本, 让其自动生成util/libcrypto.num)
+
+nmake clean
+nmake
+nmake test
+nmake install
+#+END_EXAMPLE
 
 **** 生成
 #+BEGIN_EXAMPLE
 头文件        : ./include/openssl
+
 动态库引用文件 : *.lib            
+
 动态库        : *.dll
+
 #+END_EXAMPLE
+
 
 
 *** Linux
 
 **** 编译
+
++ OpenSSL
 #+BEGIN_EXAMPLE
 ./config --prefix=/usr/local/OpenSSL64 --openssldir=/usr/local/OpenSSL64
 make
+
 make test
+
+sudo make install
+#+END_EXAMPLE
+
++ GmSSL
+#+BEGIN_EXAMPLE
+./config --prefix=/usr/local/GmSSL64 --openssldir=/usr/local/GmSSL64
+make
+
+make test
+
 sudo make install
 #+END_EXAMPLE
 
@@ -145,3 +191,6 @@ ldd /usr/local/OpenSSL64/lib/libssl.so
         libcrypto.so.1.1 => not found
 export LD_LIBRARY_PATH=/usr/local/OpenSSL64/lib   //否则libcrypto.so.1.1 => not found
 #+END_EXAMPLE
+
+
+
