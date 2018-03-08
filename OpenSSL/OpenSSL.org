@@ -10,13 +10,19 @@ git clone https://github.com/openssl/openssl.git OpenSSL
 ** 编译
 
 *** Windows
-
-**** 安装vs community 2013
-+ 下载
 #+BEGIN_EXAMPLE
-注意: vs2015及其以上的版本可能有坑, 不适用本文档, 暂不想花时间去解决, 直接先用vs2013版本
+windows下编译，master分支经常有问题，若master分支编译不通过，可以试试切换到一个稳定的分支下再编译
+如：OpenSSL_1_1_0-stable
 
-官网https://www.visualstudio.com/downloads/下载vs2013的iso版本
+git checkout -b OpenSSL_1_1_0-stable origin/OpenSSL_1_1_0-stable
+#+END_EXAMPLE
+
+**** 安装vs
++ 下载vs
+#+BEGIN_EXAMPLE
+以vs2017做为编译环境
+
+官网https://www.visualstudio.com/downloads/下载vs2017的版本
 #+END_EXAMPLE
 
 + 安装
@@ -26,16 +32,16 @@ git clone https://github.com/openssl/openssl.git OpenSSL
 
 + 修改PATH环境变量(可选)
 #+BEGIN_EXAMPLE
-vs安装路径下的C:\Local\Microsoft Visual Studio 12.0\VC\bin\cl.exe即编译器, 相当于linux下的gcc
+vs安装路径下的C:\Local\VisualStudioEnterprise2017\VC\bin\cl.exe即编译器, 相当于linux下的gcc
 
-将C:\Local\Microsoft Visual Studio 12.0\VC\bin路径添加到环境变量PATH中
+将C:\Local\VisualStudioEnterprise2017\VC\bin路径添加到环境变量PATH中
 #+END_EXAMPLE
 
 + 添加INCLUDE环境变量(可选)
 #+BEGIN_EXAMPLE
 INCLUDE环境变量相当于头文件的搜索路径, 将
 
-C:\Local\Microsoft Visual Studio 12.0\VC\include
+C:\Local\VisualStudioEnterprise2017\VC\include
 
 C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include
 
@@ -46,7 +52,7 @@ C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include
 #+BEGIN_EXAMPLE
 LIB环境变量相当于库文件链接搜索路径, 将
 
-C:\Local\Microsoft Visual Studio 12.0\VC\lib
+C:\Local\VisualStudioEnterprise2017\VC\lib
 
 C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib
 
@@ -92,12 +98,22 @@ vs自带的汇编编译器，OpenSSL不支持，需要另外安装nasm汇编编�
 
 **** 编译OpenSSL
 #+BEGIN_EXAMPLE
-cd OpenSSL
-%comspec% /k ""C:\Local\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"" x86  (这步很重要, 设置编译的环境变量, 头文件, 动态库等)
-perl Configure VC-WIN32 --prefix="C:\Local\usr\OpenSSL32"
+启动vs命令行环境，这步很重要, 设置编译的环境变量, 头文件, 动态库等
+win + r
+
+%comspec% /k ""C:\Local\VisualStudioEnterprise2017\Common7\Tools\VsDevCmd.bat""
+
+cd OpenSSL (切换到 OpenSSL 目录下)
+
+perl Configure VC-WIN32 --prefix="C:\Local\usr\OpenSSL32" --openssldir="C:\Local\usr\OpenSSL32"
+{ VC-WIN32 | VC-WIN64A | VC-WIN64I | VC-CE } 可以选择的项目
+
 nmake clean
+
 nmake
+
 nmake test
+
 nmake install
 #+END_EXAMPLE
 
