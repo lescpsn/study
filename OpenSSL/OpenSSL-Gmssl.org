@@ -151,16 +151,20 @@ nmake install
 
 issue:
 
-1
-注释掉bn.h
+1、
+注意，注释采用/**/方式，否则perl脚本不能解析//
+或者有时会卡死
+
+error LNK2001: 无法解析的外部符号 BN_init
+注释掉 include\openssl\bn.h
 /*
  # if OPENSSL_API_COMPAT < 0x10100000L
  void BN_init(BIGNUM *a);
  # endif
 */
 
-
-注释掉crypto.h
+error LNK2001: 无法解析的外部符号 CRYPTO_num_locks
+注释掉 include\openssl\crypto.h
 /*
  #  if OPENSSL_API_COMPAT < 0x10100000L
  int CRYPTO_num_locks(void);
