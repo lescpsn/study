@@ -129,7 +129,9 @@ nmake install
 
 + GmSSL
 #+BEGIN_EXAMPLE
-cd GmSSL
+
+cd GmSSL (切换到 GmSSL 目录下)
+
 perl Configure VC-WIN32 no-deprecated no-base58 --prefix="C:\Local\usr\GmSSL32" --openssldir="C:\Local\usr\GmSSL32"
 
 nmake clean
@@ -160,6 +162,7 @@ nmake install
 + OpenSSL
 #+BEGIN_EXAMPLE
 ./config --prefix=/usr/local/OpenSSL64 --openssldir=/usr/local/OpenSSL64
+
 make
 
 make test
@@ -170,6 +173,7 @@ sudo make install
 + GmSSL
 #+BEGIN_EXAMPLE
 ./config --prefix=/usr/local/GmSSL64 --openssldir=/usr/local/GmSSL64
+
 make
 
 make test
