@@ -125,24 +125,19 @@ nmake
 nmake test
 
 nmake install
-
 #+END_EXAMPLE
 
 + GmSSL
 #+BEGIN_EXAMPLE
 cd GmSSL
-perl Configure VC-WIN32 no-base58 --prefix="C:\Local\usr\GmSSL32" --openssldir="C:\Local\usr\GmSSL32"
-
-修改代码include\openssl\speck.h, 必须采用/**/注释, 如果采用//注释, 则perl脚本不能解析
-/* void speck_expand16(SPECK_TYPE16 const K[SPECK_KEY_LEN16], SPECK_TYPE16 S[SPECK_ROUNDS16]); */
-/* void speck_expand32(SPECK_TYPE32 const K[SPECK_KEY_LEN32], SPECK_TYPE32 S[SPECK_ROUNDS32]); */
-/* void speck_expand64(SPECK_TYPE64 const K[SPECK_KEY_LEN64], SPECK_TYPE64 S[SPECK_ROUNDS64]); */
-
-perl util/mkdef.pl crypto update  (每次修改了.h头文件, 都需要执行该脚本, 让其自动生成util/libcrypto.num)
+perl Configure VC-WIN32 no-deprecated no-base58 --prefix="C:\Local\usr\GmSSL32" --openssldir="C:\Local\usr\GmSSL32"
 
 nmake clean
+
 nmake
+
 nmake test
+
 nmake install
 #+END_EXAMPLE
 
