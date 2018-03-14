@@ -30,6 +30,12 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 
 ** 全局插件
+
++ changeEncode插件
+#+BEGIN_EXAMPLE
+支持utf-8，gbk中文编码文件自动识别
+#+END_EXAMPLE
+
 + golang语言插件
 #+BEGIN_EXAMPLE
 安装 Go (Rich go language support for Visual Studio Code 插件) 
@@ -44,7 +50,6 @@ C:\Users\lescpsn\AppData\Roaming\Code
 #+BEGIN_EXAMPLE
 安装 CMake
 #+END_EXAMPLE
-
 
 + Python语言插件
 #+BEGIN_EXAMPLE
@@ -69,7 +74,6 @@ Emacs-Keymap
 F1:Project-manage
 #+END_EXAMPLE
 
-
 ** 全局配置
 
 *** 常用配置
@@ -80,6 +84,7 @@ F1:Project-manage
 // 启用后，将在保存文件时剪裁尾随空格。
 "files.trimTrailingWhitespace": true,
 #+END_EXAMPLE
+
 
 *** 定义快捷键盘
 #+BEGIN_EXAMPLE
@@ -101,6 +106,7 @@ C-k C-s 打开搜索键绑定
 采用msys2交叉编译环境，应该选用和windows的golang一样的版本
 否则后续安装的程序，很多不起作用
 #+END_EXAMPLE
+
 
 ** IDE For Golang
 + 安装gopkgs
