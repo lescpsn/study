@@ -25,16 +25,16 @@ oh-my-fish是fish-shell的环境配置
 ~/.config/fish/config.fish没有就新创建一个该文件
 vim ~/.config/fish/config.fish
 
-# 设置xterm中端256                                                                                                                                         
-set -x TERM xterm-256color                                                                                                                                 
+# 设置xterm中端256
+set -x TERM xterm-256color
 
-# 设置PATH                                                                                                                                                 
-set -x GOPATH ~/Projects/lescpsn/golang                                                                                                                    
-set -x PATH $GOPATH/bin ~/anaconda3/bin $PATH                                                                                                              
+# 设置PATH
+set -x GOPATH ~/Projects/lescpsn/golang
+set -x PATH $GOPATH/bin ~/anaconda3/bin $PATH
 
-# 设置python虚拟环境初始华                                                                                                                                 
-source (conda info --root)/etc/fish/conf.d/conda.fish                                                                                                      
-activate py36env # deactivate 退出虚拟环境    
+# 设置python虚拟环境初始华
+source (conda info --root)/etc/fish/conf.d/conda.fish
+activate py36env # deactivate 退出虚拟环境
 #+END_EXAMPLE
 
 

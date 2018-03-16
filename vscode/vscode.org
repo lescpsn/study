@@ -56,6 +56,22 @@ C:\Users\lescpsn\AppData\Roaming\Code
 安装 Python
 #+END_EXAMPLE
 
++ mql4语言
+#+BEGIN_EXAMPLE
+安装 MQL4 Syntax Highlighting
+#+END_EXAMPLE
+
++ 16进制显示
+#+BEGIN_EXAMPLE
+安装 vscode-hexdump
+#+END_EXAMPLE
+
++ 显示非utf8的中文编码文件
+#+BEGIN_EXAMPLE
+安装 changeEncode 
+#+END_EXAMPLE
+
+
 + 颜色主题插件
 #+BEGIN_EXAMPLE
 安装 One Dark Pro
@@ -63,16 +79,19 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 + 文件类型icons
 #+BEGIN_EXAMPLE
-安装 VSCode Creat Icons
+安装 VSCode Great Icons
+
+安装 vscode-icons
+
+文件 -> 首选项 -> 文件图标主题 -> 选择一个已安装且自己喜欢的
 #+END_EXAMPLE
 
++ 未研究的插件
 #+BEGIN_EXAMPLE
+Project-manage
 Emacs-Keymap
 #+END_EXAMPLE
 
-#+BEGIN_EXAMPLE
-F1:Project-manage
-#+END_EXAMPLE
 
 ** 全局配置
 
@@ -237,6 +256,29 @@ Installing github.com/golang/lint/golint FAILED
 
 选择Python(目前下载量最高)安装即可
 #+END_EXAMPLE
+
++ 多环境Python
+#+BEGIN_EXAMPLE
+当采用Anaconda的conda方式部署多个Python环境时，请在vscode的左下角
+
+选择指定运行的python环境
+#+END_EXAMPLE
+
++ 语法检查
+#+BEGIN_EXAMPLE
+activate py364env  切换到指定的python环境
+
+conda install pylint
+pip install pylint (环境报错)
+#+END_EXAMPLE
+
++ 代码格式化
+#+BEGIN_EXAMPLE
+activate py364env  切换到指定的python环境
+
+pip install yapf
+#+END_EXAMPLE
+
 
 
 ** IDE For Golang C/C++

@@ -1,0 +1,72 @@
+#+TITLE: Atom学习记录
+
+** Atom安装
+
+*** Windows平台
++ 下载
+#+BEGIN_EXAMPLE
+Atom的exe安装版不能指定安装路径，比较变态，对于有目录规划洁癖的人来说，可以考虑选择绿色版，解压即可直接使用
+
+https://atom.io/  -> Other platforms -> 选择对应平台的压缩包(如：atom-windows.zip，64位的windows版本
+
+atom-x64-windows.zip可能有bug，请选择32位的atom-windows.zip)
+#+END_EXAMPLE
+
++ 安装
+#+BEGIN_EXAMPLE
+直接解压到自己规划好的系统目录路径即可
+#+END_EXAMPLE
+
+
+*** Linux平台
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+** Atom常用插件
++ 中文汉化版插件包
+#+BEGIN_EXAMPLE
+菜单File -> Settings -> Install -> 搜索chinese ->
+
+simplified-chinese-menu
+#+END_EXAMPLE
+
+
++ 16进制查看
+#+BEGIN_EXAMPLE
+菜单File -> Settings -> Install -> 搜索hex ->
+hex-editor
+#+END_EXAMPLE
+
+
+
++ elisp
+#+BEGIN_EXAMPLE
+菜单File -> Settings -> Install -> 搜索lisp ->
+language-lisp
+language-emacs-lisp(未选该包)
+#+END_EXAMPLE
+
+
+** Atom常用设置
+
+*** 显示空格，制表等空白字符
+#+BEGIN_EXAMPLE
+文件 -> 设置 -> 编辑器设置 -> 显示不可见字符
+#+END_EXAMPLE
+
+
+
+
+*** 设置制表符的长度
+#+BEGIN_EXAMPLE
+文件 -> 设置 -> 编辑器设置 -> Tab的长度
+#+END_EXAMPLE
+
+*** 注册右键菜单
+#+BEGIN_EXAMPLE
+文件 -> 设置 -> System -> 注册为文件处理程序，文件(夹)菜单
+#+END_EXAMPLE
+
+
+

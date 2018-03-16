@@ -105,6 +105,13 @@ go get -u -v -x github.com/derekparker/delve/cmd/dlv
 #+END_EXAMPLE
 
 
++ go-outline
+#+BEGIN_EXAMPLE
+调试器
+go get -v -x github.com/ramya-rao-a/go-outline
+#+END_EXAMPLE
+
+
 * go test
 + xxx _test.go
 #+BEGIN_EXAMPLE

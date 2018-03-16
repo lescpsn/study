@@ -1,0 +1,20 @@
+#+TITLE: ConEmu
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
+
+*** 安装
+
+**** 安装 ConEmu
+#+BEGIN_EXAMPLE
+1、官网 https://www.fosshub.com/ConEmu.html 下载对应平台的最新安装包 ConEmuPack.180206.7z
+
+   直接解压到目标目录即可
+
+2、双击首次运行，设置以下配置的保存路径，个人比较喜欢保存在本地，而非注册表中
+  C:\Local\ConEmu\ConEmu.xml
+
+#+END_EXAMPLE
+
+**** 建立 ConEmu 桌面快捷方式
+#+BEGIN_EXAMPLE
+C:\Local\ConEmu\ConEmu64.exe 发送到桌面快捷方式
+#+END_EXAMPLE
