@@ -20,8 +20,8 @@ windows平台每次git pull 更新仓存后，都需要手工更新  ~/.vimrc
 
 
 
-** Windows版本
-*** 安装
+** 安装
+*** Windows版本
 
 + 安装gvim
 #+BEGIN_EXAMPLE
@@ -111,54 +111,12 @@ win + r -> regedit ->
 #+END_EXAMPLE
 
 
-*** 配置
-****  插件
-#+BEGIN_EXAMPLE
-~/.spacevim文件中UserInit()函数中配置需要安装的插件
-#+END_EXAMPLE
-
-+ VimIM
-#+BEGIN_EXAMPLE
-内嵌中文输入法插件
-Plug 'vim-scripts/VimIM'
-#+END_EXAMPLE
-
-+ nerdtree
-#+BEGIN_EXAMPLE
-左侧边栏目录树插件
-Plug 'scrooloose/nerdtree'
-#+END_EXAMPLE
 
 
-****  常用配置
-#+BEGIN_EXAMPLE
-~/.spacevim文件中UserConfig()函数中配置用户个性配置
-#+END_EXAMPLE
-
-+ 显示右侧滚动条
-#+BEGIN_EXAMPLE
-set guioptions+=r
-#+END_EXAMPLE
-
-+ 最大化
-#+BEGIN_EXAMPLE
-autocmd GUIEnter * simalt ~x
-#+END_EXAMPLE
-
-+ nerdtree的插件配置
-#+BEGIN_EXAMPLE
-map <F8> :NERDTreeToggle<CR>  // 显示目录树
-map <F8> :NERDTreeMirror<CR>  // 隐藏目录树
-#+END_EXAMPLE
-
-
-
-** Linux版本
-
-*** 安装
+*** Linux/msys2版本
 + 安装unzip
 #+BEGIN_EXAMPLE
-arch-linux:
+arch-linux/msys2:
 pacman -S unzip
 
 ubuntu-linux:
@@ -180,7 +138,57 @@ make vim
 #+END_EXAMPLE
 
 
+
+
+
+** 配置
+
+*** 更新~/.spacevim配置文件
+#+BEGIN_EXAMPLE
+将对应系统的.spacevim拷贝到~家目录下
+#+END_EXAMPLE
+
+
+***  插件
+#+BEGIN_EXAMPLE
+~/.spacevim文件中UserInit()函数中配置需要安装的插件
+#+END_EXAMPLE
+
++ VimIM
+#+BEGIN_EXAMPLE
+内嵌中文输入法插件
+Plug 'vim-scripts/VimIM'
+#+END_EXAMPLE
+
++ nerdtree
+#+BEGIN_EXAMPLE
+
+左侧边栏目录树插件，该插件已经集成到file-manager层中了，无须再自行安装了
+
+#+END_EXAMPLE
+
+
+***  常用配置
+#+BEGIN_EXAMPLE
+~/.spacevim文件中UserConfig()函数中配置用户个性配置
+#+END_EXAMPLE
+
++ 显示右侧滚动条
+#+BEGIN_EXAMPLE
+set guioptions+=r
+#+END_EXAMPLE
+
++ 最大化
+#+BEGIN_EXAMPLE
+autocmd GUIEnter * simalt ~x
+#+END_EXAMPLE
+
+
 * 常用快捷键
++ 手工安装插件
+#+BEGIN_EXAMPLE
+:PlugInstall
+#+END_EXAMPLE
 
 + C-w C-w
 #+BEGIN_EXAMPLE
