@@ -42,7 +42,7 @@ emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
 
 + issue
 #+BEGIN_EXAMPLE
-emacs25以上版本在win10上可能会很卡，需要把font字体，具体哪种字体自行尝试。
+emacs25以上版本在win10上可能会很卡，需要更换默认font字体，具体哪种字体自行尝试。
 
 至少Source Code Pro这种字体应该是没有问题的
 #+END_EXAMPLE
