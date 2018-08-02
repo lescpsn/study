@@ -71,6 +71,10 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/f
 conda config --set show_channel_urls yes
 
 最后生成的配置文件在 C:\Users\lescpsn\.condarc 即也可以直接编辑该文件
+
+设置好镜像后升级下conda
+
+conda update conda          (升级conda)
 #+END_EXAMPLE
 
 
@@ -120,10 +124,6 @@ conda config --show
 #+END_EXAMPLE
 
 
-+ 升级conda
-#+BEGIN_EXAMPLE
-conda update conda          (升级conda)
-#+END_EXAMPLE
 
 + 查找模块
 #+BEGIN_EXAMPLE

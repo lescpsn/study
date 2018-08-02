@@ -1,0 +1,116 @@
+#+TITLE: Electron学习历程
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/org-worg.css"/>
+
+** 安装node
+
+*** 安装 nodejs 
+#+BEGIN_EXAMPLE
+1 官网 http://nodejs.cn/download/ 下载对应平台的最新版本
+
+2 设置好安装目录 如 C:\Local\nodejs32\ 一路回车法
+#+END_EXAMPLE
+
+
+*** 配置node环境变量
+#+BEGIN_VERSE
+
+NODE_HOME = C:\Local\nodejs32
+
+NODE_PATH = %NODE_HOME%\node_modules
+
+将 %NODE_HOME%， %NODE_PATH% 添加到 PATH 中
+
+#+END_VERSE
+
+*** 设置npm的镜像
+#+BEGIN_EXAMPLE
+设置npm的数据为淘宝镜像
+npm config set registry "https://registry.npm.taobao.org/"
+
+#+END_EXAMPLE
+
+
+*** 安装cnpm
+#+BEGIN_EXAMPLE
+cnpm实现了和npm同样的功能
+采用淘宝镜像安装cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+#+END_EXAMPLE
+
+
+*** cnpm与npm
+#+BEGIN_EXAMPLE
+由于npm和cnpm的镜像都指向了淘宝，所有两个命令都使用了同一个镜像地址
+#+END_EXAMPLE
+
+
+*** 安装nrm
+#+BEGIN_EXAMPLE
+node包的镜像管理器
+
+1 nrm 安装
+  npm install -g nrm
+
+2 nrm 用法
+  nrm ls
+  nrm use
+#+END_EXAMPLE
+
+
+
+*** 安装vue脚手架
+#+BEGIN_VERSE
+cnpm install -g webpack
+cnpm install -g vue-cli
+#+END_VERSE
+
+
+*** 构建web应用
+#+BEGIN_VERSE
+
+vue init webpack 项目名称(自己定义)
+
+项目名建议全部小写，否则会报错
+
+因为vue构建跨平台程序时，Linux大小写敏感，Windows则大小写不敏感，建议统一小写
+
+
+一路回车法
+
+vue-router Y
+
+这里，我没有开启ESLint，单元测试也暂不启用。
+
+No, I will handle that myself
+
+cd 项目
+
+npm install (or if using yarn: yarn)
+
+npm run dev
+#+END_VERSE
+
+*** 构建桌面应用
+#+BEGIN_VERSE
+
+#+END_VERSE
+
+
+** Electron环境搭建
+*** Windows
+#+BEGIN_EXAMPLE
+npm 全局安装 electron
+cnpm install -g electron
+#+END_EXAMPLE
+
+*** Electron示例
+#+BEGIN_EXAMPLE
+mkdir ElectronDream
+cd ElectronDream
+工程目录下创建必须的三个文件
+
+touch package.json
+touch index.html
+touch main.js
+
+#+END_EXAMPLE

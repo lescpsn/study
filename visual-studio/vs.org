@@ -1,9 +1,25 @@
 
-#+TITLE: visual stduio 2013学习记录
+#+TITLE: visual stduio 学习记录
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+** 新建解决方案
++ 新建空解决方案
+#+BEGIN_EXAMPLE
+文件 -> 新建 -> 项目 -> 其它项目类型 -> Visual Studio 解决方案 -> 空白解决方案
 
-* vs底层构建
+填写名称，位置，为解决方案创建目录
+
+
+#+END_EXAMPLE
+
++ 添加工程到现有解决方案中
+#+BEGIN_EXAMPLE
+文件 -> 新建 -> 项目 -> Visual C++ -> 空项目 ->
+
+填写名称，位置(即解决方案的路径)，解决方案(添加到解决方案)
+#+END_EXAMPLE
+
+** vs底层构建
 + 修改PATH环境变量
 #+BEGIN_EXAMPLE
 vs安装路径下的C:\Local\Microsoft Visual Studio 12.0\VC\bin\cl.exe相当于linux下的gcc
@@ -48,7 +64,7 @@ clean:
 #+END_EXAMPLE
 
 
-* issue
+** issue
 + utf-8文件乱码问题
 #+BEGIN_EXAMPLE
 1 修改vs2013安装目录D:\Program Files\Microsoft Visual Studio 12.0\VC\vcprojectitems下的

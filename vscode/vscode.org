@@ -30,15 +30,23 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 
 ** 全局插件
-
-+ changeEncode插件
++ JSON Tools
 #+BEGIN_EXAMPLE
-支持utf-8，gbk中文编码文件自动识别
+Ctrl-Alt-m : 格式化josn
+
+Alt-m : 最小化josn
+#+END_EXAMPLE
+
++ Prettify JSON (mac)
+#+BEGIN_EXAMPLE
+Ctrl-Alt-m : 格式化josn
+
+Alt-m : 最小化josn
 #+END_EXAMPLE
 
 + golang语言插件
 #+BEGIN_EXAMPLE
-安装 Go (Rich go language support for Visual Studio Code 插件) 
+安装 Go (Rich go language support for Visual Studio Code 插件)
 #+END_EXAMPLE
 
 + C/C++语言插件
@@ -48,7 +56,7 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 + CMake语言插件
 #+BEGIN_EXAMPLE
-安装 CMake
+安装 CMake, Cmake Tools, Cmake Tools Helper
 #+END_EXAMPLE
 
 + Python语言插件
@@ -66,16 +74,23 @@ C:\Users\lescpsn\AppData\Roaming\Code
 安装 vscode-hexdump
 #+END_EXAMPLE
 
-+ 显示非utf8的中文编码文件
++ changeEncode
 #+BEGIN_EXAMPLE
-安装 changeEncode 
+显示非utf8的中文编码文件
+支持utf-8，gbk中文编码文件自动识别
 #+END_EXAMPLE
-
 
 + 颜色主题插件
 #+BEGIN_EXAMPLE
 安装 One Dark Pro
 #+END_EXAMPLE
+
+
++ Org Mode
+#+BEGIN_EXAMPLE
+查看Org类型文档
+#+END_EXAMPLE
+
 
 + 文件类型icons
 #+BEGIN_EXAMPLE
@@ -89,8 +104,10 @@ C:\Users\lescpsn\AppData\Roaming\Code
 + 未研究的插件
 #+BEGIN_EXAMPLE
 Project-manage
-Emacs-Keymap
+Emacs-Keymap bug比较多
 #+END_EXAMPLE
+
+
 
 
 ** 全局配置
@@ -102,32 +119,101 @@ Emacs-Keymap
 
 // 启用后，将在保存文件时剪裁尾随空格。
 "files.trimTrailingWhitespace": true,
+
+// 禁止控制编辑器是否应该在左括号后自动插入右括号
+"editor.autoClosingBrackets": false,
+
+
+// 每行第80，120个字符的位置提示线
+"editor.rulers": [80,120],
+
+// 隐藏右侧小地图
+"editor.minimap.enabled": false,
+
+
+// 自动识别文件编码
+"files.autoGuessEncoding": true,
+
 #+END_EXAMPLE
 
 
 *** 定义快捷键盘
++ 快捷键自定义的配置文件
 #+BEGIN_EXAMPLE
-C-k C-s 打开搜索键绑定
+C:\Users\lescpsn\AppData\Roaming\code\User\keybindings.json
 #+END_EXAMPLE
 
+
+#+BEGIN_EXAMPLE
+文件 ->首选项 ->键盘快捷方式(C-k C-s 打开搜索键绑定)
+#+END_EXAMPLE
+
++ 自定义转换成大写
 #+BEGIN_EXAMPLE
 搜索键绑定 -> 输入大写 -> C-k C-u
 #+END_EXAMPLE
 
++ 自定义转换成小写
 #+BEGIN_EXAMPLE
 搜索键绑定 -> 输入小写 -> C-k C-l
 #+END_EXAMPLE
 
++ 代码提示时用Ctrl+p和Ctrl+n上下选择
+#+BEGIN_EXAMPLE
+搜索键绑定 -> 搜索selectNextSuggestion -> C-DownArrow 改成 C-n
 
-** msys2交叉环境
+搜索键绑定 -> 搜索selectPrevSuggestion -> C-UpArrow 改成 C-p
+#+END_EXAMPLE
+
++ 代码提示激活Ctrl+space更改c + s + i
+#+BEGIN_EXAMPLE
+搜索键绑定 -> 搜索suggest
+
+"key": "ctrl+space", （更改成c + s + i）
+"command": "editor.action.triggerSuggest",
+"when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+
+"key": "ctrl+space", （更改成c + s + i）
+"command": "toggleSuggestionDetails",
+"when": "editorTextFocus && suggestWidgetVisible"
+
+"key": "ctrl+alt+space",（暂且未修改）
+"command": "toggleSuggestionFocus",
+"when": "editorTextFocus && suggestWidgetVisible"
+#+END_EXAMPLE
+
+
++ 移动到下一行该成Ctrl+n （暂且不要修改，影响比较大）
+#+BEGIN_EXAMPLE
+1 将原生的 ctrl+n "workbench.action.files.newUntitledFile" 新建无标题文件
+  修改为"ctrl+k ctrl+n",
+
+2 将原生的 "down","cursorDown" 光标向下移动一行
+  添加一个 "ctrl+n","cursorDown" 光标向下移动一行
+#+END_EXAMPLE
+
++ 移动到上一行该成Ctrl+p （暂且不要修改，影响比较大）
+#+BEGIN_EXAMPLE
+1 将原生的ctrl+p "workbench.action.quickOpen" "workbench.action.quickOpenNavigateNextInFilePicker" 两个
+  修改为"ctrl+k ctrl+f",
+
+
+2 将原生的 "up","cursorUp" 光标向上移动一行
+  添加一个 "ctrl+p","cursorUp" 光标向上移动一行
+
+#+END_EXAMPLE
+
+
+
+
+** IDE For Golang
++ msys2交叉环境
 #+BEGIN_EXAMPLE
 非常重要：
 采用msys2交叉编译环境，应该选用和windows的golang一样的版本
 否则后续安装的程序，很多不起作用
 #+END_EXAMPLE
 
-
-** IDE For Golang
 + 安装gopkgs
 #+BEGIN_EXAMPLE
 老版：
@@ -176,7 +262,7 @@ go get -u -v -x github.com/derekparker/delve/cmd/dlv
 因为被墙了，需要事先从git的源下载好golang.org\x\tools
 详情见golang.org/x/tools的安装
 
-事先下载好tools后，可以不用-u 
+事先下载好tools后，可以不用-u
 go get -v -x github.com/ramya-rao-a/go-outline
 #+END_EXAMPLE
 
@@ -264,24 +350,130 @@ Installing github.com/golang/lint/golint FAILED
 选择指定运行的python环境
 #+END_EXAMPLE
 
-+ 语法检查
++ python依赖包安装
+
 #+BEGIN_EXAMPLE
+win + r -> cmd
 activate py364env  切换到指定的python环境
 
-conda install pylint
-pip install pylint (环境报错)
-#+END_EXAMPLE
+语法检查
+pip install pylint (需要chcp 65001切换到utf-8编码环境)
 
-+ 代码格式化
-#+BEGIN_EXAMPLE
-activate py364env  切换到指定的python环境
-
+代码格式化
 pip install yapf
 #+END_EXAMPLE
 
 
 
-** IDE For Golang C/C++
+** IDE For C/C++
++ 安装相关插件
+#+BEGIN_EXAMPLE
+codecpp-mininum
+cpp精简版
+
+codecpp-full
+cpp全家桶
+#+END_EXAMPLE
+
++ 安装msys2
+#+BEGIN_EXAMPLE
+msys2提供了开发工具链
+#+END_EXAMPLE
+
++ 安装编译器(gcc 或者 clang)
+#+BEGIN_EXAMPLE
+gcc ：
+
+32位 : mingw-w64-i686-gcc (mingw-w64-i686-toolchain)
+       pacman -Sy mingw-w64-i686-toolchain 安装相关工具链
+
+
+64位 : mingw-w64-x86_64-gcc (mingw-w64-x86_64-toolchain)
+       pacman -Sy mingw-w64-x86_64-toolchain 安装相关工具链
+
+clang :
+32位 : mingw-w64-i686-clang
+       pacman -Sy mingw-w64-i686-clang
+
+64位 : mingw-w64-x86_64-clang
+       pacman -Sy mingw-w64-x86_64-clang
+
+#+END_EXAMPLE
+
+
++ 配置终端
+#+BEGIN_EXAMPLE
+
+设置终端为bash
+"terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe"
+
+// 在 Windows 终端上时使用的命令行参数，启动bash的启动参数, -i 表示启动bash后进入交互模式
+"terminal.integrated.shellArgs.windows": ["-i"],
+
+// 设置bash的环境变量 windows自身的环境暂且没有添加
+// /c/Windows/System32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowershell/v1.0/
+
+"terminal.integrated.env.windows": {"PATH" : "/mingw32/bin:/usr/bin"}
+#+END_EXAMPLE
+
++ 安装调试器
+#+BEGIN_EXAMPLE
+launch.json
+
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "C:/Projects/iaiting/CDream/a.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\mingw32\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+
+task.json 负责构建编译任务
+
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-ggdb",
+                "-Wall",
+                "utils/main.c",
+                "-o",
+                "a.exe"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
+
+
+#+END_EXAMPLE
 
 
 ** issue

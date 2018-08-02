@@ -70,6 +70,30 @@ TAGS用以工程中代码跳转
 #+END_EXAMPLE
 
 
+
+
+* Putty终端工具
+#+BEGIN_VERSE
+当需要从Windows远程连接到Linux主机上时, SecureCRT, Xshell中在运行emacs，或多或少都有些问题
+
+Putty相对于其他终端工具运行emacs则更加优秀
+#+END_VERSE
+
+** 安装putty
+#+BEGIN_VERSE
+官网 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html 下载便携版，直接解压就可以使用
+
+最新版本为0.7
+#+END_VERSE
+
+** 配置putty主题
+#+BEGIN_VERSE
+
+导入putty的颜色主题，igvita-desert.reg 和 igvita-light.reg，双击*.reg文件即可。
+
+#+END_VERSE
+
+
 * spacemacs安装
 ** windows
 + 安装spacemacs
@@ -377,6 +401,12 @@ C-h i        阅读联机手册（也就是通常讲的 Info）。
 #+END_EXAMPLE
 
 
+
+* For Python
+** 安装yapf 格式化python代码
+#+BEGIN_VERSE
+pip install yapf
+#+END_VERSE
 
 * tramp
 + tramp简介

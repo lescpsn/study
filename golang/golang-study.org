@@ -2,6 +2,23 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css"/>
 
 * 安装Golang
+** msys2
++ 安装Golang
+#+BEGIN_EXAMPLE
+pacman -Ss mingw-w64-x86_64-go
+#+END_EXAMPLE
+
+
++ 设置windows的环境变量
+#+BEGIN_EXAMPLE
+PATH	-> 将go.exe的路径添加到PATH环境变量中
+
+GOROOT	-> 将go的安装目录配置到GOROOT环境变量中
+
+GOPATH	-> 配置下GOPATH环境变量
+#+END_EXAMPLE
+
+
 ** Windows
 + 安装Golang
 #+BEGIN_EXAMPLE

@@ -15,6 +15,11 @@ atom-x64-windows.zip可能有bug，请选择32位的atom-windows.zip)
 + 安装
 #+BEGIN_EXAMPLE
 直接解压到自己规划好的系统目录路径即可
+
+将Atom的安装路径配置到环境变量PATH中，方便从cmd行中直接启动Atom
+
+win + r -> cmd  -> activate python环境 -> atom
+
 #+END_EXAMPLE
 
 
@@ -22,6 +27,7 @@ atom-x64-windows.zip可能有bug，请选择32位的atom-windows.zip)
 #+BEGIN_EXAMPLE
 
 #+END_EXAMPLE
+
 
 ** Atom常用插件
 + 中文汉化版插件包
@@ -31,14 +37,11 @@ atom-x64-windows.zip可能有bug，请选择32位的atom-windows.zip)
 simplified-chinese-menu
 #+END_EXAMPLE
 
-
 + 16进制查看
 #+BEGIN_EXAMPLE
 菜单File -> Settings -> Install -> 搜索hex ->
 hex-editor
 #+END_EXAMPLE
-
-
 
 + elisp
 #+BEGIN_EXAMPLE
@@ -46,6 +49,34 @@ hex-editor
 language-lisp
 language-emacs-lisp(未选该包)
 #+END_EXAMPLE
+
+
++ file-icons
+#+BEGIN_EXAMPLE
+文件美化图标
+#+END_EXAMPLE
+
+*** IDE For Python
+
++ autocomplete-python 
+#+BEGIN_EXAMPLE
+代码自动补全
+#+END_EXAMPLE
+
++ atom-python-run 
+#+BEGIN_EXAMPLE
+F5 运行
+#+END_EXAMPLE
+
++ python-debugger
+#+BEGIN_EXAMPLE
+调试
+#+END_EXAMPLE
+
+
+
+
+
 
 
 ** Atom常用设置
@@ -56,12 +87,11 @@ language-emacs-lisp(未选该包)
 #+END_EXAMPLE
 
 
-
-
 *** 设置制表符的长度
 #+BEGIN_EXAMPLE
 文件 -> 设置 -> 编辑器设置 -> Tab的长度
 #+END_EXAMPLE
+
 
 *** 注册右键菜单
 #+BEGIN_EXAMPLE
@@ -69,4 +99,7 @@ language-emacs-lisp(未选该包)
 #+END_EXAMPLE
 
 
-
+*** 关闭引号等符号自动补全
+#+BEGIN_EXAMPLE
+禁止掉 bracket-matcher 插件
+#+END_EXAMPLE

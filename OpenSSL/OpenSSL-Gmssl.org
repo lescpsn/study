@@ -11,6 +11,7 @@ git clone https://github.com/guanzhi/GmSSL.git GmSSL
 
 
 
+
 ** 编译
 
 
@@ -173,6 +174,59 @@ error LNK2001: 无法解析的外部符号 CRYPTO_num_locks
  #  endif
 */
 
+
+ssl\statem\statem_gmtls.c(1057): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+ssl\statem\statem_gmtls.c(1387): error C2449: 在文件范围内找到“{”(是否缺少函数头?)
+ssl\statem\statem_gmtls.c(1485): error C2059: 语法错误:“}”
+
+windows 下转换 ssl\statem\statem_gmtls.c 到UTF-8 with BOM编码
+
+
+* nm1C1.tmp : error LNK2001: 无法解析的外部符号 v_check
+
+注释掉 include\openssl\engine.h
+/*
+ * nm1C1.tmp : error LNK2001: 无法解析的外部符号 v_check
+ * modify by iaiting at 2018/05/26
+ * 
+# define IMPLEMENT_DYNAMIC_CHECK_FN() \
+        OPENSSL_EXPORT unsigned long v_check(unsigned long v); \
+        OPENSSL_EXPORT unsigned long v_check(unsigned long v) { \
+                if (v >= OSSL_DYNAMIC_OLDEST) return OSSL_DYNAMIC_VERSION; \
+                return 0; }
+*/
+
+
+libssl-1_1.def : error LNK2001: 无法解析的外部符号 GMTLS_client_method
+libssl-1_1.def : error LNK2001: 无法解析的外部符号 GMTLS_method
+libssl-1_1.def : error LNK2001: 无法解析的外部符号 GMTLS_server_method
+注释掉 include\openssl\ssl.h
+/*
+__owur const SSL_METHOD *DTLS_method(void); /* DTLS 1.0 and 1.2 */
+/*
+__owur const SSL_METHOD *DTLS_server_method(void); /* DTLS 1.0 and 1.2 */
+/*
+__owur const SSL_METHOD *DTLS_client_method(void); /* DTLS 1.0 and 1.2 */
+
+
+#ifndef OPENSSL_NO_GMTLS
+/*
+__owur const SSL_METHOD *GMTLS_method(void); /* GMTLSv1.1 */
+/*
+__owur const SSL_METHOD *GMTLS_server_method(void); /* GMTLSv1.1 */
+/*
+__owur const SSL_METHOD *GMTLS_client_method(void); /* GMTLSv1.1 */
+#endif
+
+注释掉 ssl/statem/statem_lib.c
+// {GMTLS_VERSION, gmtls_client_method, gmtls_server_method},
+
+
+nmA3DC.tmp : error LNK2001: 无法解析的外部符号 bind_engine
+注释掉 include/openssl/engine.h
+
+
+
 #+END_EXAMPLE
 
 
@@ -186,6 +240,7 @@ error LNK2001: 无法解析的外部符号 CRYPTO_num_locks
 动态库        : *.dll
 
 #+END_EXAMPLE
+
 
 
 

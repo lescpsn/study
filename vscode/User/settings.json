@@ -1,0 +1,37 @@
+{
+    "editor.renderWhitespace": "all",
+    "files.trimTrailingWhitespace": true,
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "One Dark Pro",
+    "files.autoSave": "off",
+    "git.ignoreMissingGitWarning": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-great-icons",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.minimap.enabled": false,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "cmake-tools-helper.cmake_download_path": "C:\\Users\\lescpsn\\.vscode\\extensions\\maddouri.cmake-tools-helper-0.2.1\\cmake_download",
+
+    "terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
+
+    // 在 Windows 终端上时使用的命令行参数。
+    "terminal.integrated.shellArgs.windows": ["-i"],
+
+    // 要添加到 VS Code 进程中的带有环境变量的对象，其会被 Windows 终端使用。
+    "terminal.integrated.env.windows": {"PATH" : "/mingw32/bin:/usr/bin"},
+
+    "python.formatting.provider": "yapf",
+    "gitlens.historyExplorer.enabled": true,
+}
