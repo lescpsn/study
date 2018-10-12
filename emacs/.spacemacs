@@ -31,28 +31,24 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     go
-     html
-     javascript
-     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-     auto-completion
-     better-defaults
+     
+     ;; auto-completion
+     ;; better-defaults
      emacs-lisp
-     git
-     markdown
-     org
-     (shell :variables
-          shell-default-height 30
-          shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
-     version-control
+     ;; git
+     ;; markdown
+     ;; org
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+     ;; spell-checking
+     ;; syntax-checking
+     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -263,8 +259,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   ;; dotspacemacs-line-numbers nil
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -305,10 +300,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-(setq configuration-layer--elpa-archives
-    '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-      ("org-cn"   . "http://elpa.emacs-china.org/org/")
-      ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+
+  (setq configuration-layer--elpa-archives
+      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+        ("org-cn"   . "http://elpa.emacs-china.org/org/")
+        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -318,20 +315,22 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-(require 'tramp)
-(setq tramp-default-method "plink")
+
+  (require 'tramp)
+  (setq tramp-default-method "plink")
+
   )
 
-;; 显示目录树
-(setq projectile-switch-project-action 'neotree-projectile-action)
-(setq neo-show-hidden-files t) ;; 显示隐藏文件
-(setq neo-smart-open t)
-(global-set-key [f8] 'neotree-toggle)
+  ;; 显示目录树
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (setq neo-show-hidden-files t) ;; 显示隐藏文件
+  (setq neo-smart-open t)
+  (global-set-key [f8] 'neotree-toggle)
 
-;; 去除中文字典检查use apsell as ispell backend
-;; (setq-default ispell-program-name "aspell")
-;; use American English as ispell default dictionary
-;; (ispell-change-dictionary "american" t)
+  ;; 去除中文字典检查use apsell as ispell backend
+  ;; (setq-default ispell-program-name "aspell")
+  ;; use American English as ispell default dictionary
+  ;; (ispell-change-dictionary "american" t)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
