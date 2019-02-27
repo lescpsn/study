@@ -4,25 +4,31 @@
 ** windows
 + 下载安装包
 #+BEGIN_EXAMPLE
-gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
 
-http://ftp.gnu.org/gnu/emacs/windows/emacs-25.1-2-x86_64-w64-mingw32.zip
+1. spacemacs推荐的网站 https://sourceforge.net/projects/emacsbinw64/files/release/ 下载对应的emacs版本 (推荐)
+    github上关联的位置为 https://github.com/zklhp/emacs-w64/releases
+    选择64位的 emacs-w64-25.3-O2-with-modules.7z 版本
+
+2. gnu网站http://ftp.gnu.org/gnu/emacs/windows下载windows对应的emacs版本
+
+    http://ftp.gnu.org/gnu/emacs/windows/emacs-25.1-2-x86_64-w64-mingw32.zip
+
 #+END_EXAMPLE
 
 + 安装
 #+BEGIN_EXAMPLE
-emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
+emacs-w64-25.3-O2-with-modules.7z 为绿色版本
 
-直接解压到自己规划好的目录并修改为自己喜欢的名字即可以使用，如D:\Local\emacs
+直接解压到自己规划好的目录并修改为自己喜欢的名字即可以使用，如C:\Local\emacs\emacs-w64-25.3-O2-with-modules
 #+END_EXAMPLE
 
 + 配置PATH环境变量
 #+BEGIN_EXAMPLE
-如：将emacs安装目录的bin目录D:\Local\emacs\bin添加到PATH环境变量中
+如：将emacs安装目录的bin目录C:\Local\emacs\emacs-w64-25.3-O2-with-modules\bin添加到PATH环境变量中
 #+END_EXAMPLE
 
 
-+ 规划emacs配置目录.emacs.d
++ 规划emacs配置目录.emacs.d (不操作该步骤，直接采用默认的路径了)
 #+BEGIN_EXAMPLE
 编辑C:\Users\carhj\AppData\Roaming\.emacs.d\init.el文件,且保证C:\Users\carhj\AppData\Roaming\
 
@@ -34,11 +40,13 @@ emacs-25.1-2-x86_64-w64-mingw32.zip为绿色版本，
 (load-file "D:/Local/emacs/.emacs.d/init.el")
 #+END_EXAMPLE
 
-+ emacs启动
++ emacs启动 
 #+BEGIN_EXAMPLE
 创建runemacs.exe的快捷方式到桌面，右键 --> 属性 --> 起始位置
-删除"D:/Local/emacs/.emacs.d/init.el"文件，恢复到初始状态 git checkout -- init.el，再次启动emacs
+
+删除"D:/Local/emacs/.emacs.d/init.el"文件，恢复到初始状态 git checkout -- init.el，再次启动emacs (该问题和上一步有关，默认路径就不会有问题的了)
 #+END_EXAMPLE
+
 
 + issue
 #+BEGIN_EXAMPLE
@@ -98,11 +106,13 @@ Putty相对于其他终端工具运行emacs则更加优秀
 ** windows
 + 安装spacemacs
 #+BEGIN_EXAMPLE
-直接从git上下载代码到用户的家目录中，并取名为.emacs.d，
+直接从git上下载代码到emacs的家目录中，并取名为.emacs.d，
 
 如果之前运行过emacs，且windows的家目录下有.emacs文件和.emacs.d目录，请删除掉
 
-windows的家目录一般为C:\Users\用户名\AppData\Roaming\
+windows的emacs家目录一般为C:\Users\用户名\AppData\Roaming\, 
+
+AppData默认为隐藏目录，请取消其隐藏属性
 
 git clone https://github.com/syl20bnr/spacemacs.git C:\Users\carhj\AppData\Roaming\.emacs.d
 
@@ -187,6 +197,53 @@ set -x TERM xterm-256color
 #+END_EXAMPLE
 
 
+
+** .spacemacs相关配置
++ 设置elpa数据源
+#+BEGIN_EXAMPLE
+
+添加下面的代码到 .spacemacs 的 dotspacemacs/user-init()
+
+  (setq configuration-layer--elpa-archives
+      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+        ("org-cn"   . "http://elpa.emacs-china.org/org/")
+        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+
+
+#+END_EXAMPLE
+
+
++ 禁用elpa数据源的https
+#+BEGIN_EXAMPLE
+
+dotspacemacs-elpa-https nil
+
+#+END_EXAMPLE
+
+
++ 设置elpa数据源连接超时时间(60秒)
+#+BEGIN_EXAMPLE
+超时时间太短很多包就安装不了
+dotspacemacs-elpa-timeout 60
+
+#+END_EXAMPLE
+
+
+
+
+
++ 设置字体大小 dotspacemacs-default-font
+#+BEGIN_EXAMPLE
+:size 18
+:powerline-scale 1.2
+#+END_EXAMPLE
+
+
+
++ 左侧显示行号
+#+BEGIN_EXAMPLE
+dotspacemacs-line-numbers t
+#+END_EXAMPLE
 
 ** 相关工具的安装
 + 安装python

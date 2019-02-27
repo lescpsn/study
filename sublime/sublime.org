@@ -53,7 +53,7 @@ C + S + p -> Install Package Control
 #+END_EXAMPLE
 
 
-+ sublime添加到右键
++ 用sublime打开文件添加到右键
 #+BEGIN_EXAMPLE
 修改注册表
 
@@ -62,11 +62,31 @@ cmd -> regedit -> HKEY_CLASSESS_ROOT -> * ->Shell
 新建节点Sublime Text 3（安装的目录名字）
 
 该项下新建两个字段
-1 新建字符串 Icon (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe,0)
-                            
 
-2 新建项 Command (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe "%1")
+1 新建项 Command (修改默认值为 "C:\Local\Sublime Text 3\sublime_text.exe" "%1")
+
+2 新建字符串 Icon (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe,0)
+                            
 #+END_EXAMPLE
+
+
++ 用sublime打开目录添加到右键
+#+BEGIN_EXAMPLE
+修改注册表
+
+cmd -> regedit -> HKEY_CLASSESS_ROOT -> Directory ->Shell 
+
+新建节点Sublime Text 3（安装的目录名字）并且修改默认值为 "用Sublime Text 3打开"
+
+该项下新建以下字段
+
+
+1 新建项 Command (修改默认值为 "C:\Local\Sublime Text 3\sublime_text.exe" "%1")
+
+2 新建字符串 Icon (修改默认值为 C:\Local\Sublime Text 3\sublime_text.exe,0)
+
+#+END_EXAMPLE
+
 
 
 * issue

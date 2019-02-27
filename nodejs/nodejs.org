@@ -1,6 +1,14 @@
 #+TITLE:  NODE.JS & ES6
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style/my-org-worg.css" />
 
+* node.js安装
+#+BEGIN_EXAMPLE
+npm root -g
+#+END_EXAMPLE
+
+
+
+
 * node.js概览
 #+BEGIN_EXAMPLE
 
@@ -37,9 +45,9 @@ console.log("Welcome To IOTA!");
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/j/nodejs/example:master*? λ node 001.js 
+c/P/l/s/j/nodejs/example:master*? λ node 001.js
 Welcome To IOTA!
-c/P/l/s/j/nodejs/example:master*? λ 
+c/P/l/s/j/nodejs/example:master*? λ
 #+END_EXAMPLE
 
 
@@ -147,7 +155,7 @@ console.log("-------------------------------------");
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/j/nodejs/example:master*? λ node.exe 002.js 
+c/P/l/s/j/nodejs/example:master*? λ node.exe 002.js
 -------------------------------------
 s_a1 is:  Welcome To Iota!:1
 s_a2 is:  Welcome To Iota!:2
@@ -178,7 +186,7 @@ ch_b1 == int_b1? true
 字面量數值0=='0'
 字面量數值1=='1'
 -------------------------------------
-c/P/l/s/j/nodejs/example:master*? λ 
+c/P/l/s/j/nodejs/example:master*? λ
 #+END_EXAMPLE
 
 
@@ -236,7 +244,7 @@ console.log("-------------------------------------");
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/j/nodejs/example:master*? λ node.exe 003.js 
+c/P/l/s/j/nodejs/example:master*? λ node.exe 003.js
 -------------------------------------
 arr_a1 =  [ 'a', 'b', 'c' ]
 arr_a2 =  [ 'd', 'e', 1, '124' ]
@@ -251,7 +259,7 @@ eg
 arr_a4 = arr_a2 + arr_a3:  d,e,1,124f,eg,1,124,1.23,hij
 arr_a4.length =  28
 -------------------------------------
-c/P/l/s/j/nodejs/example:master*? λ 
+c/P/l/s/j/nodejs/example:master*? λ
 #+END_EXAMPLE
 
 
@@ -309,7 +317,7 @@ abb
 ---------------------------------
 { id: '20001', name: 'abb', city: 'nanjing' }
 ---------------------------------
-c/P/l/s/j/nodejs/example:master*? λ 
+c/P/l/s/j/nodejs/example:master*? λ
 
 #+END_EXAMPLE
 
@@ -357,11 +365,11 @@ function main() {
 main();
 #+END_EXAMPLE
 #+BEGIN_EXAMPLE
-c/P/l/s/j/nodejs/example:master*? λ node 005.js 
+c/P/l/s/j/nodejs/example:master*? λ node 005.js
 [ERRO]This is ERRO test.
 [INFO]This is INFO test.
 [WARN]This is WARN test.
-c/P/l/s/j/nodejs/example:master*? λ 
+c/P/l/s/j/nodejs/example:master*? λ
 #+END_EXAMPLE
 
 
@@ -417,9 +425,9 @@ libfun.print_log("INFO", "print_log function from lib.js");
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/study/nodejs/example:master*? λ node.exe 006.js 
+c/P/l/study/nodejs/example:master*? λ node.exe 006.js
 [INFO]print_log function from lib.js
-c/P/l/study/nodejs/example:master*? λ 
+c/P/l/study/nodejs/example:master*? λ
 #+END_EXAMPLE
 
 
@@ -502,16 +510,16 @@ for (let i = 0; i < 2; i++) {
 console.log("pi: ", pi);
 
 // let声明的i，只是在for作用域中，这里没有定义的变量i报错
-console.log("this is not for loop i: ", i); 
+console.log("this is not for loop i: ", i);
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_001.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_001.js
 this is for loop i:  0
 this is for loop i:  1
 pi:  3.1415926
 c:\Projects\lescpsn\study\javascript\nodejs\es6\es6_001.js:9
-console.log("this is not for loop i: ", i); 
+console.log("this is not for loop i: ", i);
                                         ^
 
 ReferenceError: i is not defined
@@ -527,17 +535,17 @@ for (let v of myArry) {
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_002.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_002.js
 a
 ab
 b
 bc
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 函数定义
  #+BEGIN_EXAMPLE
- getName: function(name)  ==>     getName(name) 
+ getName: function(name)  ==>     getName(name)
  #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
@@ -551,9 +559,9 @@ var human = {
 human.getName('abb');
 #+END_EXAMPLE
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_003.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_003.js
 my name is:  abb
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 类定义（class）
@@ -572,9 +580,9 @@ var man = new Human('bccc');
 man.getName();
 #+END_EXAMPLE
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe es6_004.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe es6_004.js
 my name is: bccc
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 
 #+END_EXAMPLE
 
@@ -607,10 +615,10 @@ boy.getName();
 boy.info();
 #+END_EXAMPLE
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe es6_005.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe es6_005.js
 my name is: Jem
 Jem is boy
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 公有导出
@@ -637,7 +645,7 @@ console.log("----------------------------------------");
 
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_007.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_007.js
 [ 'a', 'ab', 1, 1.45, [ 'b', 'bc' ] ]
 ----------------------------------------
 a 0
@@ -646,7 +654,7 @@ ab 1
 1.45 3
 [ 'b', 'bc' ] 4
 ----------------------------------------
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 字符串模板
@@ -659,10 +667,10 @@ console.log(`random num is $num`);
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_008.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_008.js
 random num is 0.8724538604517855
 random num is $num
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 解构(函数多返回值)
@@ -689,10 +697,10 @@ console.log(vb1, vb2);
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_009.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_009.js
 1 'a' 'bc'
 1 'a'
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 函数参数默认值
@@ -709,10 +717,10 @@ sayHi('Tom');
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_010.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_010.js
 Hi HanMM
 Hi Tom
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
 ** 新增的集合相关类型
@@ -738,7 +746,7 @@ console.log(m.has('age'));
 #+END_EXAMPLE
 
 #+BEGIN_EXAMPLE
-c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_011.js 
+c/P/l/s/javascript/nodejs/es6:master*? λ node.exe  es6_011.js
 Set { 'zhangsan', 11, 3.14 }
 3
 true
@@ -746,10 +754,10 @@ true
 Map { 'name' => 'Tom', 'age' => 32 }
 2
 true
-c/P/l/s/javascript/nodejs/es6:master*? λ 
+c/P/l/s/javascript/nodejs/es6:master*? λ
 #+END_EXAMPLE
 
-+ WeakSet WeakMap 
++ WeakSet WeakMap
 #+BEGIN_EXAMPLE
 参数只接受对象 , 且不能遍历.
 #+END_EXAMPLE

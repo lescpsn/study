@@ -30,7 +30,19 @@ C:\Users\lescpsn\AppData\Roaming\Code
 
 
 ** 全局插件
-+ JSON Tools
++ (Chinese (Simplified) Language Pack for Visual Studio Code)
+#+BEGIN_EXAMPLE
+简体中文汉化插件包
+#+END_EXAMPLE
+
+
++ Org Mode
+#+BEGIN_EXAMPLE
+查看编辑 org-mode 类型文档
+#+END_EXAMPLE
+
+
++ JSON Tools (windows)
 #+BEGIN_EXAMPLE
 Ctrl-Alt-m : 格式化josn
 
@@ -42,26 +54,6 @@ Alt-m : 最小化josn
 Ctrl-Alt-m : 格式化josn
 
 Alt-m : 最小化josn
-#+END_EXAMPLE
-
-+ golang语言插件
-#+BEGIN_EXAMPLE
-安装 Go (Rich go language support for Visual Studio Code 插件)
-#+END_EXAMPLE
-
-+ C/C++语言插件
-#+BEGIN_EXAMPLE
-安装 C/C++
-#+END_EXAMPLE
-
-+ CMake语言插件
-#+BEGIN_EXAMPLE
-安装 CMake, Cmake Tools, Cmake Tools Helper
-#+END_EXAMPLE
-
-+ Python语言插件
-#+BEGIN_EXAMPLE
-安装 Python
 #+END_EXAMPLE
 
 + mql4语言
@@ -77,18 +69,12 @@ Alt-m : 最小化josn
 + changeEncode
 #+BEGIN_EXAMPLE
 显示非utf8的中文编码文件
-支持utf-8，gbk中文编码文件自动识别
+支持utf-8，gbk中文编码文件自动识别转换
 #+END_EXAMPLE
 
 + 颜色主题插件
 #+BEGIN_EXAMPLE
 安装 One Dark Pro
-#+END_EXAMPLE
-
-
-+ Org Mode
-#+BEGIN_EXAMPLE
-查看Org类型文档
 #+END_EXAMPLE
 
 
@@ -114,6 +100,10 @@ Emacs-Keymap bug比较多
 
 *** 常用配置
 #+BEGIN_EXAMPLE
+
+// 自动识别文件编码，支持gbk,utf-8各种文件的中文编码自动识别，无须再安装其他插件
+"files.autoGuessEncoding": true,
+
 // 控制编辑器中呈现空白字符的方式，可能为“无”、“边界”和“全部”。“边界”选项不会在单词之间呈现单空格。
 "editor.renderWhitespace": "all",
 
@@ -121,18 +111,13 @@ Emacs-Keymap bug比较多
 "files.trimTrailingWhitespace": true,
 
 // 禁止控制编辑器是否应该在左括号后自动插入右括号
-"editor.autoClosingBrackets": false,
-
+"editor.autoClosingBrackets": never,
 
 // 每行第80，120个字符的位置提示线
 "editor.rulers": [80,120],
 
 // 隐藏右侧小地图
 "editor.minimap.enabled": false,
-
-
-// 自动识别文件编码
-"files.autoGuessEncoding": true,
 
 #+END_EXAMPLE
 
@@ -206,7 +191,14 @@ C:\Users\lescpsn\AppData\Roaming\code\User\keybindings.json
 
 
 
+
 ** IDE For Golang
+
++ golang语言插件
+#+BEGIN_EXAMPLE
+安装 Go (Rich go language support for Visual Studio Code 插件)
+#+END_EXAMPLE
+
 + msys2交叉环境
 #+BEGIN_EXAMPLE
 非常重要：
@@ -336,11 +328,13 @@ Installing github.com/golang/lint/golint FAILED
 
 
 ** IDE For Python
-+ Python扩展安装
++ Python语言扩展安装
 #+BEGIN_EXAMPLE
 一般只要打开.py的文件，会自动提示安装python扩展
 
 选择Python(目前下载量最高)安装即可
+
+安装 Python
 #+END_EXAMPLE
 
 + 多环境Python
