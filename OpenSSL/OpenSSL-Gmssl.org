@@ -147,7 +147,7 @@ perl Configure VC-WIN32 no-deprecated no-base58 --prefix="C:\Local\usr\GmSSL32" 
 
 mkdir _build
 cd _build
-perl ..\Configure VC-WIN32 --prefix="C:\Local\usr\GmSSL32"
+perl ..\Configure VC-WIN32 --prefix="C:\Local\usr\GmSSL32"  --openssldir="C:\Local\usr\GmSSL32"
 
 nmake clean
 
