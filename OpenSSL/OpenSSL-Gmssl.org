@@ -142,6 +142,13 @@ cd GmSSL (切换到 GmSSL 目录下)
 perl Configure VC-WIN32 no-deprecated no-base58 --prefix="C:\Local\usr\GmSSL32" --openssldir="C:\Local\usr\GmSSL32"
 (no-deprecated即不编译1.1.0废弃的函数)
 
+
+最新的版本已经优化了之前的一些bug，编译更加简洁了（去掉no-deprecated no-base58）
+
+mkdir _build
+cd _build
+perl ..\Configure VC-WIN32 --prefix="C:\Local\usr\GmSSL32"
+
 nmake clean
 
 nmake
