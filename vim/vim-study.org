@@ -16,7 +16,6 @@ cd ~/.space-vim
 make vim     # install space-vim for Vim
 
 
-
 windows
 注意：windows不能创建以.开头的文件，可以采用git-bash命令行下载
 ln -s ~/.space-vim/init.vim ~/.vimrc
@@ -151,6 +150,7 @@ make vim
 
 
 
+
 ** 配置
 
 *** 更新~/.spacevim配置文件
@@ -194,6 +194,7 @@ autocmd GUIEnter * simalt ~x
 #+END_EXAMPLE
 
 
+
 * 常用快捷键
 + 手工安装插件
 #+BEGIN_EXAMPLE
@@ -224,4 +225,5 @@ autocmd GUIEnter * simalt ~x
 #+BEGIN_EXAMPLE
 删除行尾多余的空格
 #+END_EXAMPLE
+
 
