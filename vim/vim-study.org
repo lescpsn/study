@@ -8,16 +8,26 @@
 https://github.com/liuchengxu/space-vim
 #+END_EXAMPLE
 
-+ 下载space-vim仓存
++ 安装space-vim
 #+BEGIN_EXAMPLE
+linux 或者 mac
 git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
+cd ~/.space-vim
+make vim     # install space-vim for Vim
+
+
+
+windows
 注意：windows不能创建以.开头的文件，可以采用git-bash命令行下载
-
-
 ln -s ~/.space-vim/init.vim ~/.vimrc
 windows平台每次git pull 更新仓存后，都需要手工更新  ~/.vimrc
 #+END_EXAMPLE
 
++ 删除space-vim
+#+begin_example
+cd ~/.space-vim
+make uninstall     # 卸载 space-vim
+#+end_example
 
 
 ** 安装
