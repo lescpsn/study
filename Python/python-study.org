@@ -68,7 +68,9 @@ rm -rf anaconda
 可以加速三方库下载的速度
 
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --set show_channel_urls yes
+
 
 最后生成的配置文件在 C:\Users\lescpsn\.condarc 即也可以直接编辑该文件
 
@@ -86,16 +88,20 @@ conda info -e
 
 + 创建指定版本指定位数的python虚拟环境
 #+BEGIN_EXAMPLE
-set CONDA_FORCE_32BIT=1
-conda create -n py364env-x86 python=3.6.4
+MacOS暂且不支持32位
+
+set CONDA_FORCE_32BIT=1 (win)
+CONDA_FORCE_32BIT=1 (linux)
+conda create -n py370env-x86 python=3.7.0
 #+END_EXAMPLE
 
 
 + 创建指定版本的python虚拟环境(以默认python的位数创建)
 #+BEGIN_EXAMPLE
-set CONDA_FORCE_32BIT=   (切换默认)
-conda create -n py362env python=3.6.2
-(创建一个指定版本python3.6.2的新环境py362env，并且只包含python的基本模块。)
+set CONDA_FORCE_32BIT=   (win切换默认) 
+unset CONDA_FORCE_32BIT   (linux切换默认) 
+conda create -n py370env python=3.7.0
+(创建一个指定版本python3.7.0的新环境py370env，并且只包含python的基本模块。)
 
 conda create -n py34env python=3.4 (注意 prelude的anaconda不支持3.6，只能支持到3.4版本)
 #+END_EXAMPLE
@@ -103,8 +109,8 @@ conda create -n py34env python=3.4 (注意 prelude的anaconda不支持3.6，只�
 
 + 激活指定版本的python虚拟环境
 #+BEGIN_EXAMPLE
-activate py362env            (windows下激活某个环境)
-deactivate                   (windows退出某个环境)
+conda activate py362env            (windows下激活某个环境)
+conda deactivate                   (windows退出某个环境)
 
 source activate py362env     (linux下激活某个环境)
 source deactivate            (linux退出某个环境)
